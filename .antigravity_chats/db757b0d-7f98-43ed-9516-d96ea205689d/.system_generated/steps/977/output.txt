@@ -1,0 +1,32 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -46,11 +46,21 @@
+                                 </Style.Triggers>
+                             </Style>
+                         </UniformGrid.Resources>
+-                        <ToggleButton x:Name="FilterTop" Content="TOP" Click="RoleFilter_Click" Tag="TOP"/>
+-                        <ToggleButton x:Name="FilterJgl" Content="JGL" Click="RoleFilter_Click" Tag="JUNGLE"/>
+-                        <ToggleButton x:Name="FilterMid" Content="MID" Click="RoleFilter_Click" Tag="MIDDLE"/>
+-                        <ToggleButton x:Name="FilterBot" Content="BOT" Click="RoleFilter_Click" Tag="BOTTOM"/>
+-                        <ToggleButton x:Name="FilterSup" Content="SUP" Click="RoleFilter_Click" Tag="UTILITY"/>
++                        <ToggleButton x:Name="FilterTop" Click="RoleFilter_Click" Tag="TOP">
++                            <Image Source="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-top.png" Width="24" Height="24" Stretch="Uniform"/>
++                        </ToggleButton>
++                        <ToggleButton x:Name="FilterJgl" Click="RoleFilter_Click" Tag="JUNGLE">
++                            <Image Source="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-jungle.png" Width="24" Height="24" Stretch="Uniform"/>
++                        </ToggleButton>
++                        <ToggleButton x:Name="FilterMid" Click="RoleFilter_Click" Tag="MIDDLE">
++                            <Image Source="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-middle.png" Width="24" Height="24" Stretch="Uniform"/>
++                        </ToggleButton>
++                        <ToggleButton x:Name="FilterBot" Click="RoleFilter_Click" Tag="BOTTOM">
++                            <Image Source="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-bottom.png" Width="24" Height="24" Stretch="Uniform"/>
++                        </ToggleButton>
++                        <ToggleButton x:Name="FilterSup" Click="RoleFilter_Click" Tag="UTILITY">
++                            <Image Source="https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-clash/global/default/assets/images/position-selector/positions/icon-position-utility.png" Width="24" Height="24" Stretch="Uniform"/>
++                        </ToggleButton>
+                     </UniformGrid>
+                     
+                     <ListBox x:Name="PresetsList" Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="PresetsList_SelectionChanged">
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

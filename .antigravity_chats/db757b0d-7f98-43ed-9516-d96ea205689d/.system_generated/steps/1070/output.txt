@@ -1,0 +1,13 @@
+
+The command exited with code 0.
+Output:
+
+              System.Text.Json.JsonElement blitzRoot = default;
+              if (System.IO.File.Exists(blitzPath))
+              {
+>                 var blitzJson = System.IO.File.ReadAllText(blitzPath);
+                  using var blitzDocObj = System.Text.Json.JsonDocument.Parse(blitzJson);
+                  blitzRoot = blitzDocObj.RootElement.Clone();
+              }
+
+

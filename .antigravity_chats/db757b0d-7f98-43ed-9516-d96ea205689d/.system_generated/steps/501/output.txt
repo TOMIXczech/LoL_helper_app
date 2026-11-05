@@ -1,0 +1,86 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -189,7 +189,7 @@
+ 
+     private void RenderItemSection(string title, List<int> itemIds, bool showArrows = false)
+     {
+-        if (itemIds == null || itemIds.Count == 0) return;
++        if (itemIds == null) return;
+ 
+         var sectionLabel = new TextBlock
+         {
+@@ -204,6 +204,7 @@
+         
+         for (int i = 0; i < itemIds.Count; i++)
+         {
++            int index = i;
+             int itemId = itemIds[i];
+             var item = ItemService.Instance.GetItem(itemId);
+             if (item == null) continue;
+@@ -228,6 +228,14 @@
+                 Margin = new Thickness(0, 0, showArrows ? 8 : 6, 0),
+                 Child = img
+             };
++            
++            border.MouseLeftButtonDown += (s, e) => {
++                OpenItemPicker(newId => {
++                    if (newId == null) itemIds.RemoveAt(index);
++                    else itemIds[index] = newId.Value;
++                    RenderItemBuilder(_activePreset);
++                });
++            };
+ 
+             panel.Children.Add(border);
+ 
+@@ -243,9 +243,48 @@
+                 panel.Children.Add(arrow);
+             }
+         }
++        
++        var addBtn = CreateIconBlock("+", "#A3BE8C", "#2D2D35");
++        addBtn.MouseLeftButtonDown += (s, e) => {
++            OpenItemPicker(newId => {
++                if (newId != null) {
++                    itemIds.Add(newId.Value);
++                    RenderItemBuilder(_activePreset);
++                }
++            });
++        };
++        panel.Children.Add(addBtn);
++
+         InteractiveItemBuilder.Children.Add(panel);
+     }
+ 
++    private Border CreateIconBlock(string text, string fgColor, string bgColor)
++    {
++        var tb = new TextBlock
++        {
++            Text = text,
++            Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(fgColor)),
++            FontSize = 24,
++            FontWeight = FontWeights.Bold,
++            HorizontalAlignment = HorizontalAlignment.Center,
++            VerticalAlignment = VerticalAlignment.Center,
++            Margin = new Thickness(0, -3, 0, 0)
++        };
++        var border = new Border
++        {
++            Width = 36, Height = 36,
++            Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(bgColor)),
++            CornerRadius = new CornerRadius(4),
++            Margin = new Thickness(0, 0, 6, 0),
++            Cursor = Cursors.Hand,
++            Child = tb,
++            ToolTip = new ToolTip { Content = text == "+" ? "Add Item" : "Remove Item", Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1C1C21")), Foreground = Brushes.White, BorderThickness = new Thickness(0) }
++        };
++        border.MouseEnter += (s, e) => border.Opacity = 0.8;
++        border.MouseLeave += (s, e) => border.Opacity = 1.0;
++        return border;
++    }
++
+     private void RenderRuneBuilder()
+     {
+         InteractiveRuneBuilder.Children.Clear();
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

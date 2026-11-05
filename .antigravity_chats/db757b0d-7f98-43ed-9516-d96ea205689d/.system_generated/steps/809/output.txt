@@ -1,0 +1,21 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\ItemService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -102,5 +102,15 @@
+         if (_itemDict.TryGetValue(id, out var item)) return item;
+         return null;
+     }
++
++    public int? GetItemIdByName(string name)
++    {
++        foreach (var item in AllItems)
++        {
++            if (item.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
++                return item.Id;
++        }
++        return null;
++    }
+ }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

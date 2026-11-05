@@ -1,0 +1,14 @@
+
+The command exited with code 0.
+Output:
+Invoke-RestMethod: 
+Line |
+   8 |  $docs = Invoke-RestMethod -Uri "https://127.0.0.1:$port/swagger/v3/op .
+     |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 
+{
+  "errorCode": "RESOURCE_NOT_FOUND",
+  "httpStatus": 404,
+  "message": "Invalid URI format"
+}
+

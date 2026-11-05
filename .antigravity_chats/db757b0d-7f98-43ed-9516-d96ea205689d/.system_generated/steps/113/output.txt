@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/OverlayWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main ccf625d] fix: correct JSON parsing and fix overlay rendering
+ 25 files changed, 34 insertions(+), 25 deletions(-)
+

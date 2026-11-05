@@ -1,0 +1,17 @@
+
+The command exited with code 0.
+Output:
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  LoLHelper.Core -> C:\Users\ufo\Downloads\TP\LoLHelper.Core\bin\Debug\net9.0\LoLHelper.Core.dll
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs(173,65): warning CS8625: Cannot convert null literal to non-nullable reference type. [C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj]
+  LoLHelper.PCClient -> C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\bin\Debug\net9.0-windows\LoLHelper.PCClient.dll
+
+Build succeeded.
+
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs(173,65): warning CS8625: Cannot convert null literal to non-nullable reference type. [C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj]
+    1 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:02.78
+

@@ -1,0 +1,74 @@
+
+The command exited with code 0.
+Output:
+WARNING: Resulting JSON is truncated as serialization has exceeded the set depth of 2.
+
+      "owner": "@{login=xxswingxx; id=1730519; node_id=MDQ6VXNlcjE3MzA1MTk=; 
+avatar_url=https://avatars.githubusercontent.com/u/1730519?v=4; gravatar_id=; 
+url=https://api.github.com/users/xxswingxx; html_url=https://github.com/xxswingxx; 
+followers_url=https://api.github.com/users/xxswingxx/followers; 
+following_url=https://api.github.com/users/xxswingxx/following{/other_user}; 
+gists_url=https://api.github.com/users/xxswingxx/gists{/gist_id}; 
+starred_url=https://api.github.com/users/xxswingxx/starred{/owner}{/repo}; 
+subscriptions_url=https://api.github.com/users/xxswingxx/subscriptions; 
+organizations_url=https://api.github.com/users/xxswingxx/orgs; repos_url=https://api.github.com/users/xxswingxx/repos; 
+events_url=https://api.github.com/users/xxswingxx/events{/privacy}; 
+received_events_url=https://api.github.com/users/xxswingxx/received_events; type=User; user_view_type=public; 
+site_admin=False}",
+      "html_url": "https://github.com/xxswingxx/leelol",
+      "owner": "@{login=krishnapriya-n; id=101842284; node_id=U_kgDOBhH9bA; 
+avatar_url=https://avatars.githubusercontent.com/u/101842284?v=4; gravatar_id=; 
+url=https://api.github.com/users/krishnapriya-n; html_url=https://github.com/krishnapriya-n; 
+followers_url=https://api.github.com/users/krishnapriya-n/followers; 
+following_url=https://api.github.com/users/krishnapriya-n/following{/other_user}; 
+gists_url=https://api.github.com/users/krishnapriya-n/gists{/gist_id}; 
+starred_url=https://api.github.com/users/krishnapriya-n/starred{/owner}{/repo}; 
+subscriptions_url=https://api.github.com/users/krishnapriya-n/subscriptions; 
+organizations_url=https://api.github.com/users/krishnapriya-n/orgs; 
+repos_url=https://api.github.com/users/krishnapriya-n/repos; 
+events_url=https://api.github.com/users/krishnapriya-n/events{/privacy}; 
+received_events_url=https://api.github.com/users/krishnapriya-n/received_events; type=User; user_view_type=public; 
+site_admin=False}",
+      "html_url": "https://github.com/krishnapriya-n/lens-of-legends",
+      "owner": "@{login=jbryant4; id=78622927; node_id=MDQ6VXNlcjc4NjIyOTI3; 
+avatar_url=https://avatars.githubusercontent.com/u/78622927?v=4; gravatar_id=; 
+url=https://api.github.com/users/jbryant4; html_url=https://github.com/jbryant4; 
+followers_url=https://api.github.com/users/jbryant4/followers; 
+following_url=https://api.github.com/users/jbryant4/following{/other_user}; 
+gists_url=https://api.github.com/users/jbryant4/gists{/gist_id}; 
+starred_url=https://api.github.com/users/jbryant4/starred{/owner}{/repo}; 
+subscriptions_url=https://api.github.com/users/jbryant4/subscriptions; 
+organizations_url=https://api.github.com/users/jbryant4/orgs; repos_url=https://api.github.com/users/jbryant4/repos; 
+events_url=https://api.github.com/users/jbryant4/events{/privacy}; 
+received_events_url=https://api.github.com/users/jbryant4/received_events; type=User; user_view_type=public; 
+site_admin=False}",
+      "html_url": "https://github.com/jbryant4/duoLOL",
+      "owner": "@{login=ZepiGit; id=292425648; node_id=U_kgDOEW4PsA; 
+avatar_url=https://avatars.githubusercontent.com/u/292425648?v=4; gravatar_id=; 
+url=https://api.github.com/users/ZepiGit; html_url=https://github.com/ZepiGit; 
+followers_url=https://api.github.com/users/ZepiGit/followers; 
+following_url=https://api.github.com/users/ZepiGit/following{/other_user}; 
+gists_url=https://api.github.com/users/ZepiGit/gists{/gist_id}; 
+starred_url=https://api.github.com/users/ZepiGit/starred{/owner}{/repo}; 
+subscriptions_url=https://api.github.com/users/ZepiGit/subscriptions; 
+organizations_url=https://api.github.com/users/ZepiGit/orgs; repos_url=https://api.github.com/users/ZepiGit/repos; 
+events_url=https://api.github.com/users/ZepiGit/events{/privacy}; 
+received_events_url=https://api.github.com/users/ZepiGit/received_events; type=User; user_view_type=public; 
+site_admin=False}",
+      "html_url": "https://github.com/ZepiGit/league-api-engineering",
+      "owner": "@{login=RicardoHigino; id=79026025; node_id=MDQ6VXNlcjc5MDI2MDI1; 
+avatar_url=https://avatars.githubusercontent.com/u/79026025?v=4; gravatar_id=; 
+url=https://api.github.com/users/RicardoHigino; html_url=https://github.com/RicardoHigino; 
+followers_url=https://api.github.com/users/RicardoHigino/followers; 
+following_url=https://api.github.com/users/RicardoHigino/following{/other_user}; 
+gists_url=https://api.github.com/users/RicardoHigino/gists{/gist_id}; 
+starred_url=https://api.github.com/users/RicardoHigino/starred{/owner}{/repo}; 
+subscriptions_url=https://api.github.com/users/RicardoHigino/subscriptions; 
+organizations_url=https://api.github.com/users/RicardoHigino/orgs; 
+repos_url=https://api.github.com/users/RicardoHigino/repos; 
+events_url=https://api.github.com/users/RicardoHigino/events{/privacy}; 
+received_events_url=https://api.github.com/users/RicardoHigino/received_events; type=User; user_view_type=public; 
+site_admin=False}",
+      "html_url": "https://github.com/RicardoHigino/LeagueOfLegends_API",
+
+

@@ -1,0 +1,9 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/ItemService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main 7c697cd] feat: display item components in core build, show situational items, and remove boots options
+ 26 files changed, 44 insertions(+), 9 deletions(-)
+

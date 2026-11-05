@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+        int pStyle, int sStyle, int[] perks, List<int> starts, List<int> core, List<int> final, List<int> sit, List<int> boots)
+    {
+        return new ChampionBuildPreset
+        {
+            ChampionId = champId,
+            Role = role,
+            RunePreset = new RunePreset
+            {
+                Name = $"{champName} - {buildName}",
+                Description = $"{role} | {buildName}",
+                PrimaryStyleId = pStyle,
+                SubStyleId = sStyle,
+                SelectedPerkIds = perks,
+                PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(pStyle),
+                SubStyleImageUrl = RuneService.Instance.GetImageUrl(sStyle),
+                KeystoneImageUrl = RuneService.Instance.GetImageUrl(perks[0])
+            },
+            StartingItemIds = starts,
+            CoreBuildOrderIds = core,
+            CoreFinalBuildIds = final,
+            SituationalItemIds = sit,
+            BootsOptionsIds = boots
+        };
+    }
+
+    public List<ChampionBuildPreset> GetPresetsForChampion(int championId)
+    {
+        return _database.Where(p => p.ChampionId == championId).ToList();
+    }
+}
+

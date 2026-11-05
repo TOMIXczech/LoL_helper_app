@@ -1,0 +1,1025 @@
+{
+  "Karthus": {
+    "JUNGLE": {
+      "Tier": 3,
+      "Win Rate": 0.48757790489200037,
+      "Win Rate Change": 0.0013589724733928943,
+      "Pick Rate": 0.007275925804565018,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 23426,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5395192217753251,
+          "matches": 10691,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5137748882568062,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5141899115560307
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.5409334353481254,
+          "matches": 3921,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5542838093121458,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Triumph",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5317865758478786
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Sorcerer's Shoes"
+          ],
+          "win_rate": 0.5399419026870007,
+          "matches": 2754,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.5123168069847209,
+            "secondary_and_other": [
+              "Cash Back",
+              "Sixth Sense",
+              "Treasure Hunter",
+              "Coup de Grace",
+              "Presence of Mind"
+            ]
+          },
+          "summoner_spells": [
+            "Smite",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5647002854424358
+        }
+      ],
+      "Matchups": {}
+    },
+    "TOP": {
+      "Tier": 4,
+      "Win Rate": 0.4745260663507109,
+      "Win Rate Change": 0.01676876988373699,
+      "Pick Rate": 0.0005242791239693396,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 1688,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5384615384615384,
+          "matches": 442,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5509838998211091,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5457875457875457
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.4915254237288136,
+          "matches": 236,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5111464968152867,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5171717171717172
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Sorcerer's Shoes"
+          ],
+          "win_rate": 0.5343511450381679,
+          "matches": 131,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.5212355212355212,
+            "secondary_and_other": [
+              "Manaflow Band",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Last Stand",
+              "Coup de Grace"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5025641025641026
+        }
+      ],
+      "Matchups": {}
+    },
+    "MIDDLE": {
+      "Tier": 1,
+      "Win Rate": 0.5131721400216528,
+      "Win Rate Change": 0.011647327157776943,
+      "Pick Rate": 0.0008606501495965877,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 2771,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Rabadon's Deathcap"
+          ],
+          "win_rate": 0.48615384615384616,
+          "matches": 325,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5921875,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5659459459459459
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5887096774193549,
+          "matches": 248,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5217687074829932,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5320796460176991
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Stormsurge",
+            "Shadowflame"
+          ],
+          "win_rate": 0.573170731707317,
+          "matches": 164,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.4883720930232558,
+            "secondary_and_other": [
+              "Cash Back",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Coup de Grace",
+              "Coup de Grace"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.56
+        }
+      ],
+      "Matchups": {}
+    },
+    "BOTTOM": {
+      "Tier": 1,
+      "Win Rate": 0.5375231053604437,
+      "Win Rate Change": 0.009475562238252078,
+      "Pick Rate": 0.002520453252968715,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 8115,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5609418282548476,
+          "matches": 4332,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5656060606060606,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5677700738089912
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Sorcerer's Shoes"
+          ],
+          "win_rate": 0.5914239482200647,
+          "matches": 1236,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5511284480356645,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Last Stand",
+              "Presence of Mind"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5257410296411856
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.5355054302422724,
+          "matches": 1197,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.5,
+            "secondary_and_other": [
+              "Manaflow Band",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Barrier"
+          ],
+          "summoner_spells_win_rate": 0.5641025641025641
+        }
+      ],
+      "Matchups": {
+        "Ashe": [
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Sorcerer's Shoes",
+              "Shadowflame"
+            ],
+            "win_rate": 0.5384615384615384,
+            "matches": 143,
+            "runes": {
+              "keystone": "Deathfire Touch",
+              "keystone_win_rate": 0.5794392523364486,
+              "secondary_and_other": [
+                "Axiom Arcanist",
+                "Transcendence",
+                "Scorch",
+                "Presence of Mind",
+                "Last Stand"
+              ]
+            },
+            "summoner_spells": [
+              "Exhaust",
+              "Flash"
+            ],
+            "summoner_spells_win_rate": 0.5944055944055944
+          },
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Shadowflame",
+              "Sorcerer's Shoes"
+            ],
+            "win_rate": 0.5780298507462687,
+            "matches": 48,
+            "runes": {
+              "keystone": "Dark Harvest",
+              "keystone_win_rate": 0.5677966101694916,
+              "secondary_and_other": [
+                "Cheap Shot",
+                "Grisly Mementos",
+                "Ultimate Hunter",
+                "Last Stand",
+                "Gathering Storm"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Teleport"
+            ],
+            "summoner_spells_win_rate": 0.5641194029850747
+          }
+        ]
+      }
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.39502332814930013,
+      "Win Rate Change": -0.07230779034460905,
+      "Pick Rate": 0.00019971059046936337,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 643,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5292,
+          "matches": 94,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.48961937716262977,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.4528301886792453
+        },
+        {
+          "core_items": [
+            "Malignance",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5495333333333333,
+          "matches": 59,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.4898785425101215,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Presence of Mind"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.538961038961039
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.4338666666666667,
+          "matches": 54,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.45980000000000004,
+            "secondary_and_other": [
+              "Cash Back",
+              "Absolute Focus",
+              "Treasure Hunter",
+              "Coup de Grace",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5233644859813084
+        }
+      ],
+      "Matchups": {
+        "Ashe": [
+          {
+            "core_items": [
+              "Malignance",
+              "Sorcerer's Shoes",
+              "Shadowflame"
+            ],
+            "win_rate": null,
+            "matches": 4,
+            "runes": {
+              "keystone": "Dark Harvest",
+              "keystone_win_rate": null,
+              "secondary_and_other": [
+                "Cheap Shot",
+                "Grisly Mementos",
+                "Ultimate Hunter",
+                "Axiom Arcanist",
+                "Gathering Storm"
+              ]
+            },
+            "summoner_spells": [
+              "Exhaust",
+              "Flash"
+            ],
+            "summoner_spells_win_rate": null
+          },
+          {
+            "core_items": [
+              "Malignance",
+              "Shadowflame",
+              "Sorcerer's Shoes"
+            ],
+            "win_rate": null,
+            "matches": 3,
+            "runes": {
+              "keystone": "First Strike",
+              "keystone_win_rate": null,
+              "secondary_and_other": [
+                "Cash Back",
+                "Sixth Sense",
+                "Treasure Hunter",
+                "Coup de Grace",
+                "Presence of Mind"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Ignite"
+            ],
+            "summoner_spells_win_rate": null
+          }
+        ]
+      }
+    }
+  },
+  "Ashe": {
+    "BOTTOM": {
+      "Tier": 2,
+      "Win Rate": 0.5015145369659207,
+      "Win Rate Change": -0.0024912505001496443,
+      "Pick Rate": 0.0359904573745232,
+      "Ban Rate": 0.009082638875731871,
+      "Matches": 115877,
+      "Builds": [
+        {
+          "core_items": [
+            "Kraken Slayer",
+            "Berserker's Greaves",
+            "Blade of The Ruined King"
+          ],
+          "win_rate": 0.4539877300613497,
+          "matches": 978,
+          "runes": {
+            "keystone": "Lethal Tempo",
+            "keystone_win_rate": 0.48166693587465675,
+            "secondary_and_other": [
+              "Presence of Mind",
+              "Legend: Alacrity",
+              "Cut Down",
+              "Approach Velocity",
+              "Biscuit Delivery"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Barrier"
+          ],
+          "summoner_spells_win_rate": 0.48574144486692017
+        },
+        {
+          "core_items": [
+            "Berserker's Greaves",
+            "Kraken Slayer",
+            "Blade of The Ruined King"
+          ],
+          "win_rate": 0.46245530393325385,
+          "matches": 839,
+          "runes": {
+            "keystone": "Press the Attack",
+            "keystone_win_rate": 0.4754601226993865,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Bloodline",
+              "Coup de Grace",
+              "Cash Back",
+              "Approach Velocity"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ghost"
+          ],
+          "summoner_spells_win_rate": 0.47134502923976607
+        },
+        {
+          "core_items": [
+            "Berserker's Greaves",
+            "Kraken Slayer",
+            "Phantom Dancer"
+          ],
+          "win_rate": 0.4538904899135447,
+          "matches": 694,
+          "runes": {
+            "keystone": "Fleet Footwork",
+            "keystone_win_rate": 0.5275732217573221,
+            "secondary_and_other": [
+              "Absorb Life",
+              "Legend: Haste",
+              "Last Stand",
+              "Cheap Shot",
+              "Ultimate Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Cleanse",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.46464646464646464
+        }
+      ],
+      "Matchups": {
+        "Karthus": [
+          {
+            "core_items": [
+              "Berserker's Greaves",
+              "Hexoptics C44",
+              "Phantom Dancer"
+            ],
+            "win_rate": 0.45931830985915495,
+            "matches": 56,
+            "runes": {
+              "keystone": "Lethal Tempo",
+              "keystone_win_rate": 0.5053763440860215,
+              "secondary_and_other": [
+                "Presence of Mind",
+                "Legend: Alacrity",
+                "Cut Down",
+                "Approach Velocity",
+                "Biscuit Delivery"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Barrier"
+            ],
+            "summoner_spells_win_rate": 0.4868421052631579
+          },
+          {
+            "core_items": [
+              "Hexoptics C44",
+              "Berserker's Greaves",
+              "Phantom Dancer"
+            ],
+            "win_rate": 0.49420985915492954,
+            "matches": 49,
+            "runes": {
+              "keystone": "Press the Attack",
+              "keystone_win_rate": 0.498543661971831,
+              "secondary_and_other": [
+                "Triumph",
+                "Legend: Bloodline",
+                "Coup de Grace",
+                "Cash Back",
+                "Approach Velocity"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Ghost"
+            ],
+            "summoner_spells_win_rate": 0.5088845070422535
+          }
+        ]
+      }
+    },
+    "MIDDLE": {
+      "Tier": 5,
+      "Win Rate": 0.4435957696827262,
+      "Win Rate Change": 0.020538910006148214,
+      "Pick Rate": 0.000528627410542545,
+      "Ban Rate": 0.009082638875731871,
+      "Matches": 1702,
+      "Builds": [
+        {
+          "core_items": [
+            "Ionian Boots of Lucidity",
+            "Manamune",
+            "Axiom Arc"
+          ],
+          "win_rate": 0.4731703046197297,
+          "matches": 18,
+          "runes": {
+            "keystone": "Arcane Comet",
+            "keystone_win_rate": 0.460431654676259,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Cheap Shot",
+              "Ultimate Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Barrier"
+          ],
+          "summoner_spells_win_rate": 0.4347885818035102
+        },
+        {
+          "core_items": [
+            "Ionian Boots of Lucidity",
+            "Axiom Arc",
+            "Manamune"
+          ],
+          "win_rate": 0.44772116199314105,
+          "matches": 17,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.4568228767399637,
+            "secondary_and_other": [
+              "Manaflow Band",
+              "Legend: Alacrity",
+              "Gathering Storm",
+              "Ultimate Hunter",
+              "Cheap Shot"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.40933943917692156
+        },
+        {
+          "core_items": [
+            "Axiom Arc",
+            "Experimental Hexplate",
+            "Manamune"
+          ],
+          "win_rate": 0.43502630623360905,
+          "matches": 11,
+          "runes": {
+            "keystone": "Lethal Tempo",
+            "keystone_win_rate": 0.44412802098043175,
+            "secondary_and_other": [
+              "Presence of Mind",
+              "Absolute Focus",
+              "Cut Down",
+              "Taste of Blood",
+              "Taste of Blood"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ghost"
+          ],
+          "summoner_spells_win_rate": 0.4485005850312689
+        }
+      ],
+      "Matchups": {}
+    },
+    "TOP": {
+      "Tier": 4,
+      "Win Rate": 0.46875,
+      "Win Rate Change": 0.00973360655737704,
+      "Pick Rate": 0.0004571912739827416,
+      "Ban Rate": 0.009082638875731871,
+      "Matches": 1472,
+      "Builds": [
+        {
+          "core_items": [
+            "Berserker's Greaves",
+            "Kraken Slayer",
+            "Phantom Dancer"
+          ],
+          "win_rate": 0.5447154471544715,
+          "matches": 123,
+          "runes": {
+            "keystone": "Lethal Tempo",
+            "keystone_win_rate": 0.5466101694915254,
+            "secondary_and_other": [
+              "Presence of Mind",
+              "Legend: Alacrity",
+              "Cut Down",
+              "Approach Velocity",
+              "Biscuit Delivery"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ghost"
+          ],
+          "summoner_spells_win_rate": 0.54
+        },
+        {
+          "core_items": [
+            "Berserker's Greaves",
+            "Blade of The Ruined King",
+            "Phantom Dancer"
+          ],
+          "win_rate": 0.5045045045045045,
+          "matches": 111,
+          "runes": {
+            "keystone": "Press the Attack",
+            "keystone_win_rate": 0.5263218390804597,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Bloodline",
+              "Coup de Grace",
+              "Biscuit Delivery",
+              "Approach Velocity"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Barrier"
+          ],
+          "summoner_spells_win_rate": 0.5393939393939394
+        },
+        {
+          "core_items": [
+            "Berserker's Greaves",
+            "Blade of The Ruined King",
+            "Runaan's Hurricane"
+          ],
+          "win_rate": 0.5626819923371648,
+          "matches": 61,
+          "runes": {
+            "keystone": "Fleet Footwork",
+            "keystone_win_rate": 0.5471647509578544,
+            "secondary_and_other": [
+              "Absorb Life",
+              "Transcendence",
+              "Last Stand",
+              "Cash Back",
+              "Ultimate Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5799616858237547
+        }
+      ],
+      "Matchups": {}
+    },
+    "JUNGLE": {
+      "Tier": 3,
+      "Win Rate": 0.34328358208955223,
+      "Win Rate Change": -0.00022786829212717574,
+      "Pick Rate": 2.0809657171768813e-05,
+      "Ban Rate": 0.009082638875731871,
+      "Matches": 67,
+      "Builds": [
+        {
+          "core_items": [
+            "Kraken Slayer",
+            "Berserker's Greaves",
+            "Blade of The Ruined King"
+          ],
+          "win_rate": 0.3330434607645876,
+          "matches": 13,
+          "runes": {
+            "keystone": "Lethal Tempo",
+            "keystone_win_rate": 0.30144426559356136,
+            "secondary_and_other": [
+              "Presence of Mind",
+              "Legend: Alacrity",
+              "Cut Down",
+              "Approach Velocity",
+              "Biscuit Delivery"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.3334132796780684
+        },
+        {
+          "core_items": [
+            "Berserker's Greaves",
+            "Kraken Slayer",
+            "Blade of The Ruined King"
+          ],
+          "win_rate": 0.31618189134808855,
+          "matches": 12,
+          "runes": {
+            "keystone": "Press the Attack",
+            "keystone_win_rate": 0.31245875251509053,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Bloodline",
+              "Coup de Grace",
+              "Cheap Shot",
+              "Ultimate Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Ghost",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.30873561368209257
+        },
+        {
+          "core_items": [
+            "Berserker's Greaves",
+            "Kraken Slayer",
+            "Phantom Dancer"
+          ],
+          "win_rate": 0.31815090543259555,
+          "matches": 5,
+          "runes": {
+            "keystone": "Arcane Comet",
+            "keystone_win_rate": 0.32070462776659964,
+            "secondary_and_other": [
+              "Cash Back",
+              "Biscuit Delivery",
+              "Waterwalking",
+              "Biscuit Delivery",
+              "Approach Velocity"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Barrier"
+          ],
+          "summoner_spells_win_rate": 0.3212893360160966
+        }
+      ],
+      "Matchups": {}
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.4374135014608642,
+      "Win Rate Change": -0.0043607887685510605,
+      "Pick Rate": 0.004039558226507838,
+      "Ban Rate": 0.009082638875731871,
+      "Matches": 13006,
+      "Builds": [
+        {
+          "core_items": [
+            "Umbral Glaive",
+            "Ionian Boots of Lucidity",
+            "Axiom Arc"
+          ],
+          "win_rate": 0.6067497507477567,
+          "matches": 87,
+          "runes": {
+            "keystone": "Arcane Comet",
+            "keystone_win_rate": 0.511864406779661,
+            "secondary_and_other": [
+              "Manaflow Band",
+              "Transcendence",
+              "Scorch",
+              "Cheap Shot",
+              "Ultimate Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Heal"
+          ],
+          "summoner_spells_win_rate": 0.5198358413132695
+        },
+        {
+          "core_items": [
+            "Ionian Boots of Lucidity",
+            "Umbral Glaive",
+            "Axiom Arc"
+          ],
+          "win_rate": 0.5386340977068794,
+          "matches": 73,
+          "runes": {
+            "keystone": "Hail of Blades",
+            "keystone_win_rate": 0.5443037974683544,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Deep Ward",
+              "Ultimate Hunter",
+              "Ultimate Hunter",
+              "Approach Velocity"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.4968152866242038
+        },
+        {
+          "core_items": [
+            "Ionian Boots of Lucidity",
+            "Axiom Arc",
+            "Umbral Glaive"
+          ],
+          "win_rate": 0.47861415752741776,
+          "matches": 36,
+          "runes": {
+            "keystone": "Lethal Tempo",
+            "keystone_win_rate": 0.46726819541375875,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Legend: Alacrity",
+              "Coup de Grace",
+              "Approach Velocity",
+              "Cheap Shot"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.49403788634097706
+        }
+      ],
+      "Matchups": {}
+    }
+  }
+}

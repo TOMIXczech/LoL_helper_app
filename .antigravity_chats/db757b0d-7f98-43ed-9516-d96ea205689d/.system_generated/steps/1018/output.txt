@@ -1,0 +1,15 @@
+
+The command exited with code 0.
+Output:
+ParserError: C:\Users\ufo\Downloads\TP\patch_cs.ps1:1
+Line |
+   1 |  using System.Text.RegularExpressions;
+     |       ~
+     | Missing using directive
+ParserError: C:\Users\ufo\Downloads\TP\patch_cs.ps1:1
+Line |
+   1 |  using System.Text.RegularExpressions;
+     |       ~
+     | Missing using directive
+
+

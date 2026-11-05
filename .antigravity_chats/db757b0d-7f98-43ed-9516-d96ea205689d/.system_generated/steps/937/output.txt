@@ -1,0 +1,52 @@
+
+The command exited with code 0.
+Output:
+
+>     private void LoadPresetsForChampion(int champId)
+      {
+          if (_lastHoveredChampId == champId) return;
+          _lastHoveredChampId = champId;
+          
+          var presets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
+          
+          if (!presets.Any())
+          {
+              HoveredChampText.Text = "AVAILABLE PRESETS (CUSTOM)";
+              presets.Add(new ChampionBuildPreset
+              {
+                  ChampionId = champId,
+                  RunePreset = new RunePreset
+                  {
+                      Name = $"Custom Champ {champId}",
+                      Description = "Create your own custom build",
+                      PrimaryStyleId = 8000,
+                      SubStyleId = 8100,
+                      SelectedPerkIds = new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5002, 5002 }
+                  },
+                  StartingItemIds = new System.Collections.Generic.List<int>(),
+                  CoreBuildOrderIds = new System.Collections.Generic.List<int>(),
+                  CoreFinalBuildIds = new System.Collections.Generic.List<int>(),
+                  SituationalItemIds = new System.Collections.Generic.List<int>(),
+                  BootsOptionsIds = new System.Collections.Generic.List<int>()
+              });
+          }
+          else
+          {
+              HoveredChampText.Text = $"AVAILABLE PRESETS (CHAMP {champId})";
+          }
+  
+          PresetsList.ItemsSource = presets;
+          if (presets.Any()) PresetsList.SelectedIndex = 0;
+      }
+  
+      private async Task PollActiveRunesAsync()
+      {
+          if (_isUpdating || !LcuApiClient.Instance.IsConnected) return;
+  
+          _isUpdating = true;
+          try
+          {
+              // 1. Poll Session for hovered champion
+              string sessionJson = await LcuApiClient.Instance.GetChampSelectSessionAsync();
+
+

@@ -1,0 +1,29 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\OverlayWindow.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -9,6 +9,7 @@
+ {
+     // Win32 Constants for window transparency/click-through
+     private const int WS_EX_TRANSPARENT = 0x00000020;
++    private const int WS_EX_LAYERED = 0x00080000;
+     private const int GWL_EXSTYLE = -20;
+ 
+     [DllImport("user32.dll")]
+@@ -26,14 +26,10 @@
+ 
+     private void Window_SourceInitialized(object sender, EventArgs e)
+     {
+-        // Get the HWND of this WPF Window
+         var hwnd = new WindowInteropHelper(this).Handle;
+ 
+-        // Change the extended window style to include WS_EX_TRANSPARENT.
+-        // This makes the window click-through, allowing all mouse events 
+-        // to pass through to the League of Legends client underneath.
+         int extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+-        SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
++        SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT | WS_EX_LAYERED);
+     }
+ }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

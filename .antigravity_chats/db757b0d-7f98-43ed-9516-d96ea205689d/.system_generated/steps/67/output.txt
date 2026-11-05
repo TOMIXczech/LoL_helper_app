@@ -1,0 +1,56 @@
+
+The command exited with code 1.
+Output:
+
+Welcome to .NET 9.0!
+---------------------
+SDK Version: 9.0.306
+
+Telemetry
+---------
+The .NET tools collect usage data in order to help us improve your experience. It is collected by Microsoft and shared with the community. You can opt-out of telemetry by setting the DOTNET_CLI_TELEMETRY_OPTOUT environment variable to '1' or 'true' using your favorite shell.
+
+Read more about .NET CLI Tools telemetry: https://aka.ms/dotnet-cli-telemetry
+
+----------------
+Installed an ASP.NET Core HTTPS development certificate.
+To trust the certificate, run 'dotnet dev-certs https --trust'
+Learn about HTTPS: https://aka.ms/dotnet-https
+
+----------------
+Write your first app: https://aka.ms/dotnet-hello-world
+Find out what's new: https://aka.ms/dotnet-whats-new
+Explore documentation: https://aka.ms/dotnet-docs
+Report issues and find source on GitHub: https://github.com/dotnet/core
+Use 'dotnet --help' to see available commands or visit: https://aka.ms/dotnet-cli
+--------------------------------------------------------------------------------------
+The template "Solution File" was created successfully.
+
+Error: Invalid option(s):
+-f net9.0-windows
+   'net9.0-windows' is not a valid value for -f. The possible values are:
+      net5.0          - Target net5.0
+      net6.0          - Target net6.0
+      net7.0          - Target net7.0
+      net8.0          - Target net8.0
+      net9.0          - Target net9.0
+      netcoreapp3.0   - Target netcoreapp3.0
+      netcoreapp3.1   - Target netcoreapp3.1
+
+For more information, run:
+   dotnet new wpf -h
+
+For details on the exit code, refer to https://aka.ms/templating-exit-codes#127
+The template "Class Library" was created successfully.
+
+Processing post-creation actions...
+Restoring C:\Users\ufo\Downloads\TP\LoLHelper.Core\LoLHelper.Core.csproj:
+  Determining projects to restore...
+  Restored C:\Users\ufo\Downloads\TP\LoLHelper.Core\LoLHelper.Core.csproj (in 60 ms).
+Restore succeeded.
+
+
+Could not find project or directory `LoLHelper.PCClient/LoLHelper.PCClient.csproj`.
+Project `LoLHelper.Core\LoLHelper.Core.csproj` added to the solution.
+Could not find project or directory `LoLHelper.PCClient/LoLHelper.PCClient.csproj`.
+

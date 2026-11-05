@@ -1,0 +1,27 @@
+Command exited with code 0.
+
+Command output:
+
+    Directory: C:\Users\ufo\Downloads\TP
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          05/11/2026    23:38                __pycache__
+d----          05/11/2026    23:36                .antigravity_chats
+d--h-          06/11/2026    00:19                .git
+d----          06/11/2026    00:21                LoL_Helper_app
+-a---          01/10/2026    19:36           8430 .gitignore
+-a---          06/11/2026    00:02          85580 agy_git_sync.py
+-a---          05/11/2026    23:35            154 Start_Sync_Manager.bat
+
+    Directory: C:\Users\ufo\Downloads\TP\LoL_Helper_app
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d--h-          01/10/2026    19:41                .vs
+d----          04/10/2026    06:20                crawler
+d----          04/10/2026    03:14                LoLHelper.Core
+d----          01/10/2026    22:03                LoLHelper.PCClient
+-a---          01/10/2026    19:31           2898 LoLHelper.sln
+-a---          01/10/2026    23:19           2600 README.md
+

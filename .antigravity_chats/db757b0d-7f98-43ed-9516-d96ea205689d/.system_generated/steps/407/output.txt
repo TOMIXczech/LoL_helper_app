@@ -1,0 +1,12 @@
+
+The command exited with code 1.
+Output:
+grep: The term 'grep' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+grep: 
+Line |
+   2 |  . ontent.com/HextechDocs/lcu-openapi/master/openapi.json | grep -i "rec .
+     |                                                             ~~~~
+     | The term 'grep' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+

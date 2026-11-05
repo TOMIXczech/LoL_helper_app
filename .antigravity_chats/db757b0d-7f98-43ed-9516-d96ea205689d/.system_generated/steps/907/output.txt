@@ -1,0 +1,54 @@
+
+The command exited with code 0.
+Output:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using System.Windows.Threading;
+using LoLHelper.Core.Services;
+
+namespace LoLHelper.PCClient.Views;
+
+public partial class ChampSelectView : UserControl
+{
+    private DispatcherTimer _pollTimer;
+    private int _lastPageHash = -1;
+    private bool _isUpdating = false;
+
+    // Local Interactive State
+    private string _activePageName = "Custom Page";
+    private int _primaryTreeId = 8000;
+    private int _secondaryTreeId = 8100;
+    private List<int> _selectedPerks = new(); // 9 items: 4 primary, 2 secondary, 3 shards
+
+    public ChampSelectView()
+    {
+        InitializeComponent();
+        
+        _pollTimer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(2) };
+        _pollTimer.Tick += async (s, e) => await PollActiveRunesAsync();
+        
+        Loaded += OnLoaded;
+        Unloaded += OnUnloaded;
+    }
+
+    private async void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            await BuildDatabaseService.Instance.InitializeAsync();
+            // Default to Annie (1) if not in champ select to show it works
+            LoadPresetsForChampion(1);
+            
+            _pollTimer.Start();
+            await PollActiveRunesAsync();
+        }
+

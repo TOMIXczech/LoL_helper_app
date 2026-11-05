@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace LoLHelper.Core.Services;
+
+public class RuneItem
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Icon { get; set; } = string.Empty;
+}
+
+public class RuneSlot
+{
+    public List<RuneItem> Runes { get; set; } = new();
+}
+
+public class RuneTree
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Icon { get; set; } = string.Empty;
+    public List<RuneSlot> Slots { get; set; } = new();
+}
+
+public class RunePreset
+{
+

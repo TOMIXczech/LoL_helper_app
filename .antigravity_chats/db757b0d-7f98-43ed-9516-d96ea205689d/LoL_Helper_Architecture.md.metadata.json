@@ -1,0 +1,6 @@
+{
+  "summary":  "Updated architecture plan to remove the proxy server, relying entirely on the local LCU API to fetch player stats and match history.",
+  "updatedAt":  "2026-10-01T17:27:37.347772100Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

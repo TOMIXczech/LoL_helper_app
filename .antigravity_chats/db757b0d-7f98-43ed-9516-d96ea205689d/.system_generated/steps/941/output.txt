@@ -1,0 +1,113 @@
+
+The command exited with code 0.
+Output:
+
+>         _pollTimer.Tick += async (s, e) => await PollActiveRunesAsync();
+          
+          Loaded += OnLoaded;
+          Unloaded += OnUnloaded;
+          
+          Spell1Combo.ItemsSource = _summonerSpells;
+          Spell2Combo.ItemsSource = _summonerSpells;
+      }
+  
+      private async void OnLoaded(object sender, RoutedEventArgs e)
+      {
+          try
+          {
+              await BuildDatabaseService.Instance.InitializeAsync();
+              // Default to Annie (1) if not in champ select to show it works
+              LoadPresetsForChampion(1);
+              
+              _pollTimer.Start();
+>             await PollActiveRunesAsync();
+          }
+          catch (Exception ex)
+          {
+              MessageBox.Show("Failed to load data: " + ex.Message);
+          }
+      }
+  
+      private void OnUnloaded(object sender, RoutedEventArgs e)
+      {
+          _pollTimer.Stop();
+      }
+  
+      private int _lastHoveredChampId = -1;
+  
+      private void LoadPresetsForChampion(int champId)
+      {
+          if (_lastHoveredChampId == champId) return;
+          _lastHoveredChampId = champId;
+          
+          _allCurrentPresets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
+          
+          if (!_allCurrentPresets.Any())
+          {
+              HoveredChampText.Text = "AVAILABLE PRESETS (CUSTOM)";
+              _allCurrentPresets.Add(new ChampionBuildPreset
+              {
+                  ChampionId = champId,
+                  Role = "Flex",
+                  RunePreset = new RunePreset
+                  {
+                      Name = $"Custom Champ {champId}",
+                      Description = "Create your own custom build",
+                      PrimaryStyleId = 8000,
+                      SubStyleId = 8100,
+                      SelectedPerkIds = new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5002, 5002 }
+                  },
+                  StartingItemIds = new System.Collections.Generic.List<int>(),
+                  CoreBuildOrderIds = new System.Collections.Generic.List<int>(),
+                  CoreFinalBuildIds = new System.Collections.Generic.List<int>(),
+                  SituationalItemIds = new System.Collections.Generic.List<int>(),
+>     private async Task PollActiveRunesAsync()
+      {
+          if (_isUpdating || !LcuApiClient.Instance.IsConnected) return;
+  
+          _isUpdating = true;
+          try
+          {
+              // 1. Poll Session for hovered champion
+              string sessionJson = await LcuApiClient.Instance.GetChampSelectSessionAsync();
+              if (!string.IsNullOrEmpty(sessionJson))
+              {
+                  using var sDoc = JsonDocument.Parse(sessionJson);
+                  var sRoot = sDoc.RootElement;
+                  if (sRoot.TryGetProperty("localPlayerCellId", out var cellIdProp))
+                  {
+                      int myCell = cellIdProp.GetInt32();
+                      if (sRoot.TryGetProperty("myTeam", out var myTeamProp))
+                      {
+                          foreach (var p in myTeamProp.EnumerateArray())
+                          {
+                              if (p.TryGetProperty("cellId", out var pCell) && pCell.GetInt32() == myCell)
+                              {
+                                  int champId = p.TryGetProperty("championId", out var cId) ? cId.GetInt32() : 0;
+                                  if (champId == 0) champId = p.TryGetProperty("championPickIntent", out var intentId) 
+? intentId.GetInt32() : 0;
+                                  
+                                  if (champId > 0)
+                                  {
+                                      LoadPresetsForChampion(champId);
+                                  }
+                                  break;
+                              }
+                          }
+                      }
+                  }
+              }
+  
+              // 2. Poll Runes
+              string json = await LcuApiClient.Instance.GetCurrentRunePageJsonAsync();
+              if (string.IsNullOrEmpty(json)) return;
+  
+              using var doc = JsonDocument.Parse(json);
+>         if (success) { _lastPageHash = -1; await PollActiveRunesAsync(); }
+          
+          InjectRunesBtn.Content = "Inject Selected Preset";
+          InjectRunesBtn.IsEnabled = true;
+      }
+  }
+
+

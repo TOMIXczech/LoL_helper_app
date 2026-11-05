@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/RuneService.cs', LF will be replaced by CRLF the next time Git touches it
+[main 3019d2a] fix: load missing run shards via CDragon, feat: expand Core Build block to include 3rd legendary item paths
+ 25 files changed, 54 insertions(+), 24 deletions(-)
+

@@ -1,0 +1,39 @@
+The search for "github league of legends builds json raw dataset" returned the following summary:
+There is no single "official" raw JSON dataset for League of Legends builds because build paths change with every patch and vary based on player performance[1][2]. However, developers typically generate this data using one of the following methods:
+
+### 1. Static Data (Items, Runes, Champions)
+If you are looking for the raw definitions of items (stats, icons, names) to build your own tools, the following community projects are the industry standard:
+*   **[Community Dragon (CDragon)](https://communitydragon.org/):** Provides the most accurate and up-to-date JSON data for items, champions, and runes, often superior to Riot's official Data Dragon[3][4].
+*   **[Riot Data Dragon](https://ddragon.leagueoflegends.com/):** The official static data repository from Riot Games, containing JSON files for all game assets[3][5].
+*   **[meraki-analytics/lolstaticdata](https://github.com/meraki-analytics/lolstaticdata):** A popular GitHub repository that aggregates and cleans Riot’s data into a highly usable format for developers[3][4].
+
+### 2. Dynamic Build Data (Recommended Builds)
+"Builds" (which items to buy in what order) are dynamic. You can access or generate this data in a few ways:
+*   **[CookieDecide/LeagueBuilds](https://github.com/CookieDecide/LeagueBuilds):** A GitHub project that specifically handles the logic of pulling match data, processing it, and generating build recommendations[2][6]. You can explore their backend code to see how they calculate these from raw match data[2].
+*   **[Riot Games API](https://developer.riotgames.com/):** To get "real" build data, you must query the official API for match history data from high-ELO players, then aggregate the items purchased in those games[2][7].
+    *   *Note:* This requires registering an app on the [Riot Developer Portal](https://developer.riotgames.com/) to receive an API key[8][5].
+
+### 3. Third-Party "Builds" Tools
+If your goal is to import builds into the game client rather than analyze data, there are tools designed for that:
+*   **[EagleExe/LoL-ItemsJSON](https://github.com/EagleExe/LoL-ItemsJSON):** A script that scrapes build data from sites like Mobafire and converts it into the JSON format required by the League of Legends client for "Item Sets"[9][10].
+
+### Summary for Developers
+| If you need... | Use this... |
+| :--- | :--- |
+| **Item/Champion info** | [Community Dragon](https://communitydragon.org/) or [lolstaticdata](https://github.com/meraki-analytics/lolstaticdata)[3] |
+| **Build Logic/Processing** | [LeagueBuilds GitHub](https://github.com/CookieDecide/LeagueBuilds)[2] |
+| **Raw Match/Player Data** | [Riot Games API](https://developer.riotgames.com/)[8] |
+
+**Warning:** Be aware that scraping websites (like Mobafire or u.gg) is often against their Terms of Service. Always prefer using the official Riot Games API for match data[8][5].
+
+Sources:
+[1] [github.io](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGzrT9WLIenreeItm6H1-KB-7cjel8mhMooszVz3NvNwMZ8QsvtxeQMC4P5lK-VOs7xwiwMjFHCaU5q6Aq3IBztlvx5I1CH6khR3HYv2xQfvjamg87rsY2fpj22TD4dtCLm5f2fteAuopqDj8wm)
+[2] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGUHq5EePHkZh9yD7ye3lvdgjfoRxsVRXTqkHpHfPRsJD-fAk5Q5s5_kJujcE21gR4ezq4P568pCw58snN7QSHN5YMs-7Zh3h2iIOC8TmaZOIvre-VmCEe2kOx6x1cvKwB3)
+[3] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE_7zHAwq3J3SX0N3lbXDSKNQzWD-EejTTaq4XoqPBnR1EqDg4EtZPfoHNiPP1ZiLfn_WF2bFZrctgIlMrBs-L-sVtLzgqqoy4Avj6Cg1g7LmsFnGDq1DIXo46pXBoj_vItf2byk68=)
+[4] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE_7zHAwq3J3SX0N3lbXDSKNQzWD-EejTTaq4XoqPBnR1EqDg4EtZPfoHNiPP1ZiLfn_WF2bFZrctgIlMrBs-L-sVtLzgqqoy4Avj6Cg1g7LmsFnGDq1DIXo46pXBoj_vItf2byk68=)
+[5] [readthedocs.io](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGdsEKM4bGVnpE5QtVR7yEQ99VBok6Bu2R1rsD3wYrbptSnDvmJ_s5WE08Gqyv6fRNw-VH5F_s2KHhkJLH7lYixIIqa_6sclDr8tRg9hq3lY0LxwDhimvsz6zJ-mwSBrA==)
+[6] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGUHq5EePHkZh9yD7ye3lvdgjfoRxsVRXTqkHpHfPRsJD-fAk5Q5s5_kJujcE21gR4ezq4P568pCw58snN7QSHN5YMs-7Zh3h2iIOC8TmaZOIvre-VmCEe2kOx6x1cvKwB3)
+[7] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGz7ielGQfl0x2U1s0SbsUf04OY7XXdmpBbq9c7vJe7RKGAjHmnmcFBrXLH2aO3qwfEkMfNOvFWIf3PCWc8sGD03o_HNb5MEt9uzL9yGq_Hi4-SBlTq5cLUMw==)
+[8] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErNv59NiT-dxHOowtZfpnkn96WTzb5CLEsuMHeYkNObnYCnklCIEDqIgA6wfcg6Gquoc5gHo3mh2thGqO2_KtczgFfhFEbEDGqd7v-DcroyTptNJgT2q7YbBuZgQ0=)
+[9] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYxX7sXiVdADnEXNcbgeokzwRFenXIvXZldmwwoFb5L_8kWOuRta2p5cD2IpbVLOxX09dPX1LvLGP4vUWiHweyWihhzYtWJIjRA5YD57ANaeH4qava0zJrme8Cd3_M)
+[10] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYxX7sXiVdADnEXNcbgeokzwRFenXIvXZldmwwoFb5L_8kWOuRta2p5cD2IpbVLOxX09dPX1LvLGP4vUWiHweyWihhzYtWJIjRA5YD57ANaeH4qava0zJrme8Cd3_M)

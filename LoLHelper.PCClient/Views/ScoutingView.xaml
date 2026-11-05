@@ -1,0 +1,97 @@
+<UserControl x:Class="LoLHelper.PCClient.Views.ScoutingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="LIVE MATCH SCOUTING" Foreground="#FFFFFF" FontSize="22" FontWeight="Black" Margin="0,0,0,20"/>
+        
+        <!-- Mock Data Grid -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <!-- Blue Team -->
+            <Border Background="#1C1C21" CornerRadius="8" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="BLUE TEAM (VICTORY: 54%)" Foreground="#007ACC" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Top: Hide on bush" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 65% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Jng: Oner" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 58% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Mid: Faker" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 72% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Bot: Gumayusi" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 60% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Sup: Keria" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 63% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Border>
+            
+            <!-- Red Team -->
+            <Border Grid.Column="2" Background="#1C1C21" CornerRadius="8" Padding="15">
+                <StackPanel>
+                    <TextBlock Text="RED TEAM (VICTORY: 46%)" Foreground="#E84057" FontWeight="Bold" Margin="0,0,0,15"/>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Top: Zeus" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Grandmaster • 55% WR" Foreground="#EBCB8B" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <!-- More mock players -->
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Jng: Canyon" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 59% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Mid: Chovy" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 61% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Bot: Ruler" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Challenger • 58% WR" Foreground="#A3BE8C" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                    <Border Background="#2D2D35" CornerRadius="4" Padding="10" Margin="0,0,0,10">
+                        <Grid>
+                            <TextBlock Text="Sup: Lehends" Foreground="White" FontWeight="SemiBold"/>
+                            <TextBlock Text="Grandmaster • 54% WR" Foreground="#EBCB8B" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

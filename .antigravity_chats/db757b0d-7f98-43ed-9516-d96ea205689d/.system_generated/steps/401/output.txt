@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21790:      "description": "",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21791:      "help": "",
+> C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21792:      "name": 
+"GetLolPerksV1RecommendedPagesChampionByChampionIdPositionByPositionMapByMapId",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21793:      "nameSpace": "",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21794:      "returns": {
+
+

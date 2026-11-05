@@ -1,0 +1,100 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\LcuApiClient.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -94,6 +94,94 @@
+             
+             return response.IsSuccessStatusCode;
+         }
++
++        // --- ITEM INJECTION ---
++
++        public async Task<bool> SetItemBuildAsync(ChampionBuildPreset preset)
++        {
++            if (_credentials == null) return false;
++
++            try
++            {
++                var sumRes = await _httpClient!.GetAsync("/lol-summoner/v1/current-summoner");
++                if (!sumRes.IsSuccessStatusCode) return false;
++                var sumJson = await sumRes.Content.ReadAsStringAsync();
++                var summonerId = System.Text.Json.Nodes.JsonNode.Parse(sumJson)?["summonerId"]?.GetValue<long>();
++                if (summonerId == null) return false;
++
++                var setsRes = await _httpClient!.GetAsync($"/lol-item-sets/v1/item-sets/{summonerId}/sets");
++                if (!setsRes.IsSuccessStatusCode) return false;
++                var setsJson = await setsRes.Content.ReadAsStringAsync();
++                
++                var root = System.Text.Json.Nodes.JsonNode.Parse(setsJson) as System.Text.Json.Nodes.JsonObject;
++                if (root == null) return false;
++                
++                var itemSets = root["itemSets"] as System.Text.Json.Nodes.JsonArray;
++                if (itemSets == null)
++                {
++                    itemSets = new System.Text.Json.Nodes.JsonArray();
++                    root["itemSets"] = itemSets;
++                }
++
++                for (int i = itemSets.Count - 1; i >= 0; i--)
++                {
++                    if (itemSets[i]?["uid"]?.GetValue<string>() == "lol-helper-app-set")
++                    {
++                        itemSets.RemoveAt(i);
++                    }
++                }
++
++                var blocks = new System.Text.Json.Nodes.JsonArray();
++                
++                void AddBlock(string type, System.Collections.Generic.List<int> itemIds)
++                {
++                    if (itemIds == null || itemIds.Count == 0) return;
++                    var items = new System.Text.Json.Nodes.JsonArray();
++                    foreach (var id in itemIds)
++                    {
++                        items.Add(new System.Text.Json.Nodes.JsonObject { ["id"] = id.ToString(), ["count"] = 1 });
++                    }
++                    blocks.Add(new System.Text.Json.Nodes.JsonObject { ["type"] = type, ["items"] = items });
++                }
++
++                AddBlock("Starting Items", preset.StartingItemIds);
++                AddBlock("Core Build Order", preset.CoreBuildOrderIds);
++                AddBlock("Core Final Build", preset.CoreFinalBuildIds);
++                AddBlock("Situational", preset.SituationalItemIds);
++                AddBlock("Boots Options", preset.BootsOptionsIds);
++
++                var newSet = new System.Text.Json.Nodes.JsonObject
++                {
++                    ["associatedChampions"] = new System.Text.Json.Nodes.JsonArray(preset.ChampionId > 0 ? preset.ChampionId : 1),
++                    ["associatedMaps"] = new System.Text.Json.Nodes.JsonArray(11),
++                    ["blocks"] = blocks,
++                    ["map"] = "any",
++                    ["mode"] = "any",
++                    ["preferredItemSlots"] = new System.Text.Json.Nodes.JsonArray(),
++                    ["sortrank"] = 0,
++                    ["startedFrom"] = "blank",
++                    ["title"] = "[LoLHelper] " + preset.RunePreset.Name,
++                    ["type"] = "custom",
++                    ["uid"] = "lol-helper-app-set"
++                };
++                
++                if (preset.ChampionId == 0)
++                {
++                    newSet["associatedChampions"] = new System.Text.Json.Nodes.JsonArray();
++                }
++
++                itemSets.Add(newSet);
++
++                var content = new StringContent(root.ToJsonString(), System.Text.Encoding.UTF8, "application/json");
++                var putRes = await _httpClient!.PutAsync($"/lol-item-sets/v1/item-sets/{summonerId}/sets", content);
++
++                return putRes.IsSuccessStatusCode;
++            }
++            catch
++            {
++                return false;
++            }
++        }
+     }
+ }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

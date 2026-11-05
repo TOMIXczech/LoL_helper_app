@@ -1,0 +1,23 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -115,7 +115,7 @@
+ 
+         var mainGrid = new Grid();
+         mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+-        mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(40) }); // Divider
++        mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(20) }); // Slim Divider
+         mainGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+         
+         // --- LEFT COLUMN: PRIMARY TREE ---
+@@ -153,7 +153,7 @@
+         mainGrid.Children.Add(primaryPanel);
+ 
+         // --- MIDDLE: DIVIDER ---
+-        var divider = new Separator { Style = (Style)FindResource(ToolBar.SeparatorStyleKey), Margin = new Thickness(10, 0, 10, 0) };
++        var divider = new Rectangle { Width = 2, Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2D2D35")), Margin = new Thickness(0, 10, 0, 10), RadiusX = 1, RadiusY = 1 };
+         Grid.SetColumn(divider, 1);
+         mainGrid.Children.Add(divider);
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

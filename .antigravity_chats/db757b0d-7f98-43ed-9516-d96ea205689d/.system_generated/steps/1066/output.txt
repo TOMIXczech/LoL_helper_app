@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+[main 30209a2] feat: parse and display preset win rate in preset title
+ 24 files changed, 11 insertions(+), 7 deletions(-)
+

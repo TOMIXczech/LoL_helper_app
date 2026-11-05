@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+
+>     private readonly Dictionary<string, int> _summonerSpells = new()
+      {
+          { "Cleanse", 1 }, { "Exhaust", 3 }, { "Flash", 4 }, { "Ghost", 6 },
+          { "Heal", 7 }, { "Smite", 11 }, { "Teleport", 12 }, { "Ignite", 14 }, { "Barrier", 21 }
+      };
+  
+
+

@@ -1,0 +1,17 @@
+
+The command exited with code 0.
+Output:
+
+              var versionResponse = await http.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json");
+              var versions = System.Text.Json.JsonSerializer.Deserialize<string[]>(versionResponse);
+              string latestVersion = versions?[0] ?? "14.1.1";
+  
+              string champsUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/champion.json";
+              var champsJson = await http.GetStringAsync(champsUrl);
+              
+              using var doc = System.Text.Json.JsonDocument.Parse(champsJson);
+              var data = doc.RootElement.GetProperty("data");
+              
+>             foreach (var champ in data.EnumerateObject())
+
+

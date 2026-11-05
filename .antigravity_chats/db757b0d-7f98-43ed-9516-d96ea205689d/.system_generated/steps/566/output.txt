@@ -1,0 +1,14 @@
+
+The command exited with code 1.
+Output:
+Invoke-RestMethod: 
+Line |
+   9 |  Invoke-RestMethod -Uri "https://127.0.0.1:$port/lol-item-sets/v1/item .
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 
+{
+  "errorCode": "RESOURCE_NOT_FOUND",
+  "httpStatus": 404,
+  "message": "Invalid URI format"
+}
+

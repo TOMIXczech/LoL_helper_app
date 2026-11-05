@@ -1,0 +1,160 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -122,14 +122,15 @@
+         var primaryPanel = new StackPanel { HorizontalAlignment = HorizontalAlignment.Center };
+         
+         // Primary Tree Selector Row
+-        var primaryTreeSelector = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0,0,0,20) };
+-        foreach (var tree in allTrees)
+-        {
+-            var img = CreateClickableImage(tree.Icon, 30, tree.Id == _primaryTreeId, () => OnTreeClicked(tree.Id, true));
+-            img.Margin = new Thickness(5);
++        var primaryTreeSelector = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0,0,0,10) };
++        foreach (var tree in allTrees)
++        {
++            var img = CreateClickableImage(tree.Icon, 32, tree.Id == _primaryTreeId, () => OnTreeClicked(tree.Id, true), false, tree.Name);
++            img.Margin = new Thickness(6);
+             primaryTreeSelector.Children.Add(img);
+         }
+         primaryPanel.Children.Add(primaryTreeSelector);
++        primaryPanel.Children.Add(new Rectangle { Height = 1, Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2D2D35")), Margin = new Thickness(0,0,0,20) });
+ 
+         var primaryTreeData = allTrees.FirstOrDefault(t => t.Id == _primaryTreeId);
+         if (primaryTreeData != null)
+@@ -141,8 +141,8 @@
+                 foreach (var rune in slot.Runes)
+                 {
+                     bool isSelected = _selectedPerks.Contains(rune.Id);
+-                    var img = CreateClickableImage(rune.Icon, isKeystone ? 45 : 36, isSelected, () => OnRuneClicked(rune.Id, true));
+-                    img.Margin = new Thickness(isKeystone ? 10 : 6, 0, isKeystone ? 10 : 6, 0);
++                    var img = CreateClickableImage(rune.Icon, isKeystone ? 48 : 38, isSelected, () => OnRuneClicked(rune.Id, true), isKeystone, rune.Name);
++                    img.Margin = new Thickness(isKeystone ? 12 : 8, 0, isKeystone ? 12 : 8, 0);
+                     rowPanel.Children.Add(img);
+                 }
+                 primaryPanel.Children.Add(rowPanel);
+@@ -160,12 +160,12 @@
+         var secondaryPanel = new StackPanel { HorizontalAlignment = HorizontalAlignment.Center };
+         
+         // Secondary Tree Selector Row
+-        var secondaryTreeSelector = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0,0,0,20) };
++        var secondaryTreeSelector = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0,0,0,10) };
+         foreach (var tree in allTrees)
+         {
+             bool isPrimary = tree.Id == _primaryTreeId;
+-            var img = CreateClickableImage(tree.Icon, 28, tree.Id == _secondaryTreeId && !isPrimary, () => { if (!isPrimary) OnTreeClicked(tree.Id, false); });
+-            img.Margin = new Thickness(4);
++            var img = CreateClickableImage(tree.Icon, 30, tree.Id == _secondaryTreeId && !isPrimary, () => { if (!isPrimary) OnTreeClicked(tree.Id, false); }, false, tree.Name);
++            img.Margin = new Thickness(5);
+             if (isPrimary)
+             {
+                 img.Visibility = Visibility.Collapsed;
+@@ -172,6 +172,7 @@
+             secondaryTreeSelector.Children.Add(img);
+         }
+         secondaryPanel.Children.Add(secondaryTreeSelector);
++        secondaryPanel.Children.Add(new Rectangle { Height = 1, Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2D2D35")), Margin = new Thickness(0,0,0,20) });
+ 
+         var secondaryTreeData = allTrees.FirstOrDefault(t => t.Id == _secondaryTreeId);
+         if (secondaryTreeData != null)
+@@ -182,11 +182,10 @@
+                 var rowPanel = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0,0,0,15) };
+                 foreach (var rune in secondaryTreeData.Slots[i].Runes)
+                 {
+-                    // Copy ID for safe lambda capture
+                     int captureRuneId = rune.Id;
+                     bool isSelected = _selectedPerks.Contains(captureRuneId);
+-                    var img = CreateClickableImage(rune.Icon, 36, isSelected, () => OnRuneClicked(captureRuneId, false, captureSlotIndex));
+-                    img.Margin = new Thickness(6, 0, 6, 0);
++                    var img = CreateClickableImage(rune.Icon, 38, isSelected, () => OnRuneClicked(captureRuneId, false, captureSlotIndex), false, rune.Name);
++                    img.Margin = new Thickness(8, 0, 8, 0);
+                     rowPanel.Children.Add(img);
+                 }
+                 secondaryPanel.Children.Add(rowPanel);
+@@ -193,7 +193,7 @@
+         }
+ 
+         // Shards Rows
+-        secondaryPanel.Children.Add(new Rectangle { Height = 20 });
++        secondaryPanel.Children.Add(new Rectangle { Height = 15 });
+         int[][] shardRows = new[]
+         {
+             new[] { 5008, 5005, 5007 },
+@@ -207,16 +207,13 @@
+             foreach (int shardId in shardRows[i])
+             {
+                 int captureShardId = shardId;
+-                // Find if this shard is selected for this specific row
+-                // Shards are the last 3 items in _selectedPerks
+                 bool isSelected = _selectedPerks.Count > 6 + captureShardIndex && _selectedPerks[6 + captureShardIndex] == captureShardId;
+                 
+                 string iconUrl = RuneService.Instance.GetImageUrl(captureShardId);
+-                var img = CreateClickableImage(iconUrl, 28, isSelected, () => OnShardClicked(captureShardId, captureShardIndex));
+-                img.Margin = new Thickness(6, 0, 6, 0);
+-                
+-                // Hack to make shards look round like in client
+-                var border = new Border { CornerRadius = new CornerRadius(14), Background = Brushes.Transparent, Child = img };
++                var img = CreateClickableImage(iconUrl, 30, isSelected, () => OnShardClicked(captureShardId, captureShardIndex), false, GetShardName(captureShardId));
++                img.Margin = new Thickness(8, 0, 8, 0);
++                
++                var border = new Border { CornerRadius = new CornerRadius(15), Background = Brushes.Transparent, Child = img };
+                 rowPanel.Children.Add(border);
+             }
+             secondaryPanel.Children.Add(rowPanel);
+@@ -227,7 +227,21 @@
+         InteractiveRuneBuilder.Children.Add(mainGrid);
+     }
+ 
+-    private Image CreateClickableImage(string url, double size, bool isSelected, Action onClick)
++    private string GetShardName(int id) => id switch
++    {
++        5008 => "Adaptive Force",
++        5005 => "Attack Speed",
++        5007 => "Ability Haste",
++        5002 => "Armor",
++        5003 => "Magic Resist",
++        5001 => "Scaling Health",
++        5011 => "Flat Health",
++        5013 => "Tenacity",
++        5010 => "Movement Speed",
++        _ => "Stat Shard"
++    };
++
++    private UIElement CreateClickableImage(string url, double size, bool isSelected, Action onClick, bool isKeystone = false, string tooltip = "")
+     {
+         var img = new Image
+         {
+@@ -239,8 +239,29 @@
+         
+         try { img.Source = new BitmapImage(new Uri(url)); } catch { }
+ 
+-        img.MouseLeftButtonDown += (s, e) => onClick();
+-        return img;
++        if (isSelected)
++        {
++            img.Effect = new System.Windows.Media.Effects.DropShadowEffect
++            {
++                Color = isKeystone ? (Color)ColorConverter.ConvertFromString("#EBCB8B") : (Color)ColorConverter.ConvertFromString("#007ACC"),
++                BlurRadius = isKeystone ? 20 : 12,
++                ShadowDepth = 0,
++                Opacity = 0.9
++            };
++        }
++
++        var container = new Border
++        {
++            Background = Brushes.Transparent,
++            Child = img,
++            ToolTip = string.IsNullOrEmpty(tooltip) ? null : new ToolTip { Content = tooltip, Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1C1C21")), Foreground = Brushes.White, BorderThickness = new Thickness(0) }
++        };
++
++        container.MouseEnter += (s, e) => { if (!isSelected) img.Opacity = 0.7; };
++        container.MouseLeave += (s, e) => { if (!isSelected) img.Opacity = 0.3; };
++        container.MouseLeftButtonDown += (s, e) => onClick();
++
++        return container;
+     }
+ 
+     private void OnTreeClicked(int treeId, bool isPrimary)
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

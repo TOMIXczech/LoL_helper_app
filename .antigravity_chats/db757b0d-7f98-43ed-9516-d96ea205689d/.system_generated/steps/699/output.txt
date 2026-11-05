@@ -1,0 +1,195 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -31,69 +31,127 @@
+         await RuneService.Instance.InitializeAsync();
+         await ItemService.Instance.InitializeAsync();
+ 
+-        // 1 - Annie, 157 - Yasuo, 222 - Jinx
+-        _database = new List<ChampionBuildPreset>
+-        {
+-            new ChampionBuildPreset
+-            {
+-                ChampionId = 1, // Annie
+-                Role = "Mid",
+-                RunePreset = new RunePreset
+-                {
+-                    Name = "Annie Burst (Mid)",
+-                    Description = "High burst damage with Electrocute",
+-                    PrimaryStyleId = 8100, SubStyleId = 8200,
+-                    SelectedPerkIds = new[] { 8112, 8126, 8138, 8106, 8226, 8236, 5008, 5008, 5002 },
+-                    PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(8100),
+-                    SubStyleImageUrl = RuneService.Instance.GetImageUrl(8200),
+-                    KeystoneImageUrl = RuneService.Instance.GetImageUrl(8112)
+-                },
+-                StartingItemIds = new List<int> { 1056, 2003, 2003 },
+-                CoreBuildOrderIds = new List<int> { 3118, 3020, 4645 },
+-                CoreFinalBuildIds = new List<int> { 3118, 3020, 4645, 3089, 3157, 3135 },
+-                SituationalItemIds = new List<int> { 3102, 3165, 3151 },
+-                BootsOptionsIds = new List<int> { 3020, 3158 }
+-            },
+-            new ChampionBuildPreset
+-            {
+-                ChampionId = 157, // Yasuo
+-                Role = "Mid",
+-                RunePreset = new RunePreset
+-                {
+-                    Name = "Yasuo Skirmisher",
+-                    Description = "Conqueror + Resolve for extended fights",
+-                    PrimaryStyleId = 8000, SubStyleId = 8400,
+-                    SelectedPerkIds = new[] { 8010, 9111, 9104, 8299, 8473, 8453, 5005, 5008, 5002 },
+-                    PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(8000),
+-                    SubStyleImageUrl = RuneService.Instance.GetImageUrl(8400),
+-                    KeystoneImageUrl = RuneService.Instance.GetImageUrl(8010)
+-                },
+-                StartingItemIds = new List<int> { 1055, 2003 },
+-                CoreBuildOrderIds = new List<int> { 6672, 3006, 3031 },
+-                CoreFinalBuildIds = new List<int> { 6672, 3006, 3031, 6673, 3072, 3026 },
+-                SituationalItemIds = new List<int> { 3091, 3153, 3139 },
+-                BootsOptionsIds = new List<int> { 3006, 3047, 3111 }
+-            },
+-            new ChampionBuildPreset
+-            {
+-                ChampionId = 222, // Jinx
+-                Role = "ADC",
+-                RunePreset = new RunePreset
+-                {
+-                    Name = "Jinx Lethal",
+-                    Description = "Lethal Tempo ADC Setup",
+-                    PrimaryStyleId = 8000, SubStyleId = 8200,
+-                    SelectedPerkIds = new[] { 8008, 9111, 9103, 8014, 8226, 8236, 5005, 5008, 5002 },
+-                    PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(8000),
+-                    SubStyleImageUrl = RuneService.Instance.GetImageUrl(8200),
+-                    KeystoneImageUrl = RuneService.Instance.GetImageUrl(8008)
+-                },
+-                StartingItemIds = new List<int> { 1055, 2003 },
+-                CoreBuildOrderIds = new List<int> { 6672, 3006, 3085 },
+-                CoreFinalBuildIds = new List<int> { 6672, 3006, 3085, 3031, 3036, 3072 },
+-                SituationalItemIds = new List<int> { 3094, 3026, 3139 },
+-                BootsOptionsIds = new List<int> { 3006 }
++        try
++        {
++            using var http = new System.Net.Http.HttpClient();
++            var versionResponse = await http.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json");
++            var versions = System.Text.Json.JsonSerializer.Deserialize<string[]>(versionResponse);
++            string latestVersion = versions?[0] ?? "14.1.1";
++
++            string champsUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/champion.json";
++            var champsJson = await http.GetStringAsync(champsUrl);
++            
++            using var doc = System.Text.Json.JsonDocument.Parse(champsJson);
++            var data = doc.RootElement.GetProperty("data");
++            
++            foreach (var champ in data.EnumerateObject())
++            {
++                var prop = champ.Value;
++                int champId = int.Parse(prop.GetProperty("key").GetString() ?? "0");
++                string champName = prop.GetProperty("name").GetString() ?? "Unknown";
++                
++                var tagsProp = prop.GetProperty("tags");
++                List<string> tags = new();
++                foreach (var tag in tagsProp.EnumerateArray()) tags.Add(tag.GetString() ?? "");
++
++                if (tags.Contains("Marksman"))
++                {
++                    _database.Add(CreatePreset(champId, champName, "ADC", "Crit DPS", 
++                        8000, 8200, new[] { 8008, 9111, 9103, 8014, 8226, 8236, 5005, 5008, 5002 },
++                        new List<int> { 1055, 2003 }, new List<int> { 6672, 3006, 3031 }, 
++                        new List<int> { 6672, 3006, 3031, 3036, 3072, 3094 },
++                        new List<int> { 3139, 3026, 6630 }, new List<int> { 3006, 3111 }
++                    ));
++                    _database.Add(CreatePreset(champId, champName, "ADC", "On-Hit DPS", 
++                        8000, 8400, new[] { 8010, 9111, 9104, 8299, 8473, 8453, 5005, 5008, 5002 },
++                        new List<int> { 1055, 2003 }, new List<int> { 6672, 3006, 3124 }, 
++                        new List<int> { 6672, 3006, 3124, 3153, 3036, 6653 },
++                        new List<int> { 3139, 3026, 3072 }, new List<int> { 3006, 3047 }
++                    ));
++                }
++                else if (tags.Contains("Mage"))
++                {
++                    _database.Add(CreatePreset(champId, champName, "Mid", "Burst Mage", 
++                        8100, 8200, new[] { 8112, 8126, 8138, 8106, 8226, 8236, 5008, 5008, 5002 },
++                        new List<int> { 1056, 2003, 2003 }, new List<int> { 6655, 3020, 4645 }, 
++                        new List<int> { 6655, 3020, 4645, 3089, 3157, 3135 },
++                        new List<int> { 3102, 3165, 3151 }, new List<int> { 3020, 3158 }
++                    ));
++                }
++                else if (tags.Contains("Assassin"))
++                {
++                    _database.Add(CreatePreset(champId, champName, "Jungle/Mid", "Lethality Assassin", 
++                        8100, 8000, new[] { 8128, 8143, 8138, 8105, 9111, 8014, 5008, 5008, 5002 },
++                        new List<int> { 1039, 2003 }, new List<int> { 3142, 3158, 6692 }, 
++                        new List<int> { 3142, 3158, 6692, 6694, 6695, 3156 },
++                        new List<int> { 3026, 3139, 6676 }, new List<int> { 3158, 3111 }
++                    ));
++                }
++                else if (tags.Contains("Fighter"))
++                {
++                    _database.Add(CreatePreset(champId, champName, "Top", "Bruiser Skirmisher", 
++                        8000, 8400, new[] { 8010, 9111, 9104, 8299, 8473, 8453, 5008, 5008, 5002 },
++                        new List<int> { 1055, 2003 }, new List<int> { 3078, 3111, 3153 }, 
++                        new List<int> { 3078, 3111, 3153, 3053, 3143, 3193 },
++                        new List<int> { 3026, 3065, 3075 }, new List<int> { 3111, 3047 }
++                    ));
++                }
++                else if (tags.Contains("Tank"))
++                {
++                    _database.Add(CreatePreset(champId, champName, "Top/Support", "Heavy Tank", 
++                        8400, 8000, new[] { 8437, 8446, 8429, 8451, 9111, 8299, 5002, 5002, 5001 },
++                        new List<int> { 1054, 2003 }, new List<int> { 6662, 3047, 3068 }, 
++                        new List<int> { 6662, 3047, 3068, 3143, 3193, 3110 },
++                        new List<int> { 3075, 4401, 3109 }, new List<int> { 3047, 3111 }
++                    ));
++                }
++                else if (tags.Contains("Support"))
++                {
++                    _database.Add(CreatePreset(champId, champName, "Support", "Enchanter", 
++                        8200, 8300, new[] { 8214, 8226, 8210, 8236, 8304, 8347, 5008, 5008, 5002 },
++                        new List<int> { 3850, 2003, 2003 }, new List<int> { 3158, 2065, 3107 }, 
++                        new List<int> { 3850, 3158, 2065, 3107, 3504, 3222 },
++                        new List<int> { 3110, 3165, 3026 }, new List<int> { 3158, 3111 }
++                    ));
++                }
++                else 
++                {
++                    // Generic Fallback
++                    _database.Add(CreatePreset(champId, champName, "Flex", "Standard Output", 
++                        8000, 8100, new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5008, 5002 },
++                        new List<int> { 1055, 2003 }, new List<int> { 3078, 3006 }, 
++                        new List<int> { 3078, 3006, 3153, 3026 },
++                        new List<int> { 3026, 3156 }, new List<int> { 3006, 3111 }
++                    ));
++                }
+             }
++        }
++        catch { }
++    }
++
++    private ChampionBuildPreset CreatePreset(int champId, string champName, string role, string buildName, 
++        int pStyle, int sStyle, int[] perks, List<int> starts, List<int> core, List<int> final, List<int> sit, List<int> boots)
++    {
++        return new ChampionBuildPreset
++        {
++            ChampionId = champId,
++            Role = role,
++            RunePreset = new RunePreset
++            {
++                Name = $"{champName} - {buildName}",
++                Description = $"{role} | {buildName}",
++                PrimaryStyleId = pStyle,
++                SubStyleId = sStyle,
++                SelectedPerkIds = perks,
++                PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(pStyle),
++                SubStyleImageUrl = RuneService.Instance.GetImageUrl(sStyle),
++                KeystoneImageUrl = RuneService.Instance.GetImageUrl(perks[0])
++            },
++            StartingItemIds = starts,
++            CoreBuildOrderIds = core,
++            CoreFinalBuildIds = final,
++            SituationalItemIds = sit,
++            BootsOptionsIds = boots
+         };
+     }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

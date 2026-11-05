@@ -1,0 +1,17 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\ItemService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -53,6 +53,11 @@
+                     }
+                     if (!inStore) continue;
+ 
++                    if (prop.TryGetProperty("maps", out var mapsProp) && mapsProp.TryGetProperty("11", out var map11Prop))
++                    {
++                        if (!map11Prop.GetBoolean()) continue;
++                    }
++
+                     var gold = prop.GetProperty("gold").GetProperty("total").GetInt32();
+                     if (gold < 150) continue; // Filter out weird tokens
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/ItemService.cs', LF will be replaced by CRLF the next time Git touches it
+[main a2e2ecd] fix: correctly filter standard items using Map 11 and lowest base ID
+ 24 files changed, 12 insertions(+), 7 deletions(-)
+

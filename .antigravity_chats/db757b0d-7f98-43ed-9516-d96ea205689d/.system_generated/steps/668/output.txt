@@ -1,0 +1,29 @@
+The search for ""league of legends" "builds" json github repository raw" returned the following summary:
+To access "raw" JSON files from a GitHub repository (such as League of Legends item sets or build data), you should use the `raw.githubusercontent.com` domain[1].
+
+### How to get a Raw JSON file from GitHub
+If you have found a JSON file in a GitHub repository:
+1.  Navigate to the file on the GitHub website (e.g., `github.com/user/repository/blob/main/data/build.json`).
+2.  Click the **"Raw"** button located in the top-right corner of the file view bar[1].
+3.  The browser will load the file as plain text/JSON. The URL in your address bar will change to `raw.githubusercontent.com/...`[1].
+4.  You can use this URL to make HTTP requests (e.g., in a script, app, or tool) to fetch the data directly[1].
+
+### Relevant League of Legends Data Resources
+If you are looking for specific types of League of Legends data, several community projects maintain JSON-based datasets:
+
+*   **[LoL-ItemsJSON](https://github.com/EagleExe/LoL-ItemsJSON):** A tool that scrapes build information and exports it into the standard JSON format used for importing Item Sets directly into the League of Legends client[2].
+*   **[CommunityDragon (raw.communitydragon.org)](https://raw.communitydragon.org/json/):** This is the gold standard for raw game data. It provides directory listings in JSON format for almost every asset in the game, including items, champions, and runes[3].
+*   **[lol-items](https://github.com/ngryman/lol-items):** A repository that provides simplified, up-to-date lists of League of Legends items in JSON format[4].
+*   **[lolstaticdata](https://github.com/meraki-analytics/lolstaticdata):** A repository focused on providing accurate static data for champions and items, often used by developers building their own tools[5].
+
+### Tips for Developers
+*   **Authentication:** Public files on GitHub do not require authentication, but if you are accessing files from a **private** repository, you will need to include an authorization header (or a token) in your HTTP request[1].
+*   **Data Structure:** Note that while these files provide JSON, the schema varies by project. If you are building a tool, check the repository's `README.md` for information on the data structure, as "build" formats can range from simple item lists to complex game-state data[6][5].
+
+Sources:
+[1] [roblox.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG1Rs9vc36t_oQ1VZXhFu7rdaIez3LV8r4S0rGpCx-9z4IKYULKDg9DDoK4KP-RLHGipusKxvE6_X6rRcKpCsniUTSp5XVO3gLTkhn2ZBH_5xSSH_M30fI_KfsyW8UTX_0NcZ4tvOcBE7MNfl1d4yWhdPHmRqzZNmXAfpIP-edSs5oNyxTuhFMHTGmh2RwSvRI7lI8XHMfBImx26Kk=)
+[2] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE2O2h0ZXNpP1H7x6OoMyIB_rqTtQBY27NG7PR9OfoStdJ7NFuWIDtiEvuEeOEdQTgyIn3Ogn39AvU4-GsDL-ZlYHNP017Ky5x-VGaXR3wYYxqu1EXDOMmJZx8HT5pl)
+[3] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFjsJf_52HRbVu6w3aGvNpqg9QhsgCxnzMYF_QvvOVJeQf1wtm8KkQs6b3SgZGnnmUZ5Zb-gbRggsBtknUieBHdHIF6aqTi0a9bFHSXs_j65wuNxrpNICetZRyADjGx2Hm-bwg06PTi_a_QREwa1IA3XV8=)
+[4] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGiGn_ll8QbTFCk67us146WSypIQpVDM3gGqCxhuJB_Gj2IfzeToE2wyEQn6oifV86PLS0pN0G3yNImF-CLHSh8c_cvaaJeo8z8rm1wWfavD7VTAkVfSk-3iaZGspQECt7UdqFD2BNbLZfGnQyr5xhT)
+[5] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJyBKrEHCW4MSfFOWO45zvWDe00A9QQMcl6brj6D_801hjdlmVOOBcsThtoiQPoXD_BUpmP4V3NTrgEFmvtmQBDzYQrGZeeCdgbazIA-5r2-1T6LWHZKhxLV-Y5kWZH82MxCMDHrg=)
+[6] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGa2E4IaXFsP9VcmrvlM9hdv8TkJ0AAttm8NOLpA4A5xhQrJx3JxN8VQapwMVjhEO67md3b7Smf-rEcRIRVEdHrXGtiWTByfHEg-QMaPx08i60Fh0yQ)

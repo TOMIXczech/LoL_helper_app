@@ -1,0 +1,22 @@
+Command exited with code 0.
+
+Command output:
+
+    Directory: C:\Users\ufo\Downloads\TP\crawler
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          04/10/2026    06:19                __pycache__
+-a---          04/10/2026    09:23      153865494 blitz_champions_data.json
+-a---          04/10/2026    06:19          12652 blitz_crawler.py
+-a---          04/10/2026    02:59            243 extract_urls.py
+-a---          04/10/2026    03:00           1309 inspect_api.py
+-a---          04/10/2026    03:00           1444 test_api.py
+-a---          04/10/2026    06:19          63991 test_bugfix.json
+-a---          04/10/2026    06:07          64076 test_extra.json
+-a---          04/10/2026    03:31          12078 test_fast.json
+-a---          04/10/2026    05:49          21690 test_names.json
+-a---          04/10/2026    03:02           6820 test.json
+-a---          04/10/2026    03:27          34094 test2.json
+-a---          04/10/2026    03:27          29190 test3.json
+

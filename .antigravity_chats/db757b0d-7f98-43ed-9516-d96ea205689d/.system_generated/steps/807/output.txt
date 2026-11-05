@@ -1,0 +1,24 @@
+
+The command exited with code 0.
+Output:
+                }
+            }
+
+            AllItems = new List<GameItem>(itemsByName.Values);
+            foreach (var gameItem in AllItems)
+            {
+                _itemDict[gameItem.Id] = gameItem;
+            }
+
+            _isInitialized = true;
+        }
+        catch { }
+    }
+
+    public GameItem? GetItem(int id)
+    {
+        if (_itemDict.TryGetValue(id, out var item)) return item;
+        return null;
+    }
+}
+

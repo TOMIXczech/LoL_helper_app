@@ -1,0 +1,11 @@
+
+The command exited with code 0.
+Output:
+{
+  "11": false,
+  "12": true,
+  "22": false,
+  "30": false,
+  "453": true
+}
+

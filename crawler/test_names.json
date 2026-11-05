@@ -1,0 +1,737 @@
+{
+  "Karthus": {
+    "JUNGLE": {
+      "Tier": 3,
+      "Win Rate": 0.48757790489200037,
+      "Win Rate Change": 0.0013589724733928943,
+      "Pick Rate": 0.007275925804565018,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 23426,
+      "Builds": [
+        {
+          "build_name": "AP",
+          "overall_win_rate": 0.5237232690799968,
+          "overall_matches": 36989,
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "core_items_win_rate": 0.5395192217753251,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5137748882568062,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5141899115560307
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "TOP": {
+      "Tier": 4,
+      "Win Rate": 0.4745260663507109,
+      "Win Rate Change": 0.01676876988373699,
+      "Pick Rate": 0.0005242791239693396,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 1688,
+      "Builds": [
+        {
+          "build_name": "AP",
+          "overall_win_rate": 0.5340086830680174,
+          "overall_matches": 2073,
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "core_items_win_rate": 0.5384615384615384,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5509838998211091,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5457875457875457
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "MIDDLE": {
+      "Tier": 1,
+      "Win Rate": 0.5131721400216528,
+      "Win Rate Change": 0.011647327157776943,
+      "Pick Rate": 0.0008606501495965877,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 2771,
+      "Builds": [
+        {
+          "build_name": "AP",
+          "overall_win_rate": 0.5537519957424162,
+          "overall_matches": 3758,
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Rabadon's Deathcap"
+          ],
+          "core_items_win_rate": 0.48615384615384616,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5921875,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5659459459459459
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "BOTTOM": {
+      "Tier": 1,
+      "Win Rate": 0.5375231053604437,
+      "Win Rate Change": 0.009475562238252078,
+      "Pick Rate": 0.002520453252968715,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 8115,
+      "Builds": [
+        {
+          "build_name": "AP",
+          "overall_win_rate": 0.5599806669888835,
+          "overall_matches": 10345,
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "core_items_win_rate": 0.5609418282548476,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5656060606060606,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5677700738089912
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.39502332814930013,
+      "Win Rate Change": -0.07230779034460905,
+      "Pick Rate": 0.00019971059046936337,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 643,
+      "Builds": [
+        {
+          "build_name": "AP",
+          "overall_win_rate": 0.4866666666666667,
+          "overall_matches": 900,
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "core_items_win_rate": 0.5292,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.48961937716262977,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.4528301886792453
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    }
+  },
+  "Aatrox": {
+    "JUNGLE": {
+      "Tier": 2,
+      "Win Rate": 0.5076120579850791,
+      "Win Rate Change": 0.007812057985079113,
+      "Pick Rate": 0.005120728623745558,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 16487,
+      "Builds": [
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.570446735395189,
+          "overall_matches": 1164,
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5785714285714286,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5723443223443223,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.570198105081826
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.5679690022602518,
+          "overall_matches": 6194,
+          "core_items": [
+            "Profane Hydra",
+            "Plated Steelcaps",
+            "Edge of Night"
+          ],
+          "core_items_win_rate": 0.5238095238095238,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5677337674082112,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5678832116788322
+        },
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.5882848714707122,
+          "overall_matches": 2373,
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.6173285198555957,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5913503971756399,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5875634517766497
+        },
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.5547445255474452,
+          "overall_matches": 10960,
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5575289575289575,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5553370786516854,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5547826086956522
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "BOTTOM": {
+      "Tier": 4,
+      "Win Rate": 0.42857142857142855,
+      "Win Rate Change": -0.006095238095238098,
+      "Pick Rate": 6.739844188468406e-05,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 217,
+      "Builds": [
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.4315620542082739,
+          "overall_matches": 143,
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.4138808844507846,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.42748091603053434,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.39809985734664766
+        },
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.43423680456490726,
+          "overall_matches": 55,
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.436867332382311,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.4744878744650499,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4309386590584879
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.547085201793722,
+          "overall_matches": 223,
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.5576681614349777,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5502958579881657,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5221238938053098
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.40154015401540155,
+      "Win Rate Change": -0.02616612910344779,
+      "Pick Rate": 0.0002823280353602664,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 909,
+      "Builds": [
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.4693140794223827,
+          "overall_matches": 277,
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.47176895306859207,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.47904191616766467,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.47465437788018433
+        },
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.4409391771019678,
+          "overall_matches": 76,
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Zeke's Convergence"
+          ],
+          "core_items_win_rate": 0.43771100178890876,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.476610465116279,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4672414132379249
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.4424083769633508,
+          "overall_matches": 382,
+          "core_items": [
+            "Umbral Glaive",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.4360471204188482,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.46938775510204084,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4517133956386293
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "TOP": {
+      "Tier": 2,
+      "Win Rate": 0.5003973292169418,
+      "Win Rate Change": 0.00499148312984532,
+      "Pick Rate": 0.03400391159436449,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 109481,
+      "Builds": [
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.5673795861589289,
+          "overall_matches": 5751,
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5424657534246575,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5665354330708662,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5652173913043478
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.5866914651787559,
+          "overall_matches": 19356,
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.5989361702127659,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5880679939149415,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5890646931223682
+        },
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.5678792201616738,
+          "overall_matches": 8412,
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5732009925558312,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5664317063439287,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5685279187817259
+        },
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.5644136275465915,
+          "overall_matches": 93311,
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.559147685525349,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5646065162332825,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5662647243326131
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    },
+    "MIDDLE": {
+      "Tier": 5,
+      "Win Rate": 0.46360628618693134,
+      "Win Rate Change": -0.0035207027052931994,
+      "Pick Rate": 0.0007510112095721938,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 2418,
+      "Builds": [
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.5581395348837209,
+          "overall_matches": 258,
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.57,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5240641711229946,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5486725663716814
+        },
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.5294117647058824,
+          "overall_matches": 1241,
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.4330708661417323,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5285575992255567,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5280665280665281
+        },
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.47949136981270657,
+          "overall_matches": 152,
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Endless Hunger"
+          ],
+          "core_items_win_rate": 0.5059269739258171,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.49504950495049505,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4793388429752066
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.5565891472868217,
+          "overall_matches": 1290,
+          "core_items": [
+            "Eclipse",
+            "Voltaic Cyclosword",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.5594263565891473,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5708661417322834,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5588235294117647
+        }
+      ],
+      "Matchups": "Matchups disabled"
+    }
+  }
+}

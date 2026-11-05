@@ -1,0 +1,24 @@
+
+The command exited with code 0.
+Output:
+
+    Directory: C:\Users\ufo\.gemini\antigravity
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          01/10/2026    18:55                annotations
+d----          01/10/2026    18:55                bin
+d----          01/10/2026    18:55                brain
+d----          01/10/2026    18:20                builtin
+d----          01/10/2026    18:55                conversations
+d----          01/10/2026    18:19                crashes
+d----          05/05/2026    19:04                html_artifacts
+d----          10/05/2026    18:04                implicit
+d----          05/05/2026    19:04                knowledge
+d----          01/10/2026    18:20                plugin_data
+-a---          01/10/2026    18:55           2683 agyhub_summaries_proto.pb
+-a---          01/10/2026    18:20            810 antigravity_state.pbtxt
+-a---          01/10/2026    18:56          20480 conversation_summaries.db
+-a---          05/05/2026    19:04             36 installation_id
+
+

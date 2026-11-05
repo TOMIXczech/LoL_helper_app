@@ -1,0 +1,85 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\RuneService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -6,6 +6,26 @@
+ 
+ namespace LoLHelper.Core.Services;
+ 
++public class RuneItem
++{
++    public int Id { get; set; }
++    public string Name { get; set; } = string.Empty;
++    public string Icon { get; set; } = string.Empty;
++}
++
++public class RuneSlot
++{
++    public List<RuneItem> Runes { get; set; } = new();
++}
++
++public class RuneTree
++{
++    public int Id { get; set; }
++    public string Name { get; set; } = string.Empty;
++    public string Icon { get; set; } = string.Empty;
++    public List<RuneSlot> Slots { get; set; } = new();
++}
++
+ public class RunePreset
+ {
+     public string Name { get; set; } = string.Empty;
+@@ -26,6 +26,7 @@
+     private const string DDragonVersionUrl = "https://ddragon.leagueoflegends.com/api/versions.json";
+     
+     private Dictionary<int, string> _runeImages = new();
++    public List<RuneTree> AllTrees { get; private set; } = new();
+     private bool _isInitialized = false;
+ 
+     public async Task InitializeAsync()
+@@ -43,22 +43,35 @@
+             using var doc = JsonDocument.Parse(runesJson);
+             foreach (var tree in doc.RootElement.EnumerateArray())
+             {
+-                int treeId = tree.GetProperty("id").GetInt32();
+-                string treeIcon = tree.GetProperty("icon").GetString() ?? "";
+-                _runeImages[treeId] = $"https://ddragon.leagueoflegends.com/cdn/img/{treeIcon}";
++                var newTree = new RuneTree
++                {
++                    Id = tree.GetProperty("id").GetInt32(),
++                    Name = tree.GetProperty("name").GetString() ?? "",
++                    Icon = $"https://ddragon.leagueoflegends.com/cdn/img/{tree.GetProperty("icon").GetString()}"
++                };
++                
++                _runeImages[newTree.Id] = newTree.Icon;
+ 
+                 foreach (var slot in tree.GetProperty("slots").EnumerateArray())
+                 {
++                    var newSlot = new RuneSlot();
+                     foreach (var rune in slot.GetProperty("runes").EnumerateArray())
+                     {
+-                        int runeId = rune.GetProperty("id").GetInt32();
+-                        string runeIcon = rune.GetProperty("icon").GetString() ?? "";
+-                        _runeImages[runeId] = $"https://ddragon.leagueoflegends.com/cdn/img/{runeIcon}";
++                        var newItem = new RuneItem
++                        {
++                            Id = rune.GetProperty("id").GetInt32(),
++                            Name = rune.GetProperty("name").GetString() ?? "",
++                            Icon = $"https://ddragon.leagueoflegends.com/cdn/img/{rune.GetProperty("icon").GetString()}"
++                        };
++                        newSlot.Runes.Add(newItem);
++                        _runeImages[newItem.Id] = newItem.Icon;
+                     }
++                    newTree.Slots.Add(newSlot);
+                 }
+-            }
+-
+-            // Stat Shards (Not in DataDragon, fetching from CommunityDragon)
++                AllTrees.Add(newTree);
++            }
++
++            // Stat Shards
+             string cdragonBase = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/";
+             _runeImages[5008] = cdragonBase + "statmodsadaptiveforceicon.png";
+             _runeImages[5005] = cdragonBase + "statmodsattackspeedicon.png";
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,21 @@
+
+The command exited with code 0.
+Output:
+
+                          <RowDefinition Height="*"/>
+                          <RowDefinition Height="Auto"/>
+                      </Grid.RowDefinitions>
+>                     <TextBlock x:Name="HoveredChampText" Text="AVAILABLE PRESETS" Foreground="#8F91A3" FontSize="12" 
+FontWeight="Bold" Margin="0,0,0,10" TextWrapping="Wrap"/>
+                      
+                      <UniformGrid Columns="5" Margin="0,0,0,10" x:Name="RoleFilterGrid">
+                          <UniformGrid.Resources>
+                              <Style TargetType="ToggleButton">
+                                  <Setter Property="Background" Value="#2D2D35"/>
+                                  <Setter Property="Foreground" Value="#8F91A3"/>
+                                  <Setter Property="BorderThickness" Value="0"/>
+                                  <Setter Property="Padding" Value="5"/>
+                                  <Setter Property="Margin" Value="2"/>
+                                  <Setter Property="FontWeight" Value="Bold"/>
+
+

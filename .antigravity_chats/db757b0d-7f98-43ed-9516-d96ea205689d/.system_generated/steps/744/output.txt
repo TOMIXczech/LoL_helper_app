@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+[main ee5a3be] feat: drastically expanded build database to include 2-3 unique playstyle presets for every champion role
+ 24 files changed, 67 insertions(+), 13 deletions(-)
+

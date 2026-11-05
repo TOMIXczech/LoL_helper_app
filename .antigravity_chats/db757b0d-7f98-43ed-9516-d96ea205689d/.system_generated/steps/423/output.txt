@@ -1,0 +1,33 @@
+The search for "public league of legends builds database api" returned the following summary:
+There is no single "official" build database API provided by Riot Games. The **Riot Games API** primarily provides raw game data, such as match history, player profiles, and ranked ladder standings, rather than pre-calculated champion builds[1][2].
+
+To access build data (like popular items, runes, and skill orders), you generally have two options:
+
+### 1. Build Your Own Data Pipeline (Using Riot API)
+Many developers create their own build databases by fetching high-level match data from the official Riot API and calculating the statistics themselves[3][4].
+*   **How it works:** You use the Riot API to pull match data for high-ELO players, store that data in your own database (e.g., PostgreSQL, MongoDB, or SQLite), and run algorithms to aggregate win rates, item pick rates, and rune popularity[3][5].
+*   **Official Source:** You can register for an API key and access documentation at the [Riot Developer Portal](https://developer.riotgames.com/)[6][7].
+
+### 2. Use Third-Party APIs
+If you do not want to calculate build statistics from scratch, several third-party services offer APIs that provide aggregated champion meta data[8][9].
+*   **[dpm.lol API](https://dpm.lol/):** Provides access to champion tier lists, per-lane builds, and rune/item statistics[8][9]. It is designed for developers and offers SDKs for easier integration[9].
+*   **[LeagueBuilds](https://github.com/CookieDecide/LeagueBuilds):** An open-source project that includes a backend API which calculates and serves recommendation data based on master+ player match data[3].
+
+### Key Considerations for Developers
+*   **Rate Limits:** The official Riot API has strict rate limits[5][2]. You will need to manage these carefully or use a caching layer/database to store data for repeated requests[5][4].
+*   **Policy Compliance:** If you are building a public application, you must follow the [Riot Games Developer Policy](https://developer.riotgames.com/policies/general)[10][11]. This includes registering your product on the developer portal, adding mandatory legal disclaimers, and ensuring you provide a free tier for users[10][11].
+*   **Data Dragon:** For static data (item icons, champion names, descriptions), use **Data Dragon**, which is a static data resource provided by Riot that does not require an API key and is much easier to implement for basic reference info[12].
+
+Sources:
+[1] [apis.io](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELWNKHZ7g5motNpYROTzqYrXFHviYAJpzJL6Shqk8CNk3LXNoJ2_AyTXiIICPYjBpeNgaSsujn-ovpggic_G-McecXN2P_5bSztHn07WRXT2fKPns2SZMcWu-B)
+[2] [citoapi.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGo1RgH8JLKeOO3nkV6JdxI4Lhzmu-q1hYKRt_a5HLwCzotP2SFDLbXndSml0YMLHml6CDNUgMHVFCN8ELbU328oWQtQcIcbpBBt4C17sIDeR21ifYRJ-UmmyHtChCQK_dmbHcmwvJUhWdEu1oUBkM9)
+[3] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFofCZynpZMkAnRqyynGT6DFha25KbqGndTkKXYCF1YIgHc5noT1zTIymf--YkxLTXjnjOgQ75kwS6sfP4GJPdWKUuCLknSiq2IKjzM2Ku5Li0vHEm5aepwaKcO7Hea_Iy0Vw==)
+[4] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGrb5rTQs82hCJLUD45w4_vX6UnzelaEZ73BTi1dbCCqaIgKdzZ15mqaWTSF01oJKBQ9EtIlnkpTG6Z74fS17FecxwruFRQw05tWKOy2aNibQ50KHqv1rfIl_zbOQ3bA5lrJ6MIeZYwngQoNovu5tINH52mCew6OS3dSXuOZqeONoLozw0hh6ZnR-BDg_KvRmrtQIzt0l5lSlJtvPeFfsh_LNyLSNPmnS-3mXmw)
+[5] [reddit.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGzvKd1fHmVyyQul_bgM04p6odZu8NAC6wX8f3_MsvLdmRqIzRVWvraIDEB7h8J-1j68RENyCS0vh_FuFBi9zqNJ5-IEwZdB2nb8MZEDrkJTfHs6XvrqIgQA1rmfIXbBlMrY8pYWH7brauQEfYWmC-yvM8ZBj98zLGxlZu9eUFyuC01ZTuVlrCuacAKKmZqp06RZmMfygOPe9RtZucuC-D8)
+[6] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE3Tp61EATqdE4QOvUlFcEU_Q94VBgr7Hsy0rYxg-3YO0JsLUsuDXNWXzriAI67NrS5mhBeZ7aZpnYsBm0MRMoQZnw41JJj1yIXeXRyAD8yVUMXs3S3tw==)
+[7] [apis.io](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH3ijYPhKrbAV73SJ6Ma0pENGTRXie2DTit7Fcc2cNhUjVz15Y7FI8JbUZY4ytLLtcy7Zgoigq6-1D3SJB2JieaZ1-7s9oLqbnjODNeMeHCuQg9yK5zMiSV5UP6mM4iK8j5PcdX6OUYI0BhpYsVRLuI5Nni4bZx)
+[8] [parse.bot](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAbxLfKTtiTTw0JoZW-XVr1w4yA9uXOjf_yTfxw4hVvafqkaOXwu5vr5lXp4MhUJUuyRwZyFNaNCIGBG1vsdYP_uYgZyd0GnSC70kqN9A2QVE3eDX8UG5kM5hrwXFieVzsrDtnKl5o237xeIAtrqt2kgZPqTYECdftw8gv2N39k5TMWG4=)
+[9] [parse.bot](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAbxLfKTtiTTw0JoZW-XVr1w4yA9uXOjf_yTfxw4hVvafqkaOXwu5vr5lXp4MhUJUuyRwZyFNaNCIGBG1vsdYP_uYgZyd0GnSC70kqN9A2QVE3eDX8UG5kM5hrwXFieVzsrDtnKl5o237xeIAtrqt2kgZPqTYECdftw8gv2N39k5TMWG4=)
+[10] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp1VezJF_uiN2hTBUFqt0cSv9Jtu7peoDNGrbCWhRoTdc2iFA4BVvOMc98jNLsAB6bKygYIA0WdHvP6qdKc6EWwtqkE3pbIW0xvR3Wb04yIeJ-0WwohM2Y8eqF5QCJ)
+[11] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEp1VezJF_uiN2hTBUFqt0cSv9Jtu7peoDNGrbCWhRoTdc2iFA4BVvOMc98jNLsAB6bKygYIA0WdHvP6qdKc6EWwtqkE3pbIW0xvR3Wb04yIeJ-0WwohM2Y8eqF5QCJ)
+[12] [readthedocs.io](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQETND5fDl87lfA9cXINnfIqbm3ZLxBl_wF8HArCIRIAcgrKz2juy017WrjevfRT2WONjLBfo2dOLu7EoQ5zSorDnzG9oRc5x_i_imr1icz8J8Wsc_kf9KinwdMeCjaeGWA=)

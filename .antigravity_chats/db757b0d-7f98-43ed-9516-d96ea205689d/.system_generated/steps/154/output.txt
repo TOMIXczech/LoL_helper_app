@@ -1,0 +1,10 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/OverlayWindow.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/OverlayWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main 4989ca8] feat: redesign UI to match Blitz and add Pengu Loader/ElainaV4 integration
+ 33 files changed, 161 insertions(+), 67 deletions(-)
+

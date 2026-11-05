@@ -1,0 +1,109 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -26,50 +26,60 @@
+ 
+     private async void OnLeagueConnected(LcuCredentials credentials)
+     {
+-        _apiClient.SetCredentials(credentials);
+-        
+-        Dispatcher.Invoke(() => 
+-        {
+-            ConnectionStatusText.Text = "Connected to League Client! (Port: " + credentials.Port + ")";
+-            ConnectionStatusText.Foreground = System.Windows.Media.Brushes.LightGreen;
+-        });
+-
+-        try
+-        {
+-            var json = await _apiClient.GetCurrentSummonerAsync();
+-            
+-            Dispatcher.Invoke(() => 
+-            {
+-                RawJsonText.Text = json; // Show exactly what Riot returns
++        try
++        {
++            _apiClient.SetCredentials(credentials);
++            
++            Dispatcher.Invoke(() => 
++            {
++                ConnectionStatusText.Text = "Connected to League Client! (Port: " + credentials.Port + ")";
++                ConnectionStatusText.Foreground = System.Windows.Media.Brushes.LightGreen;
++            });
++
++            try
++            {
++                var json = await _apiClient.GetCurrentSummonerAsync();
+                 
+-                try 
+-                {
+-                    using var doc = JsonDocument.Parse(json);
+-                    if (doc.RootElement.TryGetProperty("displayName", out var displayNameProp))
+-                    {
+-                        SummonerNameText.Text = displayNameProp.GetString();
+-                    }
+-                    else if (doc.RootElement.TryGetProperty("gameName", out var gameNameProp))
+-                    {
+-                        SummonerNameText.Text = gameNameProp.GetString();
+-                    }
+-                    else
+-                    {
+-                        SummonerNameText.Text = "Name not found in JSON";
+-                    }
+-                }
+-                catch (Exception ex)
+-                {
+-                    SummonerNameText.Text = "Parse error: " + ex.Message;
+-                }
+-            });
+-        }
+-        catch (Exception ex)
+-        {
+-            Dispatcher.Invoke(() => 
+-            {
+-                SummonerNameText.Text = "API Error";
+-                RawJsonText.Text = ex.Message;
++                Dispatcher.Invoke(() => 
++                {
++                    RawJsonText.Text = json; // Show exactly what Riot returns
++                    
++                    try 
++                    {
++                        using var doc = JsonDocument.Parse(json);
++                        if (doc.RootElement.TryGetProperty("displayName", out var displayNameProp))
++                        {
++                            SummonerNameText.Text = displayNameProp.GetString();
++                        }
++                        else if (doc.RootElement.TryGetProperty("gameName", out var gameNameProp))
++                        {
++                            SummonerNameText.Text = gameNameProp.GetString();
++                        }
++                        else
++                        {
++                            SummonerNameText.Text = "Name not found in JSON";
++                        }
++                    }
++                    catch (Exception ex)
++                    {
++                        SummonerNameText.Text = "Parse error: " + ex.Message;
++                    }
++                });
++            }
++            catch (Exception ex)
++            {
++                Dispatcher.Invoke(() => 
++                {
++                    SummonerNameText.Text = "API Error";
++                    RawJsonText.Text = ex.Message;
++                });
++            }
++        }
++        catch (Exception fatalEx)
++        {
++            Dispatcher.Invoke(() => 
++            {
++                MessageBox.Show("Fatal error during connection sequence:\n" + fatalEx.ToString(), "Connection Error", MessageBoxButton.OK, MessageBoxImage.Error);
+             });
+         }
+     }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

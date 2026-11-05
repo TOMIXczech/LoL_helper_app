@@ -1,0 +1,54 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -170,8 +170,7 @@
+             img.Margin = new Thickness(5);
+             if (isPrimary)
+             {
+-                img.Opacity = 0.1;
+-                img.Cursor = Cursors.Arrow;
++                img.Visibility = Visibility.Collapsed;
+             }
+             secondaryTreeSelector.Children.Add(img);
+         }
+@@ -182,11 +182,14 @@
+             // Secondary skips the keystone row (index 0)
+             for (int i = 1; i < secondaryTreeData.Slots.Count; i++)
+             {
++                int captureSlotIndex = i;
+                 var rowPanel = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0,0,0,15) };
+                 foreach (var rune in secondaryTreeData.Slots[i].Runes)
+                 {
+-                    bool isSelected = _selectedPerks.Contains(rune.Id);
+-                    var img = CreateClickableImage(rune.Icon, 40, isSelected, () => OnRuneClicked(rune.Id, false, i));
++                    // Copy ID for safe lambda capture
++                    int captureRuneId = rune.Id;
++                    bool isSelected = _selectedPerks.Contains(captureRuneId);
++                    var img = CreateClickableImage(rune.Icon, 40, isSelected, () => OnRuneClicked(captureRuneId, false, captureSlotIndex));
+                     img.Margin = new Thickness(10, 0, 10, 0);
+                     rowPanel.Children.Add(img);
+                 }
+@@ -204,15 +204,17 @@
+ 
+         for (int i = 0; i < shardRows.Length; i++)
+         {
++            int captureShardIndex = i;
+             var rowPanel = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(0,0,0,10) };
+             foreach (int shardId in shardRows[i])
+             {
++                int captureShardId = shardId;
+                 // Find if this shard is selected for this specific row
+                 // Shards are the last 3 items in _selectedPerks
+-                bool isSelected = _selectedPerks.Count > 6 + i && _selectedPerks[6 + i] == shardId;
+-                
+-                string iconUrl = RuneService.Instance.GetImageUrl(shardId);
+-                var img = CreateClickableImage(iconUrl, 30, isSelected, () => OnShardClicked(shardId, i));
++                bool isSelected = _selectedPerks.Count > 6 + captureShardIndex && _selectedPerks[6 + captureShardIndex] == captureShardId;
++                
++                string iconUrl = RuneService.Instance.GetImageUrl(captureShardId);
++                var img = CreateClickableImage(iconUrl, 30, isSelected, () => OnShardClicked(captureShardId, captureShardIndex));
+                 img.Margin = new Thickness(8, 0, 8, 0);
+                 
+                 // Hack to make shards look round like in client
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

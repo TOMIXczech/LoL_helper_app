@@ -1,0 +1,36 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -89,6 +89,30 @@
+                 </Grid>
+             </Border>
+         </Grid>
++
++        <!-- ITEM PICKER OVERLAY -->
++        <Grid x:Name="ItemPickerOverlay" Background="#99000000" Visibility="Collapsed" Grid.RowSpan="2">
++            <Border Background="#1C1C21" CornerRadius="12" Width="650" Height="500" Padding="20" HorizontalAlignment="Center" VerticalAlignment="Center">
++                <Grid>
++                    <Grid.RowDefinitions>
++                        <RowDefinition Height="Auto"/>
++                        <RowDefinition Height="Auto"/>
++                        <RowDefinition Height="*"/>
++                    </Grid.RowDefinitions>
++                    
++                    <Grid>
++                        <TextBlock Text="SELECT AN ITEM" Foreground="#EBCB8B" FontWeight="Bold" FontSize="16" VerticalAlignment="Center"/>
++                        <Button Content="X" Width="30" Height="30" HorizontalAlignment="Right" Background="Transparent" Foreground="#8F91A3" BorderThickness="0" Cursor="Hand" Click="CloseItemPicker_Click" FontWeight="Bold"/>
++                    </Grid>
++                    
++                    <TextBox x:Name="ItemSearchBox" Grid.Row="1" Margin="0,15,0,15" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="10" FontSize="14" TextChanged="ItemSearchBox_TextChanged"/>
++                    
++                    <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
++                        <WrapPanel x:Name="AllItemsWrapPanel" HorizontalAlignment="Left"/>
++                    </ScrollViewer>
++                </Grid>
++            </Border>
++        </Grid>
+     </Grid>
+ </UserControl>
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,24 @@
+
+The command exited with code 0.
+Output:
+
+      public List<int> StartingItemIds { get; set; } = new();
+      public List<int> CoreBuildOrderIds { get; set; } = new();
+      public List<int> CoreFinalBuildIds { get; set; } = new();
+>     public List<int> SituationalItemIds { get; set; } = new();
+      public List<int> BootsOptionsIds { get; set; } = new();
+      
+      public int Spell1Id { get; set; } = 4; // Default Flash
+      public int Spell2Id { get; set; } = 14; // Default Ignite
+  }
+              StartingItemIds = starts,
+              CoreBuildOrderIds = core,
+              CoreFinalBuildIds = final,
+>             SituationalItemIds = sit,
+              BootsOptionsIds = boots,
+              Spell1Id = spell1,
+              Spell2Id = spell2
+          };
+      }
+
+

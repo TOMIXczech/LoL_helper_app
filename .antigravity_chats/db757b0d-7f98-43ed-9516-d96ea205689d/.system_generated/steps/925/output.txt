@@ -1,0 +1,35 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -78,11 +78,24 @@
+                         </ListBox.ItemTemplate>
+                     </ListBox>
+ 
+-                    <Button x:Name="InjectRunesBtn" Grid.Row="2"
+-                            Content="Inject Selected Preset" 
+-                            Background="#E84057" Foreground="White" FontWeight="Bold" FontSize="14"
+-                            Height="40" Margin="0,10,0,0" BorderThickness="0" Cursor="Hand"
+-                            Click="InjectRunesBtn_Click"/>
++                    <StackPanel Grid.Row="2" Margin="0,10,0,0">
++                        <TextBlock Text="SUMMONER SPELLS" Foreground="#8F91A3" FontSize="11" FontWeight="Bold" Margin="0,0,0,5"/>
++                        <Grid>
++                            <Grid.ColumnDefinitions>
++                                <ColumnDefinition Width="*"/>
++                                <ColumnDefinition Width="10"/>
++                                <ColumnDefinition Width="*"/>
++                            </Grid.ColumnDefinitions>
++                            <ComboBox x:Name="Spell1Combo" SelectedIndex="0" DisplayMemberPath="Key" SelectedValuePath="Value" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5"/>
++                            <ComboBox x:Name="Spell2Combo" Grid.Column="2" SelectedIndex="1" DisplayMemberPath="Key" SelectedValuePath="Value" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5"/>
++                        </Grid>
++                        
++                        <Button x:Name="InjectRunesBtn" 
++                                Content="Inject Selected Preset" 
++                                Background="#E84057" Foreground="White" FontWeight="Bold" FontSize="14"
++                                Height="40" Margin="0,15,0,0" BorderThickness="0" Cursor="Hand"
++                                Click="InjectRunesBtn_Click"/>
++                    </StackPanel>
+                 </Grid>
+             </Border>
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

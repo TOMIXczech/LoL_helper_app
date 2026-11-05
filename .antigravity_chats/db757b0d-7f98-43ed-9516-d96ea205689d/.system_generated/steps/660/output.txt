@@ -1,0 +1,36 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -68,12 +68,26 @@
+         
+         var presets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
+         
+-        // If no specific presets, show defaults
+         if (!presets.Any())
+         {
+-            HoveredChampText.Text = "AVAILABLE PRESETS (DEFAULT)";
+-            // Mock default
+-            presets.Add(BuildDatabaseService.Instance.GetPresetsForChampion(1).First());
++            HoveredChampText.Text = "AVAILABLE PRESETS (CUSTOM)";
++            presets.Add(new ChampionBuildPreset
++            {
++                ChampionId = champId,
++                RunePreset = new RunePreset
++                {
++                    Name = $"Custom Champ {champId}",
++                    Description = "Create your own custom build",
++                    PrimaryStyleId = 8000,
++                    SubStyleId = 8100,
++                    SelectedPerkIds = new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5002, 5002 }
++                },
++                StartingItemIds = new System.Collections.Generic.List<int>(),
++                CoreBuildOrderIds = new System.Collections.Generic.List<int>(),
++                CoreFinalBuildIds = new System.Collections.Generic.List<int>(),
++                SituationalItemIds = new System.Collections.Generic.List<int>(),
++                BootsOptionsIds = new System.Collections.Generic.List<int>()
++            });
+         }
+         else
+         {
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

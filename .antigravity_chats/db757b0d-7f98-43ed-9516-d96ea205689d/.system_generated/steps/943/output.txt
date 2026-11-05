@@ -1,0 +1,37 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -162,6 +162,31 @@
+                                 int champId = p.TryGetProperty("championId", out var cId) ? cId.GetInt32() : 0;
+                                 if (champId == 0) champId = p.TryGetProperty("championPickIntent", out var intentId) ? intentId.GetInt32() : 0;
+                                 
++                                string assignedRole = p.TryGetProperty("assignedPosition", out var pos) ? pos.GetString() ?? "" : "";
++                                
++                                if (!string.IsNullOrEmpty(assignedRole) && _currentRoleFilter == "")
++                                {
++                                    string tag = assignedRole.ToUpper() switch
++                                    {
++                                        "TOP" => "TOP",
++                                        "JUNGLE" => "JUNGLE",
++                                        "MIDDLE" => "MIDDLE",
++                                        "BOTTOM" => "BOTTOM",
++                                        "UTILITY" => "UTILITY",
++                                        _ => ""
++                                    };
++                                    
++                                    if (tag != "")
++                                    {
++                                        _currentRoleFilter = tag;
++                                        FilterTop.IsChecked = tag == "TOP";
++                                        FilterJgl.IsChecked = tag == "JUNGLE";
++                                        FilterMid.IsChecked = tag == "MIDDLE";
++                                        FilterBot.IsChecked = tag == "BOTTOM";
++                                        FilterSup.IsChecked = tag == "UTILITY";
++                                    }
++                                }
++
+                                 if (champId > 0)
+                                 {
+                                     LoadPresetsForChampion(champId);
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

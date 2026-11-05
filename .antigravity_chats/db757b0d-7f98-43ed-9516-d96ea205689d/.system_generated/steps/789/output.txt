@@ -1,0 +1,44 @@
+
+The command exited with code 0.
+Output:
+                    var newItem = new GameItem
+                    {
+                        Id = itemId,
+                        Name = itemName,
+                        Description = prop.GetProperty("plaintext").GetString() ?? "",
+                        IconUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/img/item/{prop.GetProperty("image").GetProperty("full").GetString()}",
+                        Gold = gold
+                    };
+                    
+                    if (itemsByName.TryGetValue(itemName, out var existingItem))
+                    {
+                        if (itemId < existingItem.Id)
+                        {
+                            itemsByName[itemName] = newItem;
+                        }
+                    }
+                    else
+                    {
+                        itemsByName[itemName] = newItem;
+                    }
+                }
+            }
+
+            AllItems = new List<GameItem>(itemsByName.Values);
+            foreach (var gameItem in AllItems)
+            {
+                _itemDict[gameItem.Id] = gameItem;
+            }
+
+            _isInitialized = true;
+        }
+        catch { }
+    }
+
+    public GameItem? GetItem(int id)
+    {
+        if (_itemDict.TryGetValue(id, out var item)) return item;
+        return null;
+    }
+}
+

@@ -1,0 +1,45 @@
+The search for "league of legends public builds api json github" returned the following summary:
+There is no official "public builds" API from Riot Games. The **Riot Games API**[1][2] and **Data Dragon**[3] provide game data (such as champion stats, match history, and item information), but they do not provide pre-calculated "best builds" or community-driven build recommendations[4].
+
+To obtain build data in JSON format, developers typically use one of the following approaches:
+
+### 1. Community-Maintained Projects (GitHub)
+Several open-source projects scrape or aggregate build data to provide it in a usable format:
+*   **[LeagueBuilds](https://github.com/CookieDecide/LeagueBuilds):** A project that automates the generation of champion builds by analyzing high-level (Master+) match data[5]. It provides a REST API that you can interact with[5][6].
+*   **[LoL-ItemsJSON](https://github.com/EagleExe/LoL-ItemsJSON):** A browser script that extracts item data from community guide sites (like Mobafire) and converts them into the JSON format required for the League of Legends client’s "Import Item Sets" feature[7].
+*   **[CommunityDragon (CDragon)](https://github.com/CommunityDragon):** While more focused on raw game assets and champion/item data (including ability scaling), it is a primary source for developers who need accurate, up-to-date static data that is often cleaner than Riot's official Data Dragon[8][9].
+
+### 2. Building Your Own Data Pipeline
+If you require specific, statistical build data, most developers build their own pipeline using the official Riot API[10][11]:
+*   **Step 1:** Use the **Riot API** (`match-v5` endpoint) to fetch match history for high-rank players[5][12].
+*   **Step 2:** Parse the JSON response to extract item purchase orders, rune selections, and skill orders[12][13].
+*   **Step 3:** Aggregate this data in your own database (e.g., SQLite or MongoDB) to calculate win rates and pick rates for specific items[5][14].
+
+### 3. Alternative Third-Party Options
+*   **[Apify LoL Scraper](https://apify.com/parseforge/ddragon-lol-scraper):** Tools like this can be used to scrape champion and item data programmatically if you do not want to maintain your own backend[15].
+*   **Embeddable Widgets:** Some platforms, like [Mobalytics](https://mobalytics.gg/), offer widgets that can be embedded into your own website to display builds without you needing to manage the underlying data[16].
+
+### Important Considerations
+*   **API Keys:** If you use the official Riot API, you must register for a developer account on the [Riot Developer Portal](https://developer.riotgames.com/)[10][17]. Development keys have strict rate limits (e.g., 20 requests per second)[4].
+*   **Compliance:** Ensure your project follows Riot's "Developer API Policy"[18][19], which includes requirements for legal disclaimers and limitations on commercialization[18].
+
+Sources:
+[1] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGRdrg-Du7QCJBEU9w59e6Nloe8cOSVUbK9DqPH5453S9dp1i9mdwYzEq2BL-xdlRlgWmRtB6mQG7Hxh_JXZJExz9VSPs2xqVZ1lBwdLAiUhzdc0NbaOr-wrrM=)
+[2] [apis.io](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE3jL_iwDtQ4Mlj3bp_YRFcDZIR8at0uXvbKBbmGHAxfYCz1Iw304LJRhBkJ0rmj0jKWRo-YpyFa_vf_HVO13L1p3fx7-4OhPeHqSRe5MRVHfY_B2nwAviO4x9z)
+[3] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFCnQXBwkG8mWje03ObaxBN-Aqi1DNVfngXFvjxG7YivJ95ZV5HNuHzXpGpjhfgu13h7az5n9hw-i0875gg4zPjJTfx3CrSjJAParFulrQLNcP3m22_-o9ZX3qXKD0)
+[4] [citoapi.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE7qTrVXtXAe2M0JZIb7w-_yeU0Vt2PURGnsqwTwXtIoZNGnDteItO0Es7yKU2C6XBjwDWh_oFGSnL5J2EdAuzNKa-R0OaENp0gMiZy1oAf8KBFsSu6c9lxm_0dqAznnjWD8GLFd-AhTJsRYly_nsw-)
+[5] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEjRVJVMThE4k9asIJol6qLX40nvcYMqlcFV9kZ3ZAIYgh9XLOhZtxq_nt0w_QrnwaLSiWl9QUV_yl-9rjx3IyAW-aEsuPY3AMTplNbd8apjT2DeghUXOIposo3qT_9tEmKfQ==)
+[6] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEjRVJVMThE4k9asIJol6qLX40nvcYMqlcFV9kZ3ZAIYgh9XLOhZtxq_nt0w_QrnwaLSiWl9QUV_yl-9rjx3IyAW-aEsuPY3AMTplNbd8apjT2DeghUXOIposo3qT_9tEmKfQ==)
+[7] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFLBdydPbtXrOamEw8WPe3wHIyDJa7rAUHtnn8LeYsaLa2bfuzC6iTyVzHItb6Pgkow0Yq5QKDuQhpFCXLzZkvoO4bI7C-X3QFFUh_tJpFZcIEhNB18PSAXwxBfurkykw==)
+[8] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH4UUB9cU4Mt8g65S7JwUufcvsm86wVc8nzJEGpiN-0m-xE63bJTrhc4bWv1fKWe6wz7vysZdMh-sRNYe7ICWbvP-6Vp7lK_tGoN3dXoJWmb7zYEjo5IkmkvQWNZTng7o6Sp9Yab5nK)
+[9] [communitydragon.org](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHsaPH6xOCupywtGX5BHZspna_79iW_PIF24DNu6aGTyIor8mFeXa4H65sZtAWHjaXp0I3Zka6EIyDqVpG_Kx-M9k87kKoME-TDGrurP40DeXgnLSKhQYzhdXf1XYyIaF_ZD40=)
+[10] [medium.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHeyybuDcmpVMUnuB2ZqkJoHE9iq_XkjCmNTQ3XAv1js1A9NN1FwEA6LK4xwi4HIuOWT1B-0YdbcgNx7Xf8NgAUZ4uSsg55W2UQf_wyulqDEjkaK5PYjBE8rV4LjX_RFiN19gjKerm6tjnMVSFsc7JrHUhuPRGT6TguaKkI2DOPGdjW2E-MgB_9nel18KMo17Jv4NtrFtMPXRzlDJ8xUQNFMG90O61famAWXiKU5C1yd0HAvPHQojCXgMx8-A==)
+[11] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFv3v9CWIVSktOQVny-sCU94v7bED41WxkU62cu0nDDeNZKwt9iiuo6ldbG_0OYzRsPLbNok4tVGq4-7iaa-JHxpPrYmr6CI3MyaJQubCH3eNtWvsW890joWnge7idq5dY8kbpO9ljSp9p13auIdNdXoYDqYd5ns65hzVElfLnW9U4YslvodmFBh2smWc7H4u_UNKPMeFHuMC7QqOXfy0aSpDm0elB4pN4BnrbL)
+[12] [medium.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHeyybuDcmpVMUnuB2ZqkJoHE9iq_XkjCmNTQ3XAv1js1A9NN1FwEA6LK4xwi4HIuOWT1B-0YdbcgNx7Xf8NgAUZ4uSsg55W2UQf_wyulqDEjkaK5PYjBE8rV4LjX_RFiN19gjKerm6tjnMVSFsc7JrHUhuPRGT6TguaKkI2DOPGdjW2E-MgB_9nel18KMo17Jv4NtrFtMPXRzlDJ8xUQNFMG90O61famAWXiKU5C1yd0HAvPHQojCXgMx8-A==)
+[13] [medium.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHeyybuDcmpVMUnuB2ZqkJoHE9iq_XkjCmNTQ3XAv1js1A9NN1FwEA6LK4xwi4HIuOWT1B-0YdbcgNx7Xf8NgAUZ4uSsg55W2UQf_wyulqDEjkaK5PYjBE8rV4LjX_RFiN19gjKerm6tjnMVSFsc7JrHUhuPRGT6TguaKkI2DOPGdjW2E-MgB_9nel18KMo17Jv4NtrFtMPXRzlDJ8xUQNFMG90O61famAWXiKU5C1yd0HAvPHQojCXgMx8-A==)
+[14] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEf2q8fDiJZjw_fjv-3Sd6e71WFGNnTUtaoa-zhKd1NM_h_5u-mg_yuhV9Rj7cxBgWKQzdSnd4p4j6Jdbc1aIs3uCZF5LOAunYWXd4GrZCzb-i90xiwGeFHLLQz0W1g6Su2fDjRoOGV5Pqhfdj3xi4P6bnM-w==)
+[15] [apify.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSScLXJP0yTiWnP6n8gU_7_ure218GtowMARVgP0Np0R72fWxXXUp2FfAyPh2CNgPkgQB-L5doRvRDI0o3DDmVQnX3uc0Y8Z6uS0qoZ5eiXHk8lmUiskvkyLOeyx7GCJ1PYW8MhvU=)
+[16] [mobalytics.gg](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHo386tRWss_RdeL4yZ0UteIgKSf-ly0w85ReWga40G1NicZEkl_H04g7wT1yatgKLAFWnLjZmUbrhrHxSm6HjHoXOJkZdgbr3nRxYwlkzwaNQl0fJ9ujzYTbv9VASt0Ojylusx3jLbpQ==)
+[17] [apis.io](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEUliQ_hIZOfqohRAKwOQV7x9qZpw-qVdx095hTQCKTtcyqa5mbQrpQ4rlowtOCVj8bRGdOgWKZgO12XTwMOMy4IejQ4t68qWPvv1oHZLG0l4aesocBe13g7OE1OtLu4Z3GK17S8vfkIsSbXyZiAMeB__f7THV_)
+[18] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFCnQXBwkG8mWje03ObaxBN-Aqi1DNVfngXFvjxG7YivJ95ZV5HNuHzXpGpjhfgu13h7az5n9hw-i0875gg4zPjJTfx3CrSjJAParFulrQLNcP3m22_-o9ZX3qXKD0)
+[19] [riotgames.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFCnQXBwkG8mWje03ObaxBN-Aqi1DNVfngXFvjxG7YivJ95ZV5HNuHzXpGpjhfgu13h7az5n9hw-i0875gg4zPjJTfx3CrSjJAParFulrQLNcP3m22_-o9ZX3qXKD0)

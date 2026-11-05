@@ -1,0 +1,72 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -69,58 +69,14 @@
+                     </Grid.RowDefinitions>
+                     
+                     <StackPanel Orientation="Horizontal">
+-                        <TextBlock Text="CURRENT ACTIVE RUNES (LIVE)" Foreground="#A3BE8C" FontSize="12" FontWeight="Bold" Margin="0,0,0,20"/>
+-                        <TextBlock x:Name="ActivePageNameText" Text="Loading..." Foreground="White" FontSize="12" FontWeight="SemiBold" Margin="10,0,0,20" FontStyle="Italic"/>
+-                    </StackPanel>
+-
+-                    <!-- Main Rune Visualizer (Blitz Style) -->
+-                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+-                        <Grid>
+-                            <Grid.ColumnDefinitions>
+-                                <ColumnDefinition Width="*"/>
+-                                <ColumnDefinition Width="40"/>
+-                                <ColumnDefinition Width="*"/>
+-                            </Grid.ColumnDefinitions>
+-
+-                            <!-- Primary Tree -->
+-                            <StackPanel Grid.Column="0" HorizontalAlignment="Center" Width="120">
+-                                <Image x:Name="ActivePrimaryTree" Width="40" Height="40" Margin="0,0,0,15" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                
+-                                <!-- Keystone -->
+-                                <Grid Margin="0,0,0,20">
+-                                    <Ellipse Width="80" Height="80" Fill="#141519" Stroke="#EBCB8B" StrokeThickness="2"/>
+-                                    <Image x:Name="ActiveKeystone" Width="55" Height="55" Stretch="Uniform" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                </Grid>
+-
+-                                <!-- Primary Perks -->
+-                                <Image x:Name="ActivePrimary1" Width="45" Height="45" Margin="0,0,0,15" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                <Image x:Name="ActivePrimary2" Width="45" Height="45" Margin="0,0,0,15" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                <Image x:Name="ActivePrimary3" Width="45" Height="45" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                            </StackPanel>
+-
+-                            <!-- Divider -->
+-                            <Separator Grid.Column="1" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="19,0"/>
+-
+-                            <!-- Secondary Tree -->
+-                            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Width="120">
+-                                <Image x:Name="ActiveSubTree" Width="40" Height="40" Margin="0,0,0,15" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                
+-                                <!-- Empty space to align with Keystone -->
+-                                <Rectangle Height="80" Margin="0,0,0,20"/>
+-
+-                                <!-- Secondary Perks -->
+-                                <Image x:Name="ActiveSub1" Width="45" Height="45" Margin="0,0,0,15" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                <Image x:Name="ActiveSub2" Width="45" Height="45" Margin="0,0,0,25" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                
+-                                <!-- Stat Shards -->
+-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+-                                    <Image x:Name="ActiveShard1" Width="25" Height="25" Margin="0,0,5,0" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                    <Image x:Name="ActiveShard2" Width="25" Height="25" Margin="0,0,5,0" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                    <Image x:Name="ActiveShard3" Width="25" Height="25" RenderOptions.BitmapScalingMode="HighQuality"/>
+-                                </StackPanel>
+-                            </StackPanel>
+-                        </Grid>
+-                    </StackPanel>
++                        <TextBlock Text="CUSTOM RUNE BUILDER" Foreground="#A3BE8C" FontSize="12" FontWeight="Bold" Margin="0,0,0,20"/>
++                        <TextBlock x:Name="ActivePageNameText" Text="(Editing Active Page)" Foreground="White" FontSize="12" FontWeight="SemiBold" Margin="10,0,0,20" FontStyle="Italic"/>
++                    </StackPanel>
++
++                    <!-- Main Dynamic Rune Visualizer -->
++                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
++                        <StackPanel x:Name="InteractiveRuneBuilder" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
++                    </ScrollViewer>
+                 </Grid>
+             </Border>
+         </Grid>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

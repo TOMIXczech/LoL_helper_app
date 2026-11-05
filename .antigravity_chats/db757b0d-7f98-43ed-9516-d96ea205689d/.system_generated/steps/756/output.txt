@@ -1,0 +1,25 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -187,7 +187,7 @@
+     }
+ 
+     private ChampionBuildPreset CreatePreset(int champId, string champName, string role, string buildName, 
+-        int pStyle, int sStyle, int[] perks, List<int> starts, List<int> core, List<int> final, List<int> sit, List<int> boots)
++        int pStyle, int sStyle, int[] perks, List<int> starts, List<int> core, List<int> final, List<int> sit, List<int> boots, int spell1 = 4, int spell2 = 14)
+     {
+         return new ChampionBuildPreset
+         {
+@@ -207,7 +207,9 @@
+             CoreBuildOrderIds = core,
+             CoreFinalBuildIds = final,
+             SituationalItemIds = sit,
+-            BootsOptionsIds = boots
++            BootsOptionsIds = boots,
++            Spell1Id = spell1,
++            Spell2Id = spell2
+         };
+     }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,157 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -41,8 +41,10 @@
+     {
+         try
+         {
+-            var presets = await RuneService.Instance.GetPresetsAsync();
+-            PresetsList.ItemsSource = presets;
++            await BuildDatabaseService.Instance.InitializeAsync();
++            // Default to Annie (1) if not in champ select to show it works
++            LoadPresetsForChampion(1);
++            RenderItemBuilder();
+             
+             _pollTimer.Start();
+             await PollActiveRunesAsync();
+@@ -49,6 +49,6 @@
+         catch (Exception ex)
+         {
+-            MessageBox.Show("Failed to load Rune data: " + ex.Message);
++            MessageBox.Show("Failed to load data: " + ex.Message);
+         }
+     }
+ 
+@@ -56,6 +56,31 @@
+         _pollTimer.Stop();
+     }
+ 
++    private int _lastHoveredChampId = -1;
++
++    private void LoadPresetsForChampion(int champId)
++    {
++        if (_lastHoveredChampId == champId) return;
++        _lastHoveredChampId = champId;
++        
++        var presets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
++        
++        // If no specific presets, show defaults
++        if (!presets.Any())
++        {
++            HoveredChampText.Text = "AVAILABLE PRESETS (DEFAULT)";
++            // Mock default
++            presets.Add(BuildDatabaseService.Instance.GetPresetsForChampion(1).First());
++        }
++        else
++        {
++            HoveredChampText.Text = $"AVAILABLE PRESETS (CHAMP {champId})";
++        }
++
++        PresetsList.ItemsSource = presets;
++        if (presets.Any()) PresetsList.SelectedIndex = 0;
++    }
++
+     private async Task PollActiveRunesAsync()
+     {
+         if (_isUpdating || !LcuApiClient.Instance.IsConnected) return;
+@@ -62,6 +62,36 @@
+         _isUpdating = true;
+         try
+         {
++            // 1. Poll Session for hovered champion
++            string sessionJson = await LcuApiClient.Instance.GetChampSelectSessionAsync();
++            if (!string.IsNullOrEmpty(sessionJson))
++            {
++                using var sDoc = JsonDocument.Parse(sessionJson);
++                var sRoot = sDoc.RootElement;
++                if (sRoot.TryGetProperty("localPlayerCellId", out var cellIdProp))
++                {
++                    int myCell = cellIdProp.GetInt32();
++                    if (sRoot.TryGetProperty("myTeam", out var myTeamProp))
++                    {
++                        foreach (var p in myTeamProp.EnumerateArray())
++                        {
++                            if (p.TryGetProperty("cellId", out var pCell) && pCell.GetInt32() == myCell)
++                            {
++                                int champId = p.TryGetProperty("championId", out var cId) ? cId.GetInt32() : 0;
++                                if (champId == 0) champId = p.TryGetProperty("championPickIntent", out var intentId) ? intentId.GetInt32() : 0;
++                                
++                                if (champId > 0)
++                                {
++                                    LoadPresetsForChampion(champId);
++                                }
++                                break;
++                            }
++                        }
++                    }
++                }
++            }
++
++            // 2. Poll Runes
+             string json = await LcuApiClient.Instance.GetCurrentRunePageJsonAsync();
+             if (string.IsNullOrEmpty(json)) return;
+ 
+@@ -102,6 +102,45 @@
+         }
+     }
+ 
++    private void RenderItemBuilder()
++    {
++        InteractiveItemBuilder.Children.Clear();
++        
++        // Render 20 popular items as a mock custom item builder
++        var popularItemIds = new[] { 3089, 3157, 3020, 6672, 3031, 3006, 3078, 3153, 3047, 6653, 3068, 3075, 3193, 3110 };
++        
++        foreach (int itemId in popularItemIds)
++        {
++            var item = ItemService.Instance.GetItem(itemId);
++            if (item == null) continue;
++
++            var img = new Image
++            {
++                Width = 45, Height = 45, Margin = new Thickness(5),
++                Cursor = Cursors.Hand,
++                ToolTip = new ToolTip { Content = item.Name, Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1C1C21")), Foreground = Brushes.White, BorderThickness = new Thickness(0) }
++            };
++            RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.HighQuality);
++            
++            try { img.Source = new BitmapImage(new Uri(item.IconUrl)); } catch { }
++
++            // simple hover effect
++            img.MouseEnter += (s, e) => img.Opacity = 0.8;
++            img.MouseLeave += (s, e) => img.Opacity = 1.0;
++            
++            var border = new Border
++            {
++                BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3D3D45")),
++                BorderThickness = new Thickness(2),
++                CornerRadius = new CornerRadius(5),
++                Margin = new Thickness(5),
++                Child = img
++            };
++
++            InteractiveItemBuilder.Children.Add(border);
++        }
++    }
++
+     private void RenderRuneBuilder()
+     {
+         InteractiveRuneBuilder.Children.Clear();
+@@ -387,11 +387,12 @@
+         await LcuApiClient.Instance.SetRunePageAsync(_activePageName, _primaryTreeId, _secondaryTreeId, _selectedPerks.Take(9).ToArray());
+     }
+ 
+-    // Existing preset injection...
+     private async void InjectRunesBtn_Click(object sender, RoutedEventArgs e)
+     {
+-        if (PresetsList.SelectedItem is not RunePreset selectedPreset) return;
+-        if (!LcuApiClient.Instance.IsConnected) return;
++        if (PresetsList.SelectedItem is not ChampionBuildPreset selectedBuild) return;
++        if (!LcuApiClient.Instance.IsConnected) return;
++
++        var selectedPreset = selectedBuild.RunePreset;
+ 
+         InjectRunesBtn.Content = "Injecting...";
+         InjectRunesBtn.IsEnabled = false;
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

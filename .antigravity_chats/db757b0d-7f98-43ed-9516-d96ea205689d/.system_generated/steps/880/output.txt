@@ -1,0 +1,83 @@
+
+The command exited with code 0.
+Output:
+
+>                 if (blitzDict.TryGetValue(cleanName, out var rolesElement))
+                  {
+                      foreach (var roleProp in rolesElement.EnumerateObject())
+                      {
+                          string roleName = roleProp.Name;
+                          if (!roleProp.Value.TryGetProperty("Build", out var buildData)) continue;
+  
+                          var starts = new List<int>();
+                          if (buildData.TryGetProperty("starting_items", out var startsProp))
+                          {
+                              foreach (var item in startsProp.EnumerateArray())
+                              {
+                                  var id = ItemService.Instance.GetItemIdByName(item.GetString() ?? "");
+                                  if (id.HasValue) starts.Add(id.Value);
+                              }
+                          }
+  
+                          // Provide default starts if empty
+                          if (starts.Count == 0)
+                          {
+                              if (roleName == "JUNGLE") { starts.Add(1102); starts.Add(2003); }
+                              else if (roleName == "BOTTOM") { starts.Add(1055); starts.Add(2003); }
+                              else if (roleName == "UTILITY") { starts.Add(3864); starts.Add(2003); starts.Add(2003); }
+                              else { starts.Add(1056); starts.Add(2003); starts.Add(2003); }
+                          }
+  
+                          var cores = new List<int>();
+                          if (buildData.TryGetProperty("core_items", out var coresProp))
+                          {
+                              foreach (var item in coresProp.EnumerateArray())
+                              {
+                                  var id = ItemService.Instance.GetItemIdByName(item.GetString() ?? "");
+                                  if (id.HasValue) cores.Add(id.Value);
+                              }
+                          }
+  
+                                                  // Pad cores to 6 items (as requested in the previous prompt, 7 for 
+Support)
+                          int targetCount = (roleName == "BOTTOM" || roleName == "UTILITY") ? 7 : 6;
+                          if (roleName == "BOTTOM" || roleName == "UTILITY")
+                          {
+                              if (!cores.Contains(3864)) cores.Insert(0, 3864); // Runic Compass
+                              if (!cores.Contains(3364)) cores.Add(3364); // Oracle Lens
+                          }
+                          if (cores.Count < targetCount)
+                          {
+                              var defaults = new int[] { 3026, 3156, 3072, 3139, 3143, 3065 };
+                              foreach (var d in defaults)
+                              {
+                                  if (!cores.Contains(d)) cores.Add(d);
+                                  if (cores.Count >= targetCount) break;
+                              }
+                          }
+  
+                          var perkIds = new List<int>();
+                          if (buildData.TryGetProperty("runes", out var runesData))
+                          {
+                              if (runesData.TryGetProperty("keystone", out var ksProp))
+                              {
+                                  var ksId = RuneService.Instance.GetPerkIdByName(ksProp.GetString() ?? "");
+                                  if (ksId.HasValue) perkIds.Add(ksId.Value);
+                              }
+                              if (runesData.TryGetProperty("secondary_and_other", out var secProp))
+                              {
+                                  foreach (var sec in secProp.EnumerateArray())
+                                  {
+                                      var id = RuneService.Instance.GetPerkIdByName(sec.GetString() ?? "");
+                                      if (id.HasValue) perkIds.Add(id.Value);
+                                  }
+                              }
+                          }
+  
+                          while (perkIds.Count < 6) perkIds.Add(5008);
+                          if (perkIds.Count == 6) { perkIds.Add(5008); perkIds.Add(5008); perkIds.Add(5002); }
+  
+                          int pStyle = 8000, sStyle = 8100;
+                          if (perkIds.Count > 0)
+
+

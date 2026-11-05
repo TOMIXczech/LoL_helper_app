@@ -1,0 +1,13 @@
+
+The command exited with code 0.
+Output:
+WARNING: Resulting JSON is truncated as serialization has exceeded the set depth of 2.
+
+> C:\Users\ufo\AppData\Local\Temp\champ_lcu.json:34:  "recommendedItemDefaults": [],
+  C:\Users\ufo\AppData\Local\Temp\champ_lcu.json:35:  "skins": [
+  C:\Users\ufo\AppData\Local\Temp\champ_lcu.json:36:    {
+  C:\Users\ufo\AppData\Local\Temp\champ_lcu.json:37:      "id": 1000,
+  C:\Users\ufo\AppData\Local\Temp\champ_lcu.json:38:      "contentId": "2d23dcfc-67d1-44d7-b045-54d96e8370b2",
+  C:\Users\ufo\AppData\Local\Temp\champ_lcu.json:39:      "isBase": true,
+
+

@@ -1,0 +1,26 @@
+
+The command exited with code 0.
+Output:
+
+    Directory: C:\Users\ufo\Downloads\TP
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          01/10/2026    19:24                ProxyServer
+Wrote to C:\Users\ufo\Downloads\TP\ProxyServer\package.json:
+
+{
+  "name": "proxyserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "type": "commonjs"
+}
+
+
+
+

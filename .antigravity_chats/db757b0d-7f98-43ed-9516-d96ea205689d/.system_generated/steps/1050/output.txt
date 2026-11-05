@@ -1,0 +1,35 @@
+
+The command exited with code 0.
+Output:
+
+                      {
+                          string roleName = roleProp.Name;
+                          if (!roleProp.Value.TryGetProperty("Builds", out var buildsData) || buildsData.ValueKind != 
+System.Text.Json.JsonValueKind.Array) continue;
+  
+                          int buildIndex = 1;
+>                         foreach (var buildData in buildsData.EnumerateArray())
+                          {
+                              if (buildIndex > 3) break; // Limit to max 3 builds per role
+  
+                              var starts = new List<int>();
+                              if (buildData.TryGetProperty("starting_items", out var startsProp) && 
+startsProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                              {
+                                  foreach (var item in startsProp.EnumerateArray())
+                                  {
+                                      var id = ItemService.Instance.GetItemIdByName(item.GetString() ?? "");
+                                      if (id.HasValue) starts.Add(id.Value);
+                                  }
+                              }
+  
+                              // Provide default starts if empty
+                              if (starts.Count == 0)
+                              {
+                                  if (roleName == "JUNGLE") { starts.Add(1102); starts.Add(2003); }
+                                  else if (roleName == "BOTTOM") { starts.Add(1055); starts.Add(2003); }
+                                  else if (roleName == "UTILITY") { starts.Add(3864); starts.Add(2003); 
+starts.Add(2003); }
+                                  else { starts.Add(1056); starts.Add(2003); starts.Add(2003); }
+
+

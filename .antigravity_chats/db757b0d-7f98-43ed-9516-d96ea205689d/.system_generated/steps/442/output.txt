@@ -1,0 +1,10 @@
+
+The command exited with code 1.
+Output:
+Invoke-RestMethod: 
+{
+  "message": "Requires authentication",
+  "documentation_url": "https://docs.github.com/rest",
+  "status": "401"
+}
+

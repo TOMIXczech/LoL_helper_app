@@ -1,0 +1,434 @@
+{
+  "Aatrox": {
+    "JUNGLE": {
+      "Tier": 2,
+      "Win Rate": 0.5076120579850791,
+      "Win Rate Change": 0.007812057985079113,
+      "Pick Rate": 0.005120728623745558,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 16487,
+      "Builds": [
+        {
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.5785714285714286,
+          "matches": 140,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5723443223443223,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.570198105081826
+        },
+        {
+          "core_items": [
+            "Hubris",
+            "Mercury's Treads",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.6257044673539519,
+          "matches": 99,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.5707216494845361,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Legend: Alacrity",
+              "Coup de Grace",
+              "Magical Footwear",
+              "Cosmic Insight"
+            ]
+          },
+          "summoner_spells": [
+            "Ghost",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5790378006872853
+        },
+        {
+          "core_items": [
+            "Hubris",
+            "Sundered Sky",
+            "Plated Steelcaps"
+          ],
+          "win_rate": 0.585360824742268,
+          "matches": 64,
+          "runes": {
+            "keystone": "Stormraider's Surge",
+            "keystone_win_rate": 0.5677663230240549,
+            "secondary_and_other": [
+              "Nimbus Cloak",
+              "Deep Ward",
+              "Cut Down",
+              "Taste of Blood",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Smite",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5647422680412371
+        }
+      ],
+      "Matchups": {}
+    },
+    "BOTTOM": {
+      "Tier": 4,
+      "Win Rate": 0.42857142857142855,
+      "Win Rate Change": -0.006095238095238098,
+      "Pick Rate": 6.739844188468406e-05,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 217,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.4138808844507846,
+          "matches": 18,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.42748091603053434,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.39809985734664766
+        },
+        {
+          "core_items": [
+            "Voltaic Cyclosword",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.427037089871612,
+          "matches": 8,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.4413527104136948,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Legend: Alacrity",
+              "Ultimate Hunter",
+              "Second Wind",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.45209343794579177
+        },
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Spear of Shojin"
+          ],
+          "win_rate": 0.4356683309557775,
+          "matches": 6,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.43293081312410847,
+            "secondary_and_other": [
+              "Taste of Blood",
+              "Sixth Sense",
+              "Treasure Hunter",
+              "Taste of Blood",
+              "Unflinching"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.4564090584878745
+        }
+      ],
+      "Matchups": {}
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.40154015401540155,
+      "Win Rate Change": -0.02616612910344779,
+      "Pick Rate": 0.0002823280353602664,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 909,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.47176895306859207,
+          "matches": 8,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.47904191616766467,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.47465437788018433
+        },
+        {
+          "core_items": [
+            "Sundered Sky",
+            "Plated Steelcaps",
+            "Eclipse"
+          ],
+          "win_rate": 0.46176895306859206,
+          "matches": 8,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.4628158844765343,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Biscuit Delivery",
+              "Treasure Hunter",
+              "Taste of Blood",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.4568953068592057
+        },
+        {
+          "core_items": [
+            "Sundered Sky",
+            "Mercury's Treads",
+            "Eclipse"
+          ],
+          "win_rate": 0.4664620938628159,
+          "matches": 7,
+          "runes": {
+            "keystone": "Glacial Augment",
+            "keystone_win_rate": 0.4815884476534296,
+            "secondary_and_other": [
+              "Magical Footwear",
+              "Grisly Mementos",
+              "Cosmic Insight",
+              "Triumph",
+              "Unflinching"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Heal"
+          ],
+          "summoner_spells_win_rate": 0.48238267148014446
+        }
+      ],
+      "Matchups": {}
+    },
+    "TOP": {
+      "Tier": 2,
+      "Win Rate": 0.5003973292169418,
+      "Win Rate Change": 0.00499148312984532,
+      "Pick Rate": 0.03400391159436449,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 109481,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "win_rate": 0.5995174909529554,
+          "matches": 829,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5876998223801065,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5885123082411702
+        },
+        {
+          "core_items": [
+            "Plated Steelcaps",
+            "Eclipse",
+            "Voltaic Cyclosword"
+          ],
+          "win_rate": 0.6072106261859582,
+          "matches": 527,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.575885328836425,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Legend: Alacrity",
+              "Ultimate Hunter",
+              "Second Wind",
+              "Overgrowth"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5709716113554578
+        },
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Spear of Shojin"
+          ],
+          "win_rate": 0.5672514619883041,
+          "matches": 513,
+          "runes": {
+            "keystone": "Stormraider's Surge",
+            "keystone_win_rate": 0.6078212290502794,
+            "secondary_and_other": [
+              "Nimbus Cloak",
+              "Grisly Mementos",
+              "Treasure Hunter",
+              "Revitalize",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5876288659793815
+        }
+      ],
+      "Matchups": {}
+    },
+    "MIDDLE": {
+      "Tier": 5,
+      "Win Rate": 0.46360628618693134,
+      "Win Rate Change": -0.0035207027052931994,
+      "Pick Rate": 0.0007510112095721938,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 2418,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Death's Dance"
+          ],
+          "win_rate": 0.57,
+          "matches": 14,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5240641711229946,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5486725663716814
+        },
+        {
+          "core_items": [
+            "Eclipse",
+            "Voltaic Cyclosword",
+            "Spear of Shojin"
+          ],
+          "win_rate": 0.577906976744186,
+          "matches": 9,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.61,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Sixth Sense",
+              "Treasure Hunter",
+              "Taste of Blood",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5609302325581396
+        },
+        {
+          "core_items": [
+            "Voltaic Cyclosword",
+            "Spear of Shojin",
+            "Death's Dance"
+          ],
+          "win_rate": 0.5534883720930233,
+          "matches": 8,
+          "runes": {
+            "keystone": "Stormraider's Surge",
+            "keystone_win_rate": 0.5523255813953488,
+            "secondary_and_other": [
+              "Nimbus Cloak",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Second Wind",
+              "Overgrowth"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5634883720930233
+        }
+      ],
+      "Matchups": {}
+    }
+  }
+}

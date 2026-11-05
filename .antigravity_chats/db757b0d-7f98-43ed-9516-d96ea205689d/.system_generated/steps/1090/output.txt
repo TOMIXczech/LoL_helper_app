@@ -1,0 +1,62 @@
+
+The command exited with code 0.
+Output:
+
+      private void PresetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      {
+          if (PresetsList.SelectedItem is ChampionBuildPreset selectedBuild)
+          {
+              _activePreset = selectedBuild;
+>             RenderItemBuilder(_activePreset);
+              
+              _currentSpell1Id = selectedBuild.Spell1Id > 0 ? selectedBuild.Spell1Id : 4;
+              _currentSpell2Id = selectedBuild.Spell2Id > 0 ? selectedBuild.Spell2Id : 14;
+              UpdateSpellUI();
+          }
+      }
+  
+>     private void RenderItemBuilder(ChampionBuildPreset? preset = null)
+      {
+          InteractiveItemBuilder.Children.Clear();
+          if (preset == null) return;
+          
+          RenderItemSection("STARTING ITEMS", preset.StartingItemIds);
+          RenderItemSection("CORE BUILD ORDER", preset.CoreBuildOrderIds, showArrows: true);
+          RenderItemSection("CORE FINAL BUILD", preset.CoreFinalBuildIds);
+          RenderItemSection("SITUATIONAL", preset.SituationalItemIds);
+          RenderItemSection("BOOTS OPTIONS", preset.BootsOptionsIds);
+      }
+              
+              border.MouseLeftButtonDown += (s, e) => {
+                  OpenItemPicker(async newId => {
+                      if (newId == null) itemIds.RemoveAt(index);
+                      else itemIds[index] = newId.Value;
+>                     RenderItemBuilder(_activePreset);
+                      if (_activePreset != null && LcuApiClient.Instance.IsConnected)
+                          await LcuApiClient.Instance.SetItemBuildAsync(_activePreset);
+                  });
+              };
+  
+              panel.Children.Add(border);
+  
+              if (showArrows && i < itemIds.Count - 1)
+              {
+                  var arrow = new TextBlock
+          var addBtn = CreateIconBlock("+", "#A3BE8C", "#2D2D35");
+          addBtn.MouseLeftButtonDown += (s, e) => {
+              OpenItemPicker(async newId => {
+                  if (newId != null) {
+                      itemIds.Add(newId.Value);
+>                     RenderItemBuilder(_activePreset);
+                      if (_activePreset != null && LcuApiClient.Instance.IsConnected)
+                          await LcuApiClient.Instance.SetItemBuildAsync(_activePreset);
+                  }
+              });
+          };
+          panel.Children.Add(addBtn);
+  
+          InteractiveItemBuilder.Children.Add(panel);
+      }
+  
+
+

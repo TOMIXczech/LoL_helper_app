@@ -1,0 +1,1 @@
+A1: (Recommended) Use ASP.NET Core Minimal APIs. It's built right into .NET 9, extremely lightweight, and handles real-time WebSockets effortlessly.

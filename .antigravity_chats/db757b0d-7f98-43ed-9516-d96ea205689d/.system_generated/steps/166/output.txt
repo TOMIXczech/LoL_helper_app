@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main a342e48] feat: add UI and backend to dynamically pick local images for Pengu Loader themes
+ 28 files changed, 77 insertions(+), 18 deletions(-)
+

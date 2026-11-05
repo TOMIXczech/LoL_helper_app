@@ -1,0 +1,18 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -183,7 +183,11 @@
+                                 else if (roleName == "BOTTOM") spell2 = 7;
+                             }
+ 
+-                            _database.Add(CreatePreset(champId, champName, roleName, $"Blitz Core Build #{buildIndex}", 
++                            string buildName = buildData.TryGetProperty("build_name", out var bnProp) ? bnProp.GetString() ?? $"Blitz Core Build #{buildIndex}" : $"Blitz Core Build #{buildIndex}";
++                            double winRate = buildData.TryGetProperty("overall_win_rate", out var wrProp) ? wrProp.GetDouble() : 0.0;
++                            string formattedName = winRate > 0 ? $"{buildName} ({(winRate * 100):F1}% WR)" : buildName;
++
++                            _database.Add(CreatePreset(champId, champName, roleName, formattedName, 
+                                 pStyle, sStyle, perkIds.ToArray(), 
+                                 starts, cores, cores, new List<int>(), new List<int>(), spell1, spell2));
+                                 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

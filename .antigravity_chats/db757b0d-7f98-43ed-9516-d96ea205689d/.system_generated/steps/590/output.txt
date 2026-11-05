@@ -1,0 +1,35 @@
+
+The command exited with code 0.
+Output:
+WARNING: Resulting JSON is truncated as serialization has exceeded the set depth of 5.
+{
+  "accountId": 3618596441130400,
+  "itemSets": [
+    {
+      "associatedChampions": [],
+      "associatedMaps": [
+        11
+      ],
+      "blocks": [
+        {
+          "hideIfSummonerSpell": "",
+          "items": [
+            "@{count=1; id=1056}"
+          ],
+          "showIfSummonerSpell": "",
+          "type": "Test Block"
+        }
+      ],
+      "map": "any",
+      "mode": "any",
+      "preferredItemSlots": [],
+      "sortrank": 0,
+      "startedFrom": "blank",
+      "title": "Test App Set",
+      "type": "custom",
+      "uid": "lol-helper-app-set"
+    }
+  ],
+  "timestamp": 0
+}
+

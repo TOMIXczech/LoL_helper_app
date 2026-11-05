@@ -1,0 +1,14 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'crawler/blitz_crawler.py', LF will be replaced by CRLF the next time Git touches it
+[main 861cea1] style: replace text labels with CDragon role icons and DDragon summoner spell icons
+ 33 files changed, 4205666 insertions(+), 2194529 deletions(-)
+ create mode 100644 crawler/test_bugfix.json
+ create mode 100644 crawler/test_extra.json
+ delete mode 100644 inject_cs.ps1
+ delete mode 100644 inject_role.ps1
+ delete mode 100644 inject_xaml.ps1
+

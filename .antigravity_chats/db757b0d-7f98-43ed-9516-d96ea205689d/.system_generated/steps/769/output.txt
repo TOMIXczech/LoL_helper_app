@@ -1,0 +1,49 @@
+
+The command exited with code 0.
+Output:
+
+                      if (newId == null) itemIds.RemoveAt(index);
+                      else itemIds[index] = newId.Value;
+                      RenderItemBuilder(_activePreset);
+                      if (_activePreset != null && LcuApiClient.Instance.IsConnected)
+>                         await LcuApiClient.Instance.SetItemBuildAsync(_activePreset);
+                  });
+              };
+  
+              panel.Children.Add(border);
+  
+              if (showArrows && i < itemIds.Count - 1)
+              {
+                  var arrow = new TextBlock
+                  {
+                      Text = "?",
+                  if (newId != null) {
+                      itemIds.Add(newId.Value);
+                      RenderItemBuilder(_activePreset);
+                      if (_activePreset != null && LcuApiClient.Instance.IsConnected)
+>                         await LcuApiClient.Instance.SetItemBuildAsync(_activePreset);
+                  }
+              });
+          };
+          panel.Children.Add(addBtn);
+  
+          InteractiveItemBuilder.Children.Add(panel);
+      }
+  
+      private Border CreateIconBlock(string text, string fgColor, string bgColor)
+      {
+          bool success = await LcuApiClient.Instance.SetRunePageAsync(
+              selectedPreset.Name, selectedPreset.PrimaryStyleId, selectedPreset.SubStyleId, 
+selectedPreset.SelectedPerkIds
+          );
+          
+>         await LcuApiClient.Instance.SetItemBuildAsync(selectedBuild);
+  
+          if (success) { _lastPageHash = -1; await PollActiveRunesAsync(); }
+          
+          InjectRunesBtn.Content = "Inject Selected Preset";
+          InjectRunesBtn.IsEnabled = true;
+      }
+  }
+
+

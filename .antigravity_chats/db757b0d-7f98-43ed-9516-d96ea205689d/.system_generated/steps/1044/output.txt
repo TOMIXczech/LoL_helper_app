@@ -1,0 +1,54 @@
+
+The command exited with code 0.
+Output:
+{
+  "Aatrox": {
+    "JUNGLE": {
+      "Tier": 2,
+      "Win Rate": 0.5077481577806675,
+      "Win Rate Change": 0.007948157780667486,
+      "Pick Rate": 0.00510824859257455,
+      "Ban Rate": 0.0421286583374389,
+      "Matches": 18456,
+      "Builds": [
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.553776115762946,
+          "overall_matches": 12301,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 6068,
+          "starting_items_win_rate": 0.5576796308503625,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 10367,
+              "win_rate": 0.21672857012476288
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 10211,
+              "win_rate": 0.25696853737525926
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 6338,
+              "win_rate": 0.018156481227152077
+            },
+            {
+              "item": "Hubris",
+              "matches": 5546,
+              "win_rate": -0.07251583971121167
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 5108,
+              "win_rate": 0.012517824486275142
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+

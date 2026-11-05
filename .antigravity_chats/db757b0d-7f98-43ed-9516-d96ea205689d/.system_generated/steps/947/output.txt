@@ -1,0 +1,18 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -250,6 +250,12 @@
+         {
+             _activePreset = selectedBuild;
+             RenderItemBuilder(_activePreset);
++            
++            if (Spell1Combo.Items.Count > 0 && selectedBuild.Spell1Id > 0)
++                Spell1Combo.SelectedValue = selectedBuild.Spell1Id;
++                
++            if (Spell2Combo.Items.Count > 0 && selectedBuild.Spell2Id > 0)
++                Spell2Combo.SelectedValue = selectedBuild.Spell2Id;
+         }
+     }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

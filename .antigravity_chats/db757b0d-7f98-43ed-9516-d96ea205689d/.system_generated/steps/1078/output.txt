@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+[main e20c734] fix: correctly resolve absolute path to blitz_champions_data.json
+ 24 files changed, 15 insertions(+), 9 deletions(-)
+

@@ -1,0 +1,15 @@
+
+The command exited with code 0.
+Output:
+The template "WPF Application" was created successfully.
+
+Processing post-creation actions...
+Restoring C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj:
+  Determining projects to restore...
+  Restored C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj (in 51 ms).
+Restore succeeded.
+
+
+Project `LoLHelper.PCClient\LoLHelper.PCClient.csproj` added to the solution.
+Reference `..\LoLHelper.Core\LoLHelper.Core.csproj` added to the project.
+

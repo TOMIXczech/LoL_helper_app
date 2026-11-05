@@ -1,0 +1,16 @@
+
+The command exited with code 0.
+Output:
+
+    Directory: C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          04/10/2026    00:12           4653 BuildDatabaseService.cs
+-a---          04/10/2026    00:25           3741 ItemService.cs
+-a---          04/10/2026    00:34           7592 LcuApiClient.cs
+-a---          01/10/2026    19:31           3670 LockfileWatcher.cs
+-a---          01/10/2026    20:40           2934 PenguService.cs
+-a---          02/10/2026    00:24           6579 RuneService.cs
+
+

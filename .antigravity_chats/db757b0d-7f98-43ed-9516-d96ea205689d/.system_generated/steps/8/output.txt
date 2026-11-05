@@ -1,0 +1,16 @@
+
+The command exited with code 0.
+Output:
+
+    Directory: C:\Users\ufo\.gemini\antigravity\brain
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          06/05/2026    00:21                01340a53-5782-4f1d-b7eb-2c1e198804b4
+d----          13/05/2026    01:04                34f937f3-9496-4443-bad0-79d373d1e2f5
+d----          10/05/2026    18:06                73b44bed-f5bd-431c-b921-cc4c4e8e33fa
+d----          24/05/2026    10:15                a4e30ec1-f3cf-4e53-953f-cc2f53c4faae
+d----          01/10/2026    18:55                db757b0d-7f98-43ed-9516-d96ea205689d
+d----          05/05/2026    20:52                tempmediaStorage
+
+

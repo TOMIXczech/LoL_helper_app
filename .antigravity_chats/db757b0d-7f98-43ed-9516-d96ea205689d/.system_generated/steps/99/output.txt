@@ -1,0 +1,87 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/LcuApiClient.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/LockfileWatcher.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/OverlayWindow.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/OverlayWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main 2904c04] feat: setup main UI, LCU API client, and transparent Win32 overlay window
+ 75 files changed, 1477 insertions(+)
+ create mode 100644 LoLHelper.Core/LoLHelper.Core.csproj
+ create mode 100644 LoLHelper.Core/Services/LcuApiClient.cs
+ create mode 100644 LoLHelper.Core/Services/LockfileWatcher.cs
+ create mode 100644 LoLHelper.Core/bin/Debug/net9.0/LoLHelper.Core.deps.json
+ create mode 100644 LoLHelper.Core/bin/Debug/net9.0/LoLHelper.Core.dll
+ create mode 100644 LoLHelper.Core/bin/Debug/net9.0/LoLHelper.Core.pdb
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.AssemblyInfo.cs
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.AssemblyInfoInputs.cache
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.GeneratedMSBuildEditorConfig.editorconfig
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.GlobalUsings.g.cs
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.assets.cache
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.csproj.CoreCompileInputs.cache
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.csproj.FileListAbsolute.txt
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.dll
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.pdb
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/LoLHelper.Core.sourcelink.json
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/ref/LoLHelper.Core.dll
+ create mode 100644 LoLHelper.Core/obj/Debug/net9.0/refint/LoLHelper.Core.dll
+ create mode 100644 LoLHelper.Core/obj/LoLHelper.Core.csproj.nuget.dgspec.json
+ create mode 100644 LoLHelper.Core/obj/LoLHelper.Core.csproj.nuget.g.props
+ create mode 100644 LoLHelper.Core/obj/LoLHelper.Core.csproj.nuget.g.targets
+ create mode 100644 LoLHelper.Core/obj/project.assets.json
+ create mode 100644 LoLHelper.Core/obj/project.nuget.cache
+ create mode 100644 LoLHelper.PCClient/App.xaml
+ create mode 100644 LoLHelper.PCClient/App.xaml.cs
+ create mode 100644 LoLHelper.PCClient/AssemblyInfo.cs
+ create mode 100644 LoLHelper.PCClient/LoLHelper.PCClient.csproj
+ create mode 100644 LoLHelper.PCClient/MainWindow.xaml
+ create mode 100644 LoLHelper.PCClient/MainWindow.xaml.cs
+ create mode 100644 LoLHelper.PCClient/OverlayWindow.xaml
+ create mode 100644 LoLHelper.PCClient/OverlayWindow.xaml.cs
+ create mode 100644 LoLHelper.PCClient/bin/Debug/net9.0-windows/LoLHelper.Core.dll
+ create mode 100644 LoLHelper.PCClient/bin/Debug/net9.0-windows/LoLHelper.Core.pdb
+ create mode 100644 LoLHelper.PCClient/bin/Debug/net9.0-windows/LoLHelper.PCClient.deps.json
+ create mode 100644 LoLHelper.PCClient/bin/Debug/net9.0-windows/LoLHelper.PCClient.dll
+ create mode 100644 LoLHelper.PCClient/bin/Debug/net9.0-windows/LoLHelper.PCClient.exe
+ create mode 100644 LoLHelper.PCClient/bin/Debug/net9.0-windows/LoLHelper.PCClient.pdb
+ create mode 100644 LoLHelper.PCClient/bin/Debug/net9.0-windows/LoLHelper.PCClient.runtimeconfig.json
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/.NETCoreApp,Version=v9.0.AssemblyAttributes.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/App.g.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelpe.D3C3BA81.Up2Date
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.AssemblyInfo.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.AssemblyInfoInputs.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.GeneratedMSBuildEditorConfig.editorconfig
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.GlobalUsings.g.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.assets.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.csproj.AssemblyReference.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.csproj.CoreCompileInputs.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.csproj.FileListAbsolute.txt
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.dll
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.g.resources
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.genruntimeconfig.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.pdb
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient.sourcelink.json
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient_MarkupCompile.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient_v4et23yr_wpftmp.AssemblyInfo.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient_v4et23yr_wpftmp.AssemblyInfoInputs.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient_v4et23yr_wpftmp.GeneratedMSBuildEditorConfig.editorconfig
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient_v4et23yr_wpftmp.GlobalUsings.g.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient_v4et23yr_wpftmp.assets.cache
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/LoLHelper.PCClient_v4et23yr_wpftmp.sourcelink.json
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/MainWindow.baml
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/MainWindow.g.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/OverlayWindow.baml
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/OverlayWindow.g.cs
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/apphost.exe
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/ref/LoLHelper.PCClient.dll
+ create mode 100644 LoLHelper.PCClient/obj/Debug/net9.0-windows/refint/LoLHelper.PCClient.dll
+ create mode 100644 LoLHelper.PCClient/obj/LoLHelper.PCClient.csproj.nuget.dgspec.json
+ create mode 100644 LoLHelper.PCClient/obj/LoLHelper.PCClient.csproj.nuget.g.props
+ create mode 100644 LoLHelper.PCClient/obj/LoLHelper.PCClient.csproj.nuget.g.targets
+ create mode 100644 LoLHelper.PCClient/obj/project.assets.json
+ create mode 100644 LoLHelper.PCClient/obj/project.nuget.cache
+ create mode 100644 LoLHelper.sln
+

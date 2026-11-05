@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/MainWindow.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/PenguService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/DashboardView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/DashboardView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/MobilePairingView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/MobilePairingView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/PostMatchView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/PostMatchView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ScoutingView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ScoutingView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/SettingsView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/SettingsView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main 27b892f] feat: complete UI scaffolding for all planned features
+ 44 files changed, 684 insertions(+), 137 deletions(-)
+ create mode 100644 LoLHelper.Core/Services/PenguService.cs
+ create mode 100644 LoLHelper.PCClient/Views/ChampSelectView.xaml
+ create mode 100644 LoLHelper.PCClient/Views/ChampSelectView.xaml.cs
+ create mode 100644 LoLHelper.PCClient/Views/DashboardView.xaml
+ create mode 100644 LoLHelper.PCClient/Views/DashboardView.xaml.cs
+ create mode 100644 LoLHelper.PCClient/Views/MobilePairingView.xaml
+ create mode 100644 LoLHelper.PCClient/Views/MobilePairingView.xaml.cs
+ create mode 100644 LoLHelper.PCClient/Views/PostMatchView.xaml
+ create mode 100644 LoLHelper.PCClient/Views/PostMatchView.xaml.cs
+ create mode 100644 LoLHelper.PCClient/Views/ScoutingView.xaml
+ create mode 100644 LoLHelper.PCClient/Views/ScoutingView.xaml.cs
+ create mode 100644 LoLHelper.PCClient/Views/SettingsView.xaml
+ create mode 100644 LoLHelper.PCClient/Views/SettingsView.xaml.cs
+

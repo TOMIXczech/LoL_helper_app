@@ -1,0 +1,98 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -297,6 +297,92 @@
+         return border;
+     }
+ 
++    private void OpenItemPicker(Action<int?> callback)
++    {
++        _onItemPickedCallback = callback;
++        ItemPickerOverlay.Visibility = Visibility.Visible;
++        ItemSearchBox.Text = "";
++        PopulateItemPicker("");
++        ItemSearchBox.Focus();
++    }
++
++    private void CloseItemPicker_Click(object sender, RoutedEventArgs e)
++    {
++        ItemPickerOverlay.Visibility = Visibility.Collapsed;
++    }
++
++    private void ItemSearchBox_TextChanged(object sender, TextChangedEventArgs e)
++    {
++        PopulateItemPicker(ItemSearchBox.Text);
++    }
++
++    private void PopulateItemPicker(string filter)
++    {
++        if (!_itemPickerInitialized)
++        {
++            AllItemsWrapPanel.Children.Clear();
++            
++            var removeBtn = CreateIconBlock("-", "#BF616A", "#2D2D35");
++            removeBtn.MouseLeftButtonDown += (s, e) => {
++                ItemPickerOverlay.Visibility = Visibility.Collapsed;
++                _onItemPickedCallback?.Invoke(null);
++            };
++            removeBtn.Tag = "REMOVE";
++            AllItemsWrapPanel.Children.Add(removeBtn);
++
++            foreach (var item in ItemService.Instance.AllItems.OrderBy(x => x.Name))
++            {
++                var img = new Image
++                {
++                    Width = 40, Height = 40,
++                    Cursor = Cursors.Hand,
++                    ToolTip = new ToolTip { Content = item.Name, Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1C1C21")), Foreground = Brushes.White, BorderThickness = new Thickness(0) }
++                };
++                RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.HighQuality);
++                try { img.Source = new BitmapImage(new Uri(item.IconUrl)); } catch { }
++
++                img.MouseEnter += (s, e) => img.Opacity = 0.8;
++                img.MouseLeave += (s, e) => img.Opacity = 1.0;
++
++                var border = new Border
++                {
++                    BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3D3D45")),
++                    BorderThickness = new Thickness(1),
++                    CornerRadius = new CornerRadius(4),
++                    Margin = new Thickness(4),
++                    Child = img,
++                    Tag = item
++                };
++
++                int capturedId = item.Id;
++                border.MouseLeftButtonDown += (s, e) => {
++                    ItemPickerOverlay.Visibility = Visibility.Collapsed;
++                    _onItemPickedCallback?.Invoke(capturedId);
++                };
++
++                AllItemsWrapPanel.Children.Add(border);
++            }
++            _itemPickerInitialized = true;
++        }
++
++        filter = filter.ToLowerInvariant();
++        foreach (UIElement child in AllItemsWrapPanel.Children)
++        {
++            if (child is Border b)
++            {
++                if (b.Tag is string s && s == "REMOVE") 
++                {
++                    b.Visibility = Visibility.Visible;
++                }
++                else if (b.Tag is GameItem item)
++                {
++                    bool match = string.IsNullOrEmpty(filter) || item.Name.ToLowerInvariant().Contains(filter);
++                    b.Visibility = match ? Visibility.Visible : Visibility.Collapsed;
++                }
++            }
++        }
++    }
++
+     private void RenderRuneBuilder()
+     {
+         InteractiveRuneBuilder.Children.Clear();
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

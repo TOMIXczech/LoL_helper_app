@@ -1,0 +1,47 @@
+The search for ""item-sets" json "league of legends" github raw file" returned the following summary:
+Custom League of Legends item sets are JSON files that you can place in your game's configuration folder to have them appear in the in-game shop[1][2].
+
+### File Structure & Format
+To create a valid item set, your JSON file must follow a specific structure[1][2]. Below is the required format[1][2]:
+
+```json
+{
+  "title": "Your Set Name",
+  "type": "custom",
+  "map": "any",
+  "mode": "any",
+  "priority": false,
+  "sortrank": 0,
+  "blocks": [
+    {
+      "type": "Block Name",
+      "items": [
+        { "id": "1055", "count": 1 },
+        { "id": "1082", "count": 1 }
+      ]
+    }
+  ]
+}
+```
+
+### Where to Place the Files
+Once you have your JSON file, place it in the corresponding directory based on whether you want it to be global or champion-specific[1][2]:
+
+*   **Global Item Sets:**
+    `League of Legends\Config\Global\Recommended\`[1][2]
+*   **Champion-Specific Item Sets:**
+    `League of Legends\Config\Champions\{championKey}\Recommended\`[1][2]
+    *(Note: You can find champion keys using Riot's Data Dragon API[1][2].)*
+
+### Tools and Resources
+*   **LoL-ItemsJSON:** A GitHub project that provides a userscript to help export item builds from sites like Mobafire into the correct JSON format for the game client[3][4].
+*   **CommunityDragon:** For raw game data, including item IDs and assets, [raw.communitydragon.org](https://raw.communitydragon.org) is a primary resource used by developers[5][6].
+*   **In-Game Import:** Remember that the modern League of Legends client also allows you to copy JSON text to your clipboard and **Import Item Sets** directly via the **Collection > Items** tab, which is often easier than manual file placement[3].
+
+Sources:
+[1] [hextechdocs.dev](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEt30iu48Yw3kh8tUTsaWRtSgVPkZepI-IWhFB-p8LCiEmG1WLVRoUQcZNEV6IVMtT_7NDE4EyaHGRj0zV05oOBbrtLk6M56xTK91cXEwULWNGkIB-Cerv3)
+[2] [hextechdocs.dev](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEt30iu48Yw3kh8tUTsaWRtSgVPkZepI-IWhFB-p8LCiEmG1WLVRoUQcZNEV6IVMtT_7NDE4EyaHGRj0zV05oOBbrtLk6M56xTK91cXEwULWNGkIB-Cerv3)
+[3] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHuLcP03iV-eoXQ-1b9knnebBgLp0zYLU3MG9gIaGm8R05tcHvQAWNoUlw1OfMYnrVZMU6_EOMfD9zQkB_IOVa9GRS4ORv_7Xenn1aY_iH_hMvzQ0KzEGD8oQ0R_mmFQw==)
+[4] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHuLcP03iV-eoXQ-1b9knnebBgLp0zYLU3MG9gIaGm8R05tcHvQAWNoUlw1OfMYnrVZMU6_EOMfD9zQkB_IOVa9GRS4ORv_7Xenn1aY_iH_hMvzQ0KzEGD8oQ0R_mmFQw==)
+[5] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFFAHozVj4Lnj322xWDyrYct6_cUKdb5MuztACywFP4TlHeLiJi5t8SuH-of3BgeoWrENmIdwrxfa-JgrYqtWQN-Z2l9vJshhTJJc3w0D50X1iwDYZdUzO3MczwTrQddoBb17gRyKRDJ-Ai47Z4YsmeReK)
+[6] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFFAHozVj4Lnj322xWDyrYct6_cUKdb5MuztACywFP4TlHeLiJi5t8SuH-of3BgeoWrENmIdwrxfa-JgrYqtWQN-Z2l9vJshhTJJc3w0D50X1iwDYZdUzO3MczwTrQddoBb17gRyKRDJ-Ai47Z4YsmeReK)

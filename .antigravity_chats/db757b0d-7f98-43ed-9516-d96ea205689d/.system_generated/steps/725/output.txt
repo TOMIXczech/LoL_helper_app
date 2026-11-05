@@ -1,0 +1,63 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\RuneService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -94,17 +94,47 @@
+                 AllTrees.Add(newTree);
+             }
+ 
+-            // Stat Shards
++            // Fallback for missing/new runes and stat shards via Community Dragon
++            string cdragonPerksUrl = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json";
++            try 
++            {
++                var cdragonJson = await _http.GetStringAsync(cdragonPerksUrl);
++                using var cdragonDoc = JsonDocument.Parse(cdragonJson);
++                foreach (var perk in cdragonDoc.RootElement.EnumerateArray())
++                {
++                    if (perk.TryGetProperty("id", out var idProp) && perk.TryGetProperty("iconPath", out var iconProp))
++                    {
++                        int id = idProp.GetInt32();
++                        string iconPath = iconProp.GetString() ?? "";
++                        if (!string.IsNullOrEmpty(iconPath))
++                        {
++                            // Convert /lol-game-data/assets/... to Community Dragon URL format
++                            // Example: /lol-game-data/assets/v1/perk-images/Styles/Inspiration/FirstStrike/FirstStrike.png
++                            string cleanPath = iconPath.Replace("/lol-game-data/assets/", "").ToLower();
++                            string fullUrl = $"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{cleanPath}";
++                            
++                            // Only overwrite if it wasn't populated or if we want CDragon as reliable fallback
++                            if (!_runeImages.ContainsKey(id))
++                            {
++                                _runeImages[id] = fullUrl;
++                            }
++                        }
++                    }
++                }
++            }
++            catch { }
++
++            // Stat Shards manual fallbacks (just in case)
+             string cdragonBase = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/";
+-            _runeImages[5008] = cdragonBase + "statmodsadaptiveforceicon.png";
+-            _runeImages[5005] = cdragonBase + "statmodsattackspeedicon.png";
+-            _runeImages[5007] = cdragonBase + "statmodscdrscalingicon.png";
+-            _runeImages[5002] = cdragonBase + "statmodsarmoricon.png";
+-            _runeImages[5003] = cdragonBase + "statmodsmagicresicon.png";
+-            _runeImages[5001] = cdragonBase + "statmodshealthscalingicon.png";
+-            _runeImages[5011] = cdragonBase + "statmodshealthplusicon.png";
+-            _runeImages[5013] = cdragonBase + "statmodstenacityicon.png";
+-            _runeImages[5010] = cdragonBase + "statmodsmovementspeedicon.png";
++            if (!_runeImages.ContainsKey(5008)) _runeImages[5008] = cdragonBase + "statmodsadaptiveforceicon.png";
++            if (!_runeImages.ContainsKey(5005)) _runeImages[5005] = cdragonBase + "statmodsattackspeedicon.png";
++            if (!_runeImages.ContainsKey(5007)) _runeImages[5007] = cdragonBase + "statmodscdrscalingicon.png";
++            if (!_runeImages.ContainsKey(5002)) _runeImages[5002] = cdragonBase + "statmodsarmoricon.png";
++            if (!_runeImages.ContainsKey(5003)) _runeImages[5003] = cdragonBase + "statmodsmagicresicon.png";
++            if (!_runeImages.ContainsKey(5001)) _runeImages[5001] = cdragonBase + "statmodshealthscalingicon.png";
++            if (!_runeImages.ContainsKey(5011)) _runeImages[5011] = cdragonBase + "statmodshealthplusicon.png";
++            if (!_runeImages.ContainsKey(5013)) _runeImages[5013] = cdragonBase + "statmodstenacityicon.png";
++            if (!_runeImages.ContainsKey(5010)) _runeImages[5010] = cdragonBase + "statmodsmovementspeedicon.png";
+ 
+             _isInitialized = true;
+         }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

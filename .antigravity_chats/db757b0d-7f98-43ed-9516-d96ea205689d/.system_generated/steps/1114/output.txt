@@ -1,0 +1,44 @@
+
+The command exited with code 0.
+Output:
+                            if (buildData.TryGetProperty("starting_items", out var startsProp) && startsProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                            {
+                                foreach (var item in startsProp.EnumerateArray())
+                                {
+                                    var id = ItemService.Instance.GetItemIdByName(item.GetString() ?? "");
+                                    if (id.HasValue) starts.Add(id.Value);
+                                }
+                            }
+
+                            // Provide default starts if empty
+                            if (starts.Count == 0)
+                            {
+                                if (roleName == "JUNGLE") { starts.Add(1102); starts.Add(2003); }
+                                else if (roleName == "BOTTOM") { starts.Add(1055); starts.Add(2003); }
+                                else if (roleName == "UTILITY") { starts.Add(3864); starts.Add(2003); starts.Add(2003); }
+                                else { starts.Add(1056); starts.Add(2003); starts.Add(2003); }
+                            }
+
+                            var cores = new List<int>();
+                            if (buildData.TryGetProperty("core_items", out var coresProp) && coresProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                            {
+                                foreach (var item in coresProp.EnumerateArray())
+                                {
+                                    var id = ItemService.Instance.GetItemIdByName(item.GetString() ?? "");
+                                    if (id.HasValue) cores.Add(id.Value);
+                                }
+                            }
+
+                            // Pad cores to 6 items (as requested in the previous prompt, 7 for Support)
+                            int targetCount = (roleName == "BOTTOM" || roleName == "UTILITY") ? 7 : 6;
+                            if (roleName == "BOTTOM" || roleName == "UTILITY")
+                            {
+                                if (!cores.Contains(3864)) cores.Insert(0, 3864); // Runic Compass
+                                if (!cores.Contains(3364)) cores.Add(3364); // Oracle Lens
+                            }
+                            if (cores.Count < targetCount)
+                            {
+                                var defaults = new int[] { 3026, 3156, 3072, 3139, 3143, 3065 };
+                                foreach (var d in defaults)
+                                {
+

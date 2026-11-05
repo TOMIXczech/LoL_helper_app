@@ -1,0 +1,59 @@
+Command exited with code 0.
+
+Command output:
+
+crawler\blitz_crawler.py:7:class BlitzCrawler:
+crawler\blitz_crawler.py:16:        return 
+requests.get('https://ddragon.leagueoflegends.com/api/versions.json').json()[0]
+crawler\blitz_crawler.py:19:        res = 
+requests.get(f'https://ddragon.leagueoflegends.com/cdn/{self.version}/data/en_US/champion.json')
+crawler\blitz_crawler.py:27:        res = 
+requests.get(f'https://ddragon.leagueoflegends.com/cdn/{self.version}/data/en_US/item.json')
+crawler\blitz_crawler.py:32:        res = 
+requests.get(f'https://ddragon.leagueoflegends.com/cdn/{self.version}/data/en_US/runesReforged.json')
+crawler\blitz_crawler.py:43:        res = 
+requests.get(f'https://ddragon.leagueoflegends.com/cdn/{self.version}/data/en_US/summoner.json')
+crawler\blitz_crawler.py:48:        url = f"https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_postmatch
+_stats?queue_id=RANKED_SOLO_5X5&region=WORLD&tier=EMERALD%2B&champion_id={champ_id}&columns=all_roles_total_num_games%2
+Cban_num_games%2Cchampion_ban_rate%2Cchampion_id%2Cchampion_role_pickrate%2Cchampion_role_tier%2Cchampion_role_tier_fil
+tered%2Cgames%2Cindividual_position%2Cis_most_popular_role%2Cpatch%2Cpick_rate%2Cpostmatch_damage%2Cprevious_patch_stat
+s%2Cqueue_id%2Cregion%2Crole_champion_pickrate%2Crole_pct_games%2Crole_total_num_games%2Cstrong_against%2Ctier%2Ctotal_
+num_games%2Cweak_against%2Cwin_rate"
+crawler\blitz_crawler.py:63:        url_std = f"https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_build
+s?champion_id={champ_id}&queue_id=RANKED_SOLO_5X5&build_tier=Standard&individual_position={role_name}"
+crawler\blitz_crawler.py:64:        url_otp = f"https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_build
+s?champion_id={champ_id}&queue_id=RANKED_SOLO_5X5&is_otp=true&individual_position={role_name}"
+crawler\blitz_crawler.py:67:            url_otp += f"&match_up_champion_id={matchup_id}"
+crawler\blitz_crawler.py:79:            res_otp = requests.get(url_otp, timeout=10)
+crawler\blitz_crawler.py:80:            if res_otp.status_code == 200:
+crawler\blitz_crawler.py:81:                data_otp = res_otp.json().get('data', [])
+crawler\blitz_crawler.py:82:                all_builds.extend(data_otp)
+crawler\blitz_crawler.py:110:        otp_counter = 1
+crawler\blitz_crawler.py:113:            if str(bdata.get('is_otp', '')).lower() == 'true':
+crawler\blitz_crawler.py:114:                build_name = f"OTP Build {otp_counter}"
+crawler\blitz_crawler.py:115:                otp_counter += 1
+crawler\blitz_crawler.py:205:    def crawl(self, output_file=None, fetch_matchups=True, max_matchups=None):
+crawler\blitz_crawler.py:206:        if output_file is None:
+crawler\blitz_crawler.py:207:            output_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 
+'blitz_champions_data.json')
+crawler\blitz_crawler.py:267:            with open(output_file, 'w', encoding='utf-8') as f:
+crawler\blitz_crawler.py:270:        print(f"\nDone! Data saved to {output_file}")
+crawler\blitz_crawler.py:273:    crawler = BlitzCrawler()
+crawler\blitz_crawler.py:275:    crawler.crawl(fetch_matchups=True, max_matchups=None)
+crawler\inspect_api.py:4:stats_url = "https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_postmatch_stats
+?queue_id=RANKED_SOLO_5X5&region=WORLD&columns=all_roles_total_num_games%2Cban_num_games%2Cchampion_ban_rate%2Cchampion
+_id%2Cchampion_role_pickrate%2Cchampion_role_tier%2Cchampion_role_tier_filtered%2Cgames%2Cindividual_position%2Cis_most
+_popular_role%2Cpatch%2Cpick_rate%2Cpostmatch_damage%2Cprevious_patch_stats%2Cqueue_id%2Cregion%2Crole_champion_pickrat
+e%2Crole_pct_games%2Crole_total_num_games%2Cstrong_against%2Ctier%2Ctotal_num_games%2Cweak_against%2Cwin_rate&tier=EMER
+ALD%2B&champion_id=30"
+crawler\inspect_api.py:13:build_url = "https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_builds_tags?ch
+ampion_id=30&queue_id=RANKED_SOLO_5X5&build_tier=Standard&individual_position=BOTTOM"
+crawler\test_api.py:3:champion_stats_url = "https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_postmatch
+_stats?queue_id=RANKED_SOLO_5X5&region=WORLD&columns=all_roles_total_num_games%2Cban_num_games%2Cchampion_ban_rate%2Cch
+ampion_id%2Cchampion_role_pickrate%2Cchampion_role_tier%2Cchampion_role_tier_filtered%2Cgames%2Cindividual_position%2Ci
+s_most_popular_role%2Cpatch%2Cpick_rate%2Cpostmatch_damage%2Cprevious_patch_stats%2Cqueue_id%2Cregion%2Crole_champion_p
+ickrate%2Crole_pct_games%2Crole_total_num_games%2Cstrong_against%2Ctier%2Ctotal_num_games%2Cweak_against%2Cwin_rate&tie
+r=EMERALD%2B&champion_id=30"
+crawler\test_api.py:10:builds_url = "https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_builds_tags?cham
+pion_id=30&queue_id=RANKED_SOLO_5X5&build_tier=Standard&individual_position=BOT"
+

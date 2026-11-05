@@ -1,0 +1,13 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -44,7 +44,6 @@
+             await BuildDatabaseService.Instance.InitializeAsync();
+             // Default to Annie (1) if not in champ select to show it works
+             LoadPresetsForChampion(1);
+-            RenderItemBuilder();
+             
+             _pollTimer.Start();
+             await PollActiveRunesAsync();
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,54 @@
+
+The command exited with code 0.
+Output:
+{
+  "Aatrox": {
+    "JUNGLE": {
+      "Tier": 2,
+      "Win Rate": 0.5076120579850791,
+      "Win Rate Change": 0.007812057985079113,
+      "Pick Rate": 0.005120728623745558,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 16487,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Hubris",
+          "Plated Steelcaps",
+          "Sundered Sky"
+        ],
+        "runes": {
+          "keystone": "Conqueror",
+          "secondary_and_other": [
+            "Triumph",
+            "Legend: Haste",
+            "Last Stand",
+            "Cosmic Insight",
+            "Magical Footwear"
+          ]
+        }
+      }
+    },
+    "BOTTOM": {
+      "Tier": 4,
+      "Win Rate": 0.42857142857142855,
+      "Win Rate Change": -0.006095238095238098,
+      "Pick Rate": 6.739844188468406e-05,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 217,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Eclipse",
+          "Plated Steelcaps",
+          "Sundered Sky"
+        ],
+        "runes": {
+          "keystone": "Conqueror",
+          "secondary_and_other": [
+            "Triumph",
+            "Legend: Haste",
+            "Last Stand",
+            "Bone Plating",
+            "Revitalize"
+

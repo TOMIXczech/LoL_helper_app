@@ -1,0 +1,9 @@
+Task: db757b0d-7f98-43ed-9516-d96ea205689d/task-246
+Status: RUNNING
+Log: C:\Users\ufo\.gemini\antigravity\brain\db757b0d-7f98-43ed-9516-d96ea205689d\.system_generated\tasks\task-246.log
+Log output:
+<truncated 11 lines>
+P\LoLHelper.Core\bin\Debug\net9.0\LoLHelper.Core.dll" to "bin\Debug\net9.0-windows\LoLHelper.Core.dll". Beginning retry 8 in 1000ms. The process cannot access the file 'C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\bin\Debug\net9.0-windows\LoLHelper.Core.dll' because it is being used by another process. The file is locked by: "LoLHelper.PCClient (7340)" [C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj]
+C:\Program Files\dotnet\sdk\9.0.306\Microsoft.Common.CurrentVersion.targets(5093,5): warning MSB3026: Could not copy "C:\Users\ufo\Downloads\TP\LoLHelper.Core\bin\Debug\net9.0\LoLHelper.Core.dll" to "bin\Debug\net9.0-windows\LoLHelper.Core.dll". Beginning retry 9 in 1000ms. The process cannot access the file 'C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\bin\Debug\net9.0-windows\LoLHelper.Core.dll' because it is being used by another process. The file is locked by: "LoLHelper.PCClient (7340)" [C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj]
+
+Last progress: 0s ago

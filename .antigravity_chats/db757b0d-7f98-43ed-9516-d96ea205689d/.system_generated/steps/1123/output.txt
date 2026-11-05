@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+                                    spell1 = GetSpellId(sArr[0].GetString());
+                                    spell2 = GetSpellId(sArr[1].GetString());
+                                }
+                            }
+                            else
+                            {
+                                if (roleName == "JUNGLE") spell2 = 11;
+                                else if (roleName == "TOP") spell2 = 12;
+                                else if (roleName == "BOTTOM") spell2 = 7;
+                            }
+
+                            string buildName = buildData.TryGetProperty("build_name", out var bnProp) ? bnProp.GetString() ?? $"Blitz Core Build #{buildIndex}" : $"Blitz Core Build #{buildIndex}";
+                            double winRate = buildData.TryGetProperty("overall_win_rate", out var wrProp) ? wrProp.GetDouble() : 0.0;
+                            string formattedName = winRate > 0 ? $"{buildName} ({(winRate * 100):F1}% WR)" : buildName;
+
+                            _database.Add(CreatePreset(champId, champName, roleName, formattedName, 
+                                pStyle, sStyle, perkIds.ToArray(), 
+                                starts, cores, cores, new List<int>(), new List<int>(), spell1, spell2));
+                                
+                            buildIndex++;
+                        }
+                    }
+                }
+
+                else
+                {
+                    // Fallback
+                    _database.Add(CreatePreset(champId, champName, "Flex", "Standard Output", 
+                        8000, 8100, new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5008, 5002 },
+                        new List<int> { 1055, 2003 }, new List<int> { 1036, 1001, 3057, 3078, 3006, 1053, 1043, 3153 }, 
+

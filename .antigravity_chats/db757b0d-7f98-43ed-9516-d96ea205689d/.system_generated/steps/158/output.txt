@@ -1,0 +1,78 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\PenguService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -22,7 +22,7 @@
+             return Directory.Exists(_pluginsDirectory);
+         }
+ 
+-        public async Task InstallElainaV4Async()
++        public async Task InstallElainaV4Async(string? customImagePath = null)
+         {
+             if (!Directory.Exists(_pluginsDirectory))
+             {
+@@ -34,31 +34,47 @@
+                 Directory.CreateDirectory(elainaDir);
+             }
+ 
+-            // We will create the basic structure for the Elaina V4 theme
+-            // (Normally we would download the latest release from the ElainaV4 GitHub repo)
+             string indexJsPath = Path.Combine(elainaDir, "index.js");
+             string styleCssPath = Path.Combine(elainaDir, "style.css");
+ 
+-            // Simplified mock of the Elaina V4 entry point for demonstration
++            string bgUrl = "https://i.imgur.com/example-bg.jpg"; // Default fallback
++
++            // If user provided a custom image, copy it into the plugin folder
++            if (!string.IsNullOrEmpty(customImagePath) && File.Exists(customImagePath))
++            {
++                string ext = Path.GetExtension(customImagePath);
++                string newFileName = "custom-bg" + ext;
++                string destPath = Path.Combine(elainaDir, newFileName);
++                
++                File.Copy(customImagePath, destPath, overwrite: true);
++                
++                // Pengu Loader maps the plugins directory to the //plugins/ network path in the client
++                bgUrl = $"//plugins/elaina-theme/{newFileName}";
++                
++                // Note: Windows paths use backslashes, but URLs need forward slashes. 
++                // Using //plugins/ is the standard Pengu Loader asset routing.
++            }
++
+             string jsContent = @"
+-// Elaina V4 Theme - Bootstrapper
++// Custom Theme Bootstrapper (ElainaV4 Style)
+ import './style.css';
+-console.log('Elaina V4 Theme Loaded via LoL Helper!');
+-";
+-
+-            // Sleek transparent background CSS (Simulating ElainaV4 core visual changes)
+-            string cssContent = @"
+-:root {
+-    --background-url: url('https://i.imgur.com/example-bg.jpg'); /* User can change this */
+-}
+-.rcp-fe-viewport-root {
++console.log('Custom Theme Loaded via LoL Helper!');
++";
++
++            // CSS that overrides the main client background
++            string cssContent = $@"
++:root {{
++    --background-url: url('{bgUrl}');
++}}
++.rcp-fe-viewport-root {{
+     background-image: var(--background-url) !important;
+     background-size: cover !important;
+-}
+-.rcp-fe-lol-navigation {
++    background-position: center !important;
++}}
++.rcp-fe-lol-navigation {{
+     background: rgba(0, 0, 0, 0.5) !important;
+     backdrop-filter: blur(10px);
+-}
++}}
+ ";
+             await File.WriteAllTextAsync(indexJsPath, jsContent);
+             await File.WriteAllTextAsync(styleCssPath, cssContent);
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

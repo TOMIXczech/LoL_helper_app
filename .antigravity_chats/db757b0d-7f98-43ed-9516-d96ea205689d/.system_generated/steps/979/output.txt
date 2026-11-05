@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+
+>                             <ComboBox x:Name="Spell1Combo" SelectedIndex="0" DisplayMemberPath="Key" 
+SelectedValuePath="Value" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5"/>
+                              <ComboBox x:Name="Spell2Combo" Grid.Column="2" SelectedIndex="1" DisplayMemberPath="Key" 
+SelectedValuePath="Value" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5"/>
+                          </Grid>
+                          
+
+

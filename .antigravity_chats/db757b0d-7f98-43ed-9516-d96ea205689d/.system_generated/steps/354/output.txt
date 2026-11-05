@@ -1,0 +1,41 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\LcuApiClient.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -42,7 +42,7 @@
+         public async Task<string> GetCurrentSummonerAsync()
+         {
+             if (_credentials == null) throw new InvalidOperationException("Not connected to LCU.");
+-            var response = await _httpClient.GetAsync("/lol-summoner/v1/current-summoner");
++            var response = await _httpClient!.GetAsync("/lol-summoner/v1/current-summoner");
+             response.EnsureSuccessStatusCode();
+             return await response.Content.ReadAsStringAsync();
+         }
+@@ -49,7 +49,7 @@
+         public async Task<string> GetCurrentRunePageJsonAsync()
+         {
+             if (_credentials == null) return string.Empty;
+-            var response = await _httpClient.GetAsync("/lol-perks/v1/currentpage");
++            var response = await _httpClient!.GetAsync("/lol-perks/v1/currentpage");
+             if (!response.IsSuccessStatusCode) return string.Empty;
+             return await response.Content.ReadAsStringAsync();
+         }
+@@ -58,7 +58,7 @@
+         public async Task<bool> DeleteAllRunePagesAsync()
+         {
+             if (_credentials == null) return false;
+-            var response = await _httpClient.DeleteAsync("/lol-perks/v1/pages");
++            var response = await _httpClient!.DeleteAsync("/lol-perks/v1/pages");
+             return response.IsSuccessStatusCode;
+         }
+ 
+@@ -79,7 +79,7 @@
+             };
+ 
+             var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+-            var response = await _httpClient.PostAsync("/lol-perks/v1/pages", content);
++            var response = await _httpClient!.PostAsync("/lol-perks/v1/pages", content);
+             
+             return response.IsSuccessStatusCode;
+         }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

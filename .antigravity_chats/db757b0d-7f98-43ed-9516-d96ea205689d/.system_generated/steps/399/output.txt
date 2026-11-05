@@ -1,0 +1,55 @@
+
+The command exited with code 0.
+Output:
+      "name": "OnJsonApiEvent_lol-perks_v1_rune-recommender-auto-select",
+      "name": "GetLolPerksV1RecommendedChampionPositions",
+        "elementType": "LolPerksRecommendedPositionsMapResource",
+      "name": "GetLolPerksV1RecommendedPagesChampionByChampionIdPositionByPositionMapByMapId",
+        "elementType": "LolPerksPerkUIRecommendedPage",
+      "name": "GetLolPerksV1RecommendedPagesPositionChampionByChampionId",
+      "name": "GetLolPerksV1RuneRecommenderAutoSelect",
+      "name": "PostLolPerksV1RecommendedPagesPositionChampionByChampionIdPositionByPosition",
+      "name": "PostLolPerksV1RuneRecommenderAutoSelect",
+          "name": "NO_MORE_RECOMMEND",
+          "name": "runeRecommendations",
+          "type": "@{elementType=LolPerksRuneRecommendationGDSResource; type=vector}"
+      "name": "LolPerksChampionRuneRecommendationsGDSResource",
+          "name": "recommendationDescriptor",
+          "name": "recommendationDescriptorAttributes",
+          "name": "runeRecommendationId",
+          "name": "recommendationIndex",
+          "name": "isRecommendationOverride",
+          "name": "recommendationChampionId",
+          "name": "recommendationDescriptor",
+          "name": "primaryRecommendationAttribute",
+          "name": "secondaryRecommendationAttribute",
+          "name": "recommendationId",
+          "name": "isRecommendationOverride",
+          "name": "recommendationChampionId",
+      "name": "LolPerksPerkUIRecommendedPage",
+          "name": "recommendedPositions",
+      "name": "LolPerksRecommendedPositionsMapResource",
+          "name": "recommendationId",
+      "name": "LolPerksRuneRecommendationGDSResource",
+          "name": "recommended",
+          "name": "Recommended",
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+        "Plugin lol-item-sets"
+

@@ -1,0 +1,2 @@
+Created file file:///c:/Users/ufo/Downloads/TP/LoLHelper.PCClient/Views/MobilePairingView.xaml.cs with requested content.
+If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.

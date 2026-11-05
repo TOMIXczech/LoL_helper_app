@@ -1,0 +1,27 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -87,6 +87,21 @@
+         });
+     }
+ 
++    private async void InstallElainaBtn_Click(object sender, RoutedEventArgs e)
++    {
++        try
++        {
++            var pengu = new PenguService();
++            await pengu.InstallElainaV4Async();
++            MessageBox.Show("ElainaV4 Theme structure successfully installed into plugins folder!\n\n(Restart your League Client to see changes if Pengu Loader is active).", 
++                            "Pengu Loader", MessageBoxButton.OK, MessageBoxImage.Information);
++        }
++        catch (Exception ex)
++        {
++            MessageBox.Show("Error installing theme: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
++        }
++    }
++
+     private void ShowOverlayBtn_Click(object sender, RoutedEventArgs e)
+     {
+         if (_overlayWindow == null || !_overlayWindow.IsLoaded)
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

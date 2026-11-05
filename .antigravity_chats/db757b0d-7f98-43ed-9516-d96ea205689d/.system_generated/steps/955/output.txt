@@ -1,0 +1,16 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'crawler/blitz_crawler.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inject_cs.ps1', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inject_role.ps1', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inject_xaml.ps1', LF will be replaced by CRLF the next time Git touches it
+[main b4c9314] feat: add role filtering buttons, auto-role detection from champ select, and interactive summoner spell comboboxes
+ 31 files changed, 1074 insertions(+), 65 deletions(-)
+ create mode 100644 crawler/test_names.json
+ create mode 100644 inject_cs.ps1
+ create mode 100644 inject_role.ps1
+ create mode 100644 inject_xaml.ps1
+

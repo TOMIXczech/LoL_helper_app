@@ -1,0 +1,41 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -193,9 +193,34 @@
+                             double winRate = buildData.TryGetProperty("overall_win_rate", out var wrProp) ? wrProp.GetDouble() : 0.0;
+                             string formattedName = winRate > 0 ? $"{buildName} ({(winRate * 100):F1}% WR)" : buildName;
+ 
++                            var expandedCores = new List<int>();
++                            foreach (var cid in cores)
++                            {
++                                var gItem = ItemService.Instance.GetItem(cid);
++                                if (gItem != null && gItem.From != null)
++                                {
++                                    foreach (var fid in gItem.From)
++                                        if (!expandedCores.Contains(fid)) expandedCores.Add(fid);
++                                }
++                                if (!expandedCores.Contains(cid)) expandedCores.Add(cid);
++                            }
++
++                            var sitIds = new List<int>();
++                            if (buildData.TryGetProperty("situational_items", out var sitProp) && sitProp.ValueKind == System.Text.Json.JsonValueKind.Array)
++                            {
++                                foreach (var sitObj in sitProp.EnumerateArray())
++                                {
++                                    if (sitObj.TryGetProperty("item", out var itemNameProp))
++                                    {
++                                        var id = ItemService.Instance.GetItemIdByName(itemNameProp.GetString() ?? "");
++                                        if (id.HasValue && !sitIds.Contains(id.Value)) sitIds.Add(id.Value);
++                                    }
++                                }
++                            }
++
+                             _database.Add(CreatePreset(champId, champName, roleName, formattedName, 
+                                 pStyle, sStyle, perkIds.ToArray(), 
+-                                starts, cores, cores, new List<int>(), new List<int>(), spell1, spell2));
++                                starts, expandedCores, cores, sitIds, new List<int>(), spell1, spell2));
+                                 
+                             buildIndex++;
+                         }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

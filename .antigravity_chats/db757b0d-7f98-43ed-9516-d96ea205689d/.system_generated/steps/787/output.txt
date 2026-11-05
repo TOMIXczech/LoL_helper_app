@@ -1,0 +1,54 @@
+
+The command exited with code 0.
+Output:
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+
+namespace LoLHelper.Core.Services;
+
+public class GameItem
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public string IconUrl { get; set; } = string.Empty;
+    public int Gold { get; set; }
+}
+
+public class ItemService
+{
+    public static ItemService Instance { get; } = new ItemService();
+
+    private readonly HttpClient _http = new HttpClient();
+    public List<GameItem> AllItems { get; private set; } = new();
+    private Dictionary<int, GameItem> _itemDict = new();
+    private bool _isInitialized = false;
+
+    public async Task InitializeAsync()
+    {
+        if (_isInitialized) return;
+
+        try
+        {
+            var versionResponse = await _http.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json");
+            var versions = JsonSerializer.Deserialize<string[]>(versionResponse);
+            string latestVersion = versions?[0] ?? "14.1.1";
+
+            string itemsUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/item.json";
+            var itemsJson = await _http.GetStringAsync(itemsUrl);
+            
+            using var doc = JsonDocument.Parse(itemsJson);
+            var data = doc.RootElement.GetProperty("data");
+            
+            var itemsByName = new Dictionary<string, GameItem>();
+
+            foreach (var item in data.EnumerateObject())
+            {
+                if (int.TryParse(item.Name, out int itemId))
+                {
+                    var prop = item.Value;
+                    bool inStore = true;
+

@@ -1,0 +1,4 @@
+A1: (Recommended) Build a tiny, cheap proxy server just to hide the API key, keeping the app mostly client-side.
+A2: C# + WinUI 3 / WPF (Native Windows application. Very robust for Windows APIs and overlays, moderate RAM).
+A3: use same mechanic as blitz
+A4: Champion Select Assistant (Counter-picks, synergies, and automated rune importing)., Live match scouting (Ranks, winrates, and main champs of all players in the loading screen)., In-game Live Overlay (Level-up timers, objective timers, or live gold differences via the Live Client API)., Post-match analysis (CS/min, damage graphs, tracking personal progress).

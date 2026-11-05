@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main 086e77e] fix: champion presets fallback correctly adapts to the hovered/picked champion
+ 24 files changed, 24 insertions(+), 10 deletions(-)
+

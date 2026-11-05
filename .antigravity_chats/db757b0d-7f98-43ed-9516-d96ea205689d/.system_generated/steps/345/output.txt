@@ -1,0 +1,62 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -142,8 +142,8 @@
+                 foreach (var rune in slot.Runes)
+                 {
+                     bool isSelected = _selectedPerks.Contains(rune.Id);
+-                    var img = CreateClickableImage(rune.Icon, isKeystone ? 55 : 45, isSelected, () => OnRuneClicked(rune.Id, true));
+-                    img.Margin = new Thickness(isKeystone ? 15 : 10, 0, isKeystone ? 15 : 10, 0);
++                    var img = CreateClickableImage(rune.Icon, isKeystone ? 45 : 36, isSelected, () => OnRuneClicked(rune.Id, true));
++                    img.Margin = new Thickness(isKeystone ? 10 : 6, 0, isKeystone ? 10 : 6, 0);
+                     rowPanel.Children.Add(img);
+                 }
+                 primaryPanel.Children.Add(rowPanel);
+@@ -153,7 +153,7 @@
+         mainGrid.Children.Add(primaryPanel);
+ 
+         // --- MIDDLE: DIVIDER ---
+-        var divider = new Separator { Style = (Style)FindResource(ToolBar.SeparatorStyleKey), Margin = new Thickness(19, 0, 19, 0) };
++        var divider = new Separator { Style = (Style)FindResource(ToolBar.SeparatorStyleKey), Margin = new Thickness(10, 0, 10, 0) };
+         Grid.SetColumn(divider, 1);
+         mainGrid.Children.Add(divider);
+ 
+@@ -164,8 +164,8 @@
+         foreach (var tree in allTrees)
+         {
+             bool isPrimary = tree.Id == _primaryTreeId;
+-            var img = CreateClickableImage(tree.Icon, 30, tree.Id == _secondaryTreeId && !isPrimary, () => { if (!isPrimary) OnTreeClicked(tree.Id, false); });
+-            img.Margin = new Thickness(5);
++            var img = CreateClickableImage(tree.Icon, 28, tree.Id == _secondaryTreeId && !isPrimary, () => { if (!isPrimary) OnTreeClicked(tree.Id, false); });
++            img.Margin = new Thickness(4);
+             if (isPrimary)
+             {
+                 img.Visibility = Visibility.Collapsed;
+@@ -186,8 +186,8 @@
+                     // Copy ID for safe lambda capture
+                     int captureRuneId = rune.Id;
+                     bool isSelected = _selectedPerks.Contains(captureRuneId);
+-                    var img = CreateClickableImage(rune.Icon, 40, isSelected, () => OnRuneClicked(captureRuneId, false, captureSlotIndex));
+-                    img.Margin = new Thickness(10, 0, 10, 0);
++                    var img = CreateClickableImage(rune.Icon, 36, isSelected, () => OnRuneClicked(captureRuneId, false, captureSlotIndex));
++                    img.Margin = new Thickness(6, 0, 6, 0);
+                     rowPanel.Children.Add(img);
+                 }
+                 secondaryPanel.Children.Add(rowPanel);
+@@ -214,11 +214,11 @@
+                 bool isSelected = _selectedPerks.Count > 6 + captureShardIndex && _selectedPerks[6 + captureShardIndex] == captureShardId;
+                 
+                 string iconUrl = RuneService.Instance.GetImageUrl(captureShardId);
+-                var img = CreateClickableImage(iconUrl, 30, isSelected, () => OnShardClicked(captureShardId, captureShardIndex));
+-                img.Margin = new Thickness(8, 0, 8, 0);
++                var img = CreateClickableImage(iconUrl, 28, isSelected, () => OnShardClicked(captureShardId, captureShardIndex));
++                img.Margin = new Thickness(6, 0, 6, 0);
+                 
+                 // Hack to make shards look round like in client
+-                var border = new Border { CornerRadius = new CornerRadius(15), Background = Brushes.Transparent, Child = img };
++                var border = new Border { CornerRadius = new CornerRadius(14), Background = Brushes.Transparent, Child = img };
+                 rowPanel.Children.Add(border);
+             }
+             secondaryPanel.Children.Add(rowPanel);
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

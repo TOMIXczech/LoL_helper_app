@@ -1,0 +1,43 @@
+using System;
+using System.IO;
+using System.Windows;
+using System.Windows.Threading;
+
+namespace LoLHelper.PCClient;
+
+public partial class App : Application
+{
+    protected override void OnStartup(StartupEventArgs e)
+    {
+        base.OnStartup(e);
+
+        // Catch UI thread exceptions
+        DispatcherUnhandledException += App_DispatcherUnhandledException;
+        
+        // Catch background thread exceptions
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+    }
+
+    private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+    {
+        ShowCrashDump(e.Exception);
+        e.Handled = true; // Prevent the app from closing immediately
+    }
+
+    private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+    {
+        if (e.ExceptionObject is Exception ex)
+        {
+            ShowCrashDump(ex);
+        }
+    }
+
+    private void ShowCrashDump(Exception ex)
+    {
+        string logPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "crash_log.txt");
+        File.AppendAllText(logPath, $"[{DateTime.Now}] CRASH: {ex}\n\n");
+        
+        MessageBox.Show($"The application encountered an error but was saved from crashing.\n\nError: {ex.Message}\n\nFull details saved to:\n{logPath}", 
+            "Fatal Error Intercepted", MessageBoxButton.OK, MessageBoxImage.Error);
+    }
+}

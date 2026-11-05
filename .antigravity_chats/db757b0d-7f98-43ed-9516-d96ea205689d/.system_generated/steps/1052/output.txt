@@ -1,0 +1,33 @@
+
+The command exited with code 0.
+Output:
+
+      }
+  
+      private ChampionBuildPreset CreatePreset(int champId, string champName, string role, string buildName, 
+          int pStyle, int sStyle, int[] perks, List<int> starts, List<int> core, List<int> final, List<int> sit, 
+List<int> boots, int spell1 = 4, int spell2 = 14)
+      {
+>         return new ChampionBuildPreset
+          {
+              ChampionId = champId,
+              Role = role,
+              RunePreset = new RunePreset
+              {
+                  Name = $"{champName} - {buildName}",
+                  Description = $"{role} | {buildName}",
+                  PrimaryStyleId = pStyle,
+                  SubStyleId = sStyle,
+                  SelectedPerkIds = perks,
+                  PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(pStyle),
+                  SubStyleImageUrl = RuneService.Instance.GetImageUrl(sStyle),
+                  KeystoneImageUrl = RuneService.Instance.GetImageUrl(perks[0])
+              },
+              StartingItemIds = starts,
+              CoreBuildOrderIds = core,
+              CoreFinalBuildIds = final,
+              SituationalItemIds = sit,
+              BootsOptionsIds = boots,
+              Spell1Id = spell1,
+
+

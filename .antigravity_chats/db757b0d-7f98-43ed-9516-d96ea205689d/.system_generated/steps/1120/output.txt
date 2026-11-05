@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+                                }
+                            }
+
+                            // Pad cores to 6 items (as requested in the previous prompt, 7 for Support)
+                            int targetCount = (roleName == "BOTTOM" || roleName == "UTILITY") ? 7 : 6;
+                            if (roleName == "BOTTOM" || roleName == "UTILITY")
+                            {
+                                if (!cores.Contains(3864)) cores.Insert(0, 3864); // Runic Compass
+                                if (!cores.Contains(3364)) cores.Add(3364); // Oracle Lens
+                            }
+                            if (cores.Count < targetCount)
+                            {
+                                var defaults = new int[] { 3026, 3156, 3072, 3139, 3143, 3065 };
+                                foreach (var d in defaults)
+                                {
+                                    if (!cores.Contains(d)) cores.Add(d);
+                                    if (cores.Count >= targetCount) break;
+                                }
+                            }
+
+                            var perkIds = new List<int>();
+                            if (buildData.TryGetProperty("runes", out var runesData))
+                            {
+                                if (runesData.TryGetProperty("keystone", out var ksProp))
+                                {
+                                    var ksId = RuneService.Instance.GetPerkIdByName(ksProp.GetString() ?? "");
+                                    if (ksId.HasValue) perkIds.Add(ksId.Value);
+                                }
+                                if (runesData.TryGetProperty("secondary_and_other", out var secProp) && secProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                                {
+

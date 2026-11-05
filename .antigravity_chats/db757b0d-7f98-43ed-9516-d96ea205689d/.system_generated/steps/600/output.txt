@@ -1,0 +1,48 @@
+
+The command exited with code 0.
+Output:
+
+              };
+              
+              border.MouseLeftButtonDown += (s, e) => {
+>                 OpenItemPicker(newId => {
+                      if (newId == null) itemIds.RemoveAt(index);
+                      else itemIds[index] = newId.Value;
+                      RenderItemBuilder(_activePreset);
+                  });
+              };
+  
+              panel.Children.Add(border);
+  
+              if (showArrows && i < itemIds.Count - 1)
+              {
+          
+          var addBtn = CreateIconBlock("+", "#A3BE8C", "#2D2D35");
+          addBtn.MouseLeftButtonDown += (s, e) => {
+>             OpenItemPicker(newId => {
+                  if (newId != null) {
+                      itemIds.Add(newId.Value);
+                      RenderItemBuilder(_activePreset);
+                  }
+              });
+          };
+          panel.Children.Add(addBtn);
+  
+          InteractiveItemBuilder.Children.Add(panel);
+      }
+          return border;
+      }
+  
+>     private void OpenItemPicker(Action<int?> callback)
+      {
+          _onItemPickedCallback = callback;
+          ItemPickerOverlay.Visibility = Visibility.Visible;
+          ItemSearchBox.Text = "";
+          PopulateItemPicker("");
+          ItemSearchBox.Focus();
+      }
+  
+      private void CloseItemPicker_Click(object sender, RoutedEventArgs e)
+      {
+
+

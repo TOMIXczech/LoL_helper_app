@@ -1,0 +1,114 @@
+
+The command exited with code 0.
+Output:
+<truncated 7 lines>
+8014, 8226, 8236, 5005, 5008, 5002 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:61:                        new List<int> { 1055, 2003 }, new 
+List<int> { 6672, 3006, 3031 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:62:                        new List<int> { 6672, 3006, 3031, 3036, 
+3072, 3094 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:63:                        new List<int> { 3139, 3026, 6630 }, new 
+List<int> { 3006, 3111 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:64:                    ));
+> LoLHelper.Core\Services\BuildDatabaseService.cs:65:                    _database.Add(CreatePreset(champId, 
+champName, "ADC", "On-Hit DPS", 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:66:                        8000, 8400, new[] { 8010, 9111, 9104, 
+8299, 8473, 8453, 5005, 5008, 5002 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:67:                        new List<int> { 1055, 2003 }, new 
+List<int> { 6672, 3006, 3124 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:68:                        new List<int> { 6672, 3006, 3124, 3153, 
+3036, 6653 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:69:                        new List<int> { 3139, 3026, 3072 }, new 
+List<int> { 3006, 3047 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:70:                    ));
+  LoLHelper.Core\Services\BuildDatabaseService.cs:71:                }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:72:                else if (tags.Contains("Mage"))
+  LoLHelper.Core\Services\BuildDatabaseService.cs:73:                {
+> LoLHelper.Core\Services\BuildDatabaseService.cs:74:                    _database.Add(CreatePreset(champId, 
+champName, "Mid", "Burst Mage", 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:75:                        8100, 8200, new[] { 8112, 8126, 8138, 
+8106, 8226, 8236, 5008, 5008, 5002 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:76:                        new List<int> { 1056, 2003, 2003 }, new 
+List<int> { 6655, 3020, 4645 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:77:                        new List<int> { 6655, 3020, 4645, 3089, 
+3157, 3135 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:78:                        new List<int> { 3102, 3165, 3151 }, new 
+List<int> { 3020, 3158 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:79:                    ));
+  LoLHelper.Core\Services\BuildDatabaseService.cs:80:                }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:81:                else if (tags.Contains("Assassin"))
+  LoLHelper.Core\Services\BuildDatabaseService.cs:82:                {
+> LoLHelper.Core\Services\BuildDatabaseService.cs:83:                    _database.Add(CreatePreset(champId, 
+champName, "Jungle/Mid", "Lethality Assassin", 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:84:                        8100, 8000, new[] { 8128, 8143, 8138, 
+8105, 9111, 8014, 5008, 5008, 5002 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:85:                        new List<int> { 1039, 2003 }, new 
+List<int> { 3142, 3158, 6692 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:86:                        new List<int> { 3142, 3158, 6692, 6694, 
+6695, 3156 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:87:                        new List<int> { 3026, 3139, 6676 }, new 
+List<int> { 3158, 3111 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:88:                    ));
+  LoLHelper.Core\Services\BuildDatabaseService.cs:89:                }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:90:                else if (tags.Contains("Fighter"))
+  LoLHelper.Core\Services\BuildDatabaseService.cs:91:                {
+> LoLHelper.Core\Services\BuildDatabaseService.cs:92:                    _database.Add(CreatePreset(champId, 
+champName, "Top", "Bruiser Skirmisher", 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:93:                        8000, 8400, new[] { 8010, 9111, 9104, 
+8299, 8473, 8453, 5008, 5008, 5002 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:94:                        new List<int> { 1055, 2003 }, new 
+List<int> { 3078, 3111, 3153 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:95:                        new List<int> { 3078, 3111, 3153, 3053, 
+3143, 3193 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:96:                        new List<int> { 3026, 3065, 3075 }, new 
+List<int> { 3111, 3047 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:97:                    ));
+  LoLHelper.Core\Services\BuildDatabaseService.cs:98:                }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:99:                else if (tags.Contains("Tank"))
+  LoLHelper.Core\Services\BuildDatabaseService.cs:100:                {
+> LoLHelper.Core\Services\BuildDatabaseService.cs:101:                    _database.Add(CreatePreset(champId, 
+champName, "Top/Support", "Heavy Tank", 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:102:                        8400, 8000, new[] { 8437, 8446, 8429, 
+8451, 9111, 8299, 5002, 5002, 5001 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:103:                        new List<int> { 1054, 2003 }, new 
+List<int> { 6662, 3047, 3068 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:104:                        new List<int> { 6662, 3047, 3068, 3143, 
+3193, 3110 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:105:                        new List<int> { 3075, 4401, 3109 }, new 
+List<int> { 3047, 3111 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:106:                    ));
+  LoLHelper.Core\Services\BuildDatabaseService.cs:107:                }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:108:                else if (tags.Contains("Support"))
+  LoLHelper.Core\Services\BuildDatabaseService.cs:109:                {
+> LoLHelper.Core\Services\BuildDatabaseService.cs:110:                    _database.Add(CreatePreset(champId, 
+champName, "Support", "Enchanter", 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:111:                        8200, 8300, new[] { 8214, 8226, 8210, 
+8236, 8304, 8347, 5008, 5008, 5002 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:112:                        new List<int> { 3850, 2003, 2003 }, new 
+List<int> { 3158, 2065, 3107 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:113:                        new List<int> { 3850, 3158, 2065, 3107, 
+3504, 3222 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:114:                        new List<int> { 3110, 3165, 3026 }, new 
+List<int> { 3158, 3111 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:115:                    ));
+  LoLHelper.Core\Services\BuildDatabaseService.cs:116:                }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:117:                else 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:118:                {
+  LoLHelper.Core\Services\BuildDatabaseService.cs:119:                    // Generic Fallback
+> LoLHelper.Core\Services\BuildDatabaseService.cs:120:                    _database.Add(CreatePreset(champId, 
+champName, "Flex", "Standard Output", 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:121:                        8000, 8100, new[] { 8008, 9111, 9104, 
+8014, 8126, 8106, 5008, 5008, 5002 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:122:                        new List<int> { 1055, 2003 }, new 
+List<int> { 3078, 3006 }, 
+  LoLHelper.Core\Services\BuildDatabaseService.cs:123:                        new List<int> { 3078, 3006, 3153, 3026 },
+  LoLHelper.Core\Services\BuildDatabaseService.cs:124:                        new List<int> { 3026, 3156 }, new 
+List<int> { 3006, 3111 }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:125:                    ));
+  LoLHelper.Core\Services\BuildDatabaseService.cs:126:                }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:127:            }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:128:        }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:129:        catch { }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:130:    }
+
+

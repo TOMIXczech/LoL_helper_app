@@ -1,0 +1,13 @@
+
+The command exited with code 0.
+Output:
+
+          if (success) { _lastPageHash = -1; await PollActiveRunesAsync(); }
+          
+          InjectRunesBtn.Content = "Inject Selected Preset";
+>         InjectRunesBtn.IsEnabled = true;
+      private int _currentSpell1Id = 4;
+      private int _currentSpell2Id = 14;
+  
+
+

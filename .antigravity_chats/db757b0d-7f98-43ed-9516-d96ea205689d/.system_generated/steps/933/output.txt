@@ -1,0 +1,107 @@
+
+The command exited with code 0.
+Output:
+
+>             LoadPresetsForChampion(1);
+              
+              _pollTimer.Start();
+              await PollActiveRunesAsync();
+          }
+          catch (Exception ex)
+          {
+              MessageBox.Show("Failed to load data: " + ex.Message);
+          }
+      }
+  
+      private void OnUnloaded(object sender, RoutedEventArgs e)
+      {
+          _pollTimer.Stop();
+      }
+  
+      private int _lastHoveredChampId = -1;
+  
+>     private void LoadPresetsForChampion(int champId)
+      {
+          if (_lastHoveredChampId == champId) return;
+          _lastHoveredChampId = champId;
+          
+          var presets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
+          
+          if (!presets.Any())
+          {
+              HoveredChampText.Text = "AVAILABLE PRESETS (CUSTOM)";
+              presets.Add(new ChampionBuildPreset
+              {
+                  ChampionId = champId,
+                  RunePreset = new RunePreset
+                  {
+                      Name = $"Custom Champ {champId}",
+                      Description = "Create your own custom build",
+                      PrimaryStyleId = 8000,
+                      SubStyleId = 8100,
+                      SelectedPerkIds = new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5002, 5002 }
+                  },
+                  StartingItemIds = new System.Collections.Generic.List<int>(),
+                  CoreBuildOrderIds = new System.Collections.Generic.List<int>(),
+                  CoreFinalBuildIds = new System.Collections.Generic.List<int>(),
+                  SituationalItemIds = new System.Collections.Generic.List<int>(),
+                  BootsOptionsIds = new System.Collections.Generic.List<int>()
+              });
+          }
+          else
+          {
+              HoveredChampText.Text = $"AVAILABLE PRESETS (CHAMP {champId})";
+          }
+  
+          PresetsList.ItemsSource = presets;
+          if (presets.Any()) PresetsList.SelectedIndex = 0;
+      }
+  
+      private async Task PollActiveRunesAsync()
+      {
+          if (_isUpdating || !LcuApiClient.Instance.IsConnected) return;
+  
+>                                     LoadPresetsForChampion(champId);
+                                  }
+                                  break;
+                              }
+                          }
+                      }
+                  }
+              }
+  
+              // 2. Poll Runes
+              string json = await LcuApiClient.Instance.GetCurrentRunePageJsonAsync();
+              if (string.IsNullOrEmpty(json)) return;
+  
+              using var doc = JsonDocument.Parse(json);
+              var root = doc.RootElement;
+              
+              if (!root.TryGetProperty("id", out var idProp)) return;
+              if (!root.TryGetProperty("selectedPerkIds", out var perksArray)) return;
+              
+              int hash = idProp.GetInt32();
+              var newPerks = new List<int>();
+              foreach (var perk in perksArray.EnumerateArray())
+              {
+                  int p = perk.GetInt32();
+                  newPerks.Add(p);
+                  hash ^= p;
+              }
+              
+              int primary = root.TryGetProperty("primaryStyleId", out var pStyleProp) ? pStyleProp.GetInt32() : 0;
+              int sub = root.TryGetProperty("subStyleId", out var sStyleProp) ? sStyleProp.GetInt32() : 0;
+              hash ^= primary ^ sub;
+  
+              if (hash == _lastPageHash) return; // No change
+              
+              _lastPageHash = hash;
+              
+              _activePageName = root.TryGetProperty("name", out var nameProp) ? nameProp.GetString() ?? "Custom Page" 
+: "Custom Page";
+              _primaryTreeId = primary;
+              _secondaryTreeId = sub;
+              _selectedPerks = newPerks;
+  
+
+

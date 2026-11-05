@@ -1,0 +1,24 @@
+
+The command exited with code 0.
+Output:
+            var content = sr.ReadToEnd();
+
+            // Format: process:pid:port:password:protocol
+            var parts = content.Split(':');
+            if (parts.Length == 5)
+            {
+                return new LcuCredentials
+                {
+                    ProcessName = parts[0],
+                    ProcessId = int.Parse(parts[1]),
+                    Port = int.Parse(parts[2]),
+                    Password = parts[3],
+                    Protocol = parts[4]
+                };
+            }
+
+            return null;
+        }
+    }
+}
+

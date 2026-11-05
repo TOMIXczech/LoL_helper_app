@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+            using var doc = JsonDocument.Parse(itemsJson);
+            var data = doc.RootElement.GetProperty("data");
+            
+            var itemsByName = new Dictionary<string, GameItem>();
+
+            foreach (var item in data.EnumerateObject())
+            {
+                if (int.TryParse(item.Name, out int itemId))
+                {
+                    var prop = item.Value;
+                    bool inStore = true;
+                    if (prop.TryGetProperty("inStore", out var inStoreProp)) {
+                        inStore = inStoreProp.GetBoolean();
+                    }
+                    if (!inStore) continue;
+
+                    if (prop.TryGetProperty("maps", out var mapsProp) && mapsProp.TryGetProperty("11", out var map11Prop))
+                    {
+                        if (!map11Prop.GetBoolean()) continue;
+                    }
+
+                    var gold = prop.GetProperty("gold").GetProperty("total").GetInt32();
+                    if (gold < 150) continue; // Filter out weird tokens
+
+                    var itemName = prop.GetProperty("name").GetString() ?? "";
+
+                    var newItem = new GameItem
+                    {
+                        Id = itemId,
+                        Name = itemName,
+

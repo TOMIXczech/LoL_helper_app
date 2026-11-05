@@ -1,0 +1,220 @@
+Command exited with code 0.
+
+Command output:
+
+LoLHelper.Core\Services\BuildDatabaseService.cs:39:            using var http = new System.Net.Http.HttpClient();
+LoLHelper.Core\Services\BuildDatabaseService.cs:40:            var versionResponse = await 
+http.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json");
+LoLHelper.Core\Services\BuildDatabaseService.cs:44:            string champsUrl = 
+$"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/champion.json";
+LoLHelper.Core\Services\BuildDatabaseService.cs:45:            var champsJson = await http.GetStringAsync(champsUrl);
+LoLHelper.Core\Services\BuildDatabaseService.cs:48:            var data = doc.RootElement.GetProperty("data");
+LoLHelper.Core\Services\BuildDatabaseService.cs:50:                        // Look for blitz_champions_data.json
+LoLHelper.Core\Services\BuildDatabaseService.cs:52:                
+@"C:\Users\ufo\Downloads\TP\crawler\blitz_champions_data.json",
+LoLHelper.Core\Services\BuildDatabaseService.cs:53:                
+System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "blitz_champions_data.json"),
+LoLHelper.Core\Services\BuildDatabaseService.cs:54:                
+System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "crawler", 
+"blitz_champions_data.json")
+LoLHelper.Core\Services\BuildDatabaseService.cs:57:            string blitzPath = possiblePaths.FirstOrDefault(p => 
+System.IO.File.Exists(p)) ?? "";
+LoLHelper.Core\Services\BuildDatabaseService.cs:58:            System.Text.Json.JsonElement blitzRoot = default;
+LoLHelper.Core\Services\BuildDatabaseService.cs:59:            if (!string.IsNullOrEmpty(blitzPath) && 
+System.IO.File.Exists(blitzPath))
+LoLHelper.Core\Services\BuildDatabaseService.cs:61:                var blitzJson = 
+System.IO.File.ReadAllText(blitzPath);
+LoLHelper.Core\Services\BuildDatabaseService.cs:62:                using var blitzDocObj = 
+System.Text.Json.JsonDocument.Parse(blitzJson);
+LoLHelper.Core\Services\BuildDatabaseService.cs:63:                blitzRoot = blitzDocObj.RootElement.Clone();
+LoLHelper.Core\Services\BuildDatabaseService.cs:66:            var blitzDict = new 
+System.Collections.Generic.Dictionary<string, System.Text.Json.JsonElement>();
+LoLHelper.Core\Services\BuildDatabaseService.cs:67:            if (blitzRoot.ValueKind == 
+System.Text.Json.JsonValueKind.Object)
+LoLHelper.Core\Services\BuildDatabaseService.cs:69:                foreach (var blitzChamp in 
+blitzRoot.EnumerateObject())
+LoLHelper.Core\Services\BuildDatabaseService.cs:71:                    string cleanName = new 
+string(System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Where(blitzChamp.Name, c => 
+char.IsLetterOrDigit(c)))).ToLower();
+LoLHelper.Core\Services\BuildDatabaseService.cs:72:                    blitzDict[cleanName] = blitzChamp.Value;
+LoLHelper.Core\Services\BuildDatabaseService.cs:79:                int champId = 
+int.Parse(prop.GetProperty("key").GetString() ?? "0");
+LoLHelper.Core\Services\BuildDatabaseService.cs:80:                string champName = 
+prop.GetProperty("name").GetString() ?? "Unknown";
+LoLHelper.Core\Services\BuildDatabaseService.cs:83:                                if 
+(blitzDict.TryGetValue(cleanName, out var rolesElement))
+LoLHelper.Core\Services\BuildDatabaseService.cs:88:                        if 
+(!roleProp.Value.TryGetProperty("Builds", out var buildsData) || buildsData.ValueKind != 
+System.Text.Json.JsonValueKind.Array) continue;
+LoLHelper.Core\Services\BuildDatabaseService.cs:96:                            if 
+(buildData.TryGetProperty("starting_items", out var startsProp) && startsProp.ValueKind == 
+System.Text.Json.JsonValueKind.Array)
+LoLHelper.Core\Services\BuildDatabaseService.cs:115:                            if 
+(buildData.TryGetProperty("core_items", out var coresProp) && coresProp.ValueKind == 
+System.Text.Json.JsonValueKind.Array)
+LoLHelper.Core\Services\BuildDatabaseService.cs:142:                            if (buildData.TryGetProperty("runes", 
+out var runesData))
+LoLHelper.Core\Services\BuildDatabaseService.cs:144:                                if 
+(runesData.TryGetProperty("keystone", out var ksProp))
+LoLHelper.Core\Services\BuildDatabaseService.cs:146:                                    var ksId = 
+RuneService.Instance.GetPerkIdByName(ksProp.GetString() ?? "");
+LoLHelper.Core\Services\BuildDatabaseService.cs:149:                                if 
+(runesData.TryGetProperty("secondary_and_other", out var secProp) && secProp.ValueKind == 
+System.Text.Json.JsonValueKind.Array)
+LoLHelper.Core\Services\BuildDatabaseService.cs:153:                                        var id = 
+RuneService.Instance.GetPerkIdByName(sec.GetString() ?? "");
+LoLHelper.Core\Services\BuildDatabaseService.cs:176:                            if 
+(buildData.TryGetProperty("summoner_spells", out var spellsProp) && spellsProp.ValueKind == 
+System.Text.Json.JsonValueKind.Array)
+LoLHelper.Core\Services\BuildDatabaseService.cs:192:                            string buildName = 
+buildData.TryGetProperty("build_name", out var bnProp) ? bnProp.GetString() ?? $"Blitz Core Build #{buildIndex}" : 
+$"Blitz Core Build #{buildIndex}";
+LoLHelper.Core\Services\BuildDatabaseService.cs:193:                            double winRate = 
+buildData.TryGetProperty("overall_win_rate", out var wrProp) ? wrProp.GetDouble() : 0.0;
+LoLHelper.Core\Services\BuildDatabaseService.cs:209:                            if 
+(buildData.TryGetProperty("situational_items", out var sitProp) && sitProp.ValueKind == 
+System.Text.Json.JsonValueKind.Array)
+LoLHelper.Core\Services\BuildDatabaseService.cs:211:                                foreach (var sitObj in 
+sitProp.EnumerateArray())
+LoLHelper.Core\Services\BuildDatabaseService.cs:213:                                    if 
+(sitObj.TryGetProperty("item", out var itemNameProp))
+LoLHelper.Core\Services\BuildDatabaseService.cs:233:                    _database.Add(CreatePreset(champId, champName, 
+"Flex", "Standard Output", 
+LoLHelper.Core\Services\BuildDatabaseService.cs:273:    public List<ChampionBuildPreset> GetPresetsForChampion(int 
+championId)
+LoLHelper.Core\Services\ItemService.cs:3:using System.Net.Http;
+LoLHelper.Core\Services\ItemService.cs:23:    private readonly HttpClient _http = new HttpClient();
+LoLHelper.Core\Services\ItemService.cs:34:            var versionResponse = await 
+_http.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json");
+LoLHelper.Core\Services\ItemService.cs:38:            string itemsUrl = 
+$"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/item.json";
+LoLHelper.Core\Services\ItemService.cs:39:            var itemsJson = await _http.GetStringAsync(itemsUrl);
+LoLHelper.Core\Services\ItemService.cs:42:            var data = doc.RootElement.GetProperty("data");
+LoLHelper.Core\Services\ItemService.cs:52:                    if (prop.TryGetProperty("inStore", out var inStoreProp)) 
+{
+LoLHelper.Core\Services\ItemService.cs:57:                    if (prop.TryGetProperty("maps", out var mapsProp) && 
+mapsProp.TryGetProperty("11", out var map11Prop))
+LoLHelper.Core\Services\ItemService.cs:62:                    var gold = 
+prop.GetProperty("gold").GetProperty("total").GetInt32();
+LoLHelper.Core\Services\ItemService.cs:65:                    var itemName = prop.GetProperty("name").GetString() ?? 
+"";
+LoLHelper.Core\Services\ItemService.cs:68:                    if (prop.TryGetProperty("from", out var fromProp) && 
+fromProp.ValueKind == JsonValueKind.Array)
+LoLHelper.Core\Services\ItemService.cs:80:                        Description = 
+prop.GetProperty("plaintext").GetString() ?? "",
+LoLHelper.Core\Services\ItemService.cs:81:                        IconUrl = $"https://ddragon.leagueoflegends.com/cdn/{
+latestVersion}/img/item/{prop.GetProperty("image").GetProperty("full").GetString()}",
+LoLHelper.Core\Services\LcuApiClient.cs:2:using System.Net.Http;
+LoLHelper.Core\Services\LcuApiClient.cs:3:using System.Net.Http.Headers;
+LoLHelper.Core\Services\LcuApiClient.cs:12:        private HttpClient? _httpClient;
+LoLHelper.Core\Services\LcuApiClient.cs:24:            _httpClient?.Dispose();
+LoLHelper.Core\Services\LcuApiClient.cs:26:            var handler = new HttpClientHandler
+LoLHelper.Core\Services\LcuApiClient.cs:31:            _httpClient = new HttpClient(handler)
+LoLHelper.Core\Services\LcuApiClient.cs:36:            _httpClient.DefaultRequestHeaders.Authorization = new 
+AuthenticationHeaderValue("Basic", 
+LoLHelper.Core\Services\LcuApiClient.cs:45:            var response = await 
+_httpClient!.GetAsync("/lol-summoner/v1/current-summoner");
+LoLHelper.Core\Services\LcuApiClient.cs:53:            var response = await 
+_httpClient!.GetAsync("/lol-perks/v1/currentpage");
+LoLHelper.Core\Services\LcuApiClient.cs:61:            var response = await 
+_httpClient!.GetAsync("/lol-champ-select/v1/session");
+LoLHelper.Core\Services\LcuApiClient.cs:73:            var response = await 
+_httpClient!.PatchAsync("/lol-champ-select/v1/session/my-selection", content);
+LoLHelper.Core\Services\LcuApiClient.cs:82:            var response = await 
+_httpClient!.DeleteAsync("/lol-perks/v1/pages");
+LoLHelper.Core\Services\LcuApiClient.cs:104:            var response = await 
+_httpClient!.PostAsync("/lol-perks/v1/pages", content);
+LoLHelper.Core\Services\PenguService.cs:3:using System.Net.Http;
+LoLHelper.Core\Services\PenguService.cs:41:            string bgUrl = "https://i.imgur.com/example-bg.jpg"; // Default 
+fallback
+LoLHelper.Core\Services\PenguService.cs:48:                string destPath = Path.Combine(elainaDir, newFileName);
+LoLHelper.Core\Services\PenguService.cs:50:                File.Copy(customImagePath, destPath, overwrite: true);
+LoLHelper.Core\Services\RuneService.cs:3:using System.Net.Http;
+LoLHelper.Core\Services\RuneService.cs:46:    private readonly HttpClient _http = new HttpClient();
+LoLHelper.Core\Services\RuneService.cs:47:    private const string DDragonVersionUrl = 
+"https://ddragon.leagueoflegends.com/api/versions.json";
+LoLHelper.Core\Services\RuneService.cs:59:            var versionResponse = await 
+_http.GetStringAsync(DDragonVersionUrl);
+LoLHelper.Core\Services\RuneService.cs:63:            string runesUrl = 
+$"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/runesReforged.json";
+LoLHelper.Core\Services\RuneService.cs:64:            var runesJson = await _http.GetStringAsync(runesUrl);
+LoLHelper.Core\Services\RuneService.cs:71:                    Id = tree.GetProperty("id").GetInt32(),
+LoLHelper.Core\Services\RuneService.cs:72:                    Name = tree.GetProperty("name").GetString() ?? "",
+LoLHelper.Core\Services\RuneService.cs:73:                    Icon = 
+$"https://ddragon.leagueoflegends.com/cdn/img/{tree.GetProperty("icon").GetString()}"
+LoLHelper.Core\Services\RuneService.cs:78:                foreach (var slot in 
+tree.GetProperty("slots").EnumerateArray())
+LoLHelper.Core\Services\RuneService.cs:81:                    foreach (var rune in 
+slot.GetProperty("runes").EnumerateArray())
+LoLHelper.Core\Services\RuneService.cs:85:                            Id = rune.GetProperty("id").GetInt32(),
+LoLHelper.Core\Services\RuneService.cs:86:                            Name = rune.GetProperty("name").GetString() ?? 
+"",
+LoLHelper.Core\Services\RuneService.cs:87:                            Icon = 
+$"https://ddragon.leagueoflegends.com/cdn/img/{rune.GetProperty("icon").GetString()}"
+LoLHelper.Core\Services\RuneService.cs:98:            string cdragonPerksUrl = 
+"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perks.json";
+LoLHelper.Core\Services\RuneService.cs:101:                var cdragonJson = await 
+_http.GetStringAsync(cdragonPerksUrl);
+LoLHelper.Core\Services\RuneService.cs:105:                    if (perk.TryGetProperty("id", out var idProp) && 
+perk.TryGetProperty("iconPath", out var iconProp))
+LoLHelper.Core\Services\RuneService.cs:114:                            string fullUrl = 
+$"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/{cleanPath}";
+LoLHelper.Core\Services\RuneService.cs:128:            string cdragonBase = 
+"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/";
+LoLHelper.Core\Services\RuneService.cs:149:    public int? GetPerkIdByName(string name)
+LoLHelper.Core\Services\RuneService.cs:181:    public async Task<List<RunePreset>> GetPresetsAsync()
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:20:    private int _lastPageHash = -1;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:30:    private List<ChampionBuildPreset> _allCurrentPresets = new();
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:41:        new SummonerSpellModel { Id = 1, Name = "Cleanse", IconUrl 
+= "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerBoost.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:42:        new SummonerSpellModel { Id = 3, Name = "Exhaust", IconUrl 
+= "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerExhaust.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:43:        new SummonerSpellModel { Id = 4, Name = "Flash", IconUrl = 
+"https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerFlash.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:44:        new SummonerSpellModel { Id = 6, Name = "Ghost", IconUrl = 
+"https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerHaste.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:45:        new SummonerSpellModel { Id = 7, Name = "Heal", IconUrl = 
+"https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerHeal.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:46:        new SummonerSpellModel { Id = 11, Name = "Smite", IconUrl 
+= "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerSmite.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:47:        new SummonerSpellModel { Id = 12, Name = "Teleport", 
+IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerTeleport.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:48:        new SummonerSpellModel { Id = 14, Name = "Ignite", IconUrl 
+= "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerDot.png" },
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:49:        new SummonerSpellModel { Id = 21, Name = "Barrier", 
+IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerBarrier.png" }
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:94:        _allCurrentPresets = 
+BuildDatabaseService.Instance.GetPresetsForChampion(champId);
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:96:        if (!_allCurrentPresets.Any())
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:99:            _allCurrentPresets.Add(new ChampionBuildPreset
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:146:            ? _allCurrentPresets 
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:147:            : _allCurrentPresets.Where(p => 
+p.Role.Equals(_currentRoleFilter, StringComparison.OrdinalIgnoreCase)).ToList();
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:166:                if (sRoot.TryGetProperty("localPlayerCellId", out 
+var cellIdProp))
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:169:                    if (sRoot.TryGetProperty("myTeam", out var 
+myTeamProp))
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:173:                            if (p.TryGetProperty("cellId", out 
+var pCell) && pCell.GetInt32() == myCell)
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:175:                                int champId = 
+p.TryGetProperty("championId", out var cId) ? cId.GetInt32() : 0;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:176:                                if (champId == 0) champId = 
+p.TryGetProperty("championPickIntent", out var intentId) ? intentId.GetInt32() : 0;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:178:                                string assignedRole = 
+p.TryGetProperty("assignedPosition", out var pos) ? pos.GetString() ?? "" : "";
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:221:            if (!root.TryGetProperty("id", out var idProp)) 
+return;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:222:            if (!root.TryGetProperty("selectedPerkIds", out var 
+perksArray)) return;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:233:            int primary = root.TryGetProperty("primaryStyleId", 
+out var pStyleProp) ? pStyleProp.GetInt32() : 0;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:234:            int sub = root.TryGetProperty("subStyleId", out var 
+sStyleProp) ? sStyleProp.GetInt32() : 0;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:237:            if (hash == _lastPageHash) return; // No change
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:239:            _lastPageHash = hash;
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:241:            _activePageName = root.TryGetProperty("name", out var 
+nameProp) ? nameProp.GetString() ?? "Custom Page" : "Custom Page";
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:766:        _lastPageHash = -1; // Force next poll to refresh
+LoLHelper.PCClient\Views\ChampSelectView.xaml.cs:790:        if (success) { _lastPageHash = -1; await 
+PollActiveRunesAsync(); }
+

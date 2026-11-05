@@ -1,0 +1,1207 @@
+{
+  "Karthus": {
+    "JUNGLE": {
+      "Tier": 3,
+      "Win Rate": 0.48757790489200037,
+      "Win Rate Change": 0.0013589724733928943,
+      "Pick Rate": 0.007275925804565018,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 23426,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5395192217753251,
+          "matches": 10691,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5137748882568062,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5141899115560307
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.5409334353481254,
+          "matches": 3921,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5542838093121458,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Triumph",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5317865758478786
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Sorcerer's Shoes"
+          ],
+          "win_rate": 0.5399419026870007,
+          "matches": 2754,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.5123168069847209,
+            "secondary_and_other": [
+              "Cash Back",
+              "Sixth Sense",
+              "Treasure Hunter",
+              "Coup de Grace",
+              "Presence of Mind"
+            ]
+          },
+          "summoner_spells": [
+            "Smite",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5647002854424358
+        }
+      ],
+      "Matchups": {
+        "Aatrox": [
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Sorcerer's Shoes",
+              "Shadowflame"
+            ],
+            "win_rate": 0.49154411764705885,
+            "matches": 50,
+            "runes": {
+              "keystone": "Dark Harvest",
+              "keystone_win_rate": 0.4370470588235294,
+              "secondary_and_other": [
+                "Cheap Shot",
+                "Grisly Mementos",
+                "Ultimate Hunter",
+                "Axiom Arcanist",
+                "Gathering Storm"
+              ]
+            },
+            "summoner_spells": [
+              "Exhaust",
+              "Smite"
+            ],
+            "summoner_spells_win_rate": 0.4657720588235294
+          },
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Sorcerer's Shoes",
+              "Liandry's Torment"
+            ],
+            "win_rate": 0.46436323529411766,
+            "matches": 17,
+            "runes": {
+              "keystone": "Deathfire Touch",
+              "keystone_win_rate": 0.5000676470588236,
+              "secondary_and_other": [
+                "Axiom Arcanist",
+                "Absolute Focus",
+                "Gathering Storm",
+                "Triumph",
+                "Last Stand"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Smite"
+            ],
+            "summoner_spells_win_rate": 0.44818823529411767
+          }
+        ]
+      }
+    },
+    "TOP": {
+      "Tier": 4,
+      "Win Rate": 0.4745260663507109,
+      "Win Rate Change": 0.01676876988373699,
+      "Pick Rate": 0.0005242791239693396,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 1688,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5384615384615384,
+          "matches": 442,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5509838998211091,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5457875457875457
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.4915254237288136,
+          "matches": 236,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5111464968152867,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5171717171717172
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Sorcerer's Shoes"
+          ],
+          "win_rate": 0.5343511450381679,
+          "matches": 131,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.5212355212355212,
+            "secondary_and_other": [
+              "Manaflow Band",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Last Stand",
+              "Coup de Grace"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5025641025641026
+        }
+      ],
+      "Matchups": {
+        "Aatrox": [
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Sorcerer's Shoes",
+              "Shadowflame"
+            ],
+            "win_rate": 0.4404772727272728,
+            "matches": 10,
+            "runes": {
+              "keystone": "Deathfire Touch",
+              "keystone_win_rate": 0.4423818181818182,
+              "secondary_and_other": [
+                "Axiom Arcanist",
+                "Transcendence",
+                "Scorch",
+                "Presence of Mind",
+                "Gathering Storm"
+              ]
+            },
+            "summoner_spells": [
+              "Exhaust",
+              "Ignite"
+            ],
+            "summoner_spells_win_rate": 0.4531227272727273
+          },
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Sorcerer's Shoes",
+              "Liandry's Torment"
+            ],
+            "win_rate": 0.4291545454545455,
+            "matches": 8,
+            "runes": {
+              "keystone": "Dark Harvest",
+              "keystone_win_rate": 0.4218,
+              "secondary_and_other": [
+                "Manaflow Band",
+                "Grisly Mementos",
+                "Ultimate Hunter",
+                "Axiom Arcanist",
+                "Last Stand"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Teleport"
+            ],
+            "summoner_spells_win_rate": 0.43312272727272727
+          }
+        ]
+      }
+    },
+    "MIDDLE": {
+      "Tier": 1,
+      "Win Rate": 0.5131721400216528,
+      "Win Rate Change": 0.011647327157776943,
+      "Pick Rate": 0.0008606501495965877,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 2771,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Rabadon's Deathcap"
+          ],
+          "win_rate": 0.48615384615384616,
+          "matches": 325,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5921875,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5659459459459459
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5887096774193549,
+          "matches": 248,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5217687074829932,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5320796460176991
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Stormsurge",
+            "Shadowflame"
+          ],
+          "win_rate": 0.573170731707317,
+          "matches": 164,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.4883720930232558,
+            "secondary_and_other": [
+              "Cash Back",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Coup de Grace",
+              "Coup de Grace"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.56
+        }
+      ],
+      "Matchups": {
+        "Aatrox": [
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Zhonya's Hourglass",
+              "Shadowflame"
+            ],
+            "win_rate": null,
+            "matches": 76,
+            "runes": {
+              "keystone": "Dark Harvest",
+              "keystone_win_rate": null,
+              "secondary_and_other": [
+                "Cheap Shot",
+                "Grisly Mementos",
+                "Treasure Hunter",
+                "Presence of Mind",
+                "Coup de Grace"
+              ]
+            },
+            "summoner_spells": [
+              "Exhaust",
+              "Flash"
+            ],
+            "summoner_spells_win_rate": null
+          },
+          {
+            "core_items": [
+              "Blackfire Torch",
+              "Shadowflame",
+              "Liandry's Torment"
+            ],
+            "win_rate": null,
+            "matches": 1,
+            "runes": {
+              "keystone": "First Strike",
+              "keystone_win_rate": null,
+              "secondary_and_other": [
+                "Cash Back",
+                "Triple Tonic",
+                "Cosmic Insight",
+                "Axiom Arcanist",
+                "Gathering Storm"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Teleport"
+            ],
+            "summoner_spells_win_rate": null
+          }
+        ]
+      }
+    },
+    "BOTTOM": {
+      "Tier": 1,
+      "Win Rate": 0.5375231053604437,
+      "Win Rate Change": 0.009475562238252078,
+      "Pick Rate": 0.002520453252968715,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 8115,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5609418282548476,
+          "matches": 4332,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.5656060606060606,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5677700738089912
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Shadowflame",
+            "Sorcerer's Shoes"
+          ],
+          "win_rate": 0.5914239482200647,
+          "matches": 1236,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.5511284480356645,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Last Stand",
+              "Presence of Mind"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5257410296411856
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.5355054302422724,
+          "matches": 1197,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.5,
+            "secondary_and_other": [
+              "Manaflow Band",
+              "Absolute Focus",
+              "Gathering Storm",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Barrier"
+          ],
+          "summoner_spells_win_rate": 0.5641025641025641
+        }
+      ],
+      "Matchups": {}
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.39502332814930013,
+      "Win Rate Change": -0.07230779034460905,
+      "Pick Rate": 0.00019971059046936337,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 643,
+      "Builds": [
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5292,
+          "matches": 94,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.48961937716262977,
+            "secondary_and_other": [
+              "Cheap Shot",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Axiom Arcanist",
+              "Gathering Storm"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.4528301886792453
+        },
+        {
+          "core_items": [
+            "Malignance",
+            "Sorcerer's Shoes",
+            "Shadowflame"
+          ],
+          "win_rate": 0.5495333333333333,
+          "matches": 59,
+          "runes": {
+            "keystone": "Deathfire Touch",
+            "keystone_win_rate": 0.4898785425101215,
+            "secondary_and_other": [
+              "Axiom Arcanist",
+              "Transcendence",
+              "Scorch",
+              "Presence of Mind",
+              "Presence of Mind"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.538961038961039
+        },
+        {
+          "core_items": [
+            "Blackfire Torch",
+            "Sorcerer's Shoes",
+            "Liandry's Torment"
+          ],
+          "win_rate": 0.4338666666666667,
+          "matches": 54,
+          "runes": {
+            "keystone": "First Strike",
+            "keystone_win_rate": 0.45980000000000004,
+            "secondary_and_other": [
+              "Cash Back",
+              "Absolute Focus",
+              "Treasure Hunter",
+              "Coup de Grace",
+              "Last Stand"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5233644859813084
+        }
+      ],
+      "Matchups": {}
+    }
+  },
+  "Aatrox": {
+    "JUNGLE": {
+      "Tier": 2,
+      "Win Rate": 0.5076120579850791,
+      "Win Rate Change": 0.007812057985079113,
+      "Pick Rate": 0.005120728623745558,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 16487,
+      "Builds": [
+        {
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.5785714285714286,
+          "matches": 140,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5723443223443223,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.570198105081826
+        },
+        {
+          "core_items": [
+            "Hubris",
+            "Mercury's Treads",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.6257044673539519,
+          "matches": 99,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.5707216494845361,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Legend: Alacrity",
+              "Coup de Grace",
+              "Magical Footwear",
+              "Cosmic Insight"
+            ]
+          },
+          "summoner_spells": [
+            "Ghost",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5790378006872853
+        },
+        {
+          "core_items": [
+            "Hubris",
+            "Sundered Sky",
+            "Plated Steelcaps"
+          ],
+          "win_rate": 0.585360824742268,
+          "matches": 64,
+          "runes": {
+            "keystone": "Stormraider's Surge",
+            "keystone_win_rate": 0.5677663230240549,
+            "secondary_and_other": [
+              "Nimbus Cloak",
+              "Deep Ward",
+              "Cut Down",
+              "Taste of Blood",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Smite",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5647422680412371
+        }
+      ],
+      "Matchups": {
+        "Karthus": [
+          {
+            "core_items": [
+              "Hubris",
+              "Mercury's Treads",
+              "Sundered Sky"
+            ],
+            "win_rate": 0.5300529411764705,
+            "matches": 12,
+            "runes": {
+              "keystone": "Conqueror",
+              "keystone_win_rate": 0.5381992647058823,
+              "secondary_and_other": [
+                "Triumph",
+                "Legend: Haste",
+                "Last Stand",
+                "Cosmic Insight",
+                "Magical Footwear"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Smite"
+            ],
+            "summoner_spells_win_rate": 0.5427441176470588
+          },
+          {
+            "core_items": [
+              "Hubris",
+              "Sundered Sky",
+              "Mercury's Treads"
+            ],
+            "win_rate": 0.5527838235294117,
+            "matches": 6,
+            "runes": {
+              "keystone": "Dark Harvest",
+              "keystone_win_rate": 0.5500595588235293,
+              "secondary_and_other": [
+                "Sudden Impact",
+                "Legend: Alacrity",
+                "Coup de Grace",
+                "Magical Footwear",
+                "Cosmic Insight"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Ignite"
+            ],
+            "summoner_spells_win_rate": 0.5500595588235293
+          }
+        ]
+      }
+    },
+    "BOTTOM": {
+      "Tier": 4,
+      "Win Rate": 0.42857142857142855,
+      "Win Rate Change": -0.006095238095238098,
+      "Pick Rate": 6.739844188468406e-05,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 217,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.4138808844507846,
+          "matches": 18,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.42748091603053434,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.39809985734664766
+        },
+        {
+          "core_items": [
+            "Voltaic Cyclosword",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.427037089871612,
+          "matches": 8,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.4413527104136948,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Legend: Alacrity",
+              "Ultimate Hunter",
+              "Second Wind",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.45209343794579177
+        },
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Spear of Shojin"
+          ],
+          "win_rate": 0.4356683309557775,
+          "matches": 6,
+          "runes": {
+            "keystone": "Dark Harvest",
+            "keystone_win_rate": 0.43293081312410847,
+            "secondary_and_other": [
+              "Taste of Blood",
+              "Sixth Sense",
+              "Treasure Hunter",
+              "Taste of Blood",
+              "Unflinching"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.4564090584878745
+        }
+      ],
+      "Matchups": {
+        "Karthus": [
+          {
+            "core_items": [
+              "Voltaic Cyclosword",
+              "Mercury's Treads",
+              "Sundered Sky"
+            ],
+            "win_rate": null,
+            "matches": 76,
+            "runes": {
+              "keystone": "Conqueror",
+              "keystone_win_rate": null,
+              "secondary_and_other": [
+                "Triumph",
+                "Legend: Haste",
+                "Last Stand",
+                "Bone Plating",
+                "Revitalize"
+              ]
+            },
+            "summoner_spells": [
+              "Exhaust",
+              "Flash"
+            ],
+            "summoner_spells_win_rate": null
+          }
+        ]
+      }
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.40154015401540155,
+      "Win Rate Change": -0.02616612910344779,
+      "Pick Rate": 0.0002823280353602664,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 909,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "win_rate": 0.47176895306859207,
+          "matches": 8,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.47904191616766467,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.47465437788018433
+        },
+        {
+          "core_items": [
+            "Sundered Sky",
+            "Plated Steelcaps",
+            "Eclipse"
+          ],
+          "win_rate": 0.46176895306859206,
+          "matches": 8,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.4628158844765343,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Biscuit Delivery",
+              "Treasure Hunter",
+              "Taste of Blood",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.4568953068592057
+        },
+        {
+          "core_items": [
+            "Sundered Sky",
+            "Mercury's Treads",
+            "Eclipse"
+          ],
+          "win_rate": 0.4664620938628159,
+          "matches": 7,
+          "runes": {
+            "keystone": "Glacial Augment",
+            "keystone_win_rate": 0.4815884476534296,
+            "secondary_and_other": [
+              "Magical Footwear",
+              "Grisly Mementos",
+              "Cosmic Insight",
+              "Triumph",
+              "Unflinching"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Heal"
+          ],
+          "summoner_spells_win_rate": 0.48238267148014446
+        }
+      ],
+      "Matchups": {}
+    },
+    "TOP": {
+      "Tier": 2,
+      "Win Rate": 0.5003973292169418,
+      "Win Rate Change": 0.00499148312984532,
+      "Pick Rate": 0.03400391159436449,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 109481,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "win_rate": 0.5995174909529554,
+          "matches": 829,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5876998223801065,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5885123082411702
+        },
+        {
+          "core_items": [
+            "Plated Steelcaps",
+            "Eclipse",
+            "Voltaic Cyclosword"
+          ],
+          "win_rate": 0.6072106261859582,
+          "matches": 527,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.575885328836425,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Legend: Alacrity",
+              "Ultimate Hunter",
+              "Second Wind",
+              "Overgrowth"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5709716113554578
+        },
+        {
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Spear of Shojin"
+          ],
+          "win_rate": 0.5672514619883041,
+          "matches": 513,
+          "runes": {
+            "keystone": "Stormraider's Surge",
+            "keystone_win_rate": 0.6078212290502794,
+            "secondary_and_other": [
+              "Nimbus Cloak",
+              "Grisly Mementos",
+              "Treasure Hunter",
+              "Revitalize",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5876288659793815
+        }
+      ],
+      "Matchups": {
+        "Karthus": [
+          {
+            "core_items": [
+              "Mercury's Treads",
+              "Spear of Shojin",
+              "Sundered Sky"
+            ],
+            "win_rate": 0.6263157894736842,
+            "matches": 4,
+            "runes": {
+              "keystone": "Conqueror",
+              "keystone_win_rate": 0.6363157894736843,
+              "secondary_and_other": [
+                "Triumph",
+                "Legend: Haste",
+                "Last Stand",
+                "Bone Plating",
+                "Revitalize"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Ignite"
+            ],
+            "summoner_spells_win_rate": 0.6378947368421053
+          },
+          {
+            "core_items": [
+              "Mercury's Treads",
+              "Maw of Malmortius",
+              "Sundered Sky"
+            ],
+            "win_rate": 0.6463157894736841,
+            "matches": 4,
+            "runes": {
+              "keystone": "Electrocute",
+              "keystone_win_rate": 0.6136842105263157,
+              "secondary_and_other": [
+                "Sudden Impact",
+                "Legend: Alacrity",
+                "Ultimate Hunter",
+                "Taste of Blood",
+                "Second Wind"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Teleport"
+            ],
+            "summoner_spells_win_rate": 0.6157894736842104
+          }
+        ]
+      }
+    },
+    "MIDDLE": {
+      "Tier": 5,
+      "Win Rate": 0.46360628618693134,
+      "Win Rate Change": -0.0035207027052931994,
+      "Pick Rate": 0.0007510112095721938,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 2418,
+      "Builds": [
+        {
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Death's Dance"
+          ],
+          "win_rate": 0.57,
+          "matches": 14,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5240641711229946,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5486725663716814
+        },
+        {
+          "core_items": [
+            "Eclipse",
+            "Voltaic Cyclosword",
+            "Spear of Shojin"
+          ],
+          "win_rate": 0.577906976744186,
+          "matches": 9,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.61,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Sixth Sense",
+              "Treasure Hunter",
+              "Taste of Blood",
+              "Treasure Hunter"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Teleport"
+          ],
+          "summoner_spells_win_rate": 0.5609302325581396
+        },
+        {
+          "core_items": [
+            "Voltaic Cyclosword",
+            "Spear of Shojin",
+            "Death's Dance"
+          ],
+          "win_rate": 0.5534883720930233,
+          "matches": 8,
+          "runes": {
+            "keystone": "Stormraider's Surge",
+            "keystone_win_rate": 0.5523255813953488,
+            "secondary_and_other": [
+              "Nimbus Cloak",
+              "Grisly Mementos",
+              "Ultimate Hunter",
+              "Second Wind",
+              "Overgrowth"
+            ]
+          },
+          "summoner_spells": [
+            "Exhaust",
+            "Flash"
+          ],
+          "summoner_spells_win_rate": 0.5634883720930233
+        }
+      ],
+      "Matchups": {
+        "Karthus": [
+          {
+            "core_items": [
+              "Mercury's Treads",
+              "Eclipse",
+              "Maw of Malmortius"
+            ],
+            "win_rate": null,
+            "matches": 76,
+            "runes": {
+              "keystone": "Conqueror",
+              "keystone_win_rate": null,
+              "secondary_and_other": [
+                "Triumph",
+                "Legend: Haste",
+                "Last Stand",
+                "Bone Plating",
+                "Revitalize"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Teleport"
+            ],
+            "summoner_spells_win_rate": null
+          },
+          {
+            "core_items": [
+              "Sundered Sky",
+              "Spear of Shojin",
+              "Maw of Malmortius"
+            ],
+            "win_rate": null,
+            "matches": 1,
+            "runes": {
+              "secondary_and_other": [
+                "Second Wind",
+                "Treasure Hunter"
+              ]
+            },
+            "summoner_spells": [
+              "Flash",
+              "Ignite"
+            ],
+            "summoner_spells_win_rate": null
+          }
+        ]
+      }
+    }
+  }
+}

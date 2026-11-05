@@ -1,0 +1,44 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\LcuApiClient.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -9,7 +9,7 @@
+     {
+         public static LcuApiClient Instance { get; } = new LcuApiClient();
+ 
+-        private readonly HttpClient _httpClient;
++        private HttpClient? _httpClient;
+         private LcuCredentials? _credentials;
+ 
+         public LcuApiClient()
+@@ -16,9 +16,3 @@
+-            var handler = new HttpClientHandler
+-            {
+-                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+-            };
+-            
+-            _httpClient = new HttpClient(handler);
+         }
+ 
+         public void SetCredentials(LcuCredentials credentials)
+@@ -25,5 +25,18 @@
+             _credentials = credentials;
+-            _httpClient.BaseAddress = new Uri(credentials.BaseUrl);
++            
++            // Dispose the old client if it exists (e.g. League restarted and changed ports)
++            _httpClient?.Dispose();
++
++            var handler = new HttpClientHandler
++            {
++                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
++            };
++            
++            _httpClient = new HttpClient(handler)
++            {
++                BaseAddress = new Uri(credentials.BaseUrl)
++            };
++            
+             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", 
+                 Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes($"riot:{credentials.Password}")));
+         }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

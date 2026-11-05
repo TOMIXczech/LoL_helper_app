@@ -1,0 +1,26 @@
+
+The command exited with code 0.
+Output:
+{
+  "accountId": 3618596441130400,
+  "itemSets": [
+    {
+      "associatedChampions": [],
+      "associatedMaps": [
+        11,
+        12
+      ],
+      "blocks": [],
+      "map": "any",
+      "mode": "any",
+      "preferredItemSlots": [],
+      "sortrank": 0,
+      "startedFrom": "blank",
+      "title": "New Item Set",
+      "type": "custom",
+      "uid": "d45d3050-bf72-11f1-b322-03070da5dd39"
+    }
+  ],
+  "timestamp": 0
+}
+

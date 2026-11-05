@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+
+                    <TextBlock x:Name="HoveredChampText" Text="AVAILABLE PRESETS" Foreground="#8F91A3" FontSize="12" 
+FontWeight="Bold" Margin="0,0,0,10" TextWrapping="Wrap"/>
+
+

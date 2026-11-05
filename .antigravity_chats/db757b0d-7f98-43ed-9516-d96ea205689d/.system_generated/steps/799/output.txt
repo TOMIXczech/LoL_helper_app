@@ -1,0 +1,33 @@
+
+The command exited with code 0.
+Output:
+
+>           "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          }
+        }
+>           "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          }
+        }
+>           "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          }
+        }
+
+

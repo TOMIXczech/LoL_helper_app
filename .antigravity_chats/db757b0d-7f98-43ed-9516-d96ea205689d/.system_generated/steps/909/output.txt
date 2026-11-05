@@ -1,0 +1,54 @@
+
+The command exited with code 0.
+Output:
+
+>             LoadPresetsForChampion(1);
+              
+              _pollTimer.Start();
+              await PollActiveRunesAsync();
+          }
+          catch (Exception ex)
+          {
+              MessageBox.Show("Failed to load data: " + ex.Message);
+          }
+      }
+  
+      private void OnUnloaded(object sender, RoutedEventArgs e)
+      {
+          _pollTimer.Stop();
+      }
+  
+>     private void LoadPresetsForChampion(int champId)
+      {
+          if (_lastHoveredChampId == champId) return;
+          _lastHoveredChampId = champId;
+          
+          var presets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
+          
+          if (!presets.Any())
+          {
+              HoveredChampText.Text = "AVAILABLE PRESETS (CUSTOM)";
+              presets.Add(new ChampionBuildPreset
+              {
+                  ChampionId = champId,
+                  RunePreset = new RunePreset
+                  {
+                      Name = $"Custom Champ {champId}",
+>                                     LoadPresetsForChampion(champId);
+                                  }
+                                  break;
+                              }
+                          }
+                      }
+                  }
+              }
+  
+              // 2. Poll Runes
+              string json = await LcuApiClient.Instance.GetCurrentRunePageJsonAsync();
+              if (string.IsNullOrEmpty(json)) return;
+  
+              using var doc = JsonDocument.Parse(json);
+              var root = doc.RootElement;
+              
+
+

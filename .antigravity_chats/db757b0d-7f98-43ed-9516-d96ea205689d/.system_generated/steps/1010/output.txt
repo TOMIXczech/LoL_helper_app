@@ -1,0 +1,22 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -99,6 +99,9 @@
+                             </Grid.ColumnDefinitions>
+                             
+                             <Border Grid.Column="0" Background="#2D2D35" CornerRadius="4" Padding="5" Cursor="Hand" MouseLeftButtonDown="Spell1_MouseDown">
++                                <Border.ContextMenu>
++                                    <ContextMenu x:Name="Spell1Menu" />
++                                </Border.ContextMenu>
+                                 <Image x:Name="Spell1Img" Width="32" Height="32" Stretch="Uniform" />
+                             </Border>
+                             
+@@ -105,3 +105,6 @@
++                                <Border.ContextMenu>
++                                    <ContextMenu x:Name="Spell2Menu" />
++                                </Border.ContextMenu>
+                                 <Image x:Name="Spell2Img" Width="32" Height="32" Stretch="Uniform" />
+                             </Border>
+                         </Grid>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

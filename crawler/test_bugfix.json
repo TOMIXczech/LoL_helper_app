@@ -1,0 +1,2173 @@
+{
+  "Aatrox": {
+    "JUNGLE": {
+      "Tier": 2,
+      "Win Rate": 0.5077481577806675,
+      "Win Rate Change": 0.007948157780667486,
+      "Pick Rate": 0.00510824859257455,
+      "Ban Rate": 0.0421286583374389,
+      "Matches": 18456,
+      "Builds": [
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.570446735395189,
+          "overall_matches": 1164,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 604,
+          "starting_items_win_rate": 0.5844370860927153,
+          "situational_items": [
+            {
+              "item": "Sundered Sky",
+              "matches": 703,
+              "win_rate": 0.031719374600777006
+            },
+            {
+              "item": "Hubris",
+              "matches": 652,
+              "win_rate": 0.040626314202282465
+            },
+            {
+              "item": "Mortal Reminder",
+              "matches": 614,
+              "win_rate": 0.3105919235425372
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 594,
+              "win_rate": 0.011274021879335128
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 451,
+              "win_rate": -0.015698951084692103
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5785714285714286,
+          "core_items_components": {
+            "Hubris": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Cloth Armor",
+              "Boots"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5723443223443223,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.570198105081826
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.5679690022602518,
+          "overall_matches": 6194,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 2969,
+          "starting_items_win_rate": 0.5752778713371506,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 3432,
+              "win_rate": 0.17329573378565377
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 3089,
+              "win_rate": -0.12981126841645807
+            },
+            {
+              "item": "Hubris",
+              "matches": 2995,
+              "win_rate": -0.03597869208359222
+            },
+            {
+              "item": "Edge of Night",
+              "matches": 2925,
+              "win_rate": 0.2875649513120028
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 2862,
+              "win_rate": -0.03697519835041829
+            }
+          ],
+          "core_items": [
+            "Profane Hydra",
+            "Plated Steelcaps",
+            "Edge of Night"
+          ],
+          "core_items_win_rate": 0.5238095238095238,
+          "core_items_components": {
+            "Profane Hydra": [
+              "The Brutalizer",
+              "Tiamat"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Edge of Night": [
+              "Serrated Dirk",
+              "Tunneler"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5677337674082112,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5678832116788322
+        },
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.5882848714707122,
+          "overall_matches": 2373,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 1182,
+          "starting_items_win_rate": 0.5922165820642978,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 2106,
+              "win_rate": 0.2589645012917584
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 1629,
+              "win_rate": 0.11424030378259487
+            },
+            {
+              "item": "Hubris",
+              "matches": 1393,
+              "win_rate": 0.06750950612516049
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 1210,
+              "win_rate": 0.010867819803577428
+            },
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 1030,
+              "win_rate": 0.05326086187271545
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.6173285198555957,
+          "core_items_components": {
+            "Hubris": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Cloth Armor",
+              "Boots"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5913503971756399,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5875634517766497
+        },
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.5547445255474452,
+          "overall_matches": 10960,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 5436,
+          "starting_items_win_rate": 0.5570272259013981,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 9245,
+              "win_rate": 0.2150022018832669
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 9091,
+              "win_rate": 0.25723828748612076
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 5632,
+              "win_rate": 0.014833356667505848
+            },
+            {
+              "item": "Hubris",
+              "matches": 4903,
+              "win_rate": -0.07215712824385095
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 4574,
+              "win_rate": 0.014179770665126046
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5575289575289575,
+          "core_items_components": {
+            "Hubris": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Cloth Armor",
+              "Boots"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5553370786516854,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Cosmic Insight",
+              "Magical Footwear"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5547826086956522
+        },
+        {
+          "build_name": "OTP Build 1",
+          "overall_win_rate": 0.5693229901269393,
+          "overall_matches": 155,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 113,
+          "starting_items_win_rate": 0.6017699115044248,
+          "situational_items": [
+            {
+              "item": "Mortal Reminder",
+              "matches": 102,
+              "win_rate": 0.5980392156862745
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 99,
+              "win_rate": 0.6356932299012694
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 80,
+              "win_rate": 0.6238645980253879
+            },
+            {
+              "item": "Hubris",
+              "matches": 79,
+              "win_rate": 0.6095578279266572
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 63,
+              "win_rate": 0.5306495063469676
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5753110014104372,
+          "core_items_components": {
+            "Hubris": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Cloth Armor",
+              "Boots"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5928571428571429,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Alacrity",
+              "Last Stand",
+              "Magical Footwear",
+              "Cosmic Insight"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5806451612903226
+        },
+        {
+          "build_name": "OTP Build 2",
+          "overall_win_rate": 0.5569377990430622,
+          "overall_matches": 1045,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 761,
+          "starting_items_win_rate": 0.5597897503285151,
+          "situational_items": [
+            {
+              "item": "Sundered Sky",
+              "matches": 900,
+              "win_rate": 0.5611111111111111
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 894,
+              "win_rate": 0.5704697986577181
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 599,
+              "win_rate": 0.5242070116861436
+            },
+            {
+              "item": "Hubris",
+              "matches": 476,
+              "win_rate": 0.5672268907563025
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 408,
+              "win_rate": 0.5980392156862745
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5,
+          "core_items_components": {
+            "Hubris": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Cloth Armor",
+              "Boots"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5588526211671613,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Alacrity",
+              "Last Stand",
+              "Magical Footwear",
+              "Cosmic Insight"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.5565134099616859
+        },
+        {
+          "build_name": "OTP Build 3",
+          "overall_win_rate": 0.6120689655172413,
+          "overall_matches": 580,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 345,
+          "starting_items_win_rate": 0.6318840579710145,
+          "situational_items": [
+            {
+              "item": "Edge of Night",
+              "matches": 354,
+              "win_rate": 0.6468926553672316
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 301,
+              "win_rate": 0.6112956810631229
+            },
+            {
+              "item": "Profane Hydra",
+              "matches": 301,
+              "win_rate": 0.5780730897009967
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 293,
+              "win_rate": 0.5938566552901023
+            },
+            {
+              "item": "Hubris",
+              "matches": 253,
+              "win_rate": 0.6640316205533597
+            }
+          ],
+          "core_items": [
+            "Profane Hydra",
+            "Plated Steelcaps",
+            "Edge of Night"
+          ],
+          "core_items_win_rate": 0.5876724137931034,
+          "core_items_components": {
+            "Profane Hydra": [
+              "The Brutalizer",
+              "Tiamat"
+            ],
+            "Plated Steelcaps": [
+              "Cloth Armor",
+              "Boots"
+            ],
+            "Edge of Night": [
+              "Serrated Dirk",
+              "Tunneler"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.6116322701688556,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Alacrity",
+              "Last Stand",
+              "Magical Footwear",
+              "Cosmic Insight"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.6120689655172413
+        },
+        {
+          "build_name": "OTP Build 4",
+          "overall_win_rate": 0.6602870813397129,
+          "overall_matches": 209,
+          "starting_items": [
+            "Scorchclaw Pup"
+          ],
+          "starting_items_matches": 131,
+          "starting_items_win_rate": 0.6641221374045801,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 181,
+              "win_rate": 0.6574585635359116
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 137,
+              "win_rate": 0.6788321167883211
+            },
+            {
+              "item": "Hubris",
+              "matches": 126,
+              "win_rate": 0.6507936507936508
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 106,
+              "win_rate": 0.6792452830188679
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 90,
+              "win_rate": 0.6660287081339713
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.6588038277511962,
+          "core_items_components": {
+            "Hubris": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Cloth Armor",
+              "Boots"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.6616161616161617,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Alacrity",
+              "Last Stand",
+              "Magical Footwear",
+              "Cosmic Insight"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Smite"
+          ],
+          "summoner_spells_win_rate": 0.6602870813397129
+        }
+      ],
+      "Matchups": {}
+    },
+    "BOTTOM": {
+      "Tier": 4,
+      "Win Rate": 0.4326530612244898,
+      "Win Rate Change": -0.0020136054421768246,
+      "Pick Rate": 6.781105901499593e-05,
+      "Ban Rate": 0.0421286583374389,
+      "Matches": 245,
+      "Builds": [
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.4315620542082739,
+          "overall_matches": 143,
+          "starting_items": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "starting_items_matches": 37,
+          "starting_items_win_rate": 0.46188409415121257,
+          "situational_items": [
+            {
+              "item": "Sundered Sky",
+              "matches": 99,
+              "win_rate": 0.15201271075710532
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 93,
+              "win_rate": 0.1446956630813132
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 88,
+              "win_rate": 0.09317528510353623
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 76,
+              "win_rate": 0.16559106065832524
+            },
+            {
+              "item": "Eclipse",
+              "matches": 68,
+              "win_rate": 0.01569820314214937
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.4138808844507846,
+          "core_items_components": {
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.42748091603053434,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.39809985734664766
+        },
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.43423680456490726,
+          "overall_matches": 55,
+          "starting_items": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "starting_items_matches": 15,
+          "starting_items_win_rate": 0.4191012838801712,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 40,
+              "win_rate": 0.14137581402155397
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 39,
+              "win_rate": 0.18688157880982992
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 38,
+              "win_rate": 0.15061410935850394
+            },
+            {
+              "item": "Eclipse",
+              "matches": 29,
+              "win_rate": 0.06744645489040108
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 23,
+              "win_rate": 0.05230434737161194
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.436867332382311,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.4744878744650499,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4309386590584879
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.547085201793722,
+          "overall_matches": 223,
+          "starting_items": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "starting_items_matches": 53,
+          "starting_items_win_rate": 0.5571300448430493,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 183,
+              "win_rate": 0.23473088943940967
+            },
+            {
+              "item": "Hubris",
+              "matches": 136,
+              "win_rate": 0.2531970271880586
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 100,
+              "win_rate": -0.05722349399479448
+            },
+            {
+              "item": "Eclipse",
+              "matches": 84,
+              "win_rate": -0.08314465803255039
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 78,
+              "win_rate": 0.13155215487054053
+            }
+          ],
+          "core_items": [
+            "Hubris",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.5576681614349777,
+          "core_items_components": {
+            "Hubris": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Voltaic Cyclosword": [
+              "Long Sword",
+              "Long Sword",
+              "The Brutalizer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5502958579881657,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5221238938053098
+        }
+      ],
+      "Matchups": {}
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.40656063618290256,
+      "Win Rate Change": -0.021145646935946782,
+      "Pick Rate": 0.0002784405117105547,
+      "Ban Rate": 0.0421286583374389,
+      "Matches": 1006,
+      "Builds": [
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.4693140794223827,
+          "overall_matches": 277,
+          "starting_items": [
+            "Health Potion"
+          ],
+          "starting_items_matches": 203,
+          "starting_items_win_rate": 0.4630541871921182,
+          "situational_items": [
+            {
+              "item": "Sundered Sky",
+              "matches": 221,
+              "win_rate": 0.26032687612391026
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 146,
+              "win_rate": -0.025028359925841404
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 129,
+              "win_rate": 0.23785977977245074
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 94,
+              "win_rate": 0.08891371453185481
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 94,
+              "win_rate": 0.16590921375110715
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.47176895306859207,
+          "core_items_components": {
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.47904191616766467,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.47465437788018433
+        },
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.4409391771019678,
+          "overall_matches": 76,
+          "starting_items": [
+            "Health Potion"
+          ],
+          "starting_items_matches": 49,
+          "starting_items_win_rate": 0.46487898032200353,
+          "situational_items": [
+            {
+              "item": "Plated Steelcaps",
+              "matches": 52,
+              "win_rate": 0.1321063541155798
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 46,
+              "win_rate": 0.06775609900059654
+            },
+            {
+              "item": "Eclipse",
+              "matches": 32,
+              "win_rate": 0.06359122710854098
+            },
+            {
+              "item": "Bloodsong",
+              "matches": 22,
+              "win_rate": 0.13346922222675406
+            },
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 20,
+              "win_rate": -0.15779078084384413
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Zeke's Convergence"
+          ],
+          "core_items_win_rate": 0.43771100178890876,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.476610465116279,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4672414132379249
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.4424083769633508,
+          "overall_matches": 382,
+          "starting_items": [
+            "Health Potion"
+          ],
+          "starting_items_matches": 277,
+          "starting_items_win_rate": 0.44765342960288806,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 295,
+              "win_rate": 0.3513026333198373
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 170,
+              "win_rate": -0.10707799418973846
+            },
+            {
+              "item": "Umbral Glaive",
+              "matches": 164,
+              "win_rate": 0.20831057741505368
+            },
+            {
+              "item": "Eclipse",
+              "matches": 144,
+              "win_rate": 0.01950194631493396
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 87,
+              "win_rate": -0.02268777487408391
+            }
+          ],
+          "core_items": [
+            "Umbral Glaive",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.4360471204188482,
+          "core_items_components": {
+            "Umbral Glaive": [
+              "Serrated Dirk",
+              "Caulfield's Warhammer"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Voltaic Cyclosword": [
+              "Long Sword",
+              "Long Sword",
+              "The Brutalizer"
+            ]
+          },
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.46938775510204084,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4517133956386293
+        },
+        {
+          "build_name": "OTP Build 1",
+          "overall_win_rate": 0.5171523178807947,
+          "overall_matches": 23,
+          "starting_items": [
+            "Health Potion"
+          ],
+          "starting_items_matches": 14,
+          "starting_items_win_rate": 0.5147509933774834,
+          "situational_items": [
+            {
+              "item": "Umbral Glaive",
+              "matches": 11,
+              "win_rate": 0.5402655629139074
+            },
+            {
+              "item": "Eclipse",
+              "matches": 9,
+              "win_rate": 0.5306086092715232
+            },
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 9,
+              "win_rate": 0.5206086092715232
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 9,
+              "win_rate": 0.49060860927152317
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 8,
+              "win_rate": 0.5257801324503312
+            }
+          ],
+          "core_items": [
+            "Voltaic Cyclosword",
+            "Plated Steelcaps",
+            "Edge of Night"
+          ],
+          "core_items_win_rate": 0.5119807947019868,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5357801324503312,
+            "secondary_and_other": [
+              "Triumph",
+              "Conditioning",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5292364238410596
+        },
+        {
+          "build_name": "OTP Build 2",
+          "overall_win_rate": 0.5249006622516557,
+          "overall_matches": 20,
+          "starting_items": [
+            "Health Potion"
+          ],
+          "starting_items_matches": 12,
+          "starting_items_win_rate": 0.5419125827814569,
+          "situational_items": [
+            {
+              "item": "Sundered Sky",
+              "matches": 14,
+              "win_rate": 0.5314145695364239
+            },
+            {
+              "item": "Boots of Swiftness",
+              "matches": 10,
+              "win_rate": 0.5324105960264901
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 8,
+              "win_rate": 0.5329086092715233
+            },
+            {
+              "item": "Sterak's Gage",
+              "matches": 7,
+              "win_rate": 0.5481576158940398
+            },
+            {
+              "item": "Black Cleaver",
+              "matches": 6,
+              "win_rate": 0.5234066225165563
+            }
+          ],
+          "core_items": [
+            "Boots of Swiftness",
+            "Sundered Sky",
+            "Sterak's Gage"
+          ],
+          "core_items_win_rate": 0.5339046357615894,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5381576158940398,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Grisly Mementos",
+              "Last Stand",
+              "Celerity",
+              "Nimbus Cloak"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5514145695364239
+        }
+      ],
+      "Matchups": {}
+    },
+    "TOP": {
+      "Tier": 2,
+      "Win Rate": 0.5006280689733927,
+      "Win Rate Change": 0.005222222886296257,
+      "Pick Rate": 0.033932653931103965,
+      "Ban Rate": 0.0421286583374389,
+      "Matches": 122598,
+      "Builds": [
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.5673795861589289,
+          "overall_matches": 5751,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 2204,
+          "starting_items_win_rate": 0.5657894736842105,
+          "situational_items": [
+            {
+              "item": "Eclipse",
+              "matches": 3953,
+              "win_rate": 0.08248923299084154
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 3255,
+              "win_rate": -0.03342408825777232
+            },
+            {
+              "item": "Endless Hunger",
+              "matches": 2591,
+              "win_rate": 0.27945126157088085
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 1916,
+              "win_rate": -0.006471058065090185
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 1766,
+              "win_rate": -0.08103472129874323
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5424657534246575,
+          "core_items_components": {
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Long Sword",
+              "Pickaxe"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5665354330708662,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5652173913043478
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.5866914651787559,
+          "overall_matches": 19356,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 7311,
+          "starting_items_win_rate": 0.5899329777048283,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 13520,
+              "win_rate": 0.35048259382381114
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 10865,
+              "win_rate": -0.03808795813867283
+            },
+            {
+              "item": "Eclipse",
+              "matches": 10237,
+              "win_rate": -0.07598955336109392
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 9195,
+              "win_rate": 0.2065964862609399
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 5817,
+              "win_rate": -0.03910354021353568
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Voltaic Cyclosword"
+          ],
+          "core_items_win_rate": 0.5989361702127659,
+          "core_items_components": {
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Long Sword",
+              "Pickaxe"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Voltaic Cyclosword": [
+              "Long Sword",
+              "Long Sword",
+              "The Brutalizer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5880679939149415,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5890646931223682
+        },
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.5678792201616738,
+          "overall_matches": 8412,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 3203,
+          "starting_items_win_rate": 0.5625975647830159,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 6144,
+              "win_rate": 0.2627736410689029
+            },
+            {
+              "item": "Eclipse",
+              "matches": 5523,
+              "win_rate": 0.05169256697654545
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 5350,
+              "win_rate": 0.0365835839178289
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 4553,
+              "win_rate": 0.2728005834397407
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 4056,
+              "win_rate": 0.09405657957530927
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5732009925558312,
+          "core_items_components": {
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Long Sword",
+              "Pickaxe"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5664317063439287,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5685279187817259
+        },
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.5644136275465915,
+          "overall_matches": 93311,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 34305,
+          "starting_items_win_rate": 0.5694505174172861,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 63409,
+              "win_rate": 0.21193322522515445
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 59191,
+              "win_rate": 0.03492846247861636
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 55321,
+              "win_rate": 0.20475511319069706
+            },
+            {
+              "item": "Eclipse",
+              "matches": 51011,
+              "win_rate": -0.058192246606293074
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 49650,
+              "win_rate": 0.1698671333472318
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.559147685525349,
+          "core_items_components": {
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Long Sword",
+              "Pickaxe"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5646065162332825,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5662647243326131
+        },
+        {
+          "build_name": "OTP Build 1",
+          "overall_win_rate": 0.5979899497487438,
+          "overall_matches": 398,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 137,
+          "starting_items_win_rate": 0.6131386861313869,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 292,
+              "win_rate": 0.589041095890411
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 255,
+              "win_rate": 0.5843137254901961
+            },
+            {
+              "item": "Eclipse",
+              "matches": 254,
+              "win_rate": 0.5748031496062992
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 206,
+              "win_rate": 0.616504854368932
+            },
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 176,
+              "win_rate": 0.6420454545454546
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.5747738693467337,
+          "core_items_components": {
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Long Sword",
+              "Pickaxe"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.6049382716049383,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5941176470588235
+        },
+        {
+          "build_name": "OTP Build 2",
+          "overall_win_rate": 0.5991189427312775,
+          "overall_matches": 1135,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 438,
+          "starting_items_win_rate": 0.591324200913242,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 708,
+              "win_rate": 0.5875706214689266
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 624,
+              "win_rate": 0.5817307692307693
+            },
+            {
+              "item": "Eclipse",
+              "matches": 578,
+              "win_rate": 0.615916955017301
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 478,
+              "win_rate": 0.6610878661087866
+            },
+            {
+              "item": "Mercury's Treads",
+              "matches": 313,
+              "win_rate": 0.6230031948881789
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Spear of Shojin"
+          ],
+          "core_items_win_rate": 0.5674008810572687,
+          "core_items_components": {
+            "Eclipse": [
+              "Pickaxe",
+              "Caulfield's Warhammer",
+              "Long Sword"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Spear of Shojin": [
+              "Pickaxe",
+              "Tunneler",
+              "Ruby Crystal"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.6110397946084724,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.6056191467221644
+        },
+        {
+          "build_name": "OTP Build 3",
+          "overall_win_rate": 0.5815602836879432,
+          "overall_matches": 3525,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 1243,
+          "starting_items_win_rate": 0.584875301689461,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 2348,
+              "win_rate": 0.583901192504259
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 2277,
+              "win_rate": 0.5823451910408433
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 1888,
+              "win_rate": 0.5921610169491526
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 1817,
+              "win_rate": 0.5729223995597138
+            },
+            {
+              "item": "Eclipse",
+              "matches": 1517,
+              "win_rate": 0.5847066578773896
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Plated Steelcaps",
+            "Sundered Sky"
+          ],
+          "core_items_win_rate": 0.6244343891402715,
+          "core_items_components": {
+            "Eclipse": [
+              "Pickaxe",
+              "Caulfield's Warhammer",
+              "Long Sword"
+            ],
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.584177835894083,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5875179340028694
+        },
+        {
+          "build_name": "OTP Build 4",
+          "overall_win_rate": 0.5595238095238095,
+          "overall_matches": 336,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 131,
+          "starting_items_win_rate": 0.6106870229007634,
+          "situational_items": [
+            {
+              "item": "Eclipse",
+              "matches": 187,
+              "win_rate": 0.5721925133689839
+            },
+            {
+              "item": "Plated Steelcaps",
+              "matches": 183,
+              "win_rate": 0.6065573770491803
+            },
+            {
+              "item": "Mortal Reminder",
+              "matches": 140,
+              "win_rate": 0.5571428571428572
+            },
+            {
+              "item": "Endless Hunger",
+              "matches": 121,
+              "win_rate": 0.5950413223140496
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 107,
+              "win_rate": 0.5420560747663551
+            }
+          ],
+          "core_items": [
+            "Plated Steelcaps",
+            "Eclipse",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.5779761904761905,
+          "core_items_components": {
+            "Plated Steelcaps": [
+              "Boots",
+              "Cloth Armor"
+            ],
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Pickaxe",
+              "Long Sword"
+            ],
+            "Death's Dance": [
+              "Pickaxe",
+              "Steel Sigil",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5817490494296578,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5708955223880597
+        }
+      ],
+      "Matchups": {}
+    },
+    "MIDDLE": {
+      "Tier": 5,
+      "Win Rate": 0.46016081871345027,
+      "Win Rate Change": -0.006966170178774267,
+      "Pick Rate": 0.0007572696223062403,
+      "Ban Rate": 0.0421286583374389,
+      "Matches": 2736,
+      "Builds": [
+        {
+          "build_name": "Bruiser + Lethality",
+          "overall_win_rate": 0.5581395348837209,
+          "overall_matches": 258,
+          "starting_items": [
+            "Doran's Blade"
+          ],
+          "starting_items_matches": 77,
+          "starting_items_win_rate": 0.6383720930232558,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 199,
+              "win_rate": 0.30278798249066063
+            },
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 175,
+              "win_rate": 0.19121225660331703
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 130,
+              "win_rate": 0.1470916465544988
+            },
+            {
+              "item": "Eclipse",
+              "matches": 129,
+              "win_rate": 0.04590103827114589
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 120,
+              "win_rate": 0.0664381137005699
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.57,
+          "core_items_components": {
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ],
+            "Death's Dance": [
+              "Pickaxe",
+              "Steel Sigil",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5240641711229946,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5486725663716814
+        },
+        {
+          "build_name": "Bruiser",
+          "overall_win_rate": 0.5294117647058824,
+          "overall_matches": 1241,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 353,
+          "starting_items_win_rate": 0.5439093484419264,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 825,
+              "win_rate": 0.19625661556351381
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 781,
+              "win_rate": 0.2306530191594084
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 670,
+              "win_rate": 0.18310286531406383
+            },
+            {
+              "item": "Eclipse",
+              "matches": 557,
+              "win_rate": -0.005267374299361749
+            },
+            {
+              "item": "Maw of Malmortius",
+              "matches": 308,
+              "win_rate": 0.055089107917273616
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.4330708661417323,
+          "core_items_components": {
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Long Sword",
+              "Pickaxe"
+            ],
+            "Sundered Sky": [
+              "Tunneler",
+              "Caulfield's Warhammer"
+            ],
+            "Death's Dance": [
+              "Pickaxe",
+              "Steel Sigil",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5285575992255567,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5280665280665281
+        },
+        {
+          "build_name": "AD",
+          "overall_win_rate": 0.47949136981270657,
+          "overall_matches": 152,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 41,
+          "starting_items_win_rate": 0.4828999081894969,
+          "situational_items": [
+            {
+              "item": "Endless Hunger",
+              "matches": 81,
+              "win_rate": 0.33524048588433214
+            },
+            {
+              "item": "Eclipse",
+              "matches": 64,
+              "win_rate": -0.033046330149906766
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 50,
+              "win_rate": -0.06973079694814488
+            },
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 40,
+              "win_rate": -0.2239244223032517
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 35,
+              "win_rate": -0.2382666890719669
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Endless Hunger"
+          ],
+          "core_items_win_rate": 0.5059269739258171,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.49504950495049505,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4793388429752066
+        },
+        {
+          "build_name": "Lethality",
+          "overall_win_rate": 0.5565891472868217,
+          "overall_matches": 1290,
+          "starting_items": [
+            "Doran's Blade",
+            "Health Potion"
+          ],
+          "starting_items_matches": 372,
+          "starting_items_win_rate": 0.543010752688172,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 1039,
+              "win_rate": 0.3183440395490535
+            },
+            {
+              "item": "Eclipse",
+              "matches": 576,
+              "win_rate": -0.007587333821877373
+            },
+            {
+              "item": "Hubris",
+              "matches": 516,
+              "win_rate": 0.15460249537181786
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 444,
+              "win_rate": 0.15761162335358853
+            },
+            {
+              "item": "Death's Dance",
+              "matches": 268,
+              "win_rate": -0.26077790898220765
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Voltaic Cyclosword",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.5594263565891473,
+          "core_items_components": {
+            "Eclipse": [
+              "Caulfield's Warhammer",
+              "Long Sword",
+              "Pickaxe"
+            ],
+            "Voltaic Cyclosword": [
+              "Long Sword",
+              "Long Sword",
+              "The Brutalizer"
+            ],
+            "Death's Dance": [
+              "Pickaxe",
+              "Steel Sigil",
+              "Caulfield's Warhammer"
+            ]
+          },
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5708661417322834,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Bone Plating",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5588235294117647
+        },
+        {
+          "build_name": "OTP Build 1",
+          "overall_win_rate": 0.524147465437788,
+          "overall_matches": 55,
+          "starting_items": [
+            "Doran's Shield",
+            "Health Potion"
+          ],
+          "starting_items_matches": 15,
+          "starting_items_win_rate": 0.5455253456221199,
+          "situational_items": [
+            {
+              "item": "Voltaic Cyclosword",
+              "matches": 40,
+              "win_rate": 0.5544884792626728
+            },
+            {
+              "item": "Hubris",
+              "matches": 21,
+              "win_rate": 0.5340764976958525
+            },
+            {
+              "item": "Serylda's Grudge",
+              "matches": 21,
+              "win_rate": 0.5340764976958525
+            },
+            {
+              "item": "Profane Hydra",
+              "matches": 17,
+              "win_rate": 0.545042396313364
+            },
+            {
+              "item": "Edge of Night",
+              "matches": 14,
+              "win_rate": 0.5507668202764977
+            }
+          ],
+          "core_items": [
+            "Voltaic Cyclosword",
+            "Profane Hydra",
+            "Edge of Night"
+          ],
+          "core_items_win_rate": 0.5284230414746544,
+          "runes": {
+            "keystone": "Electrocute",
+            "keystone_win_rate": 0.5673861751152074,
+            "secondary_and_other": [
+              "Sudden Impact",
+              "Sixth Sense",
+              "Ultimate Hunter",
+              "Second Wind",
+              "Overgrowth"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.5577981566820277
+        },
+        {
+          "build_name": "OTP Build 2",
+          "overall_win_rate": 0.4956682027649769,
+          "overall_matches": 38,
+          "starting_items": [
+            "Doran's Shield"
+          ],
+          "starting_items_matches": 11,
+          "starting_items_win_rate": 0.5111447004608294,
+          "situational_items": [
+            {
+              "item": "Death's Dance",
+              "matches": 27,
+              "win_rate": 0.5118377880184332
+            },
+            {
+              "item": "Sundered Sky",
+              "matches": 17,
+              "win_rate": 0.4914046082949309
+            },
+            {
+              "item": "Maw of Malmortius",
+              "matches": 15,
+              "win_rate": 0.5113179723502304
+            },
+            {
+              "item": "Eclipse",
+              "matches": 14,
+              "win_rate": 0.5262746543778802
+            },
+            {
+              "item": "Spear of Shojin",
+              "matches": 12,
+              "win_rate": 0.48618801843317966
+            }
+          ],
+          "core_items": [
+            "Eclipse",
+            "Sundered Sky",
+            "Death's Dance"
+          ],
+          "core_items_win_rate": 0.4958414746543778,
+          "runes": {
+            "keystone": "Conqueror",
+            "keystone_win_rate": 0.5119244239631336,
+            "secondary_and_other": [
+              "Triumph",
+              "Legend: Haste",
+              "Last Stand",
+              "Second Wind",
+              "Revitalize"
+            ]
+          },
+          "summoner_spells": [
+            "Flash",
+            "Ignite"
+          ],
+          "summoner_spells_win_rate": 0.4818377880184332
+        }
+      ],
+      "Matchups": {}
+    }
+  }
+}

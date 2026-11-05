@@ -1,0 +1,14 @@
+Command exited with code 0.
+
+Command output:
+  Determining projects to restore...
+  Restored C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.Core\LoLHelper.Core.csproj (in 94 ms).
+  Restored C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.PCClient\LoLHelper.PCClient.csproj (in 95 ms).
+  LoLHelper.Core -> C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.Core\bin\Debug\net9.0\LoLHelper.Core.dll
+  LoLHelper.PCClient -> C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.PCClient\bin\Debug\net9.0-windows\LoLHelper.PCClient.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.03

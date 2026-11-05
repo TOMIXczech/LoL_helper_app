@@ -1,0 +1,32 @@
+
+The command exited with code 0.
+Output:
+
+          try
+          {
+              await BuildDatabaseService.Instance.InitializeAsync();
+              // Default to Annie (1) if not in champ select to show it works
+              LoadPresetsForChampion(1);
+>             RenderItemBuilder();
+              
+              _pollTimer.Start();
+              await PollActiveRunesAsync();
+          }
+          catch (Exception ex)
+  
+      private void PresetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+      {
+          if (PresetsList.SelectedItem is ChampionBuildPreset selectedBuild)
+          {
+>             RenderItemBuilder(selectedBuild);
+          }
+      }
+  
+>     private void RenderItemBuilder(ChampionBuildPreset preset = null)
+      {
+          InteractiveItemBuilder.Children.Clear();
+          if (preset == null) return;
+          
+          RenderItemSection("STARTING ITEMS", preset.StartingItemIds);
+
+

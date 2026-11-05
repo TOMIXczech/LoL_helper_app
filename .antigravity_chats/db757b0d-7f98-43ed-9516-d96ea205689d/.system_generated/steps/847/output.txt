@@ -1,0 +1,16 @@
+
+The command exited with code 0.
+Output:
+
+        "starting_items": [],
+        "core_items": [
+        "starting_items": [],
+        "core_items": [
+        "starting_items": [],
+        "core_items": [
+        "starting_items": [],
+        "core_items": [
+        "starting_items": [],
+        "core_items": [
+
+

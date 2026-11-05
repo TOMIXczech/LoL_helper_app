@@ -1,0 +1,89 @@
+
+The command exited with code 0.
+Output:
+                            if (buildData.TryGetProperty("runes", out var runesData))
+                            {
+                                if (runesData.TryGetProperty("keystone", out var ksProp))
+                                {
+                                    var ksId = RuneService.Instance.GetPerkIdByName(ksProp.GetString() ?? "");
+                                    if (ksId.HasValue) perkIds.Add(ksId.Value);
+                                }
+                                if (runesData.TryGetProperty("secondary_and_other", out var secProp) && secProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                                {
+                                    foreach (var sec in secProp.EnumerateArray())
+                                    {
+                                        var id = RuneService.Instance.GetPerkIdByName(sec.GetString() ?? "");
+                                        if (id.HasValue) perkIds.Add(id.Value);
+                                    }
+                                }
+                            }
+
+                            while (perkIds.Count < 6) perkIds.Add(5008);
+                            if (perkIds.Count == 6) { perkIds.Add(5008); perkIds.Add(5008); perkIds.Add(5002); }
+
+                            int pStyle = 8000, sStyle = 8100;
+                            if (perkIds.Count > 0)
+                            {
+                                var t = RuneService.Instance.GetTreeIdByPerkId(perkIds[0]);
+                                if (t.HasValue) pStyle = t.Value;
+                            }
+                            if (perkIds.Count > 4)
+                            {
+                                var t = RuneService.Instance.GetTreeIdByPerkId(perkIds[4]);
+                                if (t.HasValue) sStyle = t.Value;
+                            }
+
+                            int spell1 = 4;
+                            int spell2 = 14;
+                            if (buildData.TryGetProperty("summoner_spells", out var spellsProp) && spellsProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                            {
+                                var sArr = System.Linq.Enumerable.ToArray(spellsProp.EnumerateArray());
+                                if (sArr.Length >= 2)
+                                {
+                                    spell1 = GetSpellId(sArr[0].GetString());
+                                    spell2 = GetSpellId(sArr[1].GetString());
+                                }
+                            }
+                            else
+                            {
+                                if (roleName == "JUNGLE") spell2 = 11;
+                                else if (roleName == "TOP") spell2 = 12;
+                                else if (roleName == "BOTTOM") spell2 = 7;
+                            }
+
+                            _database.Add(CreatePreset(champId, champName, roleName, $"Blitz Core Build #{buildIndex}", 
+                                pStyle, sStyle, perkIds.ToArray(), 
+                                starts, cores, cores, new List<int>(), new List<int>(), spell1, spell2));
+                                
+                            buildIndex++;
+                        }
+                    }
+                }
+
+                else
+                {
+                    // Fallback
+                    _database.Add(CreatePreset(champId, champName, "Flex", "Standard Output", 
+                        8000, 8100, new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5008, 5002 },
+                        new List<int> { 1055, 2003 }, new List<int> { 1036, 1001, 3057, 3078, 3006, 1053, 1043, 3153 }, 
+                        new List<int> { 3078, 3006, 3153, 3026, 3072, 3026 },
+                        new List<int> { 3026, 3156 }, new List<int> { 3006, 3111 }, 4, 14
+                    ));
+                }
+            }
+        }
+        catch { }
+    }
+
+    private ChampionBuildPreset CreatePreset(int champId, string champName, string role, string buildName, 
+        int pStyle, int sStyle, int[] perks, List<int> starts, List<int> core, List<int> final, List<int> sit, List<int> boots, int spell1 = 4, int spell2 = 14)
+    {
+        return new ChampionBuildPreset
+        {
+            ChampionId = champId,
+            Role = role,
+            RunePreset = new RunePreset
+            {
+                Name = $"{champName} - {buildName}",
+                Description = $"{role} | {buildName}",
+

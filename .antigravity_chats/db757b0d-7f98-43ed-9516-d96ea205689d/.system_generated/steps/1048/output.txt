@@ -1,0 +1,21 @@
+
+The command exited with code 0.
+Output:
+
+            var data = doc.RootElement.GetProperty("data");
+                int champId = int.Parse(prop.GetProperty("key").GetString() ?? "0");
+                string champName = prop.GetProperty("name").GetString() ?? "Unknown";
+                        if (!roleProp.Value.TryGetProperty("Builds", out var buildsData) || buildsData.ValueKind != 
+System.Text.Json.JsonValueKind.Array) continue;
+                            if (buildData.TryGetProperty("starting_items", out var startsProp) && startsProp.ValueKind 
+== System.Text.Json.JsonValueKind.Array)
+                            if (buildData.TryGetProperty("core_items", out var coresProp) && coresProp.ValueKind == 
+System.Text.Json.JsonValueKind.Array)
+                            if (buildData.TryGetProperty("runes", out var runesData))
+                                if (runesData.TryGetProperty("keystone", out var ksProp))
+                                if (runesData.TryGetProperty("secondary_and_other", out var secProp) && 
+secProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                            if (buildData.TryGetProperty("summoner_spells", out var spellsProp) && 
+spellsProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+
+

@@ -1,0 +1,9 @@
+
+The command exited with code 0.
+Output:
+using System.Text.RegularExpressions;
+var file = "C:\\Users\\ufo\\Downloads\\TP\\LoLHelper.PCClient\\Views\\ChampSelectView.xaml.cs";
+var content = System.IO.File.ReadAllText(file);
+
+content = content.Replace("Spell1Combo.ItemsSource = _summonerSpells;\r\n        Spell2Combo.ItemsSource = _summonerSpells;", "InitSpellMenus();");
+

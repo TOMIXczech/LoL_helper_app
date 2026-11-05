@@ -1,0 +1,11 @@
+
+The command exited with code 0.
+Output:
+
+    Directory: C:\Riot Games\League of Legends\Config\Global\Recommended
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          04/10/2026    00:35           1492 !!!blitz-0.json
+
+

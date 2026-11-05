@@ -1,0 +1,34 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -29,10 +29,24 @@
+     private string _currentRoleFilter = "";
+     private List<ChampionBuildPreset> _allCurrentPresets = new();
+     
+-    private readonly Dictionary<string, int> _summonerSpells = new()
+-    {
+-        { "Cleanse", 1 }, { "Exhaust", 3 }, { "Flash", 4 }, { "Ghost", 6 },
+-        { "Heal", 7 }, { "Smite", 11 }, { "Teleport", 12 }, { "Ignite", 14 }, { "Barrier", 21 }
++    public class SummonerSpellModel
++    {
++        public int Id { get; set; }
++        public string Name { get; set; } = string.Empty;
++        public string IconUrl { get; set; } = string.Empty;
++    }
++
++    private readonly List<SummonerSpellModel> _summonerSpells = new()
++    {
++        new SummonerSpellModel { Id = 1, Name = "Cleanse", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerBoost.png" },
++        new SummonerSpellModel { Id = 3, Name = "Exhaust", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerExhaust.png" },
++        new SummonerSpellModel { Id = 4, Name = "Flash", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerFlash.png" },
++        new SummonerSpellModel { Id = 6, Name = "Ghost", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerHaste.png" },
++        new SummonerSpellModel { Id = 7, Name = "Heal", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerHeal.png" },
++        new SummonerSpellModel { Id = 11, Name = "Smite", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerSmite.png" },
++        new SummonerSpellModel { Id = 12, Name = "Teleport", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerTeleport.png" },
++        new SummonerSpellModel { Id = 14, Name = "Ignite", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerDot.png" },
++        new SummonerSpellModel { Id = 21, Name = "Barrier", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerBarrier.png" }
+     };
+ 
+     public ChampSelectView()
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

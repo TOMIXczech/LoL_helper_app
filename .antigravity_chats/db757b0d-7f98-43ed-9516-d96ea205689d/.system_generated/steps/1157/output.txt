@@ -1,0 +1,1 @@
+Made 1 replacement in c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs starting at line 50 (+4/-3 lines).

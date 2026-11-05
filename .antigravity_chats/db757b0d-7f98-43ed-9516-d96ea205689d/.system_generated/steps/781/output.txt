@@ -1,0 +1,11 @@
+
+The command exited with code 0.
+Output:
+
+    Directory: C:\Users\ufo\Downloads\TP
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          04/10/2026    03:08         597634 blitz_champions_data.json
+
+

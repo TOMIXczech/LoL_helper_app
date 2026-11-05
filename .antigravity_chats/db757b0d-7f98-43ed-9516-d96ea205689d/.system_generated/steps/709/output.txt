@@ -1,0 +1,75 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -58,7 +58,7 @@
+                 {
+                     _database.Add(CreatePreset(champId, champName, "ADC", "Crit DPS", 
+                         8000, 8200, new[] { 8008, 9111, 9103, 8014, 8226, 8236, 5005, 5008, 5002 },
+-                        new List<int> { 1055, 2003 }, new List<int> { 6672, 3006, 3031 }, 
++                        new List<int> { 1055, 2003 }, new List<int> { 1036, 1001, 1038, 6672, 3006, 3031 }, 
+                         new List<int> { 6672, 3006, 3031, 3036, 3072, 3094 },
+                         new List<int> { 3139, 3026, 6630 }, new List<int> { 3006, 3111 }
+                     ));
+@@ -65,5 +65,5 @@
+                         8000, 8400, new[] { 8010, 9111, 9104, 8299, 8473, 8453, 5005, 5008, 5002 },
+-                        new List<int> { 1055, 2003 }, new List<int> { 6672, 3006, 3124 }, 
++                        new List<int> { 1055, 2003 }, new List<int> { 1036, 1001, 1037, 6672, 3006, 3124 }, 
+                         new List<int> { 6672, 3006, 3124, 3153, 3036, 6653 },
+                         new List<int> { 3139, 3026, 3072 }, new List<int> { 3006, 3047 }
+                     ));
+@@ -71,7 +71,7 @@
+                 {
+                     _database.Add(CreatePreset(champId, champName, "Mid", "Burst Mage", 
+                         8100, 8200, new[] { 8112, 8126, 8138, 8106, 8226, 8236, 5008, 5008, 5002 },
+-                        new List<int> { 1056, 2003, 2003 }, new List<int> { 6655, 3020, 4645 }, 
++                        new List<int> { 1056, 2003, 2003 }, new List<int> { 1052, 1001, 3802, 6655, 3020, 4645 }, 
+                         new List<int> { 6655, 3020, 4645, 3089, 3157, 3135 },
+                         new List<int> { 3102, 3165, 3151 }, new List<int> { 3020, 3158 }
+                     ));
+@@ -79,7 +79,7 @@
+                 {
+                     _database.Add(CreatePreset(champId, champName, "Jungle/Mid", "Lethality Assassin", 
+                         8100, 8000, new[] { 8128, 8143, 8138, 8105, 9111, 8014, 5008, 5008, 5002 },
+-                        new List<int> { 1039, 2003 }, new List<int> { 3142, 3158, 6692 }, 
++                        new List<int> { 1039, 2003 }, new List<int> { 1036, 1001, 3134, 3142, 3158, 6692 }, 
+                         new List<int> { 3142, 3158, 6692, 6694, 6695, 3156 },
+                         new List<int> { 3026, 3139, 6676 }, new List<int> { 3158, 3111 }
+                     ));
+@@ -87,7 +87,7 @@
+                 {
+                     _database.Add(CreatePreset(champId, champName, "Top", "Bruiser Skirmisher", 
+                         8000, 8400, new[] { 8010, 9111, 9104, 8299, 8473, 8453, 5008, 5008, 5002 },
+-                        new List<int> { 1055, 2003 }, new List<int> { 3078, 3111, 3153 }, 
++                        new List<int> { 1055, 2003 }, new List<int> { 1036, 1001, 3057, 3078, 3111, 3153 }, 
+                         new List<int> { 3078, 3111, 3153, 3053, 3143, 3193 },
+                         new List<int> { 3026, 3065, 3075 }, new List<int> { 3111, 3047 }
+                     ));
+@@ -95,7 +95,7 @@
+                 {
+                     _database.Add(CreatePreset(champId, champName, "Top/Support", "Heavy Tank", 
+                         8400, 8000, new[] { 8437, 8446, 8429, 8451, 9111, 8299, 5002, 5002, 5001 },
+-                        new List<int> { 1054, 2003 }, new List<int> { 6662, 3047, 3068 }, 
++                        new List<int> { 1054, 2003 }, new List<int> { 1028, 1001, 3211, 6662, 3047, 3068 }, 
+                         new List<int> { 6662, 3047, 3068, 3143, 3193, 3110 },
+                         new List<int> { 3075, 4401, 3109 }, new List<int> { 3047, 3111 }
+                     ));
+@@ -103,7 +103,7 @@
+                 {
+                     _database.Add(CreatePreset(champId, champName, "Support", "Enchanter", 
+                         8200, 8300, new[] { 8214, 8226, 8210, 8236, 8304, 8347, 5008, 5008, 5002 },
+-                        new List<int> { 3850, 2003, 2003 }, new List<int> { 3158, 2065, 3107 }, 
++                        new List<int> { 3850, 2003, 2003 }, new List<int> { 1004, 1001, 3114, 3158, 2065, 3107 }, 
+                         new List<int> { 3850, 3158, 2065, 3107, 3504, 3222 },
+                         new List<int> { 3110, 3165, 3026 }, new List<int> { 3158, 3111 }
+                     ));
+@@ -112,7 +112,7 @@
+                     // Generic Fallback
+                     _database.Add(CreatePreset(champId, champName, "Flex", "Standard Output", 
+                         8000, 8100, new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5008, 5002 },
+-                        new List<int> { 1055, 2003 }, new List<int> { 3078, 3006 }, 
++                        new List<int> { 1055, 2003 }, new List<int> { 1036, 1001, 3057, 3078, 3006 }, 
+                         new List<int> { 3078, 3006, 3153, 3026 },
+                         new List<int> { 3026, 3156 }, new List<int> { 3006, 3111 }
+                     ));
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

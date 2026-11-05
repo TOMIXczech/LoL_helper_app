@@ -1,0 +1,77 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1,3 +1,5 @@
++using System;
++using System.Text.Json;
+ using System.Windows;
+ using LoLHelper.Core.Services;
+ 
+@@ -27,7 +27,7 @@
+         
+         Dispatcher.Invoke(() => 
+         {
+-            ConnectionStatusText.Text = "Connected to League Client!";
++            ConnectionStatusText.Text = "Connected to League Client! (Port: " + credentials.Port + ")";
+             ConnectionStatusText.Foreground = System.Windows.Media.Brushes.LightGreen;
+         });
+ 
+@@ -34,26 +34,36 @@
+         {
+-            // The JSON returned has a displayName property
+             var json = await _apiClient.GetCurrentSummonerAsync();
+             
+-            // Extremely basic extraction for demonstration (we'll use System.Text.Json properly later)
+-            string displayName = "Unknown";
+-            if (json.Contains("\"displayName\":\""))
+-            {
+-                var start = json.IndexOf("\"displayName\":\"") + 15;
+-                var end = json.IndexOf("\"", start);
+-                displayName = json.Substring(start, end - start);
+-            }
+-
+-            Dispatcher.Invoke(() => 
+-            {
+-                SummonerNameText.Text = displayName;
+-            });
+-        }
+-        catch 
+-        {
+-            Dispatcher.Invoke(() => 
+-            {
+-                SummonerNameText.Text = "Error fetching data";
++            Dispatcher.Invoke(() => 
++            {
++                try 
++                {
++                    using var doc = JsonDocument.Parse(json);
++                    if (doc.RootElement.TryGetProperty("displayName", out var displayNameProp))
++                    {
++                        SummonerNameText.Text = displayNameProp.GetString();
++                    }
++                    else if (doc.RootElement.TryGetProperty("gameName", out var gameNameProp))
++                    {
++                        SummonerNameText.Text = gameNameProp.GetString();
++                    }
++                    else
++                    {
++                        SummonerNameText.Text = "Name not found in JSON";
++                        // Optionally log 'json' to see what was returned
++                    }
++                }
++                catch (Exception ex)
++                {
++                    SummonerNameText.Text = "Parse error: " + ex.Message;
++                }
++            });
++        }
++        catch (Exception ex)
++        {
++            Dispatcher.Invoke(() => 
++            {
++                SummonerNameText.Text = "API Error: " + ex.Message;
+             });
+         }
+     }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,9 @@
+
+The command exited with code 1.
+Output:
+ParserError: C:\Users\ufo\Downloads\TP\inject_cs.ps1:1
+Line |
+   1 |  using System.Text.RegularExpressions;
+     |       ~
+     | Missing using directive
+

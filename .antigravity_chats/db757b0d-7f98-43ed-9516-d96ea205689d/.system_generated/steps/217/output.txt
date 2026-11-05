@@ -1,0 +1,13 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -21,6 +21,7 @@
+                 <Button x:Name="NavDashboardBtn" Content="Dashboard" Height="40" Margin="0,0,0,5" Background="#2D2D35" Foreground="White" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                 <Button x:Name="NavChampSelectBtn" Content="Champ Select" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                 <Button x:Name="NavScoutingBtn" Content="Live Scouting" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
++                <Button x:Name="NavPostMatchBtn" Content="Post-Match Analysis" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                 <Button x:Name="NavMobileBtn" Content="Mobile Pairing" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                 <Button x:Name="NavSettingsBtn" Content="Theme / Settings" Height="40" Margin="0,0,0,30" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,25 @@
+
+The command exited with code 0.
+Output:
+WARNING: Resulting JSON is truncated as serialization has exceeded the set depth of 2.
+      "name": "OnJsonApiEvent_lol-item-sets_v1_item-sets",
+      "tags": "$remoting-binding-module Plugins Plugin lol-item-sets",
+      "tags": "$remoting-binding-module Plugins Plugin lol-item-sets",
+      "tags": "$remoting-binding-module Plugins Plugin lol-item-sets",
+      "tags": "$remoting-binding-module Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+      "tags": "Plugins Plugin lol-item-sets",
+

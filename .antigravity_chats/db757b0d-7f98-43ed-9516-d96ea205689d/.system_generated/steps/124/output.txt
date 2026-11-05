@@ -1,0 +1,32 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -40,6 +40,8 @@
+             
+             Dispatcher.Invoke(() => 
+             {
++                RawJsonText.Text = json; // Show exactly what Riot returns
++                
+                 try 
+                 {
+                     using var doc = JsonDocument.Parse(json);
+@@ -53,7 +53,6 @@
+                     else
+                     {
+                         SummonerNameText.Text = "Name not found in JSON";
+-                        // Optionally log 'json' to see what was returned
+                     }
+                 }
+                 catch (Exception ex)
+@@ -65,7 +65,8 @@
+         {
+             Dispatcher.Invoke(() => 
+             {
+-                SummonerNameText.Text = "API Error: " + ex.Message;
++                SummonerNameText.Text = "API Error";
++                RawJsonText.Text = ex.Message;
+             });
+         }
+     }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

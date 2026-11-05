@@ -1,0 +1,13 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/LcuApiClient.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/ItemService.cs', LF will be replaced by CRLF the next time Git touches it
+[main e08db0b] feat: integrate public build database, champion hover sync, and custom item builder
+ 30 files changed, 299 insertions(+), 16 deletions(-)
+ create mode 100644 LoLHelper.Core/Services/BuildDatabaseService.cs
+ create mode 100644 LoLHelper.Core/Services/ItemService.cs
+

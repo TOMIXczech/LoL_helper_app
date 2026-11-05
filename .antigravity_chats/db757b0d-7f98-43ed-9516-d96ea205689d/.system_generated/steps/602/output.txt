@@ -1,0 +1,33 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -233,10 +233,12 @@
+             };
+             
+             border.MouseLeftButtonDown += (s, e) => {
+-                OpenItemPicker(newId => {
++                OpenItemPicker(async newId => {
+                     if (newId == null) itemIds.RemoveAt(index);
+                     else itemIds[index] = newId.Value;
+                     RenderItemBuilder(_activePreset);
++                    if (_activePreset != null && LcuApiClient.Instance.IsConnected)
++                        await LcuApiClient.Instance.SetItemBuildAsync(_activePreset);
+                 });
+             };
+ 
+@@ -257,10 +257,12 @@
+         
+         var addBtn = CreateIconBlock("+", "#A3BE8C", "#2D2D35");
+         addBtn.MouseLeftButtonDown += (s, e) => {
+-            OpenItemPicker(newId => {
++            OpenItemPicker(async newId => {
+                 if (newId != null) {
+                     itemIds.Add(newId.Value);
+                     RenderItemBuilder(_activePreset);
++                    if (_activePreset != null && LcuApiClient.Instance.IsConnected)
++                        await LcuApiClient.Instance.SetItemBuildAsync(_activePreset);
+                 }
+             });
+         };
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+fatal: pathspec '**/bin' did not match any files
+[main 76b827c] chore: add .gitignore and clean up
+ 1 file changed, 484 insertions(+)
+ create mode 100644 .gitignore
+

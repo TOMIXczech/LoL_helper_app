@@ -1,0 +1,23 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -28,7 +28,7 @@
+                     Content="Launch In-Game Overlay" 
+                     Width="200" 
+                     Height="40" 
+-                    Margin="0,30,0,0" 
++                    Margin="0,20,0,0" 
+                     HorizontalAlignment="Left"
+                     Background="#007ACC"
+                     Foreground="White"
+@@ -35,3 +35,8 @@
++
++            <TextBlock Text="Raw API Response (Debug):" Foreground="Gray" FontSize="12" Margin="0,20,0,5"/>
++            <ScrollViewer Height="150" VerticalScrollBarVisibility="Auto">
++                <TextBlock x:Name="RawJsonText" Foreground="#A3BE8C" FontSize="11" TextWrapping="Wrap" Background="#2b2b2b" Padding="5" />
++            </ScrollViewer>
+         </StackPanel>
+     </Grid>
+ </Window>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,5 @@
+
+The command exited with code 0.
+Output:
+"{\"events\":{\"OnCallback\":\"Fired when a callback is invoked.\",\"OnJsonApiEvent\":\"Fired when a resource is changed.\",\"OnJsonApiEvent_chat_v1_session\":\"\",\"OnJsonApiEvent_chat_v1_settings\":\"\",\"OnJsonApiEvent_chat_v3_errors\":\"\",\"OnJsonApiEvent_chat_v3_groups\":\"\",\"OnJsonApiEvent_chat_v5_messages\":\"\",\"OnJsonApiEvent_chat_v5_participants\":\"\",\"OnJsonApiEvent_chat_v6_conversations\":\"\",\"OnJsonApiEvent_client-config_v1_status\":\"\",\"OnJsonApiEvent_client-config_v2_con
+

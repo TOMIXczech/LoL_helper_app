@@ -1,0 +1,31 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -26,6 +26,15 @@
+     private int _secondaryTreeId = 8100;
+     private List<int> _selectedPerks = new(); // 9 items: 4 primary, 2 secondary, 3 shards
+ 
++    private string _currentRoleFilter = "";
++    private List<ChampionBuildPreset> _allCurrentPresets = new();
++    
++    private readonly Dictionary<string, int> _summonerSpells = new()
++    {
++        { "Cleanse", 1 }, { "Exhaust", 3 }, { "Flash", 4 }, { "Ghost", 6 },
++        { "Heal", 7 }, { "Smite", 11 }, { "Teleport", 12 }, { "Ignite", 14 }, { "Barrier", 21 }
++    };
++
+     public ChampSelectView()
+     {
+         InitializeComponent();
+@@ -34,6 +34,9 @@
+         
+         Loaded += OnLoaded;
+         Unloaded += OnUnloaded;
++        
++        Spell1Combo.ItemsSource = _summonerSpells;
++        Spell2Combo.ItemsSource = _summonerSpells;
+     }
+ 
+     private async void OnLoaded(object sender, RoutedEventArgs e)
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

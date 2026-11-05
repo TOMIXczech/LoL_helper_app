@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\ItemService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -64,6 +64,15 @@
+ 
+                     var itemName = prop.GetProperty("name").GetString() ?? "";
+ 
++                    var fromIds = new List<int>();
++                    if (prop.TryGetProperty("from", out var fromProp) && fromProp.ValueKind == JsonValueKind.Array)
++                    {
++                        foreach (var f in fromProp.EnumerateArray())
++                        {
++                            if (int.TryParse(f.GetString(), out int fid)) fromIds.Add(fid);
++                        }
++                    }
++
+                     var newItem = new GameItem
+                     {
+                         Id = itemId,
+@@ -70,6 +70,7 @@
+                         Description = prop.GetProperty("plaintext").GetString() ?? "",
+                         IconUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/img/item/{prop.GetProperty("image").GetProperty("full").GetString()}",
+-                        Gold = gold
++                        Gold = gold,
++                        From = fromIds
+                     };
+                     
+                     if (itemsByName.TryGetValue(itemName, out var existingItem))
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

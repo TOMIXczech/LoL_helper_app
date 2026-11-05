@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+[main 162758b] feat: implemented dynamic build generation engine for all champions via DataDragon
+ 24 files changed, 121 insertions(+), 63 deletions(-)
+

@@ -1,0 +1,23 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -27,7 +27,7 @@
+                     </Grid.RowDefinitions>
+                     <TextBlock x:Name="HoveredChampText" Text="AVAILABLE PRESETS" Foreground="#8F91A3" FontSize="12" FontWeight="Bold" Margin="0,0,0,10" TextWrapping="Wrap"/>
+                     
+-                    <ListBox x:Name="PresetsList" Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
++                    <ListBox x:Name="PresetsList" Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="PresetsList_SelectionChanged">
+                         <ListBox.ItemContainerStyle>
+                             <Style TargetType="ListBoxItem">
+                                 <Setter Property="Background" Value="#2D2D35"/>
+@@ -82,7 +82,7 @@
+                             
+                             <TextBlock Text="CUSTOM ITEM BUILDER" Foreground="#EBCB8B" FontSize="12" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Left"/>
+                             <!-- Item Builder -->
+-                            <WrapPanel x:Name="InteractiveItemBuilder" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0"/>
++                            <StackPanel x:Name="InteractiveItemBuilder" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,10,0,0"/>
+                         </StackPanel>
+                     </ScrollViewer>
+                 </Grid>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

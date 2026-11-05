@@ -1,0 +1,58 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -78,14 +78,15 @@
+         if (_lastHoveredChampId == champId) return;
+         _lastHoveredChampId = champId;
+         
+-        var presets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
+-        
+-        if (!presets.Any())
++        _allCurrentPresets = BuildDatabaseService.Instance.GetPresetsForChampion(champId);
++        
++        if (!_allCurrentPresets.Any())
+         {
+             HoveredChampText.Text = "AVAILABLE PRESETS (CUSTOM)";
+-            presets.Add(new ChampionBuildPreset
++            _allCurrentPresets.Add(new ChampionBuildPreset
+             {
+                 ChampionId = champId,
++                Role = "Flex",
+                 RunePreset = new RunePreset
+                 {
+                     Name = $"Custom Champ {champId}",
+@@ -105,6 +105,32 @@
+             HoveredChampText.Text = $"AVAILABLE PRESETS (CHAMP {champId})";
+         }
+ 
++        ApplyRoleFilter();
++    }
++
++    private void RoleFilter_Click(object sender, RoutedEventArgs e)
++    {
++        if (sender is System.Windows.Controls.Primitives.ToggleButton btn)
++        {
++            _currentRoleFilter = btn.IsChecked == true ? btn.Tag?.ToString() ?? "" : "";
++            
++            // Uncheck others
++            FilterTop.IsChecked = btn == FilterTop && btn.IsChecked == true;
++            FilterJgl.IsChecked = btn == FilterJgl && btn.IsChecked == true;
++            FilterMid.IsChecked = btn == FilterMid && btn.IsChecked == true;
++            FilterBot.IsChecked = btn == FilterBot && btn.IsChecked == true;
++            FilterSup.IsChecked = btn == FilterSup && btn.IsChecked == true;
++
++            ApplyRoleFilter();
++        }
++    }
++
++    private void ApplyRoleFilter()
++    {
++        var presets = string.IsNullOrEmpty(_currentRoleFilter) 
++            ? _allCurrentPresets 
++            : _allCurrentPresets.Where(p => p.Role.Equals(_currentRoleFilter, StringComparison.OrdinalIgnoreCase)).ToList();
++            
+         PresetsList.ItemsSource = presets;
+         if (presets.Any()) PresetsList.SelectedIndex = 0;
+     }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

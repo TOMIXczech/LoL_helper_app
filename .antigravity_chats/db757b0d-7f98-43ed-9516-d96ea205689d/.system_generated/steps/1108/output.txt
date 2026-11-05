@@ -1,0 +1,13 @@
+
+The command exited with code 0.
+Output:
+
+  
+      private readonly HttpClient _http = new HttpClient();
+      public List<GameItem> AllItems { get; private set; } = new();
+>     private Dictionary<int, GameItem> _itemDict = new();
+      private bool _isInitialized = false;
+  
+      public async Task InitializeAsync()
+
+

@@ -1,0 +1,28 @@
+
+The command exited with code 0.
+Output:
+
+>     private async void InjectRunesBtn_Click(object sender, RoutedEventArgs e)
+      {
+          if (PresetsList.SelectedItem is not ChampionBuildPreset selectedBuild) return;
+          if (!LcuApiClient.Instance.IsConnected) return;
+  
+          var selectedPreset = selectedBuild.RunePreset;
+  
+          InjectRunesBtn.Content = "Injecting...";
+          InjectRunesBtn.IsEnabled = false;
+  
+          bool success = await LcuApiClient.Instance.SetRunePageAsync(
+              selectedPreset.Name, selectedPreset.PrimaryStyleId, selectedPreset.SubStyleId, 
+selectedPreset.SelectedPerkIds
+          );
+          
+          await LcuApiClient.Instance.SetItemBuildAsync(selectedBuild);
+          await LcuApiClient.Instance.SetSummonerSpellsAsync(selectedBuild.Spell1Id, selectedBuild.Spell2Id);
+  
+          if (success) { _lastPageHash = -1; await PollActiveRunesAsync(); }
+          
+          InjectRunesBtn.Content = "Inject Selected Preset";
+          InjectRunesBtn.IsEnabled = true;
+
+

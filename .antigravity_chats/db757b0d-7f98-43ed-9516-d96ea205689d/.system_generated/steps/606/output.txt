@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/LcuApiClient.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main fb7ccfb] feat: inject custom Item Sets directly into the League Client in real-time
+ 25 files changed, 102 insertions(+), 8 deletions(-)
+

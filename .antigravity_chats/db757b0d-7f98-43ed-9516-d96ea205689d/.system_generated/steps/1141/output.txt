@@ -1,0 +1,35 @@
+Command exited with code 0.
+
+Command output:
+
+FullName
+--------
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\blitz_champions_data.json
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\LoLHelper.Core.csproj
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\ItemService.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\LcuApiClient.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\LockfileWatcher.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\PenguService.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\RuneService.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\App.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\App.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\AssemblyInfo.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\OverlayWindow.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\OverlayWindow.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\DashboardView.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\DashboardView.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\MobilePairingView.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\MobilePairingView.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\PostMatchView.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\PostMatchView.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ScoutingView.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ScoutingView.xaml.cs
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\SettingsView.xaml
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\SettingsView.xaml.cs
+

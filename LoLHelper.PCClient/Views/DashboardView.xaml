@@ -1,0 +1,35 @@
+<UserControl x:Class="LoLHelper.PCClient.Views.DashboardView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="#1C1C21" CornerRadius="8" Padding="20" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock Text="STATUS" Foreground="#8F91A3" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBlock x:Name="ConnectionStatusText" Text="Waiting for League..." Foreground="#A3BE8C" FontSize="18" FontWeight="SemiBold"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Background="#1C1C21" CornerRadius="8" Padding="20" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock Text="CURRENT SUMMONER" Foreground="#8F91A3" FontSize="12" FontWeight="Bold" Margin="0,0,0,5"/>
+                <TextBlock x:Name="SummonerNameText" Text="Not Available" Foreground="White" FontSize="28" FontWeight="Bold"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="2" Background="#141519" CornerRadius="8" BorderBrush="#2D2D35" BorderThickness="1" Padding="15">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="RAW API LOGS" Foreground="#8F91A3" FontSize="12" FontWeight="Bold" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="RawJsonText" Foreground="#8F91A3" FontSize="12" TextWrapping="Wrap" FontFamily="Consolas"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

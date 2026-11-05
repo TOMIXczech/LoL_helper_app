@@ -1,0 +1,47 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -48,8 +48,11 @@
+                     SubStyleImageUrl = RuneService.Instance.GetImageUrl(8200),
+                     KeystoneImageUrl = RuneService.Instance.GetImageUrl(8112)
+                 },
+-                // Malignance, Stormsurge, Shadowflame, Rabadon, Zhonya, Sorcerer Shoes
+-                CoreItemIds = new List<int> { 3118, 3154, 4645, 3089, 3157, 3020 }
++                StartingItemIds = new List<int> { 1056, 2003, 2003 },
++                CoreBuildOrderIds = new List<int> { 3118, 3020, 4645 },
++                CoreFinalBuildIds = new List<int> { 3118, 3020, 4645, 3089, 3157, 3135 },
++                SituationalItemIds = new List<int> { 3102, 3165, 3151 },
++                BootsOptionsIds = new List<int> { 3020, 3158 }
+             },
+             new ChampionBuildPreset
+             {
+@@ -64,8 +64,11 @@
+                     SubStyleImageUrl = RuneService.Instance.GetImageUrl(8400),
+                     KeystoneImageUrl = RuneService.Instance.GetImageUrl(8010)
+                 },
+-                // Kraken Slayer, Infinity Edge, Immortal Shieldbow, Bloodthirster, Berserker's Greaves
+-                CoreItemIds = new List<int> { 6672, 3031, 6673, 3072, 3006 }
++                StartingItemIds = new List<int> { 1055, 2003 },
++                CoreBuildOrderIds = new List<int> { 6672, 3006, 3031 },
++                CoreFinalBuildIds = new List<int> { 6672, 3006, 3031, 6673, 3072, 3026 },
++                SituationalItemIds = new List<int> { 3091, 3153, 3139 },
++                BootsOptionsIds = new List<int> { 3006, 3047, 3111 }
+             },
+             new ChampionBuildPreset
+             {
+@@ -80,8 +80,11 @@
+                     SubStyleImageUrl = RuneService.Instance.GetImageUrl(8200),
+                     KeystoneImageUrl = RuneService.Instance.GetImageUrl(8008)
+                 },
+-                // Kraken Slayer, Runaan's, Infinity Edge, Lord Dominik's, Berserker's Greaves
+-                CoreItemIds = new List<int> { 6672, 3085, 3031, 3036, 3006 }
++                StartingItemIds = new List<int> { 1055, 2003 },
++                CoreBuildOrderIds = new List<int> { 6672, 3006, 3085 },
++                CoreFinalBuildIds = new List<int> { 6672, 3006, 3085, 3031, 3036, 3072 },
++                SituationalItemIds = new List<int> { 3094, 3026, 3139 },
++                BootsOptionsIds = new List<int> { 3006 }
+             }
+         };
+     }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,23 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -162,6 +162,10 @@
+         }
+     }
+ 
++    private ChampionBuildPreset? _activePreset;
++    private Action<int?>? _onItemPickedCallback;
++    private bool _itemPickerInitialized = false;
++
+     private void PresetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+     {
+         if (PresetsList.SelectedItem is ChampionBuildPreset selectedBuild)
+@@ -168,4 +168,5 @@
+-            RenderItemBuilder(selectedBuild);
++            _activePreset = selectedBuild;
++            RenderItemBuilder(_activePreset);
+         }
+     }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

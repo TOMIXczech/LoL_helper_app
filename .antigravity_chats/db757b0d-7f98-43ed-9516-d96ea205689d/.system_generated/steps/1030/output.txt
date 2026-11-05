@@ -1,0 +1,16 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -784,8 +784,8 @@
+         
+         await LcuApiClient.Instance.SetItemBuildAsync(selectedBuild);
+         
+-        int s1 = Spell1Combo.SelectedValue as int? ?? selectedBuild.Spell1Id;
+-        int s2 = Spell2Combo.SelectedValue as int? ?? selectedBuild.Spell2Id;
++        int s1 = _currentSpell1Id;
++        int s2 = _currentSpell2Id;
+         await LcuApiClient.Instance.SetSummonerSpellsAsync(s1, s2);
+ 
+         if (success) { _lastPageHash = -1; await PollActiveRunesAsync(); }
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

@@ -1,0 +1,54 @@
+
+The command exited with code 0.
+Output:
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace LoLHelper.Core.Services;
+
+public class ChampionBuildPreset
+{
+    public int ChampionId { get; set; }
+    public string Role { get; set; } = string.Empty;
+    public RunePreset RunePreset { get; set; } = new();
+    
+    // New Categorized Item Blocks
+    public List<int> StartingItemIds { get; set; } = new();
+    public List<int> CoreBuildOrderIds { get; set; } = new();
+    public List<int> CoreFinalBuildIds { get; set; } = new();
+    public List<int> SituationalItemIds { get; set; } = new();
+    public List<int> BootsOptionsIds { get; set; } = new();
+    
+    public int Spell1Id { get; set; } = 4; // Default Flash
+    public int Spell2Id { get; set; } = 14; // Default Ignite
+}
+
+public class BuildDatabaseService
+{
+    public static BuildDatabaseService Instance { get; } = new BuildDatabaseService();
+    private List<ChampionBuildPreset> _database = new();
+
+    public async Task InitializeAsync()
+    {
+        if (_database.Any()) return;
+
+        // Initialize dependencies
+        await RuneService.Instance.InitializeAsync();
+        await ItemService.Instance.InitializeAsync();
+
+        try
+        {
+            using var http = new System.Net.Http.HttpClient();
+            var versionResponse = await http.GetStringAsync("https://ddragon.leagueoflegends.com/api/versions.json");
+            var versions = System.Text.Json.JsonSerializer.Deserialize<string[]>(versionResponse);
+            string latestVersion = versions?[0] ?? "14.1.1";
+
+            string champsUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/champion.json";
+            var champsJson = await http.GetStringAsync(champsUrl);
+            
+            using var doc = System.Text.Json.JsonDocument.Parse(champsJson);
+            var data = doc.RootElement.GetProperty("data");
+            
+            foreach (var champ in data.EnumerateObject())
+

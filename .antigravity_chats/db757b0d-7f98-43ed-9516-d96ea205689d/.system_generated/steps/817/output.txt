@@ -1,0 +1,17 @@
+
+The command exited with code 0.
+Output:
+
+              _isInitialized = true;
+          }
+          catch { }
+      }
+  
+>     public string GetImageUrl(int id)
+      {
+          return _runeImages.TryGetValue(id, out var url) ? url : "";
+      }
+  
+      public async Task<List<RunePreset>> GetPresetsAsync()
+
+

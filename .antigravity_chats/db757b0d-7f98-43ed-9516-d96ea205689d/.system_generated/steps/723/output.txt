@@ -1,0 +1,113 @@
+
+The command exited with code 0.
+Output:
+<truncated 1 lines>
+  LoLHelper.Core\Services\RuneService.cs:73:                    Icon = 
+$"https://ddragon.leagueoflegends.com/cdn/img/{tree.GetProperty("icon").GetString()}"
+  LoLHelper.Core\Services\RuneService.cs:74:                };
+  LoLHelper.Core\Services\RuneService.cs:75:                
+> LoLHelper.Core\Services\RuneService.cs:76:                _runeImages[newTree.Id] = newTree.Icon;
+  LoLHelper.Core\Services\RuneService.cs:77:
+  LoLHelper.Core\Services\RuneService.cs:78:                foreach (var slot in 
+tree.GetProperty("slots").EnumerateArray())
+  LoLHelper.Core\Services\RuneService.cs:79:                {
+  LoLHelper.Core\Services\RuneService.cs:80:                    var newSlot = new RuneSlot();
+  LoLHelper.Core\Services\RuneService.cs:81:                    foreach (var rune in 
+slot.GetProperty("runes").EnumerateArray())
+  LoLHelper.Core\Services\RuneService.cs:82:                    {
+  LoLHelper.Core\Services\RuneService.cs:83:                        var newItem = new RuneItem
+  LoLHelper.Core\Services\RuneService.cs:84:                        {
+  LoLHelper.Core\Services\RuneService.cs:85:                            Id = rune.GetProperty("id").GetInt32(),
+  LoLHelper.Core\Services\RuneService.cs:86:                            Name = rune.GetProperty("name").GetString() ?? 
+"",
+  LoLHelper.Core\Services\RuneService.cs:87:                            Icon = 
+$"https://ddragon.leagueoflegends.com/cdn/img/{rune.GetProperty("icon").GetString()}"
+  LoLHelper.Core\Services\RuneService.cs:88:                        };
+  LoLHelper.Core\Services\RuneService.cs:89:                        newSlot.Runes.Add(newItem);
+> LoLHelper.Core\Services\RuneService.cs:90:                        _runeImages[newItem.Id] = newItem.Icon;
+  LoLHelper.Core\Services\RuneService.cs:91:                    }
+  LoLHelper.Core\Services\RuneService.cs:92:                    newTree.Slots.Add(newSlot);
+  LoLHelper.Core\Services\RuneService.cs:93:                }
+  LoLHelper.Core\Services\RuneService.cs:94:                AllTrees.Add(newTree);
+  LoLHelper.Core\Services\RuneService.cs:95:            }
+  LoLHelper.Core\Services\RuneService.cs:96:
+  LoLHelper.Core\Services\RuneService.cs:97:            // Stat Shards
+  LoLHelper.Core\Services\RuneService.cs:98:            string cdragonBase = 
+"https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/";
+> LoLHelper.Core\Services\RuneService.cs:99:            _runeImages[5008] = cdragonBase + 
+"statmodsadaptiveforceicon.png";
+> LoLHelper.Core\Services\RuneService.cs:100:            _runeImages[5005] = cdragonBase + 
+"statmodsattackspeedicon.png";
+> LoLHelper.Core\Services\RuneService.cs:101:            _runeImages[5007] = cdragonBase + 
+"statmodscdrscalingicon.png";
+> LoLHelper.Core\Services\RuneService.cs:102:            _runeImages[5002] = cdragonBase + "statmodsarmoricon.png";
+> LoLHelper.Core\Services\RuneService.cs:103:            _runeImages[5003] = cdragonBase + "statmodsmagicresicon.png";
+> LoLHelper.Core\Services\RuneService.cs:104:            _runeImages[5001] = cdragonBase + 
+"statmodshealthscalingicon.png";
+> LoLHelper.Core\Services\RuneService.cs:105:            _runeImages[5011] = cdragonBase + 
+"statmodshealthplusicon.png";
+> LoLHelper.Core\Services\RuneService.cs:106:            _runeImages[5013] = cdragonBase + "statmodstenacityicon.png";
+> LoLHelper.Core\Services\RuneService.cs:107:            _runeImages[5010] = cdragonBase + 
+"statmodsmovementspeedicon.png";
+  LoLHelper.Core\Services\RuneService.cs:108:
+  LoLHelper.Core\Services\RuneService.cs:109:            _isInitialized = true;
+  LoLHelper.Core\Services\RuneService.cs:110:        }
+  LoLHelper.Core\Services\RuneService.cs:111:        catch { }
+  LoLHelper.Core\Services\RuneService.cs:112:    }
+  LoLHelper.Core\Services\RuneService.cs:113:
+> LoLHelper.Core\Services\RuneService.cs:114:    public string GetImageUrl(int id)
+  LoLHelper.Core\Services\RuneService.cs:115:    {
+> LoLHelper.Core\Services\RuneService.cs:116:        return _runeImages.TryGetValue(id, out var url) ? url : "";
+  LoLHelper.Core\Services\RuneService.cs:117:    }
+  LoLHelper.Core\Services\RuneService.cs:118:
+  LoLHelper.Core\Services\RuneService.cs:119:    public async Task<List<RunePreset>> GetPresetsAsync()
+  LoLHelper.Core\Services\RuneService.cs:120:    {
+> LoLHelper.Core\Services\RuneService.cs:121:        await InitializeAsync();
+  LoLHelper.Core\Services\RuneService.cs:122:
+  LoLHelper.Core\Services\RuneService.cs:123:        return new List<RunePreset>
+  LoLHelper.Core\Services\RuneService.cs:124:        {
+  LoLHelper.Core\Services\RuneService.cs:125:            new RunePreset
+  LoLHelper.Core\Services\RuneService.cs:126:            {
+  LoLHelper.Core\Services\RuneService.cs:127:                Name = "The Assassin (Electrocute)",
+  LoLHelper.Core\Services\RuneService.cs:128:                Description = "High burst damage (Zed, Talon, Ahri)",
+  LoLHelper.Core\Services\RuneService.cs:129:                PrimaryStyleId = 8100, SubStyleId = 8000,
+  LoLHelper.Core\Services\RuneService.cs:130:                SelectedPerkIds = new[] { 8112, 8143, 8138, 8106, 8009, 
+8014, 5008, 5008, 5002 },
+> LoLHelper.Core\Services\RuneService.cs:131:                PrimaryStyleImageUrl = GetImageUrl(8100), 
+SubStyleImageUrl = GetImageUrl(8000), KeystoneImageUrl = GetImageUrl(8112)
+  LoLHelper.Core\Services\RuneService.cs:132:            },
+  LoLHelper.Core\Services\RuneService.cs:133:            new RunePreset
+  LoLHelper.Core\Services\RuneService.cs:134:            {
+  LoLHelper.Core\Services\RuneService.cs:135:                Name = "The Bruiser (Conqueror)",
+  LoLHelper.Core\Services\RuneService.cs:136:                Description = "Extended fights (Yasuo, Darius, Aatrox)",
+  LoLHelper.Core\Services\RuneService.cs:137:                PrimaryStyleId = 8000, SubStyleId = 8400,
+  LoLHelper.Core\Services\RuneService.cs:138:                SelectedPerkIds = new[] { 8010, 9111, 9104, 8014, 8453, 
+8242, 5005, 5008, 5002 },
+> LoLHelper.Core\Services\RuneService.cs:139:                PrimaryStyleImageUrl = GetImageUrl(8000), 
+SubStyleImageUrl = GetImageUrl(8400), KeystoneImageUrl = GetImageUrl(8010)
+  LoLHelper.Core\Services\RuneService.cs:140:            },
+  LoLHelper.Core\Services\RuneService.cs:141:            new RunePreset
+  LoLHelper.Core\Services\RuneService.cs:142:            {
+  LoLHelper.Core\Services\RuneService.cs:143:                Name = "The Mage (Arcane Comet)",
+  LoLHelper.Core\Services\RuneService.cs:144:                Description = "Poke and control (Lux, Syndra, Xerath)",
+  LoLHelper.Core\Services\RuneService.cs:145:                PrimaryStyleId = 8200, SubStyleId = 8300,
+  LoLHelper.Core\Services\RuneService.cs:146:                SelectedPerkIds = new[] { 8229, 8226, 8210, 8236, 8304, 
+8345, 5008, 5008, 5002 },
+> LoLHelper.Core\Services\RuneService.cs:147:                PrimaryStyleImageUrl = GetImageUrl(8200), 
+SubStyleImageUrl = GetImageUrl(8300), KeystoneImageUrl = GetImageUrl(8229)
+  LoLHelper.Core\Services\RuneService.cs:148:            },
+  LoLHelper.Core\Services\RuneService.cs:149:            new RunePreset
+  LoLHelper.Core\Services\RuneService.cs:150:            {
+  LoLHelper.Core\Services\RuneService.cs:151:                Name = "The Tank (Grasp)",
+  LoLHelper.Core\Services\RuneService.cs:152:                Description = "Sustain and scaling (Ornn, Sion, Shen)",
+  LoLHelper.Core\Services\RuneService.cs:153:                PrimaryStyleId = 8400, SubStyleId = 8000,
+  LoLHelper.Core\Services\RuneService.cs:154:                SelectedPerkIds = new[] { 8437, 8446, 8429, 8451, 9111, 
+9104, 5005, 5002, 5002 },
+> LoLHelper.Core\Services\RuneService.cs:155:                PrimaryStyleImageUrl = GetImageUrl(8400), 
+SubStyleImageUrl = GetImageUrl(8000), KeystoneImageUrl = GetImageUrl(8437)
+  LoLHelper.Core\Services\RuneService.cs:156:            }
+  LoLHelper.Core\Services\RuneService.cs:157:        };
+  LoLHelper.Core\Services\RuneService.cs:158:    }
+  LoLHelper.Core\Services\RuneService.cs:159:}
+
+

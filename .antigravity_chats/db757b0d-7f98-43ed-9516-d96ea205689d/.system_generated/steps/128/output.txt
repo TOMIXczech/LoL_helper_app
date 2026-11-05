@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\OverlayWindow.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -12,16 +12,16 @@
+     
+     <!-- This Canvas will cover the screen, we can place items anywhere -->
+     <Canvas>
+-        <!-- Example: Jungle Timers / Info Box that will float on the screen -->
+-        <Border Canvas.Top="50" Canvas.Left="50" 
+-                Background="#AA000000" 
+-                BorderBrush="#33FFFFFF" 
+-                BorderThickness="1" 
++        <!-- Temporary Bright Red Box for Debugging -->
++        <Border Canvas.Top="100" Canvas.Left="100" 
++                Background="Red" 
++                BorderBrush="White" 
++                BorderThickness="3" 
+                 CornerRadius="8" 
+-                Padding="15">
++                Padding="30">
+             <StackPanel>
+-                <TextBlock Text="LoL Helper Overlay Active" Foreground="White" FontWeight="Bold" FontSize="16"/>
+-                <TextBlock Text="Waiting for live game data..." Foreground="LightGray" Margin="0,5,0,0"/>
++                <TextBlock Text="DEBUG OVERLAY WINDOW" Foreground="White" FontWeight="Black" FontSize="24"/>
++                <TextBlock Text="If you can see this, WPF rendering works!" Foreground="White" FontSize="16" Margin="0,5,0,0"/>
+             </StackPanel>
+         </Border>
+     </Canvas>
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

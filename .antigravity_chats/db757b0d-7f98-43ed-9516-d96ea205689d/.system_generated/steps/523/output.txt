@@ -1,0 +1,493 @@
+
+The command exited with code 0.
+Output:
+<truncated 1 lines>
+      "id": "3157",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3161",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3165",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3168",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3169",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3170",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3171",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3172",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3173",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3174",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3175",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3176",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3179",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3181",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3190",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3193",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3222",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3300",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3301",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3302",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3303",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3430",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3504",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3508",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3742",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3748",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "3814",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4004",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4005",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4010",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4011",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4012",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4013",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4014",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4016",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4017",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4401",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4402",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4403",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "447114",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4628",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4629",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4633",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4637",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4644",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4645",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "4646",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6333",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6609",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6610",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6616",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6617",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6620",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6622",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663039",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663056",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663058",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663059",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663060",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663064",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6631",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663146",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663172",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663193",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "663430",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "664011",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "664644",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6653",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6655",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6657",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6662",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6664",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6665",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "667101",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "667109",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "667112",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6672",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6673",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6675",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6676",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6692",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6693",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6695",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6696",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6697",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6698",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6699",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "6701",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "773068",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "773073",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "8001",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "8010",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "8020",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "CritMultipliers",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "InfinityCoil",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "MomentumItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "Quickblades",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "SpellbladeItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "SpellshieldItems",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "StasisAndRevive",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "ViktorHexCore",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "VoidPen",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "WardGreen",
+      "MaxGroupOwnable": "1"
+    },
+    {
+      "id": "WardItems",
+      "MaxGroupOwnable": "-1"
+    },
+    {
+      "id": "WardPink",
+      "MaxGroupOwnable": "1"
+    }
+  ],
+  "tree": [
+    {
+      "header": "START",
+      "tags": [
+        "LANE",
+        "JUNGLE"
+      ]
+    },
+    {
+      "header": "TOOLS",
+      "tags": [
+        "GOLDPER",
+        "CONSUMABLE",
+        "VISION"
+      ]
+    },
+    {
+      "header": "DEFENSE",
+      "tags": [
+        "HEALTH",
+        "SPELLBLOCK",
+        "ARMOR",
+        "HEALTHREGEN"
+      ]
+    },
+    {
+      "header": "ATTACK",
+      "tags": [
+        "ATTACKSPEED",
+        "CRITICALSTRIKE",
+        "DAMAGE",
+        "LIFESTEAL"
+      ]
+    },
+    {
+      "header": "MAGIC",
+      "tags": [
+        "MANA",
+        "SPELLDAMAGE",
+        "COOLDOWNREDUCTION",
+        "MANAREGEN"
+      ]
+    },
+    {
+      "header": "MOVEMENT",
+      "tags": [
+        "BOOTS",
+        "NONBOOTSMOVEMENT"
+      ]
+    },
+    {
+      "header": "UNCATEGORIZED",
+      "tags": [
+        "ACTIVE",
+        "ARMORPENETRATION",
+        "STEALTH",
+        "SLOW",
+        "ONHIT",
+        "AURA",
+        "MAGICPENETRATION",
+        "TRINKET",
+        "SPELLVAMP",
+        "TENACITY"
+      ]
+    }
+  ]
+}
+
+

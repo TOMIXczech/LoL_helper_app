@@ -1,0 +1,84 @@
+
+The command exited with code 0.
+Output:
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+
+namespace LoLHelper.Core.Services
+{
+    public class LcuApiClient
+    {
+        public static LcuApiClient Instance { get; } = new LcuApiClient();
+
+        private HttpClient? _httpClient;
+        private LcuCredentials? _credentials;
+
+        public LcuApiClient()
+        {
+        }
+
+        public void SetCredentials(LcuCredentials credentials)
+        {
+            _credentials = credentials;
+            
+            // Dispose the old client if it exists (e.g. League restarted and changed ports)
+            _httpClient?.Dispose();
+
+            var handler = new HttpClientHandler
+            {
+                ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+            };
+            
+            _httpClient = new HttpClient(handler)
+            {
+                BaseAddress = new Uri(credentials.BaseUrl)
+            };
+            
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", 
+                Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes($"riot:{credentials.Password}")));
+        }
+
+        public bool IsConnected => _credentials != null;
+
+        public async Task<string> GetCurrentSummonerAsync()
+        {
+            if (_credentials == null) throw new InvalidOperationException("Not connected to LCU.");
+            var response = await _httpClient!.GetAsync("/lol-summoner/v1/current-summoner");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetCurrentRunePageJsonAsync()
+        {
+            if (_credentials == null) return string.Empty;
+            var response = await _httpClient!.GetAsync("/lol-perks/v1/currentpage");
+            if (!response.IsSuccessStatusCode) return string.Empty;
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetChampSelectSessionAsync()
+        {
+            if (_credentials == null) return string.Empty;
+            var response = await _httpClient!.GetAsync("/lol-champ-select/v1/session");
+            if (!response.IsSuccessStatusCode) return string.Empty;
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        // --- RUNE INJECTION ---
+
+        public async Task<bool> DeleteAllRunePagesAsync()
+        {
+            if (_credentials == null) return false;
+            var response = await _httpClient!.DeleteAsync("/lol-perks/v1/pages");
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<bool> SetRunePageAsync(string name, int primaryStyleId, int subStyleId, int[] perkIds)
+        {
+            if (_credentials == null) return false;
+
+            // 1. Delete all existing pages (LCU only allows a few custom pages)
+            await DeleteAllRunePagesAsync();
+

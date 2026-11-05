@@ -1,0 +1,142 @@
+
+The command exited with code 0.
+Output:
+<truncated 1254 lines>
+KiB</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="tier_icon_breakline.png" 
+title="tier_icon_breakline.png">tier_icon_breakline.png</a></td><td class="size">1.4 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="time-remaining-calendar.svg" 
+title="time-remaining-calendar.svg">time-remaining-calendar.svg</a></td><td class="size">691 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="time-remaining-clock.svg" 
+title="time-remaining-clock.svg">time-remaining-clock.svg</a></td><td class="size">1.4 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="time-remaining-frame-center.svg" 
+title="time-remaining-frame-center.svg">time-remaining-frame-center.svg</a></td><td class="size">5.6 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="time-remaining-frame-left.svg" 
+title="time-remaining-frame-left.svg">time-remaining-frame-left.svg</a></td><td class="size">4.2 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="time-remaining-frame-right.svg" 
+title="time-remaining-frame-right.svg">time-remaining-frame-right.svg</a></td><td class="size">4.0 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="time-remaining-frame.svg" 
+title="time-remaining-frame.svg">time-remaining-frame.svg</a></td><td class="size">906 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="time-remaining-icon-background.svg" 
+title="time-remaining-icon-background.svg">time-remaining-icon-background.svg</a></td><td class="size">902 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="top-nav-updates-eat-icon.svg" 
+title="top-nav-updates-eat-icon.svg">top-nav-updates-eat-icon.svg</a></td><td class="size">932 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="two-tickets.svg" title="two-tickets.svg">two-tickets.svg</a></td><td class="size">661 
+B</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="unranked-banner.png" title="unranked-banner.png">unranked-banner.png</a></td><td 
+class="size">3.7 KiB</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="unranked-emblem.png" title="unranked-emblem.png">unranked-emblem.png</a></td><td 
+class="size">62.4 KiB</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="unranked-intro-image-frame.png" 
+title="unranked-intro-image-frame.png">unranked-intro-image-frame.png</a></td><td class="size">2.8 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="unranked-queue-up-metal.png" 
+title="unranked-queue-up-metal.png">unranked-queue-up-metal.png</a></td><td class="size">674 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="video-active.png" title="video-active.png">video-active.png</a></td><td class="size">201 
+B</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="video-inactive.png" title="video-inactive.png">video-inactive.png</a></td><td 
+class="size">168 B</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="vignette_background.png" 
+title="vignette_background.png">vignette_background.png</a></td><td class="size">735.3 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="warning_icon.svg" title="warning_icon.svg">warning_icon.svg</a></td><td class="size">377 
+B</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="warning_icon_red.svg" title="warning_icon_red.svg">warning_icon_red.svg</a></td><td 
+class="size">377 B</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="x-icon.png" title="x-icon.png">x-icon.png</a></td><td class="size">356 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="x.png" title="x.png">x.png</a></td><td class="size">281 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="x_active.png" title="x_active.png">x_active.png</a></td><td class="size">275 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="x_hover.png" title="x_hover.png">x_hover.png</a></td><td class="size">290 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="xbox-game-pass-loyalty-hint.svg" 
+title="xbox-game-pass-loyalty-hint.svg">xbox-game-pass-loyalty-hint.svg</a></td><td class="size">1.7 KiB</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="xpboost_rewards.svg" title="xpboost_rewards.svg">xpboost_rewards.svg</a></td><td 
+class="size">375 B</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="yellow-info-icon.svg" title="yellow-info-icon.svg">yellow-info-icon.svg</a></td><td 
+class="size">873 B</td><td class="date">2026-Jan-11 23:25</td></tr>
+<tr><td class="link"><a href="yourshop.svg" title="yourshop.svg">yourshop.svg</a></td><td class="size">692 B</td><td 
+class="date">2026-Jan-11 23:25</td></tr>
+</tbody></table>  </main>
+  <div id="search-results" class="hidden">
+    <p></p>
+    <ul></ul>
+  </div>
+  <footer>
+    <div id="footer-links" class="hide-screen-s">
+      <div>
+        <ul>
+          <li class="header">Community</li>
+          <li><a target="_blank" rel="noreferrer noopener" href="https://discord.gg/rZQwuek">Discord</a></li>
+          <li class="header">Donations</li>
+          <li><a target="_blank" rel="noreferrer noopener" 
+href="https://www.patreon.com/communitydragon">Patreon</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li class="header">Projects</li>
+          <li><a href="https://github.com/communitydragon/cdtb">Toolbox</a></li>
+          <li><a href="https://hextechdocs.dev">Hexdocs</a></li>
+          <li><a href="https://github.com/communitydragon/awesome-league">Awesome</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li class="header">Links</li>
+          <li><a href="https://www.communitydragon.org">Home</a></li>
+          <li><a href="https://github.com/communitydragon">GitHub</a></li>
+          <li><a href="https://github.com/communitydragon/docs/blob/master/assets.md">Docs</a></li>
+        </ul>
+      </div>
+      <div id="footer-icons" class="uk-light">
+        <ul>
+          <li>
+            <a class="uk-icon-button uk-icon" target="_blank" rel="noreferrer noopener" uk-icon="github" 
+href="https://github.com/communitydragon" aria-label="GitHub"></a>
+          </li>
+          <li>
+            <a class="uk-icon-button uk-icon" target="_blank" rel="noreferrer noopener" uk-icon="discord" 
+href="https://discord.gg/rZQwuek" aria-label="Discord"></a>
+          </li>
+          <li class="patreon">
+            <a class="uk-icon-button uk-icon" target="_blank" rel="noreferrer noopener" 
+href="https://www.patreon.com/communitydragon" aria-label="Patreon">
+              <img src="/.theme/patreon.png" height="18" width="18" alt="Patreon">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="legal">
+      <hr class="hide-screen-s" />
+      <div>CommunityDragon was created under Riot Games' <a target="_blank" rel="noreferrer noopener" 
+href="https://www.riotgames.com/en/legal">"Legal Jibber Jabber"</a> policy using assets owned by Riot Games. Riot 
+Games does not endorse or sponsor this project.</div>
+    </div>
+  </footer>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9244612115606151" 
+crossorigin="anonymous"></script>
+<script type="module" 
+src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" 
+integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" 
+data-cf-beacon='{"version":"2024.11.0","token":"1d93d63ea58c4eb382141ef0047426c3","spa":2}' 
+crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+

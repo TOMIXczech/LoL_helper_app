@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+[main 380b1f1] feat: include basic and epic component items in the core build order generation
+ 24 files changed, 14 insertions(+), 14 deletions(-)
+

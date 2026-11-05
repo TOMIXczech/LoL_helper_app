@@ -1,0 +1,28 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -96,8 +96,20 @@
+                                 <ColumnDefinition Width="10"/>
+                                 <ColumnDefinition Width="*"/>
+                             </Grid.ColumnDefinitions>
+-                            <ComboBox x:Name="Spell1Combo" SelectedIndex="0" DisplayMemberPath="Key" SelectedValuePath="Value" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5"/>
+-                            <ComboBox x:Name="Spell2Combo" Grid.Column="2" SelectedIndex="1" DisplayMemberPath="Key" SelectedValuePath="Value" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5"/>
++                            <ComboBox x:Name="Spell1Combo" SelectedIndex="0" SelectedValuePath="Id" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5">
++                                <ComboBox.ItemTemplate>
++                                    <DataTemplate>
++                                        <Image Source="{Binding IconUrl}" Width="24" Height="24" Stretch="Uniform" ToolTip="{Binding Name}"/>
++                                    </DataTemplate>
++                                </ComboBox.ItemTemplate>
++                            </ComboBox>
++                            <ComboBox x:Name="Spell2Combo" Grid.Column="2" SelectedIndex="1" SelectedValuePath="Id" Background="#2D2D35" Foreground="White" BorderThickness="0" Padding="5">
++                                <ComboBox.ItemTemplate>
++                                    <DataTemplate>
++                                        <Image Source="{Binding IconUrl}" Width="24" Height="24" Stretch="Uniform" ToolTip="{Binding Name}"/>
++                                    </DataTemplate>
++                                </ComboBox.ItemTemplate>
++                            </ComboBox>
+                         </Grid>
+                         
+                         <Button x:Name="InjectRunesBtn" 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

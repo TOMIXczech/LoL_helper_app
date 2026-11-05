@@ -1,0 +1,46 @@
+
+The command exited with code 0.
+Output:
+                                if (runesData.TryGetProperty("secondary_and_other", out var secProp) && secProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                                {
+                                    foreach (var sec in secProp.EnumerateArray())
+                                    {
+                                        var id = RuneService.Instance.GetPerkIdByName(sec.GetString() ?? "");
+                                        if (id.HasValue) perkIds.Add(id.Value);
+                                    }
+                                }
+                            }
+
+                            while (perkIds.Count < 6) perkIds.Add(5008);
+                            if (perkIds.Count == 6) { perkIds.Add(5008); perkIds.Add(5008); perkIds.Add(5002); }
+
+                            int pStyle = 8000, sStyle = 8100;
+                            if (perkIds.Count > 0)
+                            {
+                                var t = RuneService.Instance.GetTreeIdByPerkId(perkIds[0]);
+                                if (t.HasValue) pStyle = t.Value;
+                            }
+                            if (perkIds.Count > 4)
+                            {
+                                var t = RuneService.Instance.GetTreeIdByPerkId(perkIds[4]);
+                                if (t.HasValue) sStyle = t.Value;
+                            }
+
+                            int spell1 = 4;
+                            int spell2 = 14;
+                            if (buildData.TryGetProperty("summoner_spells", out var spellsProp) && spellsProp.ValueKind == System.Text.Json.JsonValueKind.Array)
+                            {
+                                var sArr = System.Linq.Enumerable.ToArray(spellsProp.EnumerateArray());
+                                if (sArr.Length >= 2)
+                                {
+                                    spell1 = GetSpellId(sArr[0].GetString());
+                                    spell2 = GetSpellId(sArr[1].GetString());
+                                }
+                            }
+                            else
+                            {
+                                if (roleName == "JUNGLE") spell2 = 11;
+                                else if (roleName == "TOP") spell2 = 12;
+                                else if (roleName == "BOTTOM") spell2 = 7;
+                            }
+

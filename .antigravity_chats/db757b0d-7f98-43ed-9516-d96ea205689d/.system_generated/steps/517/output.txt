@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/ItemService.cs', LF will be replaced by CRLF the next time Git touches it
+[main a7ee93a] fix: filter duplicate items in DataDragon dictionary by keeping highest ID
+ 24 files changed, 29 insertions(+), 9 deletions(-)
+

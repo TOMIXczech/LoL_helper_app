@@ -1,0 +1,23 @@
+
+The command exited with code 0.
+Output:
+
+> C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21792:      "name": 
+"GetLolPerksV1RecommendedPagesChampionByChampionIdPositionByPositionMapByMapId",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21793:      "nameSpace": "",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21794:      "returns": {
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21795:        "elementType": "LolPerksPerkUIRecommendedPage",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21796:        "type": "vector"
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21797:      },
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21798:      "tags": [
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21799:        "$remoting-binding-module",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21800:        "Plugins",
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21801:        "Plugin lol-perks"
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21802:      ],
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21803:      "threadSafe": false
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21804:    },
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21805:    {
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21806:      "arguments": [
+  C:\Users\ufo\AppData\Local\Temp\lcu_help_full.json:21807:        {
+
+

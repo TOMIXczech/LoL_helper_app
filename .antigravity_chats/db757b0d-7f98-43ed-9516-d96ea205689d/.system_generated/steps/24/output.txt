@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+[main 2c73867] docs: add README
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+

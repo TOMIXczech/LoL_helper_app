@@ -1,0 +1,54 @@
+
+The command exited with code 0.
+Output:
+    public string Name { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public int PrimaryStyleId { get; set; }
+    public int SubStyleId { get; set; }
+    public int[] SelectedPerkIds { get; set; } = Array.Empty<int>();
+    
+    public string PrimaryStyleImageUrl { get; set; } = string.Empty;
+    public string SubStyleImageUrl { get; set; } = string.Empty;
+    public string KeystoneImageUrl { get; set; } = string.Empty;
+}
+
+public class RuneService
+{
+    public static RuneService Instance { get; } = new RuneService();
+
+    private readonly HttpClient _http = new HttpClient();
+    private const string DDragonVersionUrl = "https://ddragon.leagueoflegends.com/api/versions.json";
+    
+    private Dictionary<int, string> _runeImages = new();
+    public List<RuneTree> AllTrees { get; private set; } = new();
+    private bool _isInitialized = false;
+
+    public async Task InitializeAsync()
+    {
+        if (_isInitialized) return;
+
+        try
+        {
+            var versionResponse = await _http.GetStringAsync(DDragonVersionUrl);
+            var versions = JsonSerializer.Deserialize<string[]>(versionResponse);
+            string latestVersion = versions?[0] ?? "14.1.1";
+
+            string runesUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/runesReforged.json";
+            var runesJson = await _http.GetStringAsync(runesUrl);
+            
+            using var doc = JsonDocument.Parse(runesJson);
+            foreach (var tree in doc.RootElement.EnumerateArray())
+            {
+                var newTree = new RuneTree
+                {
+                    Id = tree.GetProperty("id").GetInt32(),
+                    Name = tree.GetProperty("name").GetString() ?? "",
+                    Icon = $"https://ddragon.leagueoflegends.com/cdn/img/{tree.GetProperty("icon").GetString()}"
+                };
+                
+                _runeImages[newTree.Id] = newTree.Icon;
+
+                foreach (var slot in tree.GetProperty("slots").EnumerateArray())
+                {
+                    var newSlot = new RuneSlot();
+

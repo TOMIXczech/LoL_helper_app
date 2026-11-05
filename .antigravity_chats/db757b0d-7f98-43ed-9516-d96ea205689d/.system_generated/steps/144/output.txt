@@ -1,0 +1,38 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\OverlayWindow.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1,5 +1,7 @@
+ using System;
++using System.Runtime.InteropServices;
+ using System.Windows;
++using System.Windows.Interop;
+ 
+ namespace LoLHelper.PCClient;
+ 
+@@ -6,4 +6,13 @@
+ {
++    private const int WS_EX_TRANSPARENT = 0x00000020;
++    private const int GWL_EXSTYLE = -20;
++
++    [DllImport("user32.dll")]
++    private static extern int GetWindowLong(IntPtr hwnd, int index);
++
++    [DllImport("user32.dll")]
++    private static extern int SetWindowLong(IntPtr hwnd, int index, int newStyle);
++
+     public OverlayWindow()
+     {
+         InitializeComponent();
+@@ -11,7 +11,9 @@
+ 
+     private void Window_SourceInitialized(object sender, EventArgs e)
+     {
+-        // Temporarily removed Win32 transparency hooks to debug if the window appears at all.
++        var hwnd = new WindowInteropHelper(this).Handle;
++        int extendedStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
++        SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
+     }
+ }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

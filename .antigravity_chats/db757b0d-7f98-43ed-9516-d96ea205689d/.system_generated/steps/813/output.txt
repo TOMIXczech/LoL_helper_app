@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+                SelectedPerkIds = new[] { 8112, 8143, 8138, 8106, 8009, 8014, 5008, 5008, 5002 },
+                PrimaryStyleImageUrl = GetImageUrl(8100), SubStyleImageUrl = GetImageUrl(8000), KeystoneImageUrl = GetImageUrl(8112)
+            },
+            new RunePreset
+            {
+                Name = "The Bruiser (Conqueror)",
+                Description = "Extended fights (Yasuo, Darius, Aatrox)",
+                PrimaryStyleId = 8000, SubStyleId = 8400,
+                SelectedPerkIds = new[] { 8010, 9111, 9104, 8014, 8453, 8242, 5005, 5008, 5002 },
+                PrimaryStyleImageUrl = GetImageUrl(8000), SubStyleImageUrl = GetImageUrl(8400), KeystoneImageUrl = GetImageUrl(8010)
+            },
+            new RunePreset
+            {
+                Name = "The Mage (Arcane Comet)",
+                Description = "Poke and control (Lux, Syndra, Xerath)",
+                PrimaryStyleId = 8200, SubStyleId = 8300,
+                SelectedPerkIds = new[] { 8229, 8226, 8210, 8236, 8304, 8345, 5008, 5008, 5002 },
+                PrimaryStyleImageUrl = GetImageUrl(8200), SubStyleImageUrl = GetImageUrl(8300), KeystoneImageUrl = GetImageUrl(8229)
+            },
+            new RunePreset
+            {
+                Name = "The Tank (Grasp)",
+                Description = "Sustain and scaling (Ornn, Sion, Shen)",
+                PrimaryStyleId = 8400, SubStyleId = 8000,
+                SelectedPerkIds = new[] { 8437, 8446, 8429, 8451, 9111, 9104, 5005, 5002, 5002 },
+                PrimaryStyleImageUrl = GetImageUrl(8400), SubStyleImageUrl = GetImageUrl(8000), KeystoneImageUrl = GetImageUrl(8437)
+            }
+        };
+    }
+}
+

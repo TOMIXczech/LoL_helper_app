@@ -1,0 +1,5 @@
+
+The command exited with code 1.
+Output:
+Select-String: A parameter cannot be found that matches parameter name 'Max'.
+

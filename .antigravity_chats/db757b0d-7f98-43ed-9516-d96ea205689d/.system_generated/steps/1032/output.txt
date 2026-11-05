@@ -1,0 +1,72 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -792,6 +792,66 @@
+         
+         InjectRunesBtn.Content = "Inject Selected Preset";
+         InjectRunesBtn.IsEnabled = true;
++    private int _currentSpell1Id = 4;
++    private int _currentSpell2Id = 14;
++
++    private void InitSpellMenus()
++    {
++        foreach (var spell in _summonerSpells)
++        {
++            var item1 = new MenuItem { Header = spell.Name, Tag = spell.Id };
++            item1.Click += (s, e) => SelectSpell(1, spell.Id);
++            Spell1Menu.Items.Add(item1);
++            
++            var item2 = new MenuItem { Header = spell.Name, Tag = spell.Id };
++            item2.Click += (s, e) => SelectSpell(2, spell.Id);
++            Spell2Menu.Items.Add(item2);
++        }
++        UpdateSpellUI();
++    }
++
++    private void SelectSpell(int slot, int spellId)
++    {
++        if (slot == 1)
++        {
++            if (_currentSpell2Id == spellId) _currentSpell2Id = _currentSpell1Id;
++            _currentSpell1Id = spellId;
++        }
++        else
++        {
++            if (_currentSpell1Id == spellId) _currentSpell1Id = _currentSpell2Id;
++            _currentSpell2Id = spellId;
++        }
++        UpdateSpellUI();
++    }
++    
++    private void UpdateSpellUI()
++    {
++        var s1 = _summonerSpells.FirstOrDefault(s => s.Id == _currentSpell1Id);
++        if (s1 != null)
++        {
++            Spell1Img.Source = new BitmapImage(new Uri(s1.IconUrl));
++            Spell1Img.ToolTip = s1.Name;
++        }
++        
++        var s2 = _summonerSpells.FirstOrDefault(s => s.Id == _currentSpell2Id);
++        if (s2 != null)
++        {
++            Spell2Img.Source = new BitmapImage(new Uri(s2.IconUrl));
++            Spell2Img.ToolTip = s2.Name;
++        }
++    }
++
++    private void Spell1_MouseDown(object sender, MouseButtonEventArgs e)
++    {
++        Spell1Menu.PlacementTarget = sender as UIElement;
++        Spell1Menu.IsOpen = true;
++    }
++    
++    private void Spell2_MouseDown(object sender, MouseButtonEventArgs e)
++    {
++        Spell2Menu.PlacementTarget = sender as UIElement;
++        Spell2Menu.IsOpen = true;
+     }
+ }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

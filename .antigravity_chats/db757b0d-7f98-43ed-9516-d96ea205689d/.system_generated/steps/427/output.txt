@@ -1,0 +1,11 @@
+
+The command exited with code 1.
+Output:
+Invoke-RestMethod: 
+<Error>
+  <Code>AccessDenied</Code>
+  <Message>Access Denied</Message>
+  <RequestId>2QTRPKMWVHW77VA3</RequestId>
+  <HostId>lR2+zzaCHnq/nPAix3DM3/hMW+yoOiHYmLXfPE+SZd5s7Tuq/iOS/Jvy0I27vPpqQBys4lhFyXQMVKdELLi/4vOlCiM/QdXW</HostId>
+</Error>
+

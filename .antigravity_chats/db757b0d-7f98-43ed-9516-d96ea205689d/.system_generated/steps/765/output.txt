@@ -1,0 +1,16 @@
+
+The command exited with code 0.
+Output:
+
+  
+          // --- RUNE INJECTION ---
+  
+>         public async Task<bool> DeleteAllRunePagesAsync()
+          {
+              if (_credentials == null) return false;
+  
+              // 1. Delete all existing pages (LCU only allows a few custom pages)
+>             await DeleteAllRunePagesAsync();
+  
+
+

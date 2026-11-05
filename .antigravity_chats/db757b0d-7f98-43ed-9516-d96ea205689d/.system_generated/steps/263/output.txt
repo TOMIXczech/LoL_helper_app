@@ -1,0 +1,1 @@
+A1: (Recommended) .NET MAUI (C#). This allows us to share the exact same models, API logic, and codebase with the Desktop app.

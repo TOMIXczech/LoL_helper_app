@@ -1,0 +1,55 @@
+
+The command exited with code 0.
+Output:
+WARNING: Resulting JSON is truncated as serialization has exceeded the set depth of 2.
+{
+  "id": 266,
+  "key": "Aatrox",
+  "name": "Aatrox",
+  "title": "the Darkin Blade",
+  "fullName": "",
+  "icon": "http://ddragon.leagueoflegends.com/cdn/15.9.1/img/champion/Aatrox.png",
+  "resource": "BLOOD_WELL",
+  "attackType": "MELEE",
+  "adaptiveType": "PHYSICAL_DAMAGE",
+  "stats": {
+    "health": {
+      "flat": 650,
+      "percent": 0.0,
+      "perLevel": 114,
+      "percentPerLevel": 0.0
+    },
+    "healthRegen": {
+      "flat": 3,
+      "percent": 0.0,
+      "perLevel": 0.5,
+      "percentPerLevel": 0.0
+    },
+    "mana": {
+      "flat": 0,
+      "percent": 0.0,
+      "perLevel": 0,
+      "percentPerLevel": 0.0
+    },
+    "manaRegen": {
+      "flat": 0,
+      "percent": 0.0,
+      "perLevel": 0,
+      "percentPerLevel": 0.0
+    },
+    "armor": {
+      "flat": 38,
+      "percent": 0.0,
+      "perLevel": 4.8,
+      "percentPerLevel": 0.0
+    },
+    "magicResistance": {
+      "flat": 32,
+      "percent": 0.0,
+      "perLevel": 2.05,
+      "percentPerLevel": 0.0
+    },
+    "attackDamage": {
+      "flat": 60,
+      "percent": 0.0,
+

@@ -1,0 +1,5 @@
+
+The command exited with code 0.
+Output:
+Swagger saved to C:\Users\ufo\AppData\Local\Temp\lcu_swagger.json
+

@@ -1,0 +1,23 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\LcuApiClient.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -63,6 +63,17 @@
+             return await response.Content.ReadAsStringAsync();
+         }
+ 
++        // --- SUMMONER SPELL INJECTION ---
++
++        public async Task<bool> SetSummonerSpellsAsync(int spell1Id, int spell2Id)
++        {
++            if (_credentials == null) return false;
++            var payload = new { spell1Id = spell1Id, spell2Id = spell2Id };
++            var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
++            var response = await _httpClient!.PatchAsync("/lol-champ-select/v1/session/my-selection", content);
++            return response.IsSuccessStatusCode;
++        }
++
+         // --- RUNE INJECTION ---
+ 
+         public async Task<bool> DeleteAllRunePagesAsync()
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

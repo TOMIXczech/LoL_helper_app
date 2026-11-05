@@ -1,0 +1,26 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/ItemService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.Core/Services/RuneService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'blitz_crawler.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'extract_urls.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'inspect_api.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pad.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'pad_better.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'patch.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test_api.py', LF will be replaced by CRLF the next time Git touches it
+[main fbee11d] feat: replace procedural preset engine with real blitz_champions_data.json data, implementing name to ID mappings and maintaining exact slot count rules
+ 39 files changed, 46463 insertions(+), 125 deletions(-)
+ create mode 100644 LoLHelper.Core/blitz_champions_data.json
+ create mode 100644 blitz_champions_data.json
+ create mode 100644 blitz_crawler.py
+ create mode 100644 extract_urls.py
+ create mode 100644 inspect_api.py
+ create mode 100644 pad.txt
+ create mode 100644 pad_better.txt
+ create mode 100644 patch.txt
+ create mode 100644 test.json
+ create mode 100644 test_api.py
+

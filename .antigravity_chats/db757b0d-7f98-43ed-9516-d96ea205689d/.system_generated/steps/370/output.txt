@@ -1,0 +1,7 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main 9eeb30a] style: add tooltips, glowing dropshadows to selected runes, hover effects, and crisp separator lines
+ 24 files changed, 60 insertions(+), 27 deletions(-)
+

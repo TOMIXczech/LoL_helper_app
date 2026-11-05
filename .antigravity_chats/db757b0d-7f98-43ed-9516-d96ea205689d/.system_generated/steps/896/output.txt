@@ -1,0 +1,25 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/BuildDatabaseService.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'crawler/blitz_crawler.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'crawler/extract_urls.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'crawler/inspect_api.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'crawler/test_api.py', LF will be replaced by CRLF the next time Git touches it
+[main 4a6c102] feat: migrate to new blitz_champions_data format handling multiple builds and explicit summoner spells
+ 39 files changed, 6058076 insertions(+), 45118 deletions(-)
+ delete mode 100644 blitz_champions_data.json
+ delete mode 100644 blitz_crawler.py
+ create mode 100644 crawler/blitz_champions_data.json
+ create mode 100644 crawler/blitz_crawler.py
+ rename extract_urls.py => crawler/extract_urls.py (100%)
+ rename inspect_api.py => crawler/inspect_api.py (100%)
+ rename test.json => crawler/test.json (100%)
+ create mode 100644 crawler/test2.json
+ create mode 100644 crawler/test3.json
+ rename test_api.py => crawler/test_api.py (100%)
+ create mode 100644 crawler/test_fast.json
+ delete mode 100644 pad.txt
+ delete mode 100644 pad_better.txt
+ delete mode 100644 patch.txt
+

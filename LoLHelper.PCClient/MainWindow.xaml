@@ -1,0 +1,40 @@
+<Window x:Class="LoLHelper.PCClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LoL Helper - Main Dashboard" Height="650" Width="1000"
+        Background="#0F1015"
+        WindowStyle="SingleBorderWindow"
+        FontFamily="Segoe UI">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Background="#1C1C21" BorderBrush="#2D2D35" BorderThickness="0,0,1,0">
+            <StackPanel Margin="15">
+                <TextBlock Text="LOL HELPER" Foreground="#FFFFFF" FontSize="22" FontWeight="Black" Margin="0,10,0,40"/>
+                
+                <!-- Navigation Buttons (Using standard Buttons for simplicity, logic handled in CS) -->
+                <Button x:Name="NavDashboardBtn" Content="Dashboard" Height="40" Margin="0,0,0,5" Background="#2D2D35" Foreground="White" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                <Button x:Name="NavChampSelectBtn" Content="Champ Select" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                <Button x:Name="NavScoutingBtn" Content="Live Scouting" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                <Button x:Name="NavPostMatchBtn" Content="Post-Match Analysis" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                <Button x:Name="NavMobileBtn" Content="Mobile Pairing" Height="40" Margin="0,0,0,5" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                <Button x:Name="NavSettingsBtn" Content="Theme / Settings" Height="40" Margin="0,0,0,30" Background="Transparent" Foreground="#8F91A3" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+
+                <Button x:Name="ShowOverlayBtn" 
+                        Content="Launch In-Game Overlay" 
+                        Height="45" Margin="0,0,0,15"
+                        Background="#E84057" Foreground="White" FontWeight="Bold"
+                        BorderThickness="0" Cursor="Hand"
+                        Click="ShowOverlayBtn_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content Area where Views are loaded -->
+        <ContentControl x:Name="MainContentArea" Grid.Column="1"/>
+    </Grid>
+</Window>

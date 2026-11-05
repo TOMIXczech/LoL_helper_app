@@ -1,0 +1,16 @@
+
+The command exited with code 0.
+Output:
+
+  LoLHelper.Core\Services\LockfileWatcher.cs:34:        public event Action? OnClientDisconnected;
+  LoLHelper.Core\Services\LockfileWatcher.cs:35:
+> LoLHelper.Core\Services\LockfileWatcher.cs:36:        public LockfileWatcher(string installDirectory = @"C:\Riot 
+Games\League of Legends")
+  LoLHelper.Core\Services\LockfileWatcher.cs:37:        {
+  LoLHelper.Core\Services\LockfileWatcher.cs:38:            _installDirectory = installDirectory;
+  LoLHelper.Core\Services\LockfileWatcher.cs:39:            _lockfilePath = Path.Combine(_installDirectory, 
+"lockfile");
+  LoLHelper.Core\Services\LockfileWatcher.cs:40:        }
+  LoLHelper.Core\Services\LockfileWatcher.cs:41:
+
+

@@ -1,0 +1,177 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\RuneService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -1,6 +1,5 @@
+ using System;
+ using System.Collections.Generic;
+-using System.Linq;
+ using System.Net.Http;
+ using System.Text.Json;
+ using System.Threading.Tasks;
+@@ -14,7 +14,6 @@
+     public int SubStyleId { get; set; }
+     public int[] SelectedPerkIds { get; set; } = Array.Empty<int>();
+     
+-    // For UI display
+     public string PrimaryStyleImageUrl { get; set; } = string.Empty;
+     public string SubStyleImageUrl { get; set; } = string.Empty;
+     public string KeystoneImageUrl { get; set; } = string.Empty;
+@@ -21,29 +21,33 @@
+ 
+ public class RuneService
+ {
+-    private static readonly HttpClient _http = new HttpClient();
++    public static RuneService Instance { get; } = new RuneService();
++
++    private readonly HttpClient _http = new HttpClient();
+     private const string DDragonVersionUrl = "https://ddragon.leagueoflegends.com/api/versions.json";
+-
+-    public async Task<List<RunePreset>> GetPresetsAsync()
+-    {
+-        // 1. Get latest version
+-        var versionResponse = await _http.GetStringAsync(DDragonVersionUrl);
+-        var versions = JsonSerializer.Deserialize<string[]>(versionResponse);
+-        string latestVersion = versions?[0] ?? "14.1.1";
+-
+-        // 2. Fetch Runes Reforged data to get image URLs
+-        string runesUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/runesReforged.json";
+-        var runesJson = await _http.GetStringAsync(runesUrl);
+-        
+-        using var doc = JsonDocument.Parse(runesJson);
+-        var root = doc.RootElement;
+-
+-        string GetImg(int id)
+-        {
+-            foreach (var tree in root.EnumerateArray())
+-            {
+-                if (tree.GetProperty("id").GetInt32() == id)
+-                    return $"https://ddragon.leagueoflegends.com/cdn/img/{tree.GetProperty("icon").GetString()}";
++    
++    private Dictionary<int, string> _runeImages = new();
++    private bool _isInitialized = false;
++
++    public async Task InitializeAsync()
++    {
++        if (_isInitialized) return;
++
++        try
++        {
++            var versionResponse = await _http.GetStringAsync(DDragonVersionUrl);
++            var versions = JsonSerializer.Deserialize<string[]>(versionResponse);
++            string latestVersion = versions?[0] ?? "14.1.1";
++
++            string runesUrl = $"https://ddragon.leagueoflegends.com/cdn/{latestVersion}/data/en_US/runesReforged.json";
++            var runesJson = await _http.GetStringAsync(runesUrl);
++            
++            using var doc = JsonDocument.Parse(runesJson);
++            foreach (var tree in doc.RootElement.EnumerateArray())
++            {
++                int treeId = tree.GetProperty("id").GetInt32();
++                string treeIcon = tree.GetProperty("icon").GetString() ?? "";
++                _runeImages[treeId] = $"https://ddragon.leagueoflegends.com/cdn/img/{treeIcon}";
+ 
+                 foreach (var slot in tree.GetProperty("slots").EnumerateArray())
+                 {
+@@ -50,14 +50,38 @@
+                     {
+-                        if (rune.GetProperty("id").GetInt32() == id)
+-                            return $"https://ddragon.leagueoflegends.com/cdn/img/{rune.GetProperty("icon").GetString()}";
++                        int runeId = rune.GetProperty("id").GetInt32();
++                        string runeIcon = rune.GetProperty("icon").GetString() ?? "";
++                        _runeImages[runeId] = $"https://ddragon.leagueoflegends.com/cdn/img/{runeIcon}";
+                     }
+                 }
+             }
+-            return ""; // Not found (like shards)
++
++            // Stat Shards (Not in DataDragon, fetching from CommunityDragon)
++            string cdragonBase = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/";
++            _runeImages[5008] = cdragonBase + "statmodsadaptiveforceicon.png";
++            _runeImages[5005] = cdragonBase + "statmodsattackspeedicon.png";
++            _runeImages[5007] = cdragonBase + "statmodscdrscalingicon.png";
++            _runeImages[5002] = cdragonBase + "statmodsarmoricon.png";
++            _runeImages[5003] = cdragonBase + "statmodsmagicresicon.png";
++            _runeImages[5001] = cdragonBase + "statmodshealthscalingicon.png";
++            _runeImages[5011] = cdragonBase + "statmodshealthplusicon.png";
++            _runeImages[5013] = cdragonBase + "statmodstenacityicon.png";
++            _runeImages[5010] = cdragonBase + "statmodsmovementspeedicon.png";
++
++            _isInitialized = true;
+         }
+-
+-        // 3. Define basic robust presets
+-        var presets = new List<RunePreset>
++        catch { }
++    }
++
++    public string GetImageUrl(int id)
++    {
++        return _runeImages.TryGetValue(id, out var url) ? url : "";
++    }
++
++    public async Task<List<RunePreset>> GetPresetsAsync()
++    {
++        await InitializeAsync();
++
++        return new List<RunePreset>
+         {
+             new RunePreset
+             {
+@@ -64,10 +64,7 @@
+                 Description = "High burst damage (Zed, Talon, Ahri)",
+-                PrimaryStyleId = 8100, // Domination
+-                SubStyleId = 8000,     // Precision
++                PrimaryStyleId = 8100, SubStyleId = 8000,
+                 SelectedPerkIds = new[] { 8112, 8143, 8138, 8106, 8009, 8014, 5008, 5008, 5002 },
+-                PrimaryStyleImageUrl = GetImg(8100),
+-                SubStyleImageUrl = GetImg(8000),
+-                KeystoneImageUrl = GetImg(8112)
++                PrimaryStyleImageUrl = GetImageUrl(8100), SubStyleImageUrl = GetImageUrl(8000), KeystoneImageUrl = GetImageUrl(8112)
+             },
+             new RunePreset
+             {
+@@ -74,10 +74,7 @@
+                 Description = "Extended fights (Yasuo, Darius, Aatrox)",
+-                PrimaryStyleId = 8000, // Precision
+-                SubStyleId = 8400,     // Resolve
++                PrimaryStyleId = 8000, SubStyleId = 8400,
+                 SelectedPerkIds = new[] { 8010, 9111, 9104, 8014, 8453, 8242, 5005, 5008, 5002 },
+-                PrimaryStyleImageUrl = GetImg(8000),
+-                SubStyleImageUrl = GetImg(8400),
+-                KeystoneImageUrl = GetImg(8010)
++                PrimaryStyleImageUrl = GetImageUrl(8000), SubStyleImageUrl = GetImageUrl(8400), KeystoneImageUrl = GetImageUrl(8010)
+             },
+             new RunePreset
+             {
+@@ -84,10 +84,7 @@
+                 Description = "Poke and control (Lux, Syndra, Xerath)",
+-                PrimaryStyleId = 8200, // Sorcery
+-                SubStyleId = 8300,     // Inspiration
++                PrimaryStyleId = 8200, SubStyleId = 8300,
+                 SelectedPerkIds = new[] { 8229, 8226, 8210, 8236, 8304, 8345, 5008, 5008, 5002 },
+-                PrimaryStyleImageUrl = GetImg(8200),
+-                SubStyleImageUrl = GetImg(8300),
+-                KeystoneImageUrl = GetImg(8229)
++                PrimaryStyleImageUrl = GetImageUrl(8200), SubStyleImageUrl = GetImageUrl(8300), KeystoneImageUrl = GetImageUrl(8229)
+             },
+             new RunePreset
+             {
+@@ -94,14 +94,9 @@
+                 Description = "Sustain and scaling (Ornn, Sion, Shen)",
+-                PrimaryStyleId = 8400, // Resolve
+-                SubStyleId = 8000,     // Precision
++                PrimaryStyleId = 8400, SubStyleId = 8000,
+                 SelectedPerkIds = new[] { 8437, 8446, 8429, 8451, 9111, 9104, 5005, 5002, 5002 },
+-                PrimaryStyleImageUrl = GetImg(8400),
+-                SubStyleImageUrl = GetImg(8000),
+-                KeystoneImageUrl = GetImg(8437)
++                PrimaryStyleImageUrl = GetImageUrl(8400), SubStyleImageUrl = GetImageUrl(8000), KeystoneImageUrl = GetImageUrl(8437)
+             }
+         };
+-
+-        return presets;
+     }
+ }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

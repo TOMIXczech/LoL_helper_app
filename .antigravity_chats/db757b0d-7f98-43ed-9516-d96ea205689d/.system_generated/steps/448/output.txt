@@ -1,0 +1,15 @@
+
+The command exited with code 1.
+Output:
+Invoke-RestMethod: 
+Line |
+   7 |  Invoke-RestMethod -Uri "https://127.0.0.1:$port/lol-champ-select/v1/s .
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 
+{
+  "errorCode": "RPC_ERROR",
+  "httpStatus": 404,
+  "implementationDetails": {},
+  "message": "No active delegate"
+}
+

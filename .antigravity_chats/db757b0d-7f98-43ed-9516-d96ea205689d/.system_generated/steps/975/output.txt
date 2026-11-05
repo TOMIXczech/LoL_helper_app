@@ -1,0 +1,12 @@
+
+The command exited with code 0.
+Output:
+
+>                         <ToggleButton x:Name="FilterTop" Content="TOP" Click="RoleFilter_Click" Tag="TOP"/>
+                          <ToggleButton x:Name="FilterJgl" Content="JGL" Click="RoleFilter_Click" Tag="JUNGLE"/>
+                          <ToggleButton x:Name="FilterMid" Content="MID" Click="RoleFilter_Click" Tag="MIDDLE"/>
+                          <ToggleButton x:Name="FilterBot" Content="BOT" Click="RoleFilter_Click" Tag="BOTTOM"/>
+                          <ToggleButton x:Name="FilterSup" Content="SUP" Click="RoleFilter_Click" Tag="UTILITY"/>
+                      </UniformGrid>
+
+

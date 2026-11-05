@@ -1,0 +1,29 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\MainWindow.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -23,8 +23,22 @@
+                         BorderThickness="0" Cursor="Hand"
+                         Click="ShowOverlayBtn_Click"/>
+ 
++                <TextBlock Text="CUSTOM THEME (PENGU)" Foreground="#8F91A3" FontSize="12" FontWeight="Bold" Margin="0,15,0,10"/>
++                
++                <Button x:Name="BrowseBgBtn" 
++                        Content="Select Background Image..." 
++                        Height="35" Margin="0,0,0,5"
++                        Background="#2D2D35" Foreground="#E0E0E0" FontWeight="SemiBold"
++                        BorderThickness="0" Cursor="Hand"
++                        Click="BrowseBgBtn_Click"/>
++                
++                <TextBlock x:Name="SelectedBgText" 
++                           Text="No image selected" 
++                           Foreground="#8F91A3" FontSize="11" Margin="0,0,0,15" 
++                           TextTrimming="CharacterEllipsis"/>
++
+                 <Button x:Name="InstallElainaBtn" 
+-                        Content="Install ElainaV4 Theme" 
++                        Content="Apply Theme to Client" 
+                         Height="45" Margin="0,0,0,15"
+                         Background="#353541" Foreground="White" FontWeight="SemiBold"
+                         BorderThickness="0" Cursor="Hand"
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

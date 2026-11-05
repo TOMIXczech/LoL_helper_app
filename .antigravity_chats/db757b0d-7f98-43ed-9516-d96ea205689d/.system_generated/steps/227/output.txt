@@ -1,0 +1,73 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\LcuApiClient.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -7,6 +7,8 @@
+ {
+     public class LcuApiClient
+     {
++        public static LcuApiClient Instance { get; } = new LcuApiClient();
++
+         private readonly HttpClient _httpClient;
+         private LcuCredentials? _credentials;
+ 
+@@ -13,5 +13,4 @@
+         {
+-            // The League Client uses a self-signed SSL certificate, so we must bypass validation.
+             var handler = new HttpClientHandler
+             {
+                 ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true
+@@ -27,10 +27,11 @@
+                 Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes($"riot:{credentials.Password}")));
+         }
+ 
++        public bool IsConnected => _credentials != null;
++
+         public async Task<string> GetCurrentSummonerAsync()
+         {
+             if (_credentials == null) throw new InvalidOperationException("Not connected to LCU.");
+-
+             var response = await _httpClient.GetAsync("/lol-summoner/v1/current-summoner");
+             response.EnsureSuccessStatusCode();
+             return await response.Content.ReadAsStringAsync();
+@@ -37,7 +37,35 @@
+-        
+-        // Next endpoints to add:
+-        // /lol-champ-select/v1/session (For drafting/auto-runes)
+-        // /lol-match-history/v1/products/lol/{puuid}/matches (For piggyback match history)
++
++        // --- RUNE INJECTION ---
++
++        public async Task<bool> DeleteAllRunePagesAsync()
++        {
++            if (_credentials == null) return false;
++            var response = await _httpClient.DeleteAsync("/lol-perks/v1/pages");
++            return response.IsSuccessStatusCode;
++        }
++
++        public async Task<bool> SetRunePageAsync(string name, int primaryStyleId, int subStyleId, int[] perkIds)
++        {
++            if (_credentials == null) return false;
++
++            // 1. Delete all existing pages (LCU only allows a few custom pages)
++            await DeleteAllRunePagesAsync();
++
++            // 2. Create the new page
++            var payload = new
++            {
++                name = name,
++                primaryStyleId = primaryStyleId,
++                subStyleId = subStyleId,
++                selectedPerkIds = perkIds,
++                current = true
++            };
++
++            var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
++            var response = await _httpClient.PostAsync("/lol-perks/v1/pages", content);
++            
++            return response.IsSuccessStatusCode;
++        }
+     }
+ }
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

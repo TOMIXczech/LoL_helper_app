@@ -1,0 +1,30 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\BuildDatabaseService.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -219,6 +219,24 @@
+     {
+         return _database.Where(p => p.ChampionId == championId).ToList();
+     }
++
++    private int GetSpellId(string? name)
++    {
++        if (name == null) return 4;
++        return name.ToLower() switch
++        {
++            "cleanse" => 1,
++            "exhaust" => 3,
++            "flash" => 4,
++            "ghost" => 6,
++            "heal" => 7,
++            "smite" => 11,
++            "teleport" => 12,
++            "ignite" => 14,
++            "barrier" => 21,
++            _ => 4
++        };
++    }
+ }
+ 
+ 
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

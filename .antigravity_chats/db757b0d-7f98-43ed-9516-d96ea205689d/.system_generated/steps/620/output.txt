@@ -1,0 +1,5 @@
+
+The command exited with code 1.
+Output:
+Get-Content: Cannot find path 'C:\Users\ufo\Downloads\TP\LoLHelper.Core\Services\PenguLoaderService.cs' because it does not exist.
+

@@ -1,0 +1,266 @@
+{
+  "Karthus": {
+    "JUNGLE": {
+      "Tier": 3,
+      "Win Rate": 0.48757790489200037,
+      "Win Rate Change": 0.0013589724733928943,
+      "Pick Rate": 0.007275925804565018,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 23426,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Blackfire Torch",
+          "Sorcerer's Shoes",
+          "Shadowflame"
+        ],
+        "runes": {
+          "keystone": "Dark Harvest",
+          "secondary_and_other": [
+            "Cheap Shot",
+            "Grisly Mementos",
+            "Ultimate Hunter",
+            "Axiom Arcanist",
+            "Gathering Storm"
+          ]
+        }
+      }
+    },
+    "TOP": {
+      "Tier": 4,
+      "Win Rate": 0.4745260663507109,
+      "Win Rate Change": 0.01676876988373699,
+      "Pick Rate": 0.0005242791239693396,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 1688,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Blackfire Torch",
+          "Sorcerer's Shoes",
+          "Shadowflame"
+        ],
+        "runes": {
+          "keystone": "Deathfire Touch",
+          "secondary_and_other": [
+            "Axiom Arcanist",
+            "Transcendence",
+            "Scorch",
+            "Presence of Mind",
+            "Gathering Storm"
+          ]
+        }
+      }
+    },
+    "MIDDLE": {
+      "Tier": 1,
+      "Win Rate": 0.5131721400216528,
+      "Win Rate Change": 0.011647327157776943,
+      "Pick Rate": 0.0008606501495965877,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 2771,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Blackfire Torch",
+          "Shadowflame",
+          "Rabadon's Deathcap"
+        ],
+        "runes": {
+          "keystone": "Deathfire Touch",
+          "secondary_and_other": [
+            "Axiom Arcanist",
+            "Transcendence",
+            "Scorch",
+            "Presence of Mind",
+            "Gathering Storm"
+          ]
+        }
+      }
+    },
+    "BOTTOM": {
+      "Tier": 1,
+      "Win Rate": 0.5375231053604437,
+      "Win Rate Change": 0.009475562238252078,
+      "Pick Rate": 0.002520453252968715,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 8115,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Blackfire Torch",
+          "Sorcerer's Shoes",
+          "Shadowflame"
+        ],
+        "runes": {
+          "keystone": "Deathfire Touch",
+          "secondary_and_other": [
+            "Axiom Arcanist",
+            "Transcendence",
+            "Scorch",
+            "Presence of Mind",
+            "Last Stand"
+          ]
+        }
+      }
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.39502332814930013,
+      "Win Rate Change": -0.07230779034460905,
+      "Pick Rate": 0.00019971059046936337,
+      "Ban Rate": 0.004683104639342241,
+      "Matches": 643,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Blackfire Torch",
+          "Sorcerer's Shoes",
+          "Shadowflame"
+        ],
+        "runes": {
+          "keystone": "Dark Harvest",
+          "secondary_and_other": [
+            "Cheap Shot",
+            "Grisly Mementos",
+            "Ultimate Hunter",
+            "Axiom Arcanist",
+            "Gathering Storm"
+          ]
+        }
+      }
+    }
+  },
+  "Aatrox": {
+    "JUNGLE": {
+      "Tier": 2,
+      "Win Rate": 0.5076120579850791,
+      "Win Rate Change": 0.007812057985079113,
+      "Pick Rate": 0.005120728623745558,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 16487,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Hubris",
+          "Plated Steelcaps",
+          "Sundered Sky"
+        ],
+        "runes": {
+          "keystone": "Conqueror",
+          "secondary_and_other": [
+            "Triumph",
+            "Legend: Haste",
+            "Last Stand",
+            "Cosmic Insight",
+            "Magical Footwear"
+          ]
+        }
+      }
+    },
+    "BOTTOM": {
+      "Tier": 4,
+      "Win Rate": 0.42857142857142855,
+      "Win Rate Change": -0.006095238095238098,
+      "Pick Rate": 6.739844188468406e-05,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 217,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Eclipse",
+          "Plated Steelcaps",
+          "Sundered Sky"
+        ],
+        "runes": {
+          "keystone": "Conqueror",
+          "secondary_and_other": [
+            "Triumph",
+            "Legend: Haste",
+            "Last Stand",
+            "Bone Plating",
+            "Revitalize"
+          ]
+        }
+      }
+    },
+    "UTILITY": {
+      "Tier": 5,
+      "Win Rate": 0.40154015401540155,
+      "Win Rate Change": -0.02616612910344779,
+      "Pick Rate": 0.0002823280353602664,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 909,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Eclipse",
+          "Plated Steelcaps",
+          "Sundered Sky"
+        ],
+        "runes": {
+          "keystone": "Conqueror",
+          "secondary_and_other": [
+            "Triumph",
+            "Legend: Haste",
+            "Last Stand",
+            "Bone Plating",
+            "Revitalize"
+          ]
+        }
+      }
+    },
+    "TOP": {
+      "Tier": 2,
+      "Win Rate": 0.5003973292169418,
+      "Win Rate Change": 0.00499148312984532,
+      "Pick Rate": 0.03400391159436449,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 109481,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Eclipse",
+          "Plated Steelcaps",
+          "Voltaic Cyclosword"
+        ],
+        "runes": {
+          "keystone": "Conqueror",
+          "secondary_and_other": [
+            "Triumph",
+            "Legend: Haste",
+            "Last Stand",
+            "Bone Plating",
+            "Revitalize"
+          ]
+        }
+      }
+    },
+    "MIDDLE": {
+      "Tier": 5,
+      "Win Rate": 0.46360628618693134,
+      "Win Rate Change": -0.0035207027052931994,
+      "Pick Rate": 0.0007510112095721938,
+      "Ban Rate": 0.042107875399227064,
+      "Matches": 2418,
+      "Build": {
+        "starting_items": [],
+        "core_items": [
+          "Eclipse",
+          "Sundered Sky",
+          "Death's Dance"
+        ],
+        "runes": {
+          "keystone": "Conqueror",
+          "secondary_and_other": [
+            "Triumph",
+            "Legend: Haste",
+            "Last Stand",
+            "Bone Plating",
+            "Revitalize"
+          ]
+        }
+      }
+    }
+  }
+}

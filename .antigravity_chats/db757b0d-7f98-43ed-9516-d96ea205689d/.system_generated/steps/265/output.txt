@@ -1,0 +1,1 @@
+A1: (Recommended) Use Riot's official 'Live Client Data API'. It runs locally during the match, is 100% ToS compliant, and provides real-time gold, items, and events.

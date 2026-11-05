@@ -1,0 +1,8 @@
+
+The command exited with code 0.
+Output:
+warning: in the working copy of 'LoLHelper.Core/Services/LcuApiClient.cs', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'LoLHelper.PCClient/Views/ChampSelectView.xaml.cs', LF will be replaced by CRLF the next time Git touches it
+[main 3875e69] fix: resolve loop closure bug preventing secondary rune selection and hide primary tree from secondary selector
+ 25 files changed, 32 insertions(+), 21 deletions(-)
+

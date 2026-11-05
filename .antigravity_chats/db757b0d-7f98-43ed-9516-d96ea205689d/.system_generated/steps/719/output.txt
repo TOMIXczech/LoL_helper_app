@@ -1,0 +1,34 @@
+
+The command exited with code 0.
+Output:
+[
+  {
+    "id": 8369,
+    "name": "First Strike",
+    "majorChangePatchVersion": "11.23",
+    "tooltip": "Attacks or abilities against an enemy champion within @GraceWindow.2@s of entering champion combat grant @GoldProcBonus@ gold and <b>First Strike</b> for @Duration@ seconds, causing you to deal <truedamage>@DamageAmp*100@%</truedamage> extra <truedamage>damage</truedamage> against champions, and granting <gold>{{ Item_Melee_Ranged_Split }}</gold> of that damage dealt as <gold>gold</gold>.<br><br>Cooldown: <scaleLevel>@Cooldown@</scaleLevel>s<br><hr><br>Damage Dealt: @f1@<br>Gold Gained: @f2@",
+    "shortDesc": "When you initiate champion combat, deal 7% extra damage for 3 seconds and gain gold based on damage dealt.",
+    "longDesc": "Attacks or abilities against an enemy champion within 0.25s of entering champion combat grant 10 gold and <b>First Strike</b> for 3 seconds, causing you to deal <truedamage>7%</truedamage> extra <truedamage> damage</truedamage> against champions, and granting <gold>50% (35% for ranged champions)</gold> of bonus damage dealt as <gold>gold</gold>.<br><br>Cooldown: <scaleLevel>25 - 15</scaleLevel>s",
+    "recommendationDescriptor": "True Damage, Income",
+    "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/Inspiration/FirstStrike/FirstStrike.png",
+    "endOfGameStatDescs": [
+      "Damage Dealt: @eogvar1@",
+      "Gold Gained: @eogvar2@"
+    ],
+    "recommendationDescriptorAttributes": {}
+  },
+  {
+    "id": 8446,
+    "name": "Demolish",
+    "majorChangePatchVersion": "",
+    "tooltip": "Your third attack against towers deals <scaleAD>@DamageCalc@</scaleAD> bonus physical damage.<br><br>Total bonus damage: <scaleAD>@f1@</scaleAD><br>Total triggers: <scaleAD>@f2@</scaleAD><br>Cooldown: 30s",
+    "shortDesc": "Your third attack against turrets deals bonus damage.",
+    "longDesc": "Your third attack against towers deals [85 (+28% max Health) Melee || 50 (+20% max Health) Ranged] bonus physical damage.<br><br>Cooldown: 30s",
+    "recommendationDescriptor": "",
+    "iconPath": "/lol-game-data/assets/v1/perk-images/Styles/Resolve/Demolish/Demolish.png",
+    "endOfGameStatDescs": [
+      "Total Bonus Damage: @eogvar1@"
+    ],
+    "recommendationDescriptorAttributes": {
+      "kUtility": 10
+

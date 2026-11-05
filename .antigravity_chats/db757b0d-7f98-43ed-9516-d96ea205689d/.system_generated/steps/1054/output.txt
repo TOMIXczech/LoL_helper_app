@@ -1,0 +1,42 @@
+
+The command exited with code 0.
+Output:
+
+                                  if (roleName == "JUNGLE") spell2 = 11;
+                                  else if (roleName == "TOP") spell2 = 12;
+                                  else if (roleName == "BOTTOM") spell2 = 7;
+                              }
+  
+>                             _database.Add(CreatePreset(champId, champName, roleName, $"Blitz Core Build 
+#{buildIndex}", 
+                                  pStyle, sStyle, perkIds.ToArray(), 
+                                  starts, cores, cores, new List<int>(), new List<int>(), spell1, spell2));
+                                  
+                              buildIndex++;
+                          }
+                  }
+  
+                  else
+                  {
+                      // Fallback
+>                     _database.Add(CreatePreset(champId, champName, "Flex", "Standard Output", 
+                          8000, 8100, new[] { 8008, 9111, 9104, 8014, 8126, 8106, 5008, 5008, 5002 },
+                          new List<int> { 1055, 2003 }, new List<int> { 1036, 1001, 3057, 3078, 3006, 1053, 1043, 3153 
+}, 
+                          new List<int> { 3078, 3006, 3153, 3026, 3072, 3026 },
+                          new List<int> { 3026, 3156 }, new List<int> { 3006, 3111 }, 4, 14
+                      ));
+              }
+          }
+          catch { }
+      }
+  
+>     private ChampionBuildPreset CreatePreset(int champId, string champName, string role, string buildName, 
+          int pStyle, int sStyle, int[] perks, List<int> starts, List<int> core, List<int> final, List<int> sit, 
+List<int> boots, int spell1 = 4, int spell2 = 14)
+      {
+          return new ChampionBuildPreset
+          {
+              ChampionId = champId,
+
+

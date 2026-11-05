@@ -1,0 +1,106 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -163,15 +163,45 @@
+         }
+     }
+ 
+-    private void RenderItemBuilder()
++    private void PresetsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
++    {
++        if (PresetsList.SelectedItem is ChampionBuildPreset selectedBuild)
++        {
++            RenderItemBuilder(selectedBuild);
++        }
++    }
++
++    private void RenderItemBuilder(ChampionBuildPreset preset = null)
+     {
+         InteractiveItemBuilder.Children.Clear();
+-        
+-        // Render 20 popular items as a mock custom item builder
+-        var popularItemIds = new[] { 3089, 3157, 3020, 6672, 3031, 3006, 3078, 3153, 3047, 6653, 3068, 3075, 3193, 3110 };
+-        
+-        foreach (int itemId in popularItemIds)
+-        {
++        if (preset == null) return;
++        
++        RenderItemSection("STARTING ITEMS", preset.StartingItemIds);
++        RenderItemSection("CORE BUILD ORDER", preset.CoreBuildOrderIds, showArrows: true);
++        RenderItemSection("CORE FINAL BUILD", preset.CoreFinalBuildIds);
++        RenderItemSection("SITUATIONAL", preset.SituationalItemIds);
++        RenderItemSection("BOOTS OPTIONS", preset.BootsOptionsIds);
++    }
++
++    private void RenderItemSection(string title, List<int> itemIds, bool showArrows = false)
++    {
++        if (itemIds == null || itemIds.Count == 0) return;
++
++        var sectionLabel = new TextBlock
++        {
++            Text = title,
++            Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#8F91A3")),
++            FontSize = 10,
++            FontWeight = FontWeights.Bold,
++            Margin = new Thickness(0, 5, 0, 5)
++        };
++        InteractiveItemBuilder.Children.Add(sectionLabel);
++
++        var panel = new WrapPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0,0,0,15) };
++        
++        for (int i = 0; i < itemIds.Count; i++)
++        {
++            int itemId = itemIds[i];
+             var item = ItemService.Instance.GetItem(itemId);
+             if (item == null) continue;
+ 
+@@ -178,5 +178,5 @@
+             {
+-                Width = 45, Height = 45, Margin = new Thickness(5),
++                Width = 36, Height = 36,
+                 Cursor = Cursors.Hand,
+                 ToolTip = new ToolTip { Content = item.Name, Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1C1C21")), Foreground = Brushes.White, BorderThickness = new Thickness(0) }
+             };
+@@ -183,7 +183,6 @@
+             
+             try { img.Source = new BitmapImage(new Uri(item.IconUrl)); } catch { }
+ 
+-            // simple hover effect
+             img.MouseEnter += (s, e) => img.Opacity = 0.8;
+             img.MouseLeave += (s, e) => img.Opacity = 1.0;
+             
+@@ -190,13 +190,27 @@
+             {
+                 BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3D3D45")),
+-                BorderThickness = new Thickness(2),
+-                CornerRadius = new CornerRadius(5),
+-                Margin = new Thickness(5),
++                BorderThickness = new Thickness(1),
++                CornerRadius = new CornerRadius(4),
++                Margin = new Thickness(0, 0, showArrows ? 8 : 6, 0),
+                 Child = img
+             };
+ 
+-            InteractiveItemBuilder.Children.Add(border);
+-        }
++            panel.Children.Add(border);
++
++            if (showArrows && i < itemIds.Count - 1)
++            {
++                var arrow = new TextBlock
++                {
++                    Text = "➔",
++                    Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5C5C66")),
++                    FontSize = 14,
++                    VerticalAlignment = VerticalAlignment.Center,
++                    Margin = new Thickness(0, 0, 8, 0)
++                };
++                panel.Children.Add(arrow);
++            }
++        }
++        InteractiveItemBuilder.Children.Add(panel);
+     }
+ 
+     private void RenderRuneBuilder()
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

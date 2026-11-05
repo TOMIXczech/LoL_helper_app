@@ -1,0 +1,16 @@
+
+The command exited with code 1.
+Output:
+WARNING: Resulting JSON is truncated as serialization has exceeded the set depth of 5.
+Invoke-RestMethod: 
+Line |
+  36 |  Invoke-RestMethod -Method Put -Uri "https://127.0.0.1:$port/lol-item- .
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 
+{
+  "errorCode": "RPC_ERROR",
+  "httpStatus": 400,
+  "implementationDetails": {},
+  "message": "Couldn\u0027t assign value to \u0027items\u0027 of type LolItemSetsItemSetItem because the input not a structure."
+}
+

@@ -1,0 +1,22 @@
+The search for ""builds.json" league of legends github" returned the following summary:
+There is no single official or standard "builds.json" file for League of Legends on GitHub[1][2]. Because League of Legends data is complex and changes frequently with patches, many developers create their own JSON structures for specific tools, scripts, or personal use[3][2][4][5].
+
+If you are looking for League of Legends build-related data or tools on GitHub, you are likely encountering one of the following types of projects:
+
+*   **Item Set Exporters:** Tools that scrape build websites (like Mobafire or ProBuilds) and convert them into JSON files that can be imported directly into the League of Legends client as custom item sets[3][2].
+*   **Data Parsers & Static Data:** Repositories (like `meraki-analytics/lolstaticdata` or `Community Dragon`) that provide accurate, machine-readable JSON files containing champion, item, and ability data, which developers use to build their own apps[6][5].
+*   **Build Optimization/Analysis Tools:** Projects that analyze match data to generate optimal build paths[7][4]. These often use custom `builds.json` or similar formats to store the processed results[1][7][4].
+
+### How to find what you need:
+*   **If you want to import builds into your game:** Look for "LoL Item Set" generators or exporters on GitHub[3]. These will typically provide a script or a web tool to generate the JSON files for you[3][2].
+*   **If you are a developer:** Use established projects like **Community Dragon** or **Meraki Analytics' `lolstaticdata`** for reliable, up-to-date game data[5]. 
+*   **If you found a specific "builds.json" in a repo:** Check the repository's `README.md` file[4]. It will usually explain how that specific JSON file is structured and how it is intended to be used within that project[6][4].
+
+Sources:
+[1] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF9gSXfsghvZRyiCXOKPatCw4Qffy6feGkVRhq20dfG318Aq_OdcFCL1b2o3U2UKuv-sY3cNTOQAchxkqiertFPUCElBf0tp_Uu23FsflcMl_dy9LAh)
+[2] [reddit.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0GO3VSyIHaKTF3BQQHGXfW0LKxTU4bNEiRsuR0BmGJ3CMVsG4wOv3szjge31OTVOz9dwZ4OjsofOo6Rxidg_nbrKa7l_6CABF0xrV0T2HZgSRc9hx5C2QkuhlyHv_-xNAwiv1CBzFXeSKwTG-xsbfTg-DcHepbzJk6GF6W6ortZ5gLvQo6dyBqyaqZnld3ZdUmmxs)
+[3] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmZZxR9xqxbhXB_1ikQZxd3LmqQRXzJTBU26emrK7f478D7S8u3lrD6ky-Ip2lL17iapCxLXRjGOdD4D5rS5wT0RvJHd8BQbYm-CBwKTg-EbJUt1rKDGG1FOh17Xv1Qw==)
+[4] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE9l8jhhYXlGtKVKoiqxj1ZIsedlCXfXkE3cDTkiOfv0CD4yobO3elXku1C-dod5jPNruFrv0q-zlWbMhHsSsLKI_Ruy0UiPkTWO0bS-tL2O58nE_HVZMWuwEKN9BzJzh90Ew==)
+[5] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_WpGQ02Q6FvlvHA5e0GDAoBUECoXhDycgbn7R8sSHEDRHR2XNi3PynCQoKgZfQ8yxdaizLhZ3ZvPL92hSp1yyRv_L1t-GR6OcVAs7CACDhWvJHXFv3wB9ZWm7uYp1AIgo7n9R8Tp-)
+[6] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELpR3qomcmFaSugTZ2y7iTfoRM-xJzZeDZ7NzoIxMHhUiDLNio1KFJGH0D1CTrso1jQsDKv3B8Wc8XEirhTK-_WSk4ZER1bEz5fvO3GZ5jKK4UTI4HZUvWhcOd1ly8)
+[7] [github.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHq_3qHZuL_DC2LrV1BCl4oMQGm-QSn29EnHNw4nQ9ernOcFTUgLEXu1jdIFhPHSOl-VdXb7SeAkvoVuzkjmzGySuTafCb3Ne_lgeKs8Q2FYiKO0DR6KRs69cNf2-OlHieyHQTild6Ln415HX7cVwUZ)

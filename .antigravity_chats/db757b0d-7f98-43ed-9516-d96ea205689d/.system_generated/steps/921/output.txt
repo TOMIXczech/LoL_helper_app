@@ -1,0 +1,38 @@
+The following changes were made by the replace_file_content tool to: c:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml. If relevant, proactively run terminal commands to execute this code for the USER. Don't ask for permission.
+[diff_block_start]
+@@ -27,6 +27,32 @@
+                     </Grid.RowDefinitions>
+                     <TextBlock x:Name="HoveredChampText" Text="AVAILABLE PRESETS" Foreground="#8F91A3" FontSize="12" FontWeight="Bold" Margin="0,0,0,10" TextWrapping="Wrap"/>
+                     
++                    <UniformGrid Columns="5" Margin="0,0,0,10" x:Name="RoleFilterGrid">
++                        <UniformGrid.Resources>
++                            <Style TargetType="ToggleButton">
++                                <Setter Property="Background" Value="#2D2D35"/>
++                                <Setter Property="Foreground" Value="#8F91A3"/>
++                                <Setter Property="BorderThickness" Value="0"/>
++                                <Setter Property="Padding" Value="5"/>
++                                <Setter Property="Margin" Value="2"/>
++                                <Setter Property="FontWeight" Value="Bold"/>
++                                <Setter Property="FontSize" Value="11"/>
++                                <Setter Property="Cursor" Value="Hand"/>
++                                <Style.Triggers>
++                                    <Trigger Property="IsChecked" Value="True">
++                                        <Setter Property="Background" Value="#007ACC"/>
++                                        <Setter Property="Foreground" Value="White"/>
++                                    </Trigger>
++                                </Style.Triggers>
++                            </Style>
++                        </UniformGrid.Resources>
++                        <ToggleButton x:Name="FilterTop" Content="TOP" Click="RoleFilter_Click" Tag="TOP"/>
++                        <ToggleButton x:Name="FilterJgl" Content="JGL" Click="RoleFilter_Click" Tag="JUNGLE"/>
++                        <ToggleButton x:Name="FilterMid" Content="MID" Click="RoleFilter_Click" Tag="MIDDLE"/>
++                        <ToggleButton x:Name="FilterBot" Content="BOT" Click="RoleFilter_Click" Tag="BOTTOM"/>
++                        <ToggleButton x:Name="FilterSup" Content="SUP" Click="RoleFilter_Click" Tag="UTILITY"/>
++                    </UniformGrid>
++                    
+                     <ListBox x:Name="PresetsList" Grid.Row="1" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="PresetsList_SelectionChanged">
+                         <ListBox.ItemContainerStyle>
+                             <Style TargetType="ListBoxItem">
+[diff_block_end]
+
+Please note that the above snippet only shows the MODIFIED lines from the last change. It shows up to 3 lines of unchanged lines before and after the modified lines. The actual file contents may have many more lines not shown.

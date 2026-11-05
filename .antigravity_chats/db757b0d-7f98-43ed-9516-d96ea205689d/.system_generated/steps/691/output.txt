@@ -1,0 +1,11 @@
+
+The command exited with code 1.
+Output:
+Invoke-RestMethod: 
+<Error>
+  <Code>AccessDenied</Code>
+  <Message>Access Denied</Message>
+  <RequestId>8DW73Z1GNDF7ZX2R</RequestId>
+  <HostId>mILHlAe/Wn/wVW1sqrAbf/BE8zoLydXANXBgTN9s0G0oqNxdCfprI5AU6E0VXGjkSEcrzR1gHt85SQmxYyp+2csjU0KZJHw6</HostId>
+</Error>
+

@@ -1,0 +1,16 @@
+
+The command exited with code 1.
+Output:
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  LoLHelper.Core -> C:\Users\ufo\Downloads\TP\LoLHelper.Core\bin\Debug\net9.0\LoLHelper.Core.dll
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs(239,13): error CS0117: 'Image' does not contain a definition for 'RenderOptions' [C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj]
+
+Build FAILED.
+
+C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\Views\ChampSelectView.xaml.cs(239,13): error CS0117: 'Image' does not contain a definition for 'RenderOptions' [C:\Users\ufo\Downloads\TP\LoLHelper.PCClient\LoLHelper.PCClient.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:02.56
+

@@ -1,0 +1,13 @@
+
+The command exited with code 0.
+Output:
+
+> LoLHelper.Core\Services\BuildDatabaseService.cs:100:    public List<ChampionBuildPreset> GetPresetsForChampion(int 
+championId)
+  LoLHelper.Core\Services\BuildDatabaseService.cs:101:    {
+  LoLHelper.Core\Services\BuildDatabaseService.cs:102:        return _database.Where(p => p.ChampionId == 
+championId).ToList();
+  LoLHelper.Core\Services\BuildDatabaseService.cs:103:    }
+  LoLHelper.Core\Services\BuildDatabaseService.cs:104:}
+
+

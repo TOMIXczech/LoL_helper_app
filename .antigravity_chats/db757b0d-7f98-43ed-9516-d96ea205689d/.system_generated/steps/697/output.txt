@@ -1,0 +1,108 @@
+
+The command exited with code 0.
+Output:
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace LoLHelper.Core.Services;
+
+public class ChampionBuildPreset
+{
+    public int ChampionId { get; set; }
+    public string Role { get; set; } = string.Empty;
+    public RunePreset RunePreset { get; set; } = new();
+    
+    // New Categorized Item Blocks
+    public List<int> StartingItemIds { get; set; } = new();
+    public List<int> CoreBuildOrderIds { get; set; } = new();
+    public List<int> CoreFinalBuildIds { get; set; } = new();
+    public List<int> SituationalItemIds { get; set; } = new();
+    public List<int> BootsOptionsIds { get; set; } = new();
+}
+
+public class BuildDatabaseService
+{
+    public static BuildDatabaseService Instance { get; } = new BuildDatabaseService();
+    private List<ChampionBuildPreset> _database = new();
+
+    public async Task InitializeAsync()
+    {
+        if (_database.Any()) return;
+
+        // Initialize dependencies
+        await RuneService.Instance.InitializeAsync();
+        await ItemService.Instance.InitializeAsync();
+
+        // 1 - Annie, 157 - Yasuo, 222 - Jinx
+        _database = new List<ChampionBuildPreset>
+        {
+            new ChampionBuildPreset
+            {
+                ChampionId = 1, // Annie
+                Role = "Mid",
+                RunePreset = new RunePreset
+                {
+                    Name = "Annie Burst (Mid)",
+                    Description = "High burst damage with Electrocute",
+                    PrimaryStyleId = 8100, SubStyleId = 8200,
+                    SelectedPerkIds = new[] { 8112, 8126, 8138, 8106, 8226, 8236, 5008, 5008, 5002 },
+                    PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(8100),
+                    SubStyleImageUrl = RuneService.Instance.GetImageUrl(8200),
+                    KeystoneImageUrl = RuneService.Instance.GetImageUrl(8112)
+                },
+                StartingItemIds = new List<int> { 1056, 2003, 2003 },
+                CoreBuildOrderIds = new List<int> { 3118, 3020, 4645 },
+                CoreFinalBuildIds = new List<int> { 3118, 3020, 4645, 3089, 3157, 3135 },
+                SituationalItemIds = new List<int> { 3102, 3165, 3151 },
+                BootsOptionsIds = new List<int> { 3020, 3158 }
+            },
+            new ChampionBuildPreset
+            {
+                ChampionId = 157, // Yasuo
+                Role = "Mid",
+                RunePreset = new RunePreset
+                {
+                    Name = "Yasuo Skirmisher",
+                    Description = "Conqueror + Resolve for extended fights",
+                    PrimaryStyleId = 8000, SubStyleId = 8400,
+                    SelectedPerkIds = new[] { 8010, 9111, 9104, 8299, 8473, 8453, 5005, 5008, 5002 },
+                    PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(8000),
+                    SubStyleImageUrl = RuneService.Instance.GetImageUrl(8400),
+                    KeystoneImageUrl = RuneService.Instance.GetImageUrl(8010)
+                },
+                StartingItemIds = new List<int> { 1055, 2003 },
+                CoreBuildOrderIds = new List<int> { 6672, 3006, 3031 },
+                CoreFinalBuildIds = new List<int> { 6672, 3006, 3031, 6673, 3072, 3026 },
+                SituationalItemIds = new List<int> { 3091, 3153, 3139 },
+                BootsOptionsIds = new List<int> { 3006, 3047, 3111 }
+            },
+            new ChampionBuildPreset
+            {
+                ChampionId = 222, // Jinx
+                Role = "ADC",
+                RunePreset = new RunePreset
+                {
+                    Name = "Jinx Lethal",
+                    Description = "Lethal Tempo ADC Setup",
+                    PrimaryStyleId = 8000, SubStyleId = 8200,
+                    SelectedPerkIds = new[] { 8008, 9111, 9103, 8014, 8226, 8236, 5005, 5008, 5002 },
+                    PrimaryStyleImageUrl = RuneService.Instance.GetImageUrl(8000),
+                    SubStyleImageUrl = RuneService.Instance.GetImageUrl(8200),
+                    KeystoneImageUrl = RuneService.Instance.GetImageUrl(8008)
+                },
+                StartingItemIds = new List<int> { 1055, 2003 },
+                CoreBuildOrderIds = new List<int> { 6672, 3006, 3085 },
+                CoreFinalBuildIds = new List<int> { 6672, 3006, 3085, 3031, 3036, 3072 },
+                SituationalItemIds = new List<int> { 3094, 3026, 3139 },
+                BootsOptionsIds = new List<int> { 3006 }
+            }
+        };
+    }
+
+    public List<ChampionBuildPreset> GetPresetsForChampion(int championId)
+    {
+        return _database.Where(p => p.ChampionId == championId).ToList();
+    }
+}
+
