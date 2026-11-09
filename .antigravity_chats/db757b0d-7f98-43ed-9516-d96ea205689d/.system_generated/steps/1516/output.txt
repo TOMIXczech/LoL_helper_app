@@ -1,0 +1,16 @@
+Command exited with code 0.
+
+Command output:
+champion_builds_tags Standard -> count=4
+  games=5108 wr=0.594166014095536 adjWr=0.514268540854607 tags=Lethality
+  games=2237 wr=0.59231113097899 adjWr=0.513314101668427 tags=Bruiser / Lethality
+  games=1489 wr=0.566151779717932 adjWr=0.499853679442423 tags=AD
+  games=26362 wr=0.564562628025188 adjWr=0.49903597366096 tags=Bruiser
+champion_builds_tags vs Camille (164) -> count=2
+  games=442 wr=0.597285067873303 adjWr=0.511445302102742 tags=Bruiser
+  games=80 wr=0.531554621848739 adjWr=0.479298142786526 tags=Lethality
+champion_builds_tags OTP -> count=4
+  games=95 otp_players=65
+  games=1009 otp_players=193
+  games=324 otp_players=125
+  games=84 otp_players=61

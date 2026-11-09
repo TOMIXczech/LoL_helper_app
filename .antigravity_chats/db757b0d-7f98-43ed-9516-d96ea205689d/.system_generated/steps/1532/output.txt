@@ -1,0 +1,11 @@
+Command exited with code 0.
+
+Command output:
+champion_builds_tags OTP: ????? #22212 (KR) MASTER 486 LP (score=0.482404066817279, games=69)
+champion_builds_tags OTP: ghuros #4641 (EUW1) MASTER 526 LP (score=0.548541189410937, games=31)
+champion_builds_tags OTP: ????? #22212 (KR) MASTER 486 LP (score=0.482404066817279, games=69)
+champion_builds_tags OTP: ????? #22212 (KR) MASTER 486 LP (score=0.488392090769375, games=69)
+champion_builds OTP: ????? #22212 (KR) MASTER 486 LP (score=0.482404066817279, games=69)
+champion_builds OTP: ghuros #4641 (EUW1) MASTER 526 LP (score=0.548541189410937, games=31)
+champion_builds OTP: ????? #22212 (KR) MASTER 486 LP (score=0.482404066817279, games=69)
+champion_builds OTP: ????? #22212 (KR) MASTER 486 LP (score=0.488392090769375, games=69)

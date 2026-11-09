@@ -1,0 +1,11 @@
+Command exited with code 0.
+
+Command output:
+
+{
+  "error": "invalid_filter_combination",
+  "message": "The provided filter parameters don\u0027t match any allowed combination for this query.",
+  "provided_filters": [
+    "test"
+  ]
+}

@@ -1,0 +1,24 @@
+Command exited with code 0.
+
+Command output:
+=== Secondary (idx 3 & 4) grouped by treeId ===
+Tree 8000 (total games=840):
+  idx=3 runeId=9111 games=201 wr=0.592039800995025
+  idx=4 runeId=8017 games=138 wr=0.594202898550725
+  idx=3 runeId=9105 games=98 wr=0.581883320281911
+Tree 8100 (total games=1238):
+  idx=4 runeId=8135 games=487 wr=0.574948665297741
+  idx=3 runeId=8139 games=428 wr=0.565420560747664
+  idx=3 runeId=8143 games=158 wr=0.582278481012658
+Tree 8200 (total games=190):
+  idx=4 runeId=8237 games=44 wr=0.6427329678935
+  idx=3 runeId=8275 games=36 wr=0.630266249021143
+  idx=4 runeId=8236 games=19 wr=0.611274471417384
+Tree 8300 (total games=206):
+  idx=4 runeId=8347 games=48 wr=0.588966327329679
+  idx=3 runeId=8321 games=33 wr=0.618091229444009
+  idx=3 runeId=8345 games=33 wr=0.588091229444009
+Tree 8400 (total games=7740):
+  idx=3 runeId=8473 games=2524 wr=0.588351822503962
+  idx=4 runeId=8453 games=2460 wr=0.598780487804878
+  idx=3 runeId=8444 games=671 wr=0.605067064083458

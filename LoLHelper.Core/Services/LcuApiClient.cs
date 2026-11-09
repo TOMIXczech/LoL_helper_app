@@ -137,7 +137,6 @@ namespace LoLHelper.Core.Services
                 AddBlock("Core Build Order", preset.CoreBuildOrderIds);
                 AddBlock("Core Final Build", preset.CoreFinalBuildIds);
                 AddBlock("Situational", preset.SituationalItemIds);
-                AddBlock("Boots Options", preset.BootsOptionsIds);
 
                 var newSet = new System.Text.Json.Nodes.JsonObject
                 {

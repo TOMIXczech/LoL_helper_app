@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+['Lethality'] games: 5108 wr: 0.5941660140955364 adj_wr: 0.5142685408546074
+['Bruiser', 'Lethality'] games: 2237 wr: 0.5923111309789897 adj_wr: 0.5133141016684272
+['AD'] games: 1489 wr: 0.5661517797179315 adj_wr: 0.499853679442423
+['Bruiser'] games: 26362 wr: 0.5645626280251878 adj_wr: 0.49903597366095953

@@ -1,0 +1,39 @@
+Command exited with code 0.
+
+Command output:
+Total games = 2237
+=== idx=0 ===
+  treeId=8200 runeId=8275 games=90 wr=0.649231113097899
+  treeId=8000 runeId=9111 games=1919 wr=0.594580510682647
+  treeId=8100 runeId=8143 games=142 wr=0.577464788732394
+  treeId=8100 runeId=8139 games=25 wr=0.554233348234242
+=== idx=1 ===
+  treeId=8200 runeId=8210 games=61 wr=0.631001341081806
+  treeId=8000 runeId=9104 games=261 wr=0.620689655172414
+  treeId=8100 runeId=8140 games=82 wr=0.606616003576218
+  treeId=8200 runeId=8234 games=26 wr=0.598310236924452
+  treeId=8000 runeId=9105 games=1660 wr=0.592168674698795
+  treeId=8100 runeId=8137 games=75 wr=0.498077782744747
+=== idx=2 ===
+  treeId=8200 runeId=8237 games=86 wr=0.642923558337059
+  treeId=8000 runeId=8017 games=25 wr=0.614233348234242
+  treeId=8000 runeId=8299 games=1872 wr=0.595619658119658
+  treeId=8000 runeId=8014 games=36 wr=0.589079123826553
+  treeId=8100 runeId=8135 games=75 wr=0.568077782744748
+  treeId=8100 runeId=8106 games=86 wr=0.532923558337059
+=== idx=3 ===
+  treeId=8400 runeId=8444 games=243 wr=0.62962962962963
+  treeId=8100 runeId=8139 games=210 wr=0.604761904761905
+  treeId=8400 runeId=8473 games=1287 wr=0.588966588966589
+  treeId=8400 runeId=8453 games=217 wr=0.585253456221198
+  treeId=8100 runeId=8143 games=45 wr=0.575771122038444
+  treeId=8400 runeId=8451 games=59 wr=0.572847563701386
+  treeId=8000 runeId=9111 games=53 wr=0.548386231560125
+=== idx=4 ===
+  treeId=8400 runeId=8451 games=183 wr=0.617486338797814
+  treeId=8400 runeId=8242 games=111 wr=0.603603603603604
+  treeId=8100 runeId=8106 games=27 wr=0.602387125614662
+  treeId=8100 runeId=8135 games=221 wr=0.601809954751131
+  treeId=8400 runeId=8453 games=1241 wr=0.591458501208703
+  treeId=8400 runeId=8444 games=139 wr=0.58273381294964
+  treeId=8400 runeId=8473 games=158 wr=0.563291139240506

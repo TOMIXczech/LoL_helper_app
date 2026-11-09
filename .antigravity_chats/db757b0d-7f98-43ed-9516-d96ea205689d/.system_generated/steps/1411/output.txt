@@ -1,0 +1,38 @@
+Command exited with code 0.
+
+Command output:
+=== idx=0 (top by win_rate, games >= 10) ===
+  treeId=8200 runeId=8224 wr=0.622441268598277 games=39
+  treeId=8000 runeId=9101 wr=0.607799530148786 games=28
+  treeId=8400 runeId=8446 wr=0.605916209866875 games=30
+  treeId=8200 runeId=8275 wr=0.603571428571429 games=560
+  treeId=8000 runeId=9111 wr=0.599350297780184 games=3694
+  treeId=8400 runeId=8463 wr=0.574749412685983 games=10
+=== idx=1 (top by win_rate, games >= 10) ===
+  treeId=8200 runeId=8234 wr=0.63963963963964 games=111
+  treeId=8200 runeId=8233 wr=0.621883320281911 games=98
+  treeId=8000 runeId=9104 wr=0.619546247818499 games=573
+  treeId=8100 runeId=8140 wr=0.606153846153846 games=325
+  treeId=8400 runeId=8473 wr=0.601566170712608 games=24
+  treeId=8000 runeId=9105 wr=0.598010907924286 games=3117
+=== idx=2 (top by win_rate, games >= 10) ===
+  treeId=8200 runeId=8237 wr=0.615711252653928 games=471
+  treeId=8000 runeId=8014 wr=0.613861386138614 games=101
+  treeId=8400 runeId=8451 wr=0.605041111981206 games=15
+  treeId=8000 runeId=8299 wr=0.6 games=3555
+  treeId=8400 runeId=8453 wr=0.58721613155834 games=18
+  treeId=8100 runeId=8106 wr=0.5775 games=400
+=== idx=3 (top by win_rate, games >= 10) ===
+  treeId=8400 runeId=8451 wr=0.658730158730159 games=126
+  treeId=8400 runeId=8446 wr=0.631566170712608 games=24
+  treeId=8200 runeId=8275 wr=0.630266249021143 games=36
+  treeId=8300 runeId=8321 wr=0.618091229444009 games=33
+  treeId=8000 runeId=8014 wr=0.617507830853563 games=23
+  treeId=8400 runeId=8242 wr=0.609549725920125 games=58
+=== idx=4 (top by win_rate, games >= 10) ===
+  treeId=8200 runeId=8237 wr=0.6427329678935 games=44
+  treeId=8400 runeId=8446 wr=0.623741190289742 games=27
+  treeId=8400 runeId=8242 wr=0.622137404580153 games=262
+  treeId=8400 runeId=8444 wr=0.621700879765396 games=341
+  treeId=8400 runeId=8473 wr=0.620817843866171 games=269
+  treeId=8300 runeId=8410 wr=0.614749412685983 games=10

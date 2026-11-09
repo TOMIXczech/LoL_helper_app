@@ -1,0 +1,65 @@
+Command exited with code 0.
+
+Command output:
+================ Lethality (total=5108) ================
+  tree=8000 rune=9104 games=627 (12.27%) wr=0.6167
+  tree=8000 rune=8014 games=195 (3.82%) wr=0.6101
+  tree=8000 rune=9111 games=3943 (77.19%) wr=0.5989
+  tree=8000 rune=8299 games=3669 (71.83%) wr=0.5988
+  tree=8000 rune=9105 games=3263 (63.88%) wr=0.5977
+  tree=8000 rune=8017 games=237 (4.64%) wr=0.5886
+  tree=8100 rune=8140 games=331 (6.48%) wr=0.606
+  tree=8100 rune=8143 games=786 (15.39%) wr=0.575
+  tree=8100 rune=8135 games=764 (14.96%) wr=0.5677
+  tree=8100 rune=8106 games=491 (9.61%) wr=0.5674
+  tree=8100 rune=8139 games=494 (9.67%) wr=0.5585
+  tree=8100 rune=8137 games=294 (5.76%) wr=0.5394
+  tree=8100 rune=8141 games=114 (2.23%) wr=0.4789
+  tree=8200 rune=8234 games=119 (2.33%) wr=0.6373
+  tree=8200 rune=8233 games=118 (2.31%) wr=0.6179
+  tree=8200 rune=8237 games=531 (10.4%) wr=0.6168
+  tree=8200 rune=8275 games=604 (11.82%) wr=0.6048
+  tree=8200 rune=8210 games=415 (8.12%) wr=0.5953
+  tree=8200 rune=8236 games=147 (2.88%) wr=0.5741
+  tree=8400 rune=8242 games=328 (6.42%) wr=0.619
+  tree=8400 rune=8444 games=1027 (20.11%) wr=0.6104
+  tree=8400 rune=8453 games=2895 (56.68%) wr=0.5992
+  tree=8400 rune=8473 games=2817 (55.15%) wr=0.5916
+  tree=8400 rune=8451 games=636 (12.45%) wr=0.5614
+================ Bruiser / Lethality (total=2237) ================
+  tree=8000 rune=9104 games=276 (12.34%) wr=0.6189
+  tree=8000 rune=8017 games=45 (2.01%) wr=0.6026
+  tree=8000 rune=8299 games=1898 (84.85%) wr=0.5955
+  tree=8000 rune=9111 games=1984 (88.69%) wr=0.5931
+  tree=8000 rune=9105 games=1688 (75.46%) wr=0.5925
+  tree=8000 rune=8014 games=54 (2.41%) wr=0.5823
+  tree=8100 rune=8140 games=83 (3.71%) wr=0.6064
+  tree=8100 rune=8139 games=236 (10.55%) wr=0.5994
+  tree=8100 rune=8135 games=301 (13.46%) wr=0.5933
+  tree=8100 rune=8143 games=191 (8.54%) wr=0.5773
+  tree=8100 rune=8106 games=114 (5.1%) wr=0.5499
+  tree=8100 rune=8137 games=76 (3.4%) wr=0.4992
+  tree=8200 rune=8275 games=108 (4.83%) wr=0.6451
+  tree=8200 rune=8237 games=102 (4.56%) wr=0.6363
+  tree=8200 rune=8210 games=69 (3.08%) wr=0.6274
+  tree=8400 rune=8444 games=391 (17.48%) wr=0.6113
+  tree=8400 rune=8451 games=251 (11.22%) wr=0.6049
+  tree=8400 rune=8242 games=134 (5.99%) wr=0.6008
+  tree=8400 rune=8453 games=1463 (65.4%) wr=0.5905
+  tree=8400 rune=8473 games=1454 (65%) wr=0.5861
+================ Bruiser (total=26362) ================
+  tree=8000 rune=9104 games=2730 (10.36%) wr=0.5842
+  tree=8000 rune=8299 games=24111 (91.46%) wr=0.5642
+  tree=8000 rune=9111 games=24805 (94.09%) wr=0.5635
+  tree=8000 rune=9105 games=21957 (83.29%) wr=0.561
+  tree=8100 rune=8106 games=639 (2.42%) wr=0.555
+  tree=8100 rune=8143 games=927 (3.52%) wr=0.5546
+  tree=8100 rune=8135 games=2754 (10.45%) wr=0.5392
+  tree=8100 rune=8139 games=2531 (9.6%) wr=0.5354
+  tree=8200 rune=8275 games=590 (2.24%) wr=0.6168
+  tree=8200 rune=8237 games=557 (2.11%) wr=0.5827
+  tree=8400 rune=8451 games=2596 (9.85%) wr=0.5824
+  tree=8400 rune=8242 games=1421 (5.39%) wr=0.577
+  tree=8400 rune=8444 games=4683 (17.76%) wr=0.5725
+  tree=8400 rune=8473 games=18035 (68.41%) wr=0.5662
+  tree=8400 rune=8453 games=18886 (71.64%) wr=0.5647

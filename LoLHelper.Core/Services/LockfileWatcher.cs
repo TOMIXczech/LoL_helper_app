@@ -8,21 +8,12 @@ namespace LoLHelper.Core.Services
 {
     public class LcuCredentials
     {
-        public string ProcessName { get; set; } = string.Empty;
-        public int ProcessId { get; set; }
         public int Port { get; set; }
         public string Password { get; set; } = string.Empty;
         public string Protocol { get; set; } = string.Empty;
         public string InstallDirectory { get; set; } = string.Empty;
 
         public string BaseUrl => $"{Protocol}://127.0.0.1:{Port}";
-        
-        public string GetBasicAuthHeader()
-        {
-            var authString = $"riot:{Password}";
-            var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(authString));
-            return $"Basic {base64}";
-        }
     }
 
     public class LockfileWatcher
@@ -101,8 +92,6 @@ namespace LoLHelper.Core.Services
             {
                 return new LcuCredentials
                 {
-                    ProcessName = parts[0],
-                    ProcessId = int.Parse(parts[1]),
                     Port = int.Parse(parts[2]),
                     Password = parts[3],
                     Protocol = parts[4],

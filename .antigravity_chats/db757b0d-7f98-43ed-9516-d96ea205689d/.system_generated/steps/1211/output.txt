@@ -1,0 +1,1 @@
+Made 1 replacement in c:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.PCClient\MainWindow.xaml.cs starting at line 114 (+0/-13 lines).

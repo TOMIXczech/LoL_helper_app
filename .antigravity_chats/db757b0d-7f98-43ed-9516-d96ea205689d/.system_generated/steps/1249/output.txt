@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+['AD'] ["('\\u6226\\u3044\\u7d9a\\u3051\\u308b', '666', 'BR1', 'DIAMOND', 'IV', 84, 0.32223396061991705)", "('Metatron', '727', 'BR1', 'EMERALD', 'I', 50, 0.23744047390026082)", "('petkoshamara', 'EUNE', 'EUN1', 'DIAMOND', 'I', 79, 0.3792720393105971)"]
+['Bruiser', 'Lethality'] ["('Shuya Goenji', 'sup11', 'BR1', 'MASTER', 'I', 220, 0.4295208072153066)", "(' lPortgasDacel', 'br1', 'BR1', 'MASTER', 'I', 1334, 0.3940297655461934)", "('Ranni', 'B11', 'BR1', 'EMERALD', 'II', 8, 0.32926507783826914)"]
+['Lethality'] ["('OZEDOPICAADO', 'AAt', 'BR1', 'MASTER', 'I', 557, 0.4800182720814153)", "('DorproXD', '0511', 'BR1', 'MASTER', 'I', 365, 0.42563477995350063)", "(' lPortgasDacel', 'br1', 'BR1', 'MASTER', 'I', 1334, 0.39522737033661254)"]
+['Bruiser'] ["('Artzada', '000', 'BR1', 'MASTER', 'I', 827, 0.47873101810870755)", "('RatoOvudo', 'atrox', 'BR1', 'MASTER', 'I', 335, 0.4547912023367432)", "('Shuya Goenji', 'sup11', 'BR1', 'MASTER', 'I', 220, 0.4295208072153066)"]

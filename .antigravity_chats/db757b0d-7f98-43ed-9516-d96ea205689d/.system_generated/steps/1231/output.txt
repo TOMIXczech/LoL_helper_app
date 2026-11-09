@@ -1,0 +1,257 @@
+Command exited with code 0.
+
+Command output:
+STD keys: ['rank_plus', 'itemsAfterCore', 'coreItems', 'build_tier', 'is_otp', 'name_tags', 'queue_id', 'build_type_name', 'situationalItems', 'win_rate', 'adjusted_win_rate', 'summonerSpells', 'champion_norm_tag_weights', 'champion_build_norm_tag_weights', 'games', 'patch', 'startingItems', 'build_id', 'otp_players', 'skillOrders', 'previous_patch_stats', 'pick_rate', 'num_items_stats', 'match_up_champion_id', 'itemOrders', 'runes', 'wins', 'meta_tags', 'individual_position', 'shards', 'champion_vs_champion_build_tag_weights_diff', 'champion_id', 'is_pbe', 'keystone']
+OTP keys: ['rank_plus', 'itemsAfterCore', 'coreItems', 'build_tier', 'is_otp', 'name_tags', 'queue_id', 'build_type_name', 'situationalItems', 'win_rate', 'adjusted_win_rate', 'summonerSpells', 'champion_norm_tag_weights', 'champion_build_norm_tag_weights', 'games', 'patch', 'startingItems', 'build_id', 'otp_players', 'skillOrders', 'previous_patch_stats', 'pick_rate', 'num_items_stats', 'match_up_champion_id', 'itemOrders', 'runes', 'wins', 'meta_tags', 'individual_position', 'shards', 'champion_vs_champion_build_tag_weights_diff', 'champion_id', 'is_pbe', 'keystone']
+STD sample: {
+  "name_tags": [
+    "AD"
+  ],
+  "games": 969,
+  "win_rate": 0.5706914344685242,
+  "skillOrders": [
+    {
+      "games": 445,
+      "pick_rate": 0.45923632610939114,
+      "skillOrder": [
+        1,
+        3,
+        2,
+        1,
+        1,
+        4,
+        1,
+        3,
+        1,
+        3,
+        4,
+        3,
+        3,
+        2,
+        2,
+        4,
+        2,
+        2
+      ],
+      "win_rate": 0.6561797752808989,
+      "wins": 292
+    },
+    {
+      "games": 31,
+      "pick_rate": 0.03199174406604747,
+      "skillOrder": [
+        1,
+        2,
+        3,
+        1,
+        1,
+        4,
+        1,
+        3,
+        1,
+        3,
+        4,
+        3,
+        3,
+        2,
+        2,
+        4,
+        2,
+        2
+      ],
+      "win_rate": 0.5637770897832817,
+      "wins": 17
+    },
+    {
+      "games": 29,
+      "pick_rate": 0.029927760577915376,
+      "skillOrder": [
+        1,
+        3,
+        1,
+        2,
+        1,
+        4,
+        1,
+        3,
+        1,
+        3,
+        4,
+        3,
+        3,
+        2,
+        2,
+        4,
+        2,
+        2
+      ],
+      "win_rate": 0.6251909184726522,
+      "wins": 22
+    }
+  ],
+  "summonerSpells": [
+    {
+      "games": 754,
+      "pick_rate": 0.7781217750257998,
+      "summonerSpellIds": [
+        4,
+        14
+      ],
+      "win_rate": 0.5543766578249337,
+      "wins": 418
+    },
+    {
+      "games": 152,
+      "pick_rate": 0.1568627450980392,
+      "summonerSpellIds": [
+        4,
+        12
+      ],
+      "win_rate": 0.618421052631579,
+      "wins": 94
+    },
+    {
+      "games": 57,
+      "pick_rate": 0.058823529411764705,
+      "summonerSpellIds": [
+        3,
+        4
+      ],
+      "win_rate": 0.6153973168214654,
+      "wins": 37
+    }
+  ],
+  "startingItems": [
+    {
+      "games": 88,
+      "itemIds": [
+        "1054"
+      ],
+      "pick_rate": 0.09081527347781218,
+      "win_rate": 0.6084829721362229,
+      "wins": 54
+    },
+    {
+      "games": 171,
+      "itemIds": [
+        "1054",
+        "2003"
+      ],
+      "pick_rate": 0.17647058823529413,
+      "win_rate": 0.5789473684210527,
+      "wins": 99
+    },
+    {
+      "games": 264,
+      "itemIds": [
+        "1055"
+      ],
+      "pick_rate": 0.2724458204334365,
+      "win_rate": 0.5833333333333334,
+      "wins": 154
+    },
+    {
+      "games": 2,
+      "itemIds": [
+        "1083",
+        "2003"
+      ],
+      "pick_rate": 0.0020639834881320948,
+      "win_rate": 0.5692776057791538,
+      "wins": 1
+    },
+    {
+ 
+OTP sample: {
+  "rank_plus": "ALL",
+  "itemsAfterCore": {},
+  "coreItems": [
+    {
+      "games": 3,
+      "itemIds": "3047,6692,6333",
+      "pick_rate": 0.046153846153846156,
+      "win_rate": 0.6033698529411765,
+      "wins": 3
+    },
+    {
+      "games": 3,
+      "itemIds": "6692,3047,6333",
+      "pick_rate": 0.046153846153846156,
+      "win_rate": 0.5933698529411765,
+      "wins": 2
+    },
+    {
+      "games": 3,
+      "itemIds": "6692,3111,6610",
+      "pick_rate": 0.046153846153846156,
+      "win_rate": 0.5733698529411765,
+      "wins": 0
+    }
+  ],
+  "build_tier": "Standard",
+  "is_otp": "true",
+  "name_tags": [
+    "AD"
+  ],
+  "queue_id": 420,
+  "build_type_name": "champion_otp_builds",
+  "situationalItems": [
+    {
+      "averageIndex": 1.5,
+      "distinctive_score": 0.01890625,
+      "games": 2,
+      "itemId": 6662,
+      "pick_rate": 0.03076923076923077,
+      "pick_rate_w_support_difference": 0.013822115384615384,
+      "support_avg_pick_rate": 0.016947115384615387,
+      "win_rate": 0.5992808823529411,
+      "wins": 2
+    },
+    {
+      "averageIndex": 2.0,
+      "distinctive_score": 0.02060596456818472,
+      "games": 2,
+      "itemId": 6665,
+      "pick_rate": 0.03076923076923077,
+      "pick_rate_w_support_difference": 0.016250279053450695,
+      "support_avg_pick_rate": 0.014518951715780075,
+      "win_rate": 0.5892808823529411,
+      "wins": 1
+    },
+    {
+      "averageIndex": 0.75,
+      "distinctive_score": 0.03028071101007202,
+      "games": 4,
+      "itemId": 3008,
+      "pick_rate": 0.06153846153846154,
+      "pick_rate_w_support_difference": 0.0168845322121908,
+      "support_avg_pick_rate": 0.04465392932627074,
+      "win_rate": 0.5974588235294117,
+      "wins": 3
+    },
+    {
+      "averageIndex": 2.5625,
+      "distinctive_score": 0.1686567961474678,
+      "games": 16,
+      "itemId": 3033,
+      "pick_rate": 0.24615384615384617,
+      "pick_rate_w_support_difference": 0.1354437747161628,
+      "support_avg_pick_rate": 0.11071007143768337,
+      "win_rate": 0.6365264705882353,
+      "wins": 14
+    },
+    {
+      "averageIndex": 2.5,
+      "distinctive_score": -0.02878395935532129,
+      "games": 2,
+      "itemId": 3053,
+      "pick_rate": 0.03076923076923077,
+      "pick_rate_w_support_difference": -0.054306755122986466,
+      "support_avg_pick_rate": 0.08507598589221724,
+      "win_rate": 0.5992808823529411,
+      "wins": 2
+    },
+    {
+      "averageIndex": 0.7941176470588235,
+      "distinctive_score": 0.13175375580576143,
+      "gam

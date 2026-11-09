@@ -1,0 +1,8 @@
+Command exited with code 0.
+
+Command output:
+https://data.v2.iesdev.com
+https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_postmatch_stats?queue_id=RANKED_SOLO_5X5&amp;region=WORLD&amp;columns=all_roles_total_num_games%2Cban_num_games%2Cchampion_ban_rate%2Cchampion_id%2Cchampion_role_pickrate%2Cchampion_role_tier%2Cchampion_role_tier_filtered%2Cgames%2Cindividual_position%2Cis_most_popular_role%2Cpatch%2Cpick_rate%2Cpostmatch_damage%2Cprevious_patch_stats%2Cqueue_id%2Cregion%2Crole_champion_pickrate%2Crole_pct_games%2Crole_total_num_games%2Cstrong_against%2Ctier%2Ctotal_num_games%2Cweak_against%2Cwin_rate&amp;tier=EMERALD%2B&amp;champion_id=266
+https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_postmatch_stats?queue_id=RANKED_SOLO_5X5&amp;tier=EMERALD%2B&amp;region=WORLD&amp;columns=champion_id%2Cindividual_position%2Crole_pct_games%2Cis_most_popular_role%2Cgames
+https://data.v2.iesdev.com/api/v1/query_objects/prod/lol/champion_builds_tags?champion_id=266&amp;queue_id=RANKED_SOLO_5X5&amp;build_tier=Standard&amp;individual_position=TOP
+--- Node scripts ---

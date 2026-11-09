@@ -1,0 +1,6 @@
+Command exited with code 0.
+
+Command output:
+keystone: [{'games': 98, 'keystone_id': 8229, 'pick_rate': 0.0037174721189591076, 'treeId': 8200, 'win_rate': 0.5312912525605037, 'wins': 52}, {'games': 10, 'keystone_id': 8128, 'pick_rate': 0.00037933388968970486, 'treeId': 8100, 'win_rate': 0.588106365222669, 'wins': 8}]
+summonerSpells: [{'games': 20129, 'pick_rate': 0.7635611865564069, 'summonerSpellIds': [4, 14], 'win_rate': 0.5668438571215659, 'wins': 11410}, {'games': 5173, 'pick_rate': 0.19622942113648434, 'summonerSpellIds': [4, 12], 'win_rate': 0.5592499516721439, 'wins': 2893}]
+skillOrders: [{'games': 15683, 'pick_rate': 0.5949093392003642, 'skillOrder': [1, 3, 2, 1, 1, 4, 1, 3, 1, 3, 4, 3, 3, 2, 2, 4, 2, 2], 'win_rate': 0.6156347637569343, 'wins': 9655}, {'games': 1022, 'pick_rate': 0.038767923526287836, 'skillOrder': [1, 2, 3, 1, 1, 4, 1, 3, 1, 3, 4, 3, 3, 2, 2, 4, 2, 2], 'win_rate': 0.6360078277886497, 'wins': 650}]

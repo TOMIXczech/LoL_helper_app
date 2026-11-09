@@ -1,0 +1,5 @@
+Command exited with code 0.
+
+Command output:
+Build: Bruiser | games=442 | wr=0.597285067873303 | adjWr=0.511445302102742 | topKs=8010 (g=425) | topCore=6692,3047,6610 (g=68)
+Build: Lethality | games=80 | wr=0.531554621848739 | adjWr=0.479298142786526 | topKs=8010 (g=67) | topCore=6692,3047,6699 (g=4)

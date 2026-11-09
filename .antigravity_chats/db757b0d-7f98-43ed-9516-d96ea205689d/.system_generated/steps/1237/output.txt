@@ -1,0 +1,234 @@
+Command exited with code 0.
+
+Command output:
+coreItems: [
+  {
+    "games": 1534,
+    "itemIds": "6692,3047,6610",
+    "pick_rate": 0.09007104691445011,
+    "win_rate": 0.5638852672750978,
+    "wins": 865
+  },
+  {
+    "games": 931,
+    "itemIds": "3047,6692,6610",
+    "pick_rate": 0.054665022605836416,
+    "win_rate": 0.5778732545649838,
+    "wins": 538
+  },
+  {
+    "games": 700,
+    "itemIds": "6692,3111,6610",
+    "pick_rate": 0.04110152075626798,
+    "win_rate": 0.5471428571428572,
+    "wins": 383
+  }
+]
+situationalItems: [
+  {
+    "averageIndex": 0.5718290176736539,
+    "distinctive_score": 4.0,
+    "games": 2,
+    "itemId": 3031,
+    "pick_rate": 0.00011743291644647995,
+    "pick_rate_w_support_difference": 0.0006816192187584242,
+    "support_avg_pick_rate": -0.000359700536684417,
+    "win_rate": -0.0005641863023119443,
+    "wins": 2
+  },
+  {
+    "averageIndex": 0.5679314565483476,
+    "distinctive_score": 3.340269277845777,
+    "games": 3268,
+    "itemId": 3053,
+    "pick_rate": 0.19188538547354825,
+    "pick_rate_w_support_difference": 0.09441657540258143,
+    "support_avg_pick_rate": 0.12579378269174124,
+    "win_rate": 0.09746881007096682,
+    "wins": 1856
+  },
+  {
+    "averageIndex": 0.5674599260172627,
+    "distinctive_score": 3.0,
+    "games": 1,
+    "itemId": 3109,
+    "pick_rate": 5.8716458223239976e-05,
+    "pick_rate_w_support_difference": 5.8716458223239976e-05,
+    "support_avg_pick_rate": 1.7614937466971992e-05,
+    "win_rate": 0.0,
+    "wins": 1
+  },
+  {
+    "averageIndex": 0.4615454171804357,
+    "distinctive_score": 4.16,
+    "games": 50,
+    "itemId": 2504,
+    "pick_rate": 0.0029358229111619985,
+    "pick_rate_w_support_difference": 0.00551218905517873,
+    "support_avg_pick_rate": -0.0009227094274631125,
+    "win_rate": -0.0025763661440167318,
+    "wins": 18
+  },
+  {
+    "averageIndex": 0.5674599260172627,
+    "distinctive_score": 6.0,
+    "games": 1,
+    "itemId": 3157,
+    "pick_rate": 5.8716458223239976e-05,
+    "pick_rate_w_support_difference": 0.00018287373417763168,
+    "support_avg_pick_rate": -6.929515570110219e-05,
+    "win_rate": -0.0001241572759543917,
+    "wins": 1
+  },
+  {
+    "averageIndex": 0.5705672009864365,
+    "distinctive_score": 4.0,
+    "games": 4,
+    "itemId": 8020,
+    "pick_rate": 0.0002348658328929599,
+    "pick_rate_w_support_difference": 0.0002348658328929599,
+    "support_avg_pick_rate": 7.045974986788797e-05,
+    "win_rate": 0.0,
+    "wins": 3
+  },
+  {
+    "averageIndex": 0.5680435676120017,
+    "distinctive_score": 1.25,
+    "games": 8,
+    "itemId": 2520,
+    "pick_rate": 0.0004697316657859198,
+    "pick_rate_w_support_difference": 0.0372502173858789,
+    "support_avg_pick_rate": -0.025605420504329308,
+    "win_rate": -0.03678048572009298,
+    "wins": 5
+  },
+  {
+    "averageIndex": 0.5561981093300452,
+    "distinctive_score": 2.3333333333333335,
+    "games": 3,
+    "itemId": 3179,
+    "pick_rate": 0.00017614937466971993,
+    "pick_rate_w_support_difference": 0.0007021367075989067,
+    "support_avg_pick_rate": -0.0003153463206495147,
+    "win_rate": -0.0005259873329291867,
+    "wins": 1
+  },
+  {
+    "averageIndex": 0.5562310030395137,
+    "distinctive_score": 3.1914893617021276,
+    "games": 329,
+    "itemId": 6694,
+    "pick_rate": 0.019317714755445952,
+    "pick_rate_w_support_difference": 0.25319797173229386,
+    "support_avg_pick_rate": -0.15792086545715975,
+    "win_rate": -0.23388025697684792,
+    "wins": 183
+  },
+  {
+    "averageIndex": 0.5619360131255127,
+    "distinctive_score": 1.4186101019571078,
+    "games": 8533,
+    "itemId": 3161,
+    "pick_rate": 0.5010275380189066,
+    "pick_rate_w_support_difference": 0.3272863240406419,
+    "support_avg_pick_rate": 0.2719271111904573,
+    "win_rate": 0.17374121397826475,
+    "wins": 4795
+  }
+]
+itemOrders keys: ['3036', '3143', '3076', '3082', '6333', '3161', '3075', '6631', '3134', '3044', '3211', '6697', '3065', '3111', '1011', '3156', '3053', '6695', '1057', '2501', '2019', '3047', '2517', '3009', '3071', '3026', '6692', '3033', '6699', '3067', '1031', '6609', '3158', '6694', '3155', '2020', '3008', '6610', '3035', '2021', '3133', '3123', '3077']
+itemsAfterCore: {
+  "3047,3071,3161": {
+    "1": [
+      {
+        "games": 336,
+        "itemIds": [
+          6333
+        ],
+        "win_rate": 0.5714285714285714,
+        "wins": 192
+      }
+    ]
+  },
+  "3047,3071,6692": {
+    "1": [
+      {
+        "games": 516,
+        "itemIds": [
+          6333
+        ],
+        "win_rate": 0.5445736434108527,
+        "wins": 281
+      }
+    ]
+  },
+  "3047,3161,6610": {
+    "1": [
+      {
+        "games": 514,
+        "itemIds": [
+          6333
+        ],
+        "win_rate": 0.5330739299610895,
+        "wins": 274
+      }
+    ]
+  },
+  "3047,3161,6692": {
+    "1": [
+      {
+        "games": 602,
+        "itemIds": [
+          6333
+        ],
+        "win_rate": 0.5431893687707641,
+        "wins": 327
+      }
+    ]
+  },
+  "3047,6610,6692": {
+    "1": [
+      {
+        "games": 1354,
+        "itemIds": [
+          6333
+        ],
+        "win_rate": 0.5709010339734121,
+        "wins": 773
+      },
+      {
+        "games": 164,
+        "itemIds": [
+          3161
+        ],
+        "win_rate": 0.6341463414634146,
+        "wins": 104
+      }
+    ],
+    "2": [
+      {
+        "games": 173,
+        "itemIds": [
+          3053,
+          6333
+        ],
+        "win_rate": 0.6127167630057804,
+        "wins": 106
+      }
+    ]
+  },
+  "3071,3111,6692": {
+    "1": [
+      {
+        "games": 186,
+        "itemIds": [
+          6333
+        ],
+        "win_rate": 0.5967741935483871,
+        "wins": 111
+      }
+    ]
+  },
+  "3111,3161,6610": {
+    "1": [
+     

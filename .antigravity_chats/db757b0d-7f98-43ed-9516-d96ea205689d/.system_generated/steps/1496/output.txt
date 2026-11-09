@@ -1,0 +1,23 @@
+Command exited with code 0.
+
+Command output:
+Invoke-RestMethod: 
+Line |
+   4 |  $r2 = Invoke-RestMethod -Uri $uOtp
+     |        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 
+{
+  "error": "invalid_filter_combination",
+  "message": "The provided filter parameters don\u0027t match any allowed combination for this query.",
+  "provided_filters": [
+    "champion_id",
+    "individual_position",
+    "is_otp",
+    "match_up_champion_id",
+    "queue_id"
+  ]
+}
+uStd with matchup=164 -> count=2
+  games=307 tags=Bruiser
+  games=53 tags=Lethality
+uOtp with matchup=164 -> count=0

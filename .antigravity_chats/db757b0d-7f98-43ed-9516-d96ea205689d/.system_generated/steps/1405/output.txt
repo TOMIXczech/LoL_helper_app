@@ -1,0 +1,159 @@
+Command exited with code 0.
+
+Command output:
+rank_plus: System.String
+itemsAfterCore: System.Management.Automation.PSCustomObject
+coreItems: System.Object[]
+build_tier: System.String
+is_otp: System.String
+name_tags: System.Object[]
+queue_id: System.Int64
+build_type_name: System.String
+situationalItems: System.Object[]
+win_rate: System.Double
+adjusted_win_rate: System.Double
+summonerSpells: System.Object[]
+champion_norm_tag_weights: System.Management.Automation.PSCustomObject
+champion_build_norm_tag_weights: System.Management.Automation.PSCustomObject
+games: System.Int64
+patch: System.String
+startingItems: System.Object[]
+build_id: System.Management.Automation.PSCustomObject
+otp_players: System.Object[]
+skillOrders: System.Object[]
+previous_patch_stats: System.Management.Automation.PSCustomObject
+pick_rate: System.Double
+num_items_stats: System.Management.Automation.PSCustomObject
+match_up_champion_id: System.String
+itemOrders: System.Management.Automation.PSCustomObject
+runes: System.Object[]
+wins: System.Int64
+meta_tags: System.Object[]
+individual_position: System.String
+shards: System.Management.Automation.PSCustomObject
+champion_vs_champion_build_tag_weights_diff: System.Management.Automation.PSCustomObject
+champion_id: System.Int64
+is_pbe: System.String
+keystone: System.Object[]
+--- All runes in Lethality ---
+idx=0 treeId=8000 runeId=9111 games=3694 wr=0.599350297780184
+idx=0 treeId=8100 runeId=8143 games=613 wr=0.572593800978793
+idx=0 treeId=8200 runeId=8275 games=560 wr=0.603571428571429
+idx=0 treeId=8100 runeId=8139 games=63 wr=0.509841425215348
+idx=0 treeId=8100 runeId=8126 games=55 wr=0.557374706342991
+idx=0 treeId=8200 runeId=8224 games=39 wr=0.622441268598277
+idx=0 treeId=8400 runeId=8446 games=30 wr=0.605916209866875
+idx=0 treeId=8000 runeId=9101 games=28 wr=0.607799530148786
+idx=0 treeId=8400 runeId=8463 games=10 wr=0.574749412685983
+idx=0 treeId=8300 runeId=8321 games=10 wr=0.564749412685983
+idx=0 treeId=8300 runeId=8304 games=5 wr=0.59445771339076
+idx=0 treeId=8400 runeId=8401 games=1 wr=0.598224353954581
+idx=1 treeId=8000 runeId=9105 games=3117 wr=0.598010907924286
+idx=1 treeId=8000 runeId=9104 games=573 wr=0.619546247818499
+idx=1 treeId=8200 runeId=8210 games=390 wr=0.594871794871795
+idx=1 treeId=8100 runeId=8140 games=325 wr=0.606153846153846
+idx=1 treeId=8100 runeId=8137 games=293 wr=0.539249146757679
+idx=1 treeId=8100 runeId=8141 games=113 wr=0.47787610619469
+idx=1 treeId=8200 runeId=8234 games=111 wr=0.63963963963964
+idx=1 treeId=8200 runeId=8233 games=98 wr=0.621883320281911
+idx=1 treeId=8000 runeId=9103 games=32 wr=0.534032889584965
+idx=1 treeId=8400 runeId=8473 games=24 wr=0.601566170712608
+idx=1 treeId=8400 runeId=8444 games=15 wr=0.595041111981206
+idx=1 treeId=8300 runeId=8313 games=10 wr=0.564749412685983
+idx=1 treeId=8300 runeId=8345 games=5 wr=0.59445771339076
+idx=1 treeId=8400 runeId=8429 games=2 wr=0.582282693813626
+idx=2 treeId=8000 runeId=8299 games=3555 wr=0.6
+idx=2 treeId=8200 runeId=8237 games=471 wr=0.615711252653928
+idx=2 treeId=8100 runeId=8106 games=400 wr=0.5775
+idx=2 treeId=8100 runeId=8135 games=264 wr=0.553030303030303
+idx=2 treeId=8200 runeId=8236 games=120 wr=0.566666666666667
+idx=2 treeId=8000 runeId=8014 games=101 wr=0.613861386138614
+idx=2 treeId=8100 runeId=8105 games=67 wr=0.516074784651527
+idx=2 treeId=8000 runeId=8017 games=66 wr=0.572016444792482
+idx=2 treeId=8400 runeId=8453 games=18 wr=0.58721613155834
+idx=2 treeId=8400 runeId=8451 games=15 wr=0.605041111981206
+idx=2 treeId=8400 runeId=8242 games=8 wr=0.586632732967894
+idx=2 treeId=8300 runeId=8347 games=8 wr=0.576632732967894
+idx=2 treeId=8200 runeId=8232 games=8 wr=0.606632732967893
+idx=2 treeId=8300 runeId=8316 games=5 wr=0.57445771339076
+idx=2 treeId=8300 runeId=8410 games=2 wr=0.602282693813626
+idx=3 treeId=8400 runeId=8473 games=2524 wr=0.588351822503962
+idx=3 treeId=8400 runeId=8444 games=671 wr=0.605067064083458
+idx=3 treeId=8100 runeId=8139 games=428 wr=0.565420560747664
+idx=3 treeId=8400 runeId=8453 games=417 wr=0.601918465227818
+idx=3 treeId=8000 runeId=9111 games=201 wr=0.592039800995025
+idx=3 treeId=8100 runeId=8143 games=158 wr=0.582278481012658
+idx=3 treeId=8400 runeId=8451 games=126 wr=0.658730158730159
+idx=3 treeId=8000 runeId=9105 games=98 wr=0.581883320281911
+idx=3 treeId=8400 runeId=8242 games=58 wr=0.609549725920125
+idx=3 treeId=8200 runeId=8275 games=36 wr=0.630266249021143
+idx=3 treeId=8000 runeId=8017 games=33 wr=0.598091229444009
+idx=3 treeId=8300 runeId=8321 games=33 wr=0.618091229444009
+idx=3 treeId=8300 runeId=8345 games=33 wr=0.588091229444009
+idx=3 treeId=8000 runeId=9104 games=32 wr=0.574032889584965
+idx=3 treeId=8400 runeId=8429 games=26 wr=0.579682850430697
+idx=3 treeId=8000 runeId=8299 games=26 wr=0.599682850430697
+idx=3 treeId=8400 runeId=8446 games=24 wr=0.631566170712608
+idx=3 treeId=8000 runeId=8014 games=23 wr=0.617507830853563
+idx=3 treeId=8400 runeId=8463 games=20 wr=0.605332811276429
+idx=3 treeId=8200 runeId=8237 games=16 wr=0.579099451840251
+idx=3 treeId=8200 runeId=8210 games=16 wr=0.609099451840251
+idx=3 treeId=8100 runeId=8135 games=13 wr=0.596924432263117
+idx=3 treeId=8200 runeId=8233 games=13 wr=0.606924432263117
+idx=3 treeId=8300 runeId=8313 games=12 wr=0.592866092404072
+idx=3 treeId=8300 runeId=8347 games=10 wr=0.594749412685983
+idx=3 treeId=8100 runeId=8126 games=10 wr=0.584749412685983
+idx=3 treeId=8200 runeId=8236 games=8 wr=0.596632732967894
+idx=3 treeId=8300 runeId=8304 games=8 wr=0.616632732967893
+idx=3 treeId=8100 runeId=8106 games=6 wr=0.578516053249804
+idx=3 treeId=8000 runeId=9101 games=5 wr=0.59445771339076
+idx=3 treeId=8400 runeId=8401 games=4 wr=0.590399373531715
+idx=3 treeId=8300 runeId=8316 games=4 wr=0.590399373531715
+idx=3 treeId=8100 runeId=8140 games=4 wr=0.600399373531715
+idx=3 treeId=8200 runeId=8234 games=3 wr=0.60634103367267
+idx=3 treeId=8200 runeId=8224 games=3 wr=0.57634103367267
+idx=3 treeId=8300 runeId=8410 games=3 wr=0.58634103367267
+idx=3 treeId=8000 runeId=9103 games=2 wr=0.592282693813626
+idx=3 treeId=0 runeId=8233 games=1 wr=0.598224353954581
+idx=4 treeId=8400 runeId=8453 games=2460 wr=0.598780487804878
+idx=4 treeId=8400 runeId=8451 games=495 wr=0.535353535353535
+idx=4 treeId=8100 runeId=8135 games=487 wr=0.574948665297741
+idx=4 treeId=8400 runeId=8444 games=341 wr=0.621700879765396
+idx=4 treeId=8400 runeId=8473 games=269 wr=0.620817843866171
+idx=4 treeId=8400 runeId=8242 games=262 wr=0.622137404580153
+idx=4 treeId=8000 runeId=8017 games=138 wr=0.594202898550725
+idx=4 treeId=8000 runeId=8299 games=88 wr=0.551299921691464
+idx=4 treeId=8100 runeId=8106 games=85 wr=0.51912490211433
+idx=4 treeId=8000 runeId=8014 games=71 wr=0.602308144087706
+idx=4 treeId=8000 runeId=9105 games=48 wr=0.608966327329679
+idx=4 treeId=8000 runeId=9111 games=48 wr=0.588966327329679
+idx=4 treeId=8300 runeId=8347 games=48 wr=0.588966327329679
+idx=4 treeId=8200 runeId=8237 games=44 wr=0.6427329678935
+idx=4 treeId=8400 runeId=8446 games=27 wr=0.623741190289742
+idx=4 treeId=8000 runeId=9104 games=22 wr=0.603449490994518
+idx=4 treeId=8100 runeId=8105 games=20 wr=0.605332811276429
+idx=4 treeId=8200 runeId=8236 games=19 wr=0.611274471417384
+idx=4 treeId=8100 runeId=8143 games=15 wr=0.595041111981206
+idx=4 treeId=8300 runeId=8321 games=14 wr=0.610982772122161
+idx=4 treeId=8300 runeId=8345 games=10 wr=0.574749412685983
+idx=4 treeId=8300 runeId=8410 games=10 wr=0.614749412685983
+idx=4 treeId=8400 runeId=8429 games=10 wr=0.584749412685983
+idx=4 treeId=8300 runeId=8313 games=9 wr=0.580691072826938
+idx=4 treeId=8200 runeId=8210 games=9 wr=0.590691072826938
+idx=4 treeId=8200 runeId=8275 games=8 wr=0.576632732967894
+idx=4 treeId=8200 runeId=8233 games=7 wr=0.582574393108849
+idx=4 treeId=8300 runeId=8304 games=7 wr=0.602574393108849
+idx=4 treeId=8200 runeId=8234 games=5 wr=0.604457713390759
+idx=4 treeId=8300 runeId=8316 games=5 wr=0.614457713390759
+idx=4 treeId=8100 runeId=8126 games=5 wr=0.59445771339076
+idx=4 treeId=8000 runeId=9103 games=4 wr=0.600399373531715
+idx=4 treeId=8400 runeId=8463 games=3 wr=0.60634103367267
+idx=4 treeId=8100 runeId=8139 games=3 wr=0.58634103367267
+idx=4 treeId=8400 runeId=8401 games=3 wr=0.58634103367267
+idx=4 treeId=8200 runeId=8224 games=2 wr=0.592282693813626
+idx=4 treeId=8100 runeId=8140 games=2 wr=0.592282693813626
+idx=4 treeId=8100 runeId=8137 games=1 wr=0.598224353954581
+idx=4 treeId=8100 runeId=8141 games=1 wr=0.598224353954581
+idx=4 treeId=8000 runeId=9101 games=1 wr=0.598224353954581
+idx=4 treeId=8200 runeId=8232 games=1 wr=0.598224353954581
+idx=4 treeId=0 runeId=8236 games=1 wr=0.598224353954581

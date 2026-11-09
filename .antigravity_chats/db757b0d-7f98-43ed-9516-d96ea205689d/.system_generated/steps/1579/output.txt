@@ -1,0 +1,10 @@
+Command exited with code 0.
+
+Command output:
+MASTER%2B vs Camille (164): games=152, wr=53.3%, patch=16.22
+DIAMOND%2B vs Camille (164): games=381, wr=50.7%, patch=16.22
+EMERALD%2B vs Camille (164): games=727, wr=52%, patch=16.22
+PLATINUM%2B vs Camille (164): games=1019, wr=51.6%, patch=16.22
+GOLD vs Camille (164): games=260, wr=51.5%, patch=16.22
+SILVER vs Camille (164): games=130, wr=53.1%, patch=16.22
+BRONZE vs Camille (164): games=318, wr=50%, patch=16.21

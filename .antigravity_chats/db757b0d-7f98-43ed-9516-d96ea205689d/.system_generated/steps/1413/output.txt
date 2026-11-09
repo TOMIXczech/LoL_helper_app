@@ -1,0 +1,19 @@
+Command exited with code 0.
+
+Command output:
+=== Lethality (total=5108, adjWr=51.43%) ===
+  KS 8010 (tree 8000): 52% (3712 games)
+  KS 8230 (tree 8200): 52% (550 games)
+  KS 8112 (tree 8100): 48% (720 games)
+=== Bruiser / Lethality (total=2237, adjWr=51.33%) ===
+  KS 8230 (tree 8200): 54% (90 games)
+  KS 8010 (tree 8000): 52% (1932 games)
+  KS 8112 (tree 8100): 46% (176 games)
+=== AD (total=1489, adjWr=49.99%) ===
+  KS 8230 (tree 8200): 52% (84 games)
+  KS 8010 (tree 8000): 50% (1265 games)
+  KS 8112 (tree 8100): 50% (94 games)
+=== Bruiser (total=26362, adjWr=49.9%) ===
+  KS 8230 (tree 8200): 55% (481 games)
+  KS 8010 (tree 8000): 50% (24596 games)
+  KS 8112 (tree 8100): 49% (787 games)

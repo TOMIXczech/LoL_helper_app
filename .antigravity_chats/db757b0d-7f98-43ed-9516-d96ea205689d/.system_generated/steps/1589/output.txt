@@ -1,0 +1,9 @@
+Command exited with code 0.
+
+Command output:
+champion_builds_tags std count: 4
+  name_tags=Lethality, games=5108, adj_wr=51.4%
+  name_tags=Bruiser / Lethality, games=2237, adj_wr=51.3%
+  name_tags=AD, games=1489, adj_wr=50%
+  name_tags=Bruiser, games=26362, adj_wr=49.9%
+champion_builds_tags otp count: 4

@@ -1,0 +1,9 @@
+Command exited with code 0.
+
+Command output:
+200 OK: https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/emerald.svg (image/svg+xml)
+FAIL: https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-mini-crests/emerald.png
+200 OK: https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-emerald.png (image/png)
+200 OK: https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/emerald.png (image/png)
+200 OK: https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/images/emerald.png (image/png)
+200 OK: https://ddragon.leagueoflegends.com/cdn/14.1.1/img/profileicon/29.png (image/png)

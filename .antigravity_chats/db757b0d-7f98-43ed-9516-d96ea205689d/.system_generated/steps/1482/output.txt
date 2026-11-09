@@ -1,0 +1,14 @@
+Command exited with code 1.
+
+Command output:
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.Core\Services\BuildDatabaseService.cs(999,91): error CS1628: Cannot use ref, out, or in parameter 'subStyle' inside an anonymous method, lambda expression, query expression, or local function [C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.Core\LoLHelper.Core.csproj]
+
+Build FAILED.
+
+C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.Core\Services\BuildDatabaseService.cs(999,91): error CS1628: Cannot use ref, out, or in parameter 'subStyle' inside an anonymous method, lambda expression, query expression, or local function [C:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.Core\LoLHelper.Core.csproj]
+    0 Warning(s)
+    1 Error(s)
+
+Time Elapsed 00:00:02.34

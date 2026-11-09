@@ -1,0 +1,13 @@
+Command exited with code 0.
+
+Command output:
+CHALLENGER -> rows=4, TOP games=65, wr=43.1%, tier=5, tier_filtered=5, role_pr=0.00981132075471698
+GRANDMASTER -> rows=4, TOP games=323, wr=51.1%, tier=2, tier_filtered=2, role_pr=0.0175305291723202
+MASTER%2B -> rows=6, TOP games=5790, wr=49.6%, tier=3, tier_filtered=3, role_pr=0.0381319933351335
+DIAMOND%2B -> rows=6, TOP games=14773, wr=49.9%, tier=3, tier_filtered=3, role_pr=0.035349631859415
+EMERALD%2B -> rows=6, TOP games=34446, wr=49.9%, tier=3, tier_filtered=3, role_pr=0.0345414033560695
+PLATINUM%2B -> rows=6, TOP games=58146, wr=50%, tier=2, tier_filtered=3, role_pr=0.0310362938781436
+GOLD -> rows=6, TOP games=21855, wr=50.3%, tier=2, tier_filtered=3, role_pr=0.0222808312467886
+SILVER -> rows=6, TOP games=15193, wr=49.3%, tier=3, tier_filtered=3, role_pr=0.0180540850145034
+BRONZE -> rows=6, TOP games=9252, wr=48.5%, tier=4, tier_filtered=3, role_pr=0.0165358974817251
+IRON -> rows=6, TOP games=3021, wr=46.1%, tier=5, tier_filtered=5, role_pr=0.0144175702504582

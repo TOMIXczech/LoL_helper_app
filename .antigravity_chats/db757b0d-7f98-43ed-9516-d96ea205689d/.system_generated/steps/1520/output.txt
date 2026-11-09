@@ -1,0 +1,7 @@
+Command exited with code 0.
+
+Command output:
+champion_builds: tags=Bruiser games=442 ksGames=1 coreGames=68 soGames=242
+champion_builds: tags=Lethality games=80 ksGames=67 coreGames=4 soGames=38
+champion_builds_tags: tags=Bruiser games=442 ksGames=1 coreGames=68 soGames=242
+champion_builds_tags: tags=Lethality games=80 ksGames=67 coreGames=4 soGames=38

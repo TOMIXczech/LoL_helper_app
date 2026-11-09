@@ -1,0 +1,10 @@
+Command exited with code 0.
+
+Command output:
+8
+36
+517
+133
+41
+--- searching 164 in strong_against ---
+--- searching 164 in weak_against ---

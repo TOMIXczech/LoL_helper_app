@@ -1,0 +1,24 @@
+Command exited with code 0.
+
+Command output:
+postmatch_stats tier=CHALLENGER -> count=4 (top games=65)
+postmatch_stats tier=GRANDMASTER -> count=4 (top games=323)
+postmatch_stats tier=MASTER%2B -> count=6 (top games=5790)
+postmatch_stats tier=DIAMOND%2B -> count=6 (top games=14773)
+postmatch_stats tier=EMERALD%2B -> count=6 (top games=34446)
+postmatch_stats tier=PLATINUM%2B -> count=6 (top games=58146)
+postmatch_stats tier=GOLD%2B -> count=7 (top games=393232)
+postmatch_stats tier=GOLD -> count=6 (top games=21855)
+postmatch_stats tier=SILVER -> count=6 (top games=15193)
+postmatch_stats tier=BRONZE -> count=6 (top games=9252)
+postmatch_stats tier=IRON -> count=6 (top games=3021)
+--- Testing champion_builds build_tier / rank_plus ---
+champion_builds build_tier=Standard -> count=4
+champion_builds build_tier=GOLD -> count=0
+champion_builds build_tier=SILVER -> count=0
+champion_builds build_tier=BRONZE -> count=0
+champion_builds build_tier=IRON -> count=0
+champion_builds build_tier=PLATINUM%2B -> count=0
+champion_builds build_tier=EMERALD%2B -> count=0
+champion_builds build_tier=DIAMOND%2B -> count=0
+champion_builds build_tier=MASTER%2B -> count=0

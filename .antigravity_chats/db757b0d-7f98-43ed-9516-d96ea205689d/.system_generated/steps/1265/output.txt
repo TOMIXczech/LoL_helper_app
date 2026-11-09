@@ -1,0 +1,80 @@
+Command exited with code 0.
+
+Command output:
+Roles: ['UTILITY', 'MIDDLE', 'JUNGLE', 'BOTTOM', 'TOP']
+TOP keys: ['Tier', 'Win Rate', 'Win Rate Change', 'Pick Rate', 'Ban Rate', 'Matches', 'Builds', 'Matchups']
+First build: {
+  "build_name": "AD",
+  "overall_win_rate": 0.5706914344685242,
+  "overall_matches": 969,
+  "starting_items": [
+    "Doran's Blade",
+    "Health Potion"
+  ],
+  "starting_items_matches": 378,
+  "starting_items_win_rate": 0.5555555555555556,
+  "situational_items": [
+    {
+      "item": "Eclipse",
+      "matches": 645,
+      "win_rate": 0.06356349495720115
+    },
+    {
+      "item": "Plated Steelcaps",
+      "matches": 561,
+      "win_rate": -0.027582305360423387
+    },
+    {
+      "item": "Endless Hunger",
+      "matches": 442,
+      "win_rate": 0.27979724626455327
+    },
+    {
+      "item": "Mercury's Treads",
+      "matches": 317,
+      "win_rate": -0.012322958879943113
+    },
+    {
+      "item": "Sundered Sky",
+      "matches": 277,
+      "win_rate": -0.07503398857094001
+    }
+  ],
+  "core_items": [
+    "Eclipse",
+    "Plated Steelcaps",
+    "Sundered Sky"
+  ],
+  "core_items_win_rate": 0.5381733746130031,
+  "core_items_components": {
+    "Eclipse": [
+      "Caulfield's Warhammer",
+      "Long Sword",
+      "Pickaxe"
+    ],
+    "Plated Steelcaps": [
+      "Boots",
+      "Cloth Armor"
+    ],
+    "Sundered Sky": [
+      "Tunneler",
+      "Caulfield's Warhammer"
+    ]
+  },
+  "runes": {
+    "keystone": "Conqueror",
+    "keystone_win_rate": 0.5648484848484848,
+    "secondary_and_other": [
+      "Triumph",
+      "Legend: Haste",
+      "Last Stand",
+      "Bone Plating",
+      "Revitalize"
+    ]
+  },
+  "summoner_spells": [
+    "Flash",
+    "Ignite"
+  ],
+  "summoner_spells_win_rate": 0.5543766578249337
+}

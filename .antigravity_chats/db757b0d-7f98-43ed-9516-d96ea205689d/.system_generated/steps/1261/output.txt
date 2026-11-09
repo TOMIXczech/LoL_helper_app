@@ -1,0 +1,4 @@
+Command exited with code 0.
+
+Command output:
+[('The Darkin Blade', 'https://ddragon.leagueoflegends.com/cdn/16.22.1/img/spell/AatroxQ.png'), ('Infernal Chains', 'https://ddragon.leagueoflegends.com/cdn/16.22.1/img/spell/AatroxW.png'), ('Umbral Dash', 'https://ddragon.leagueoflegends.com/cdn/16.22.1/img/spell/AatroxE.png'), ('World Ender', 'https://ddragon.leagueoflegends.com/cdn/16.22.1/img/spell/AatroxR.png')]
