@@ -1,0 +1,237 @@
+<UserControl x:Class="LoLHelper.PCClient.Views.PickSuggestionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#0D0E12"
+             FontFamily="Segoe UI">
+    <UserControl.Resources>
+        <!-- Thin Sleek ScrollBar -->
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid Background="#12141D" Width="6">
+                            <Track x:Name="PART_Track" IsDirectionReversed="true">
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border Background="#2CE5B5" Opacity="0.6" CornerRadius="3"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Role Filter Pill Style -->
+        <Style x:Key="RolePillBtnStyle" TargetType="Button">
+            <Setter Property="Background" Value="#171A26"/>
+            <Setter Property="Foreground" Value="#8E92A4"/>
+            <Setter Property="FontSize" Value="11.5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="0,0,6,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="6" Padding="14,0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#252A3D"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Mode Toggle Button Style -->
+        <Style x:Key="ModeToggleBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="12.5"/>
+            <Setter Property="FontWeight" Value="Black"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" CornerRadius="8" Padding="18,0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="20,14,20,16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ==================== ROW 0: TOP HEADER BAR ==================== -->
+        <Border Grid.Row="0" Background="#14161F" BorderBrush="#252A3E" BorderThickness="1" CornerRadius="10" Padding="18,12" Margin="0,0,0,12">
+            <Grid>
+                <!-- Left: Title & Mode Toggle Buttons -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,24,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="💡 PICK &amp; BAN SUGGESTIONS" Foreground="White" FontSize="16" FontWeight="Black"/>
+                            <Border x:Name="LcuLiveStatusBadge" Background="#132F2C" BorderBrush="#2CE5B5" BorderThickness="1" CornerRadius="4" Padding="7,2" Margin="12,0,0,0" VerticalAlignment="Center">
+                                <TextBlock x:Name="LcuLiveStatusText" Text="● Blitz Meta (10k+ Games)" Foreground="#2CE5B5" FontSize="10" FontWeight="Bold"/>
+                            </Border>
+                        </StackPanel>
+                        <TextBlock Text="Top 10 Recommendations from Blitz.gg Overview &amp; Counter Engine (Strictly Max 10)" Foreground="#7E849B" FontSize="11" Margin="0,2,0,0"/>
+                    </StackPanel>
+
+                    <!-- Main Mode Switches: Pick vs Ban -->
+                    <Border Background="#0D0E12" BorderBrush="#252A3E" BorderThickness="1" CornerRadius="8" Padding="3" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="ModePickBtn"
+                                    Content="🎯 Pick Suggestions"
+                                    Style="{StaticResource ModeToggleBtnStyle}"
+                                    Background="#223B38"
+                                    Foreground="#2CE5B5"
+                                    Click="ModePickBtn_Click"/>
+                            <Button x:Name="ModeBanBtn"
+                                    Content="🚫 Ban Suggestions"
+                                    Style="{StaticResource ModeToggleBtnStyle}"
+                                    Background="Transparent"
+                                    Foreground="#8E92A4"
+                                    Click="ModeBanBtn_Click"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <!-- Right: Personalized Mode Toggle & Refresh Button -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button x:Name="PersonalizedModeBtn"
+                            Cursor="Hand"
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Margin="0,0,10,0"
+                            Click="PersonalizedModeBtn_Click"
+                            ToolTip="Toggles priority for up to 5 of your M5+ Mastery champions in the Top 30 meta">
+                        <Border x:Name="PersonalizedBorder" Background="#282618" BorderBrush="#F0B232" BorderThickness="1" CornerRadius="7" Padding="12,6">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="⭐" FontSize="12" Margin="0,0,6,0" VerticalAlignment="Center"/>
+                                <TextBlock x:Name="PersonalizedModeText" Text="Personalized Mastery: ON" Foreground="#F0B232" FontSize="11" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </Button>
+
+                    <Button x:Name="RefreshBtn" Cursor="Hand" Background="Transparent" BorderThickness="0" Margin="0,0,10,0" Click="RefreshBtn_Click">
+                        <Border Background="#1C2132" BorderBrush="#2F364E" BorderThickness="1" CornerRadius="7" Padding="12,6">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="↻" FontSize="13" Foreground="White" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="Refresh" Foreground="White" FontSize="11" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </Button>
+
+                    <Button x:Name="ConfigBtn" Cursor="Hand" Background="Transparent" BorderThickness="0" Click="ConfigBtn_Click" ToolTip="Open Suggestion &amp; Automation Preferences in Settings">
+                        <Border Background="#1C2132" BorderBrush="#2F364E" BorderThickness="1" CornerRadius="7" Padding="12,6">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="⚙️" FontSize="12" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                                <TextBlock Text="Config" Foreground="White" FontSize="11" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Border>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ==================== ROW 1: ROLE FILTER STRIP & PREPICK / TARGET CHAMPION BAR ==================== -->
+        <Border Grid.Row="1" Background="#14161F" BorderBrush="#252A3E" BorderThickness="1" CornerRadius="10" Padding="14,10" Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Role Selector -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="ROLE / LANE:" Foreground="#7E849B" FontSize="10.5" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,12,0"/>
+                    <Button x:Name="RoleAllBtn" Content="🌐 All Roles" Style="{StaticResource RolePillBtnStyle}" Background="#223454" Foreground="White" Tag="ALL" Click="RolePill_Click"/>
+                    <Button x:Name="RoleTopBtn" Content="🛡️ Top" Style="{StaticResource RolePillBtnStyle}" Tag="TOP" Click="RolePill_Click"/>
+                    <Button x:Name="RoleJungleBtn" Content="🌿 Jungle" Style="{StaticResource RolePillBtnStyle}" Tag="JUNGLE" Click="RolePill_Click"/>
+                    <Button x:Name="RoleMidBtn" Content="⚡ Mid" Style="{StaticResource RolePillBtnStyle}" Tag="MIDDLE" Click="RolePill_Click"/>
+                    <Button x:Name="RoleAdcBtn" Content="🏹 ADC / Bot" Style="{StaticResource RolePillBtnStyle}" Tag="BOTTOM" Click="RolePill_Click"/>
+                    <Button x:Name="RoleSupportBtn" Content="💖 Support" Style="{StaticResource RolePillBtnStyle}" Tag="UTILITY" Click="RolePill_Click" Margin="0"/>
+                </StackPanel>
+
+                <!-- Prepick / Ban Target Selector Box (Visible in Ban mode or when prepicked) -->
+                <Border x:Name="PrepickSelectorBorder" Grid.Column="2" Background="#181B26" BorderBrush="#2E344B" BorderThickness="1" CornerRadius="8" Padding="10,4" VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock x:Name="PrepickLabelText" Text="MY LANE CHAMPION:" Foreground="#9BA3BA" FontSize="10" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                        <Border Width="28" Height="28" CornerRadius="6" BorderBrush="#2CE5B5" BorderThickness="1.5" ClipToBounds="True" Margin="0,0,8,0" VerticalAlignment="Center">
+                            <Image x:Name="PrepickChampImg" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Border>
+                        <ComboBox x:Name="PrepickChampCombo"
+                                  Width="180"
+                                  Height="28"
+                                  Background="#10121A"
+                                  Foreground="White"
+                                  BorderBrush="#31374E"
+                                  BorderThickness="1"
+                                  DisplayMemberPath="Name"
+                                  SelectedValuePath="Id"
+                                  VerticalAlignment="Center"
+                                  SelectionChanged="PrepickChampCombo_SelectionChanged"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- ==================== ROW 2: TOP 10 RECOMMENDATIONS LIST ==================== -->
+        <Border Grid.Row="2" Background="#14161F" BorderBrush="#252A3E" BorderThickness="1" CornerRadius="10" Padding="16,14">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Column Headers Bar -->
+                <Grid Grid.Row="0" Margin="10,0,10,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="54"/>
+                        <ColumnDefinition Width="230"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="170"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Text="#" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="1" Text="CHAMPION" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="2" Text="STRATEGIC REASON &amp; BADGE" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold"/>
+                    <TextBlock Grid.Column="3" Text="WIN RATE" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="4" Text="PICK RATE" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="5" Text="BAN RATE" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="6" Text="GAMES" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold" HorizontalAlignment="Right"/>
+                    <TextBlock Grid.Column="7" Text="ACTIONS" Foreground="#6B7186" FontSize="10.5" FontWeight="Bold" HorizontalAlignment="Right" Margin="0,0,6,0"/>
+                </Grid>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="SuggestionsListStack"/>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

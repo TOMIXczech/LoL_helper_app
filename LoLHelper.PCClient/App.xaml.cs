@@ -16,6 +16,25 @@ public partial class App : Application
         
         // Catch background thread exceptions
         AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
+        if (Array.Exists(e.Args, a => a == "--verify-views"))
+        {
+            try
+            {
+                var s = new Views.SettingsView();
+                var p = new Views.PickSuggestionsView();
+                var m = new MainWindow();
+                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "verify_result.txt"), "SUCCESS");
+                Shutdown(0);
+                return;
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "verify_result.txt"), $"FAIL: {ex}");
+                Shutdown(1);
+                return;
+            }
+        }
     }
 
     private void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

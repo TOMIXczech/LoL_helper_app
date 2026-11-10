@@ -47,6 +47,50 @@ namespace LoLHelper.Core.Services
             return await response.Content.ReadAsStringAsync();
         }
 
+        public async Task<string> GetCurrentRankedStatsAsync()
+        {
+            if (_credentials == null) return string.Empty;
+            var response = await _httpClient!.GetAsync("/lol-ranked/v1/current-ranked-stats");
+            if (!response.IsSuccessStatusCode) return string.Empty;
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<string> GetMatchHistoryAsync(string? puuid = null, int begIndex = 0, int endIndex = 19)
+        {
+            if (_credentials == null) return string.Empty;
+            var response = await _httpClient!.GetAsync($"/lol-match-history/v1/products/lol/current-summoner/matches?begIndex={begIndex}&endIndex={endIndex}");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsStringAsync();
+            }
+
+            if (!string.IsNullOrEmpty(puuid))
+            {
+                var fallback = await _httpClient!.GetAsync($"/lol-match-history/v1/products/lol/{puuid}/matches?begIndex={begIndex}&endIndex={endIndex}");
+                if (fallback.IsSuccessStatusCode)
+                    return await fallback.Content.ReadAsStringAsync();
+            }
+
+            return string.Empty;
+        }
+
+        public async Task<string> GetTopChampionMasteryAsync(long summonerId = 0)
+        {
+            if (_credentials == null) return string.Empty;
+            var response = await _httpClient!.GetAsync("/lol-champion-mastery/v1/local-player/champion-mastery");
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadAsStringAsync();
+
+            if (summonerId > 0)
+            {
+                var fallback = await _httpClient!.GetAsync($"/lol-collections/v1/inventories/{summonerId}/champion-mastery/top?limit=5");
+                if (fallback.IsSuccessStatusCode)
+                    return await fallback.Content.ReadAsStringAsync();
+            }
+
+            return string.Empty;
+        }
+
         public async Task<string> GetCurrentRunePageJsonAsync()
         {
             if (_credentials == null) return string.Empty;
@@ -61,6 +105,40 @@ namespace LoLHelper.Core.Services
             var response = await _httpClient!.GetAsync("/lol-champ-select/v1/session");
             if (!response.IsSuccessStatusCode) return string.Empty;
             return await response.Content.ReadAsStringAsync();
+        }
+
+        // --- AUTO ACCEPT & CHAMP SELECT AUTOMATION ENDPOINTS ---
+
+        public async Task<string> GetReadyCheckAsync()
+        {
+            if (_credentials == null) return string.Empty;
+            var response = await _httpClient!.GetAsync("/lol-matchmaking/v1/ready-check");
+            if (!response.IsSuccessStatusCode) return string.Empty;
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<bool> AcceptReadyCheckAsync()
+        {
+            if (_credentials == null) return false;
+            var response = await _httpClient!.PostAsync("/lol-matchmaking/v1/ready-check/accept", new StringContent("", System.Text.Encoding.UTF8, "application/json"));
+            return response.IsSuccessStatusCode;
+        }
+
+        public async Task<string> GetLobbyAsync()
+        {
+            if (_credentials == null) return string.Empty;
+            var response = await _httpClient!.GetAsync("/lol-lobby/v2/lobby");
+            if (!response.IsSuccessStatusCode) return string.Empty;
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public async Task<bool> PatchChampSelectActionAsync(int actionId, int championId, bool completed)
+        {
+            if (_credentials == null) return false;
+            var payload = new { championId = championId, completed = completed };
+            var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+            var response = await _httpClient!.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", content);
+            return response.IsSuccessStatusCode;
         }
 
         // --- SUMMONER SPELL INJECTION ---

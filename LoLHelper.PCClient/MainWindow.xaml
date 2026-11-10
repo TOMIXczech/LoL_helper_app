@@ -19,13 +19,63 @@
             <Grid>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Text="LOL HELPER" Foreground="#FFFFFF" FontSize="15" FontWeight="Black" VerticalAlignment="Center" Margin="0,0,24,0"/>
-                    <Button x:Name="NavChampSelectBtn" Content="Champion Builds" Height="30" Padding="14,0" Margin="0,0,6,0" Background="#252836" Foreground="White" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
-                    <Button x:Name="NavDashboardBtn" Content="LCU Status &amp; Logs" Height="30" Padding="14,0" Background="Transparent" Foreground="#8E92A4" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                    <Button x:Name="NavDashboardBtn" Content="🏠 Home &amp; Match History" Height="30" Padding="14,0" Margin="0,0,6,0" Background="#252836" Foreground="White" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                    <Button x:Name="NavChampSelectBtn" Content="⚔️ Champion Builds" Height="30" Padding="14,0" Margin="0,0,6,0" Background="Transparent" Foreground="#8E92A4" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
+                    <Button x:Name="NavSuggestionsBtn" Content="💡 Pick &amp; Ban Suggestions" Height="30" Padding="14,0" Background="Transparent" Foreground="#8E92A4" FontWeight="SemiBold" BorderThickness="0" Cursor="Hand" Click="Nav_Click"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <!-- Quick Synchronized Status Pills -->
+                    <Button x:Name="TopAutoAcceptPillBtn" Cursor="Hand" Margin="0,0,8,0" Click="TopAutoAcceptPillBtn_Click" ToolTip="Toggle Auto Accept (or open Settings for Latency &amp; Party Leader options)">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="#1A1D29" BorderBrush="#2B3044" BorderThickness="1" CornerRadius="6" Padding="9,4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="⚡ Auto Accept:" Foreground="#9BA3BA" FontSize="10.5" FontWeight="SemiBold" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="TopAutoAcceptStateText" Text="OFF" Foreground="#8E92A4" FontSize="10.5" FontWeight="Black"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button x:Name="TopAutoSelectPillBtn" Cursor="Hand" Margin="0,0,14,0" Click="TopAutoSelectPillBtn_Click" ToolTip="Toggle Auto Champ Select (or open Settings for Pick/Counter &amp; Ban strategies)">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="#1A1D29" BorderBrush="#2B3044" BorderThickness="1" CornerRadius="6" Padding="9,4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="🎯 Auto Select:" Foreground="#9BA3BA" FontSize="10.5" FontWeight="SemiBold" Margin="0,0,5,0"/>
+                            <TextBlock x:Name="TopAutoSelectStateText" Text="OFF" Foreground="#8E92A4" FontSize="10.5" FontWeight="Black"/>
+                        </StackPanel>
+                    </Button>
+
+                    <!-- LCU Status Indicator -->
                     <Ellipse x:Name="LcuStatusDot" Width="8" Height="8" Fill="#8E92A4" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                    <TextBlock x:Name="LcuStatusLabel" Text="Waiting for League Client..." Foreground="#8E92A4" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="LcuStatusLabel" Text="Waiting for League Client..." Foreground="#8E92A4" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,0,14,0"/>
+
+                    <!-- Top-Right Settings Button -->
+                    <Button x:Name="NavSettingsBtn" Cursor="Hand" Height="30" Click="Nav_Click" ToolTip="Open Automation &amp; Smart Settings">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="SetBd" Background="{TemplateBinding Background}" BorderBrush="#2E344B" BorderThickness="1" CornerRadius="6" Padding="12,0">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="⚙️" FontSize="12.5" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                                        <TextBlock Text="Settings" Foreground="{TemplateBinding Foreground}" FontSize="11.5" FontWeight="Bold" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="SetBd" Property="BorderBrush" Value="#5383E8"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>

@@ -11,6 +11,7 @@ public class GameItem
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public string IconUrl { get; set; } = string.Empty;
+    public int Gold { get; set; }
     public List<int> From { get; set; } = new();
 }
 
@@ -63,11 +64,16 @@ public class ItemService
                         ? fullProp.GetString() ?? $"{itemId}.png"
                         : $"{itemId}.png";
 
+                    int goldTotal = 0;
+                    if (prop.TryGetProperty("gold", out var goldProp) && goldProp.TryGetProperty("total", out var totalProp) && totalProp.ValueKind == JsonValueKind.Number)
+                        goldTotal = totalProp.GetInt32();
+
                     var newItem = new GameItem
                     {
                         Id = itemId,
                         Name = itemName,
                         IconUrl = $"https://ddragon.leagueoflegends.com/cdn/{LatestVersion}/img/item/{imgFull}",
+                        Gold = goldTotal,
                         From = fromIds
                     };
 

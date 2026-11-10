@@ -393,6 +393,24 @@ public partial class ChampSelectView : UserControl
 
     // ==================== CHAMPION DATA LOADING & ROLE / SORT RENDERING ====================
 
+    public async Task OpenChampionBuildAsync(int champId, string? role = null)
+    {
+        await BuildDatabaseService.Instance.InitializeAsync();
+        await LoadChampionDataAsync(champId, role);
+    }
+
+    public async Task OpenChampionBuildAsync(string champKey, string? role = null)
+    {
+        await BuildDatabaseService.Instance.InitializeAsync();
+        var champ = BuildDatabaseService.Instance.AllChampions.FirstOrDefault(c => 
+            string.Equals(c.Key, champKey, StringComparison.OrdinalIgnoreCase) || 
+            string.Equals(c.Name, champKey, StringComparison.OrdinalIgnoreCase));
+        if (champ != null)
+        {
+            await LoadChampionDataAsync(champ.Id, role);
+        }
+    }
+
     private async Task LoadChampionDataAsync(int champId, string? preferredRole, bool preferMatchup = false, bool preserveSelection = false)
     {
         _currentChampId = champId;
