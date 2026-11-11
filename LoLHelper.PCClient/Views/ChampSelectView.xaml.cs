@@ -69,6 +69,8 @@ public partial class ChampSelectView : UserControl
         new SummonerSpellModel { Id = 21, Name = "Barrier", IconUrl = "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/spell/SummonerBarrier.png" }
     };
 
+    public event Action? OnOpenBanSuggestionsRequested;
+
     public ChampSelectView()
     {
         InitializeComponent();
@@ -81,6 +83,12 @@ public partial class ChampSelectView : UserControl
 
         InitFilterMenus();
         InitSpellMenus();
+
+        AppSettingsService.Instance.OnChampSelectStateUpdated += (id, r) => Dispatcher.Invoke(UpdateLiveAutomationBanner);
+        AppSettingsService.Instance.OnChampSelectPhaseChanged += p => Dispatcher.Invoke(UpdateLiveAutomationBanner);
+        AppSettingsService.Instance.OnAutoBanTargetUpdated += (id, name, reason) => Dispatcher.Invoke(UpdateLiveAutomationBanner);
+        AppSettingsService.Instance.OnAutomationStatusChanged += s => Dispatcher.Invoke(UpdateLiveAutomationBanner);
+        AppSettingsService.Instance.OnSettingsChanged += () => Dispatcher.Invoke(UpdateLiveAutomationBanner);
     }
 
     private async void OnLoaded(object sender, RoutedEventArgs e)
@@ -107,6 +115,83 @@ public partial class ChampSelectView : UserControl
     private void OnUnloaded(object sender, RoutedEventArgs e)
     {
         _pollTimer.Stop();
+    }
+
+    private void ViewAllBanSuggestionsBtn_Click(object sender, RoutedEventArgs e)
+    {
+        OnOpenBanSuggestionsRequested?.Invoke();
+    }
+
+    private void UpdateLiveAutomationBanner()
+    {
+        var appSvc = AppSettingsService.Instance;
+        var s = appSvc.Settings;
+
+        int banId = appSvc.CurrentAutoBanTargetChampId > 0 
+            ? appSvc.CurrentAutoBanTargetChampId 
+            : s.PreferredBanChampId;
+
+        var champInfo = BuildDatabaseService.Instance.GetChampionInfo(banId);
+        string champName = !string.IsNullOrEmpty(appSvc.CurrentAutoBanTargetChampName)
+            ? appSvc.CurrentAutoBanTargetChampName
+            : (champInfo?.Name ?? "Blitzcrank");
+
+        string banReason = !string.IsNullOrEmpty(appSvc.CurrentAutoBanReason)
+            ? appSvc.CurrentAutoBanReason
+            : (s.BanStrategy == "BIGGEST_COUNTER" ? "#1 Counter to Prepick" : "Specific Target Ban");
+
+        LiveBanTargetNameText.Text = champName;
+        LiveBanReasonText.Text = banReason;
+
+        if (champInfo != null && !string.IsNullOrEmpty(champInfo.IconUrl))
+        {
+            SetImageSourceSafe(LiveBanTargetImg, champInfo.IconUrl);
+        }
+
+        if (appSvc.IsBanCompletedThisSession)
+        {
+            LiveAutoBanStatusBadge.Background = new SolidColorBrush(Color.FromArgb(0x33, 0x2C, 0xE5, 0xB5));
+            LiveAutoBanStatusBadge.BorderBrush = new SolidColorBrush(Color.FromRgb(0x2C, 0xE5, 0xB5));
+            LiveAutoBanStatusIcon.Text = "✅";
+            LiveAutoBanStatusText.Text = $"AUTO-BANNED {champName.ToUpperInvariant()}";
+            LiveAutoBanStatusText.Foreground = new SolidColorBrush(Color.FromRgb(0x2C, 0xE5, 0xB5));
+        }
+        else if (string.Equals(appSvc.CurrentChampSelectPhase, "BAN", StringComparison.OrdinalIgnoreCase))
+        {
+            if (s.AutoBanEnabled)
+            {
+                LiveAutoBanStatusBadge.Background = new SolidColorBrush(Color.FromArgb(0x33, 0xFF, 0x4B, 0x60));
+                LiveAutoBanStatusBadge.BorderBrush = new SolidColorBrush(Color.FromRgb(0xFF, 0x4B, 0x60));
+                LiveAutoBanStatusIcon.Text = "🚫";
+                LiveAutoBanStatusText.Text = $"BANNING {champName.ToUpperInvariant()} ({s.BanDelayMs} MS)";
+                LiveAutoBanStatusText.Foreground = new SolidColorBrush(Color.FromRgb(0xFF, 0x6B, 0x7D));
+            }
+            else
+            {
+                LiveAutoBanStatusBadge.Background = new SolidColorBrush(Color.FromArgb(0x33, 0xF0, 0xB2, 0x32));
+                LiveAutoBanStatusBadge.BorderBrush = new SolidColorBrush(Color.FromRgb(0xF0, 0xB2, 0x32));
+                LiveAutoBanStatusIcon.Text = "🛡️";
+                LiveAutoBanStatusText.Text = "RECOMMENDED BAN (AUTO-BAN OFF)";
+                LiveAutoBanStatusText.Foreground = new SolidColorBrush(Color.FromRgb(0xF0, 0xB2, 0x32));
+            }
+        }
+        else if (appSvc.IsInChampSelect)
+        {
+            LiveAutoBanStatusBadge.Background = new SolidColorBrush(Color.FromArgb(0x33, 0x53, 0x83, 0xE8));
+            LiveAutoBanStatusBadge.BorderBrush = new SolidColorBrush(Color.FromRgb(0x53, 0x83, 0xE8));
+            LiveAutoBanStatusIcon.Text = "🎯";
+            string phaseName = string.IsNullOrEmpty(appSvc.CurrentChampSelectPhase) ? "ACTIVE" : appSvc.CurrentChampSelectPhase;
+            LiveAutoBanStatusText.Text = $"CHAMP SELECT: {phaseName}";
+            LiveAutoBanStatusText.Foreground = new SolidColorBrush(Color.FromRgb(0x53, 0x83, 0xE8));
+        }
+        else
+        {
+            LiveAutoBanStatusBadge.Background = new SolidColorBrush(Color.FromArgb(0x25, 0x8E, 0x92, 0xA4));
+            LiveAutoBanStatusBadge.BorderBrush = new SolidColorBrush(Color.FromRgb(0x3D, 0x42, 0x56));
+            LiveAutoBanStatusIcon.Text = s.AutoBanEnabled ? "⚙️" : "⏸️";
+            LiveAutoBanStatusText.Text = s.AutoBanEnabled ? $"AUTO-BAN ARMED ({s.BanDelayMs} MS)" : "AUTO-BAN DISABLED";
+            LiveAutoBanStatusText.Foreground = new SolidColorBrush(Color.FromRgb(0x8E, 0x92, 0xA4));
+        }
     }
 
     // ==================== TOP BAR MENUS & HANDLERS ====================

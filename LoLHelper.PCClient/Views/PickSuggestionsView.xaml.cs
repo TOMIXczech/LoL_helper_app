@@ -31,6 +31,7 @@ public partial class PickSuggestionsView : UserControl
         UpdatePersonalizedBtnUi();
 
         AppSettingsService.Instance.OnChampSelectStateUpdated += OnChampSelectStateUpdated;
+        AppSettingsService.Instance.OnChampSelectPhaseChanged += OnChampSelectPhaseChanged;
         AppSettingsService.Instance.OnSettingsChanged += () =>
         {
             Dispatcher.Invoke(() =>
@@ -76,6 +77,38 @@ public partial class PickSuggestionsView : UserControl
         UpdatePrepickUi();
     }
 
+    public void SetBanMode(bool isBan)
+    {
+        _isBanMode = isBan;
+        UpdateModeUi();
+        _ = RefreshSuggestionsAsync();
+    }
+
+    private void OnChampSelectPhaseChanged(string phase)
+    {
+        Dispatcher.Invoke(() =>
+        {
+            if (string.Equals(phase, "BAN", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!_isBanMode)
+                {
+                    _isBanMode = true;
+                    UpdateModeUi();
+                    _ = RefreshSuggestionsAsync();
+                }
+            }
+            else if (string.Equals(phase, "PICK", StringComparison.OrdinalIgnoreCase))
+            {
+                if (_isBanMode)
+                {
+                    _isBanMode = false;
+                    UpdateModeUi();
+                    _ = RefreshSuggestionsAsync();
+                }
+            }
+        });
+    }
+
     private void OnChampSelectStateUpdated(int prepickedChampId, string assignedRole)
     {
         Dispatcher.Invoke(() =>
@@ -103,14 +136,16 @@ public partial class PickSuggestionsView : UserControl
                     {
                         _currentRole = detected;
                         UpdateRolePillStyles();
+                        _ = RefreshSuggestionsAsync();
                     }
                 }
 
                 // In Ban mode: track prepick intent
-                if (_isBanMode && prepickedChampId > 0 && _prepickedChampId != prepickedChampId)
+                int? newPrepick = prepickedChampId > 0 ? prepickedChampId : null;
+                if (_isBanMode && _prepickedChampId != newPrepick)
                 {
-                    _prepickedChampId = prepickedChampId;
-                    SelectPrepickComboById(_prepickedChampId.Value);
+                    _prepickedChampId = newPrepick;
+                    SelectPrepickComboById(_prepickedChampId ?? 0);
                     UpdatePrepickUi();
                     _ = RefreshSuggestionsAsync();
                 }

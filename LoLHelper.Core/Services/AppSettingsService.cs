@@ -123,7 +123,15 @@ public class AppSettingsService
     public bool IsInChampSelect { get; private set; } = false;
     public int CurrentChampSelectPrepickedId { get; private set; } = 0;
     public string CurrentChampSelectAssignedRole { get; private set; } = "MIDDLE";
+    public string CurrentChampSelectPhase { get; private set; } = "";
+    public int CurrentAutoBanTargetChampId { get; private set; } = 0;
+    public string CurrentAutoBanTargetChampName { get; private set; } = "";
+    public string CurrentAutoBanReason { get; private set; } = "";
+    public bool IsBanCompletedThisSession { get; private set; } = false;
+
     public event Action<int, string>? OnChampSelectStateUpdated;
+    public event Action<string>? OnChampSelectPhaseChanged;
+    public event Action<int, string, string>? OnAutoBanTargetUpdated;
 
     private readonly string _settingsFilePath;
     private readonly Random _rng = new();
@@ -592,11 +600,17 @@ public class AppSettingsService
             {
                 IsInChampSelect = false;
                 CurrentChampSelectPrepickedId = 0;
+                CurrentChampSelectPhase = "";
+                CurrentAutoBanTargetChampId = 0;
+                CurrentAutoBanTargetChampName = "";
+                CurrentAutoBanReason = "";
+                IsBanCompletedThisSession = false;
                 _lastBannedSessionActionId = -1;
                 _lastPickedSessionActionId = -1;
                 _lastHoveredSessionActionId = -1;
                 _lastExportedLoadoutChampId = -1;
                 OnChampSelectStateUpdated?.Invoke(0, Settings.PreferredRole);
+                OnChampSelectPhaseChanged?.Invoke("");
             }
             return;
         }
@@ -608,6 +622,19 @@ public class AppSettingsService
 
         int localCellId = root.TryGetProperty("localPlayerCellId", out var lcp) && lcp.ValueKind == JsonValueKind.Number ? lcp.GetInt32() : -1;
         if (localCellId < 0) return;
+
+        // Extract Current Phase from timer
+        string phase = "";
+        if (root.TryGetProperty("timer", out var timerProp) && timerProp.TryGetProperty("phase", out var phaseProp))
+        {
+            phase = phaseProp.GetString() ?? "";
+        }
+
+        if (phase != CurrentChampSelectPhase)
+        {
+            CurrentChampSelectPhase = phase;
+            OnChampSelectPhaseChanged?.Invoke(phase);
+        }
 
         var unavailableIds = new HashSet<int>();
         var teammateHoveredIds = new HashSet<int>();
@@ -683,11 +710,38 @@ public class AppSettingsService
                     if (b.ValueKind == JsonValueKind.Number && b.GetInt32() > 0) unavailableIds.Add(b.GetInt32());
         }
 
+        // Parse any completed actions in actions array for unavailable championIds
+        if (root.TryGetProperty("actions", out var actionsOuterAll) && actionsOuterAll.ValueKind == JsonValueKind.Array)
+        {
+            foreach (var actionGroup in actionsOuterAll.EnumerateArray())
+            {
+                if (actionGroup.ValueKind != JsonValueKind.Array) continue;
+                foreach (var act in actionGroup.EnumerateArray())
+                {
+                    bool isCompleted = act.TryGetProperty("completed", out var cmp) && cmp.ValueKind == JsonValueKind.True;
+                    if (isCompleted && act.TryGetProperty("championId", out var cVal) && cVal.GetInt32() > 0)
+                    {
+                        unavailableIds.Add(cVal.GetInt32());
+                    }
+                }
+            }
+        }
+
         var preview = await ComputePreviewAsync(detectedEnemyLanerId, unavailableIds, teammateHoveredIds, myPrepickedChampId, assignedRole);
+
+        if (preview.BanChampionId != CurrentAutoBanTargetChampId || preview.BanReasonLabel != CurrentAutoBanReason)
+        {
+            CurrentAutoBanTargetChampId = preview.BanChampionId;
+            CurrentAutoBanTargetChampName = preview.BanChampionName;
+            CurrentAutoBanReason = preview.BanReasonLabel;
+            OnAutoBanTargetUpdated?.Invoke(preview.BanChampionId, preview.BanChampionName, preview.BanReasonLabel);
+        }
 
         // Inspect actions array
         if (root.TryGetProperty("actions", out var actionsOuter) && actionsOuter.ValueKind == JsonValueKind.Array)
         {
+            bool banActionHandledThisTick = false;
+
             foreach (var actionGroup in actionsOuter.EnumerateArray())
             {
                 if (actionGroup.ValueKind != JsonValueKind.Array) continue;
@@ -701,53 +755,143 @@ public class AppSettingsService
                     bool inProgress = act.TryGetProperty("isInProgress", out var ipp) && ipp.ValueKind == JsonValueKind.True;
                     bool completed = act.TryGetProperty("completed", out var cmp) && cmp.ValueKind == JsonValueKind.True;
 
+                    if (completed && string.Equals(type, "ban", StringComparison.OrdinalIgnoreCase))
+                    {
+                        IsBanCompletedThisSession = true;
+                        _lastBannedSessionActionId = actId;
+                    }
+
                     if (completed || actId < 0) continue;
 
                     // 1. Handle Ban Action
                     if (string.Equals(type, "ban", StringComparison.OrdinalIgnoreCase) && inProgress && Settings.AutoBanEnabled)
                     {
-                        if (_lastBannedSessionActionId != actId && preview.BanChampionId > 0)
+                        banActionHandledThisTick = true;
+
+                        if (_lastBannedSessionActionId != actId)
                         {
-                            // 1. Hover the ban first
-                            await LcuApiClient.Instance.PatchChampSelectActionAsync(actId, preview.BanChampionId, false);
+                            // Build an ordered list of candidate champions to ban
+                            var candidateBanIds = new List<int>();
+                            if (preview.BanChampionId > 0) candidateBanIds.Add(preview.BanChampionId);
+                            if (preview.SecondaryBanChampionId > 0) candidateBanIds.Add(preview.SecondaryBanChampionId);
+                            if (Settings.PreferredBanChampId > 0) candidateBanIds.Add(Settings.PreferredBanChampId);
+                            if (Settings.BackupBanChampId > 0) candidateBanIds.Add(Settings.BackupBanChampId);
 
-                            // 2. Wait configured ban latency
-                            int delay = Math.Clamp(Settings.BanDelayMs, 150, 6000);
-                            await Task.Delay(delay, token);
-
-                            // 3. Lock in the ban
-                            bool ok = await LcuApiClient.Instance.PatchChampSelectActionAsync(actId, preview.BanChampionId, true);
-                            if (ok)
+                            // High-threat default meta bans as ultimate fallbacks
+                            var defaultMetaBans = new[] { 53, 122, 238, 157, 875, 80, 11, 62 }; // Blitz, Darius, Zed, Yasuo, Sett, Pantheon, Yi, Wukong
+                            foreach (var id in defaultMetaBans)
                             {
-                                _lastBannedSessionActionId = actId;
-                                UpdateStatus($"🚫 Auto-Banned {preview.BanChampionName} ({preview.BanReasonLabel})");
+                                if (!candidateBanIds.Contains(id)) candidateBanIds.Add(id);
+                            }
+
+                            // Filter out unavailable champions, teammate hovers, and intended pick
+                            var validCandidates = candidateBanIds
+                                .Where(id => id > 0 &&
+                                             !unavailableIds.Contains(id) &&
+                                             (!Settings.ProtectTeammateHover || !teammateHoveredIds.Contains(id)) &&
+                                             id != myPrepickedChampId)
+                                .Distinct()
+                                .ToList();
+
+                            if (validCandidates.Count > 0)
+                            {
+                                int targetBanId = validCandidates[0];
+                                var champInfo = BuildDatabaseService.Instance.GetChampionInfo(targetBanId);
+                                string champName = champInfo?.Name ?? $"Champion #{targetBanId}";
+
+                                // 1. Hover first
+                                await LcuApiClient.Instance.HoverChampSelectActionAsync(actId, targetBanId, "ban");
+
+                                // 2. Wait configured ban latency
+                                int delay = Math.Clamp(Settings.BanDelayMs, 100, 6000);
+                                if (delay > 0)
+                                {
+                                    await Task.Delay(delay, token);
+                                }
+
+                                // 3. Complete/Lock in the ban (with fallback through candidates if LCU rejects)
+                                bool banned = false;
+                                foreach (var banCandidateId in validCandidates)
+                                {
+                                    var candInfo = BuildDatabaseService.Instance.GetChampionInfo(banCandidateId);
+                                    string candName = candInfo?.Name ?? $"Champion #{banCandidateId}";
+
+                                    var (success, logMsg) = await LcuApiClient.Instance.CompleteChampSelectActionAsync(actId, banCandidateId, "ban");
+                                    if (success)
+                                    {
+                                        _lastBannedSessionActionId = actId;
+                                        IsBanCompletedThisSession = true;
+                                        banned = true;
+                                        UpdateStatus($"🚫 Auto-Banned {candName} ({preview.BanReasonLabel})");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        UpdateStatus($"⚠️ Ban failed for {candName} ({logMsg}), trying fallback...");
+                                    }
+                                }
+
+                                if (banned) break;
                             }
                         }
                     }
 
-                    // 2. Handle Pick Hover / Lock-in Action
-                    if (string.Equals(type, "pick", StringComparison.OrdinalIgnoreCase) && Settings.AutoChampSelectEnabled)
+                    // 2. Handle Pick Hover / Lock-in Action (Only when NOT handling ban turn this tick)
+                    if (!banActionHandledThisTick && string.Equals(type, "pick", StringComparison.OrdinalIgnoreCase) && Settings.AutoChampSelectEnabled)
                     {
                         if (!inProgress && Settings.AutoHoverPick && _lastHoveredSessionActionId != actId && preview.PickChampionId > 0)
                         {
                             _lastHoveredSessionActionId = actId;
-                            await LcuApiClient.Instance.PatchChampSelectActionAsync(actId, preview.PickChampionId, false);
+                            await LcuApiClient.Instance.HoverChampSelectActionAsync(actId, preview.PickChampionId, "pick");
                             UpdateStatus($"👋 Auto-Hovered {preview.PickChampionName}");
                         }
                         else if (inProgress && _lastPickedSessionActionId != actId && preview.PickChampionId > 0)
                         {
-                            _lastPickedSessionActionId = actId;
-                            // Always hover first
-                            await LcuApiClient.Instance.PatchChampSelectActionAsync(actId, preview.PickChampionId, false);
+                            var candidatePickIds = new List<int>();
+                            if (preview.PickChampionId > 0) candidatePickIds.Add(preview.PickChampionId);
+                            if (preview.BackupPickChampionId > 0) candidatePickIds.Add(preview.BackupPickChampionId);
+                            if (Settings.PreferredPickChampId > 0) candidatePickIds.Add(Settings.PreferredPickChampId);
+                            if (Settings.BackupPickChampId > 0) candidatePickIds.Add(Settings.BackupPickChampId);
 
-                            if (Settings.AutoLockInPick)
+                            var validPickCandidates = candidatePickIds
+                                .Where(id => id > 0 && !unavailableIds.Contains(id))
+                                .Distinct()
+                                .ToList();
+
+                            if (validPickCandidates.Count > 0)
                             {
-                                int pickDelay = Math.Clamp(Settings.PickLockInDelayMs, 150, 8000);
-                                await Task.Delay(pickDelay, token);
+                                int targetPickId = validPickCandidates[0];
+                                var champInfo = BuildDatabaseService.Instance.GetChampionInfo(targetPickId);
+                                string champName = champInfo?.Name ?? $"Champion #{targetPickId}";
 
-                                bool ok = await LcuApiClient.Instance.PatchChampSelectActionAsync(actId, preview.PickChampionId, true);
-                                if (ok)
-                                    UpdateStatus($"🎯 Auto-Locked {preview.PickChampionName} ({preview.PickReasonLabel})");
+                                await LcuApiClient.Instance.HoverChampSelectActionAsync(actId, targetPickId, "pick");
+
+                                if (Settings.AutoLockInPick)
+                                {
+                                    int pickDelay = Math.Clamp(Settings.PickLockInDelayMs, 100, 8000);
+                                    if (pickDelay > 0)
+                                    {
+                                        await Task.Delay(pickDelay, token);
+                                    }
+
+                                    foreach (var pickCandidateId in validPickCandidates)
+                                    {
+                                        var candInfo = BuildDatabaseService.Instance.GetChampionInfo(pickCandidateId);
+                                        string candName = candInfo?.Name ?? $"Champion #{pickCandidateId}";
+
+                                        var (success, logMsg) = await LcuApiClient.Instance.CompleteChampSelectActionAsync(actId, pickCandidateId, "pick");
+                                        if (success)
+                                        {
+                                            _lastPickedSessionActionId = actId;
+                                            UpdateStatus($"🎯 Auto-Locked {candName} ({preview.PickReasonLabel})");
+                                            break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    _lastPickedSessionActionId = actId;
+                                }
                             }
                         }
                     }

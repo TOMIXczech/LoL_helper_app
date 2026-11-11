@@ -116,9 +116,30 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="TopBannerBtnStyle" TargetType="Button">
+            <Setter Property="Background" Value="#172828"/>
+            <Setter Property="BorderBrush" Value="#2CE5B5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#1F3D3A"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid Margin="16,12,16,14">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -213,8 +234,53 @@
             </StackPanel>
         </Grid>
 
-        <!-- ==================== ROW 1: STATS BANNER ==================== -->
-        <Border Grid.Row="1" Background="#13151C" BorderBrush="#20222D" BorderThickness="1" CornerRadius="8" Padding="20,12" Margin="0,0,0,12">
+        <!-- ==================== ROW 1: LIVE CHAMP SELECT AUTO-BAN & BAN SUGGESTION BANNER ==================== -->
+        <Border x:Name="LiveAutomationBanner" Grid.Row="1" Background="#141824" BorderBrush="#252A3C" BorderThickness="1.5" CornerRadius="8" Padding="14,10" Margin="0,0,0,12">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left: Ban Suggestion Icon & Text -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Width="34" Height="34" CornerRadius="6" BorderBrush="#E84057" BorderThickness="1.5" ClipToBounds="True" Margin="0,0,10,0" Background="#1B1E2B">
+                        <Image x:Name="LiveBanTargetImg" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🛡️ BAN SUGGESTION: " Foreground="#8A90A6" FontSize="11" FontWeight="Bold"/>
+                            <TextBlock x:Name="LiveBanTargetNameText" Text="Blitzcrank" Foreground="#E84057" FontSize="12.5" FontWeight="Black"/>
+                        </StackPanel>
+                        <TextBlock x:Name="LiveBanReasonText" Text="#1 Statistical Counter to your Prepick" Foreground="#C8CBD7" FontSize="10.5"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Center: Live Status & Engine Indicator -->
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0">
+                    <Border x:Name="LiveAutoBanStatusBadge" Background="#2A1B24" BorderBrush="#E84057" BorderThickness="1" CornerRadius="5" Padding="10,5">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock x:Name="LiveAutoBanStatusIcon" Text="🚫" FontSize="11" Margin="0,0,6,0"/>
+                            <TextBlock x:Name="LiveAutoBanStatusText" Text="AUTO-BAN READY" Foreground="#FF6B7D" FontSize="11" FontWeight="Black"/>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <!-- Right: Quick Link to Pick & Ban Suggestions View -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button x:Name="ViewAllBanSuggestionsBtn" Click="ViewAllBanSuggestionsBtn_Click" Style="{StaticResource TopBannerBtnStyle}" Padding="10,6">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="📋 Ban Suggestions (Top 10)" Foreground="#2CE5B5" FontSize="11" FontWeight="Bold"/>
+                            <TextBlock Text=" →" Foreground="#2CE5B5" FontSize="11" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ==================== ROW 2: STATS BANNER ==================== -->
+        <Border Grid.Row="2" Background="#13151C" BorderBrush="#20222D" BorderThickness="1" CornerRadius="8" Padding="20,12" Margin="0,0,0,12">
             <UniformGrid Columns="6">
                 <!-- Tier -->
                 <Grid>
@@ -271,8 +337,8 @@
             </UniformGrid>
         </Border>
 
-        <!-- ==================== ROW 2: MAIN 3-COLUMN BLITZ VIEW ==================== -->
-        <Border Grid.Row="2" Background="#13151C" BorderBrush="#20222D" BorderThickness="1" CornerRadius="8">
+        <!-- ==================== ROW 3: MAIN 3-COLUMN BLITZ VIEW ==================== -->
+        <Border Grid.Row="3" Background="#13151C" BorderBrush="#20222D" BorderThickness="1" CornerRadius="8">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="320"/>

@@ -58,6 +58,13 @@ public partial class MainWindow : Window
             SwitchToView(NavDashboardBtn, _dashboardView);
         };
 
+        // Wire ChampSelect -> Ban Suggestions
+        _champSelectView.OnOpenBanSuggestionsRequested += () =>
+        {
+            SwitchToView(NavSuggestionsBtn, _pickSuggestionsView);
+            _pickSuggestionsView.SetBanMode(true);
+        };
+
         // Wire AutoOpenBuildOnChampSelect from LCU Automation
         AppSettingsService.Instance.OnAutoOpenChampionBuild += (champId, role) =>
         {

@@ -132,13 +132,121 @@ namespace LoLHelper.Core.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<bool> PatchChampSelectActionAsync(int actionId, int championId, bool completed)
+        public async Task<bool> PatchChampSelectActionAsync(int actionId, int championId, bool completed, string actionType = "ban")
         {
-            if (_credentials == null) return false;
-            var payload = new { championId = championId, completed = completed };
-            var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
-            var response = await _httpClient!.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", content);
-            return response.IsSuccessStatusCode;
+            if (completed)
+            {
+                var res = await CompleteChampSelectActionAsync(actionId, championId, actionType);
+                return res.Success;
+            }
+            return await HoverChampSelectActionAsync(actionId, championId, actionType);
+        }
+
+        public async Task<(bool Success, string Log)> CompleteChampSelectActionAsync(int actionId, int championId, string actionType = "ban")
+        {
+            if (_credentials == null || _httpClient == null)
+                return (false, "Not connected to LCU");
+
+            var errors = new System.Collections.Generic.List<string>();
+
+            // Attempt 1: PATCH /lol-champ-select/v1/session/actions/{id} with type and completed=true
+            try
+            {
+                var payload = new { championId = championId, type = actionType, completed = true };
+                var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+                var resp = await _httpClient.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", content);
+                if (resp.IsSuccessStatusCode)
+                    return (true, $"PATCH actions/{actionId} with type succeeded (HTTP {(int)resp.StatusCode})");
+
+                string body = await resp.Content.ReadAsStringAsync();
+                errors.Add($"PATCH with type: HTTP {(int)resp.StatusCode} {body}");
+            }
+            catch (Exception ex)
+            {
+                errors.Add($"PATCH with type ex: {ex.Message}");
+            }
+
+            // Attempt 2: PATCH /lol-champ-select/v1/session/actions/{id} with completed=true (without type)
+            try
+            {
+                var payload = new { championId = championId, completed = true };
+                var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+                var resp = await _httpClient.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", content);
+                if (resp.IsSuccessStatusCode)
+                    return (true, $"PATCH actions/{actionId} succeeded (HTTP {(int)resp.StatusCode})");
+
+                string body = await resp.Content.ReadAsStringAsync();
+                errors.Add($"PATCH without type: HTTP {(int)resp.StatusCode} {body}");
+            }
+            catch (Exception ex)
+            {
+                errors.Add($"PATCH without type ex: {ex.Message}");
+            }
+
+            // Attempt 3: POST /lol-champ-select/v1/session/actions/{id}/complete
+            try
+            {
+                var hoverPayload = new { championId = championId, type = actionType };
+                var hoverContent = new StringContent(System.Text.Json.JsonSerializer.Serialize(hoverPayload), System.Text.Encoding.UTF8, "application/json");
+                await _httpClient.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", hoverContent);
+
+                var emptyContent = new StringContent("{}", System.Text.Encoding.UTF8, "application/json");
+                var resp = await _httpClient.PostAsync($"/lol-champ-select/v1/session/actions/{actionId}/complete", emptyContent);
+                if (resp.IsSuccessStatusCode)
+                    return (true, $"POST actions/{actionId}/complete succeeded (HTTP {(int)resp.StatusCode})");
+
+                string body = await resp.Content.ReadAsStringAsync();
+                errors.Add($"POST complete: HTTP {(int)resp.StatusCode} {body}");
+            }
+            catch (Exception ex)
+            {
+                errors.Add($"POST complete ex: {ex.Message}");
+            }
+
+            // Attempt 4: Fallback lobby team builder endpoints
+            try
+            {
+                var payload = new { championId = championId, type = actionType, completed = true };
+                var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+                var resp = await _httpClient.PatchAsync($"/lol-lobby-team-builder/champ-select/v1/session/actions/{actionId}", content);
+                if (resp.IsSuccessStatusCode)
+                    return (true, $"PATCH team-builder actions/{actionId} succeeded");
+
+                var postResp = await _httpClient.PostAsync($"/lol-lobby-team-builder/champ-select/v1/session/actions/{actionId}/complete", new StringContent("{}", System.Text.Encoding.UTF8, "application/json"));
+                if (postResp.IsSuccessStatusCode)
+                    return (true, $"POST team-builder complete succeeded");
+            }
+            catch { }
+
+            return (false, string.Join("; ", errors));
+        }
+
+        public async Task<bool> HoverChampSelectActionAsync(int actionId, int championId, string actionType = "ban")
+        {
+            if (_credentials == null || _httpClient == null) return false;
+            try
+            {
+                var payload = new { championId = championId, type = actionType, completed = false };
+                var content = new StringContent(System.Text.Json.JsonSerializer.Serialize(payload), System.Text.Encoding.UTF8, "application/json");
+                var resp = await _httpClient.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", content);
+                if (resp.IsSuccessStatusCode) return true;
+
+                // Fallback without completed flag
+                var fallbackPayload = new { championId = championId, type = actionType };
+                var fallbackContent = new StringContent(System.Text.Json.JsonSerializer.Serialize(fallbackPayload), System.Text.Encoding.UTF8, "application/json");
+                var respFallback = await _httpClient.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", fallbackContent);
+                if (respFallback.IsSuccessStatusCode) return true;
+
+                // Fallback bare championId
+                var barePayload = new { championId = championId };
+                var bareContent = new StringContent(System.Text.Json.JsonSerializer.Serialize(barePayload), System.Text.Encoding.UTF8, "application/json");
+                var respBare = await _httpClient.PatchAsync($"/lol-champ-select/v1/session/actions/{actionId}", bareContent);
+                return respBare.IsSuccessStatusCode;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         // --- SUMMONER SPELL INJECTION ---
