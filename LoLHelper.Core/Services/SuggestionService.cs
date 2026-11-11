@@ -392,6 +392,107 @@ public class SuggestionService
         return result.Take(10).ToList();
     }
 
+    // ==================== 3. COUNTER PICK SUGGESTIONS (VS ENEMY LANER OR FALLBACK TO META) ====================
+
+    public async Task<List<ChampionSuggestionItem>> GetCounterPickSuggestionsAsync(int? enemyChampId, string? role, bool personalized)
+    {
+        await InitializeAsync();
+
+        string normRole = NormalizeRole(role);
+        if (normRole == "ALL") normRole = "MIDDLE";
+
+        // If enemy champion is specified: find champions that beat enemyChampId
+        if (enemyChampId.HasValue && enemyChampId.Value > 0)
+        {
+            var enemyInfo = BuildDatabaseService.Instance.GetChampionInfo(enemyChampId.Value);
+            string enemyName = enemyInfo?.Name ?? "Enemy Laner";
+
+            // Get counters to enemyChampId (i.e. champions where enemyChampId loses against them)
+            var counters = await BuildDatabaseService.Instance.GetBiggestCountersToMyChampAsync(enemyChampId.Value, normRole);
+
+            if (counters.Count > 0)
+            {
+                var candidateItems = new List<ChampionSuggestionItem>();
+                foreach (var c in counters)
+                {
+                    var oppInfo = BuildDatabaseService.Instance.GetChampionInfo(c.OpponentChampionId);
+                    if (oppInfo == null) continue;
+
+                    double myWr = c.OpponentWinRateAgainstMe; // My win rate playing as this counter against enemy
+                    int mLvl = _playerMasteryDict.TryGetValue(c.OpponentChampionId, out var m) ? m.Level : 0;
+                    long mPts = _playerMasteryDict.TryGetValue(c.OpponentChampionId, out m) ? m.Points : 0;
+
+                    candidateItems.Add(new ChampionSuggestionItem
+                    {
+                        ChampionId = c.OpponentChampionId,
+                        ChampionName = c.OpponentName,
+                        ChampionKey = oppInfo.Key,
+                        IconUrl = c.OpponentIconUrl,
+                        Role = normRole,
+                        RoleLabel = FormatRoleShort(normRole),
+                        WinRate = myWr,
+                        PickRate = 0.08,
+                        BanRate = 0.05,
+                        Matches = c.Games,
+                        TierLabel = myWr >= 0.54 ? "S+" : (myWr >= 0.52 ? "S" : "A"),
+                        MasteryLevel = mLvl,
+                        MasteryPoints = mPts,
+                        EnemyWinRateAgainstYou = 1.0 - myWr,
+                        IsPersonalizedMastery = personalized && mLvl > 4,
+                        BadgeText = (personalized && mLvl > 4) 
+                            ? $"⭐ MASTERY COUNTER (M{mLvl})" 
+                            : $"🛡️ STATISTICAL COUNTER",
+                        BadgeColorHex = (personalized && mLvl > 4) ? "#F0B232" : (myWr >= 0.53 ? "#2CE5B5" : "#5383E8"),
+                        ReasonDescription = (personalized && mLvl > 4)
+                            ? $"Counters {enemyName} ({myWr * 100:F1}% WR) + Your M{mLvl} Comfort ({mPts / 1000:N0}k pts)"
+                            : $"Counters {enemyName} ({myWr * 100:F1}% Win Rate in {c.Games:N0} games)"
+                    });
+                }
+
+                var finalPicks = new List<ChampionSuggestionItem>();
+                var addedIds = new HashSet<int>();
+
+                if (personalized)
+                {
+                    // Prioritize champions with Mastery > 4 (M5+) that counter the enemy, sorted by highest mastery
+                    var masteryCounters = candidateItems
+                        .Where(c => c.IsPersonalizedMastery)
+                        .OrderByDescending(c => c.MasteryPoints)
+                        .ThenByDescending(c => c.WinRate)
+                        .Take(5)
+                        .ToList();
+
+                    foreach (var mc in masteryCounters)
+                    {
+                        addedIds.Add(mc.ChampionId);
+                        finalPicks.Add(mc);
+                    }
+                }
+
+                // Add remaining best statistical counters ordered by Win Rate descending
+                foreach (var c in candidateItems.OrderByDescending(x => x.WinRate).ThenByDescending(x => x.Matches))
+                {
+                    if (finalPicks.Count >= 10) break;
+                    if (addedIds.Contains(c.ChampionId)) continue;
+                    addedIds.Add(c.ChampionId);
+                    finalPicks.Add(c);
+                }
+
+                if (finalPicks.Count > 0)
+                {
+                    for (int i = 0; i < finalPicks.Count; i++)
+                    {
+                        finalPicks[i].Rank = i + 1;
+                    }
+                    return finalPicks.Take(10).ToList();
+                }
+            }
+        }
+
+        // If no enemy champion or no specific matchup counters found: fallback to general Pick Suggestions!
+        return await GetPickSuggestionsAsync(normRole, personalized);
+    }
+
     // ==================== OVERVIEW DATA FETCHER (BLITZ API + CRAWLER FALLBACK) ====================
 
     private async Task<List<ChampionOverviewStat>> GetOverviewStatsListAsync()

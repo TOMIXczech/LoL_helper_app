@@ -64,15 +64,16 @@ public partial class PickSuggestionsView : UserControl
     {
         var champs = BuildDatabaseService.Instance.AllChampions.OrderBy(c => c.Name).ToList();
         
-        // Add "None / Any Champion" at index 0
+        // Add "Live Auto-Detect" at index 0 (clean, compact text that fits beautifully)
         var list = new List<ChampionInfo>
         {
-            new ChampionInfo { Id = 0, Key = "None", Name = "(Auto-detect or Select Lane Champion)", IconUrl = "" }
+            new ChampionInfo { Id = 0, Key = "All", Name = "🌐 Live Auto-Detect (LCU)", IconUrl = "" }
         };
         list.AddRange(champs);
 
         PrepickChampCombo.ItemsSource = list;
         PrepickChampCombo.SelectedIndex = 0;
+        UpdatePrepickUi();
     }
 
     private void OnChampSelectStateUpdated(int prepickedChampId, string assignedRole)
@@ -105,12 +106,12 @@ public partial class PickSuggestionsView : UserControl
                     }
                 }
 
-                // Auto-detect prepick if in session
-                if (prepickedChampId > 0 && _prepickedChampId != prepickedChampId)
+                // In Ban mode: track prepick intent
+                if (_isBanMode && prepickedChampId > 0 && _prepickedChampId != prepickedChampId)
                 {
                     _prepickedChampId = prepickedChampId;
                     SelectPrepickComboById(_prepickedChampId.Value);
-                    SetPrepickImageById(_prepickedChampId.Value);
+                    UpdatePrepickUi();
                     _ = RefreshSuggestionsAsync();
                 }
             }
@@ -153,8 +154,11 @@ public partial class PickSuggestionsView : UserControl
             }
             else
             {
-                // Pick suggestions: 10k+ games, top 30 meta, personalized mastery injection (M > 4, max 5)
-                items = await SuggestionService.Instance.GetPickSuggestionsAsync(_currentRole, _isPersonalizedMode);
+                // Pick suggestions:
+                // If enemy laner is specified in combo or detected: get counter pick suggestions!
+                // If no enemy laner: get general pick suggestions (10k+ games, top 30 meta, personalized mastery injection)
+                int? enemyLaner = (_prepickedChampId > 0) ? _prepickedChampId : null;
+                items = await SuggestionService.Instance.GetCounterPickSuggestionsAsync(enemyLaner, _currentRole, _isPersonalizedMode);
             }
 
             // STRICT REQUIREMENT: NEVER SUGGEST MORE THAN 10 CHAMPIONS
@@ -557,7 +561,7 @@ public partial class PickSuggestionsView : UserControl
             ModeBanBtn.Background = new SolidColorBrush(Color.FromRgb(0x3D, 0x1A, 0x22));
             ModeBanBtn.Foreground = new SolidColorBrush(Color.FromRgb(0xFF, 0x6E, 0x6E));
 
-            PrepickLabelText.Text = "COUNTER AGAINST LANE CHAMPION:";
+            PrepickLabelText.Text = "CHAMPION TO PROTECT (PREPICK):";
             PersonalizedModeBtn.Visibility = Visibility.Collapsed;
         }
         else
@@ -568,7 +572,7 @@ public partial class PickSuggestionsView : UserControl
             ModeBanBtn.Background = Brushes.Transparent;
             ModeBanBtn.Foreground = new SolidColorBrush(Color.FromRgb(0x8E, 0x92, 0xA4));
 
-            PrepickLabelText.Text = "MY LANE CHAMPION:";
+            PrepickLabelText.Text = "TEST AGAINST ENEMY LANER:";
             PersonalizedModeBtn.Visibility = Visibility.Visible;
         }
     }
@@ -640,8 +644,43 @@ public partial class PickSuggestionsView : UserControl
         if (PrepickChampCombo.SelectedItem is ChampionInfo champ)
         {
             _prepickedChampId = champ.Id > 0 ? champ.Id : null;
-            SetPrepickImageById(_prepickedChampId ?? 0);
+            UpdatePrepickUi();
             _ = RefreshSuggestionsAsync();
+        }
+    }
+
+    private void ClearPrepickBtn_Click(object sender, RoutedEventArgs e)
+    {
+        PrepickChampCombo.SelectedIndex = 0;
+    }
+
+    private void UpdatePrepickUi()
+    {
+        if (_prepickedChampId.HasValue && _prepickedChampId.Value > 0)
+        {
+            var info = BuildDatabaseService.Instance.AllChampions.FirstOrDefault(c => c.Id == _prepickedChampId.Value);
+            if (info != null && !string.IsNullOrEmpty(info.IconUrl))
+            {
+                SetImageSourceSafe(PrepickChampImg, info.IconUrl);
+                PrepickChampImg.Visibility = Visibility.Visible;
+                PrepickPlaceholderIcon.Visibility = Visibility.Collapsed;
+                PrepickImgBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(0x2C, 0xE5, 0xB5));
+            }
+            else
+            {
+                PrepickChampImg.Visibility = Visibility.Collapsed;
+                PrepickPlaceholderIcon.Visibility = Visibility.Visible;
+                PrepickImgBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(0x28, 0x30, 0x45));
+            }
+            ClearPrepickBtn.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            PrepickChampImg.Source = null;
+            PrepickChampImg.Visibility = Visibility.Collapsed;
+            PrepickPlaceholderIcon.Visibility = Visibility.Visible;
+            PrepickImgBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(0x28, 0x30, 0x45));
+            ClearPrepickBtn.Visibility = Visibility.Collapsed;
         }
     }
 
@@ -654,25 +693,6 @@ public partial class PickSuggestionsView : UserControl
             {
                 PrepickChampCombo.SelectedItem = match;
             }
-        }
-    }
-
-    private void SetPrepickImageById(int championId)
-    {
-        if (championId <= 0)
-        {
-            PrepickChampImg.Source = null;
-            return;
-        }
-
-        var info = BuildDatabaseService.Instance.AllChampions.FirstOrDefault(c => c.Id == championId);
-        if (info != null && !string.IsNullOrEmpty(info.IconUrl))
-        {
-            SetImageSourceSafe(PrepickChampImg, info.IconUrl);
-        }
-        else
-        {
-            PrepickChampImg.Source = null;
         }
     }
 

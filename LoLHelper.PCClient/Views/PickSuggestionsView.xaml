@@ -73,6 +73,131 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Dark Sleek ComboBox Item Style -->
+        <Style x:Key="SuggestionsComboItemStyle" TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="#0E121B"/>
+            <Setter Property="Foreground" Value="#D8DFEE"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBoxItem">
+                        <Border x:Name="ItemBd" Background="{TemplateBinding Background}" BorderBrush="#1C2234" BorderThickness="0,0,0,1" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#1C2438"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#142B28"/>
+                    <Setter Property="Foreground" Value="#2CE5B5"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Dark Sleek ComboBox Style -->
+        <Style x:Key="SuggestionsComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="Foreground" Value="#E2E8F5"/>
+            <Setter Property="Background" Value="#10131E"/>
+            <Setter Property="BorderBrush" Value="#2D354C"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="ItemContainerStyle" Value="{StaticResource SuggestionsComboItemStyle}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton"
+                                          Focusable="false"
+                                          IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          ClickMode="Press"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border x:Name="BoxBd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="6">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="26"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="1" Text="▾" Foreground="#2CE5B5" FontSize="11" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="BoxBd" Property="BorderBrush" Value="#2CE5B5"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+
+                            <ContentPresenter x:Name="ContentSite"
+                                              IsHitTestVisible="False"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                              Margin="10,0,26,0"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"/>
+
+                            <Popup x:Name="Popup"
+                                   Placement="Bottom"
+                                   IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True"
+                                   Focusable="False"
+                                   PopupAnimation="Slide">
+                                <Grid x:Name="DropDown"
+                                      SnapsToDevicePixels="True"
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="320">
+                                    <Border Background="#0C0F17" BorderBrush="#2CE5B5" BorderThickness="1" CornerRadius="6">
+                                        <ScrollViewer SnapsToDevicePixels="True" VerticalScrollBarVisibility="Auto">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Round Reset Button Style -->
+        <Style x:Key="ResetRoundBtnStyle" TargetType="Button">
+            <Setter Property="Background" Value="#1C2132"/>
+            <Setter Property="BorderBrush" Value="#2E374E"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="13">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="#FF6E6E"/>
+                                <Setter TargetName="Bd" Property="Background" Value="#381D24"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
     <Grid Margin="20,14,20,16">
@@ -174,24 +299,54 @@
                     <Button x:Name="RoleSupportBtn" Content="💖 Support" Style="{StaticResource RolePillBtnStyle}" Tag="UTILITY" Click="RolePill_Click" Margin="0"/>
                 </StackPanel>
 
-                <!-- Prepick / Ban Target Selector Box (Visible in Ban mode or when prepicked) -->
-                <Border x:Name="PrepickSelectorBorder" Grid.Column="2" Background="#181B26" BorderBrush="#2E344B" BorderThickness="1" CornerRadius="8" Padding="10,4" VerticalAlignment="Center">
+                <!-- Prepick / Ban Target Selector Box -->
+                <Border x:Name="PrepickSelectorBorder" Grid.Column="2" Background="#141724" BorderBrush="#252C3E" BorderThickness="1" CornerRadius="8" Padding="12,4" VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                        <TextBlock x:Name="PrepickLabelText" Text="MY LANE CHAMPION:" Foreground="#9BA3BA" FontSize="10" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                        <Border Width="28" Height="28" CornerRadius="6" BorderBrush="#2CE5B5" BorderThickness="1.5" ClipToBounds="True" Margin="0,0,8,0" VerticalAlignment="Center">
-                            <Image x:Name="PrepickChampImg" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+                        <TextBlock x:Name="PrepickLabelText" Text="TEST AGAINST ENEMY LANER:" Foreground="#8E95AA" FontSize="10.5" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+                        <!-- Champion Icon or Auto Globe Icon Box -->
+                        <Border x:Name="PrepickImgBorder" Width="30" Height="30" CornerRadius="6" Background="#10131E" BorderBrush="#283045" BorderThickness="1.5" ClipToBounds="True" Margin="0,0,8,0" VerticalAlignment="Center">
+                            <Grid>
+                                <TextBlock x:Name="PrepickPlaceholderIcon" Text="🌐" FontSize="14" Foreground="#2CE5B5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <Image x:Name="PrepickChampImg" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" Visibility="Collapsed"/>
+                            </Grid>
                         </Border>
+
+                        <!-- Sleek Dark Styled Dropdown -->
                         <ComboBox x:Name="PrepickChampCombo"
-                                  Width="180"
-                                  Height="28"
-                                  Background="#10121A"
-                                  Foreground="White"
-                                  BorderBrush="#31374E"
-                                  BorderThickness="1"
-                                  DisplayMemberPath="Name"
+                                  Width="220"
+                                  Height="32"
+                                  Style="{StaticResource SuggestionsComboBoxStyle}"
                                   SelectedValuePath="Id"
                                   VerticalAlignment="Center"
-                                  SelectionChanged="PrepickChampCombo_SelectionChanged"/>
+                                  SelectionChanged="PrepickChampCombo_SelectionChanged">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="2,1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="26"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" Width="22" Height="22" CornerRadius="4" BorderBrush="#252E44" BorderThickness="1" ClipToBounds="True" Background="#101420" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                            <Image Source="{Binding IconUrl}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        </Border>
+                                        <TextBlock Grid.Column="1" Text="{Binding Name}" Foreground="#E2E7F5" FontSize="12" FontWeight="SemiBold" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" Margin="4,0,0,0"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <!-- Quick Clear / Reset Button back to Live Auto-detect -->
+                        <Button x:Name="ClearPrepickBtn"
+                                Width="26"
+                                Height="26"
+                                Margin="6,0,0,0"
+                                ToolTip="Reset to Live Auto-Detect from League Client"
+                                Visibility="Collapsed"
+                                Click="ClearPrepickBtn_Click"
+                                Style="{StaticResource ResetRoundBtnStyle}">
+                            <TextBlock Text="✕" FontSize="11" FontWeight="Bold" Foreground="#8E92A4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Button>
                     </StackPanel>
                 </Border>
             </Grid>

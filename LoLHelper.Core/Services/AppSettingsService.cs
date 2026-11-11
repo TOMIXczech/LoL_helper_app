@@ -255,38 +255,41 @@ public class AppSettingsService
         preview.BackupPickChampionName = backupInfo.Name;
         preview.BackupPickChampionIconUrl = backupInfo.IconUrl;
 
-        // 2. Resolve Primary Pick based on PickStrategy
+        // 2. Resolve Primary Pick based on PickStrategy (Synced directly with SuggestionService)
         if (Settings.PickStrategy == "BEST_COUNTER")
         {
-            // Find the champion that beats enemyId the hardest (lowest MyWinRate from enemyId's perspective)
-            var countersToEnemy = await BuildDatabaseService.Instance.GetBiggestCountersToMyChampAsync(enemyId, role);
-            var bestCounter = countersToEnemy.FirstOrDefault(c => !unavailableChampIds.Contains(c.OpponentChampionId))
-                              ?? countersToEnemy.FirstOrDefault();
+            var counterSuggestions = await SuggestionService.Instance.GetCounterPickSuggestionsAsync(
+                enemyId > 0 ? enemyId : null, role, personalized: false);
+
+            var bestCounter = counterSuggestions.FirstOrDefault(c => !unavailableChampIds.Contains(c.ChampionId))
+                              ?? counterSuggestions.FirstOrDefault();
 
             if (bestCounter != null)
             {
-                preview.PickChampionId = bestCounter.OpponentChampionId;
-                preview.PickChampionName = bestCounter.OpponentName;
-                preview.PickChampionIconUrl = bestCounter.OpponentIconUrl;
-                preview.PickWinRate = bestCounter.OpponentWinRateAgainstMe;
-                preview.PickReasonLabel = $"Best Counter vs {enemyInfo.Name} ({preview.PickWinRate * 100:F1}% WR)";
+                preview.PickChampionId = bestCounter.ChampionId;
+                preview.PickChampionName = bestCounter.ChampionName;
+                preview.PickChampionIconUrl = bestCounter.IconUrl;
+                preview.PickWinRate = bestCounter.WinRate;
+                preview.PickReasonLabel = $"Best Counter vs {enemyInfo.Name} ({bestCounter.WinRateFormatted} WR)";
             }
         }
         else if (Settings.PickStrategy == "MASTERY_COUNTER")
         {
-            var countersToEnemy = await BuildDatabaseService.Instance.GetBiggestCountersToMyChampAsync(enemyId, role);
-            var masterySet = new HashSet<int>(Settings.MasteryPoolChampIds.Take(Math.Max(1, Settings.MasteryPoolTopCount)));
+            var counterSuggestions = await SuggestionService.Instance.GetCounterPickSuggestionsAsync(
+                enemyId > 0 ? enemyId : null, role, personalized: true);
 
-            var bestMasteryCounter = countersToEnemy
-                .FirstOrDefault(c => masterySet.Contains(c.OpponentChampionId) && !unavailableChampIds.Contains(c.OpponentChampionId));
+            var bestMasteryCounter = counterSuggestions.FirstOrDefault(c => !unavailableChampIds.Contains(c.ChampionId))
+                                     ?? counterSuggestions.FirstOrDefault();
 
             if (bestMasteryCounter != null)
             {
-                preview.PickChampionId = bestMasteryCounter.OpponentChampionId;
-                preview.PickChampionName = bestMasteryCounter.OpponentName;
-                preview.PickChampionIconUrl = bestMasteryCounter.OpponentIconUrl;
-                preview.PickWinRate = bestMasteryCounter.OpponentWinRateAgainstMe;
-                preview.PickReasonLabel = $"Mastery Counter vs {enemyInfo.Name} ({preview.PickWinRate * 100:F1}% WR)";
+                preview.PickChampionId = bestMasteryCounter.ChampionId;
+                preview.PickChampionName = bestMasteryCounter.ChampionName;
+                preview.PickChampionIconUrl = bestMasteryCounter.IconUrl;
+                preview.PickWinRate = bestMasteryCounter.WinRate;
+                preview.PickReasonLabel = bestMasteryCounter.IsPersonalizedMastery
+                    ? $"Mastery Counter vs {enemyInfo.Name} ({bestMasteryCounter.BadgeText})"
+                    : $"Best Counter vs {enemyInfo.Name} ({bestMasteryCounter.WinRateFormatted} WR)";
             }
             else
             {
@@ -328,67 +331,67 @@ public class AppSettingsService
                                 ?? BuildDatabaseService.Instance.GetChampionInfo(preview.PickChampionId);
         string intendedName = intendedChampInfo?.Name ?? preview.PickChampionName;
 
-        // 3. Resolve Ban based on BanStrategy
+        // 3. Resolve Ban based on BanStrategy (Synced directly with SuggestionService)
         if (Settings.BanStrategy == "BIGGEST_COUNTER")
         {
-            // Ban the #1 statistical counter to the champion we want to play (or prepicked)!
-            var countersToMyPick = await BuildDatabaseService.Instance.GetBiggestCountersToMyChampAsync(intendedPickId, role);
-            var validBans = countersToMyPick
-                .Where(c => !unavailableChampIds.Contains(c.OpponentChampionId) &&
-                            (!Settings.ProtectTeammateHover || !teammateHoveredIds.Contains(c.OpponentChampionId)) &&
-                            c.OpponentChampionId != intendedPickId)
+            // Ban the #1 statistical counter to the champion we want to play (or prepicked) using SuggestionService!
+            var banSuggestions = await SuggestionService.Instance.GetBanSuggestionsAsync(intendedPickId, role);
+            var validBans = banSuggestions
+                .Where(c => !unavailableChampIds.Contains(c.ChampionId) &&
+                            (!Settings.ProtectTeammateHover || !teammateHoveredIds.Contains(c.ChampionId)) &&
+                            c.ChampionId != intendedPickId)
                 .ToList();
 
-            var topBan = validBans.FirstOrDefault() ?? countersToMyPick.FirstOrDefault();
-            var secondBan = validBans.Skip(1).FirstOrDefault() ?? countersToMyPick.Skip(1).FirstOrDefault();
+            var topBan = validBans.FirstOrDefault() ?? banSuggestions.FirstOrDefault();
+            var secondBan = validBans.Skip(1).FirstOrDefault() ?? banSuggestions.Skip(1).FirstOrDefault();
 
             if (topBan != null)
             {
-                preview.BanChampionId = topBan.OpponentChampionId;
-                preview.BanChampionName = topBan.OpponentName;
-                preview.BanChampionIconUrl = topBan.OpponentIconUrl;
-                preview.BanEnemyWinRate = topBan.OpponentWinRateAgainstMe;
-                preview.BanReasonLabel = $"#1 Counter to {intendedName} ({preview.BanEnemyWinRate * 100:F1}% Enemy WR)";
+                preview.BanChampionId = topBan.ChampionId;
+                preview.BanChampionName = topBan.ChampionName;
+                preview.BanChampionIconUrl = topBan.IconUrl;
+                preview.BanEnemyWinRate = topBan.EnemyWinRateAgainstYou;
+                preview.BanReasonLabel = $"#1 Counter to {intendedName} ({topBan.EnemyWinRateFormatted} Enemy WR)";
             }
             if (secondBan != null)
             {
-                preview.SecondaryBanChampionId = secondBan.OpponentChampionId;
-                preview.SecondaryBanChampionName = secondBan.OpponentName;
-                preview.SecondaryBanChampionIconUrl = secondBan.OpponentIconUrl;
+                preview.SecondaryBanChampionId = secondBan.ChampionId;
+                preview.SecondaryBanChampionName = secondBan.ChampionName;
+                preview.SecondaryBanChampionIconUrl = secondBan.IconUrl;
             }
         }
         else if (Settings.BanStrategy == "COUNTER_OF_COUNTER")
         {
-            // Step A: Find the #1 counter to our intended champion (or enemy laner)
-            var countersToMyPick = await BuildDatabaseService.Instance.GetBiggestCountersToMyChampAsync(intendedPickId, role);
-            var biggestThreat = countersToMyPick.FirstOrDefault();
-            int threatChampId = biggestThreat?.OpponentChampionId ?? enemyId;
-            string threatChampName = biggestThreat?.OpponentName ?? enemyInfo.Name;
+            // Step A: Find the #1 counter to our intended champion using SuggestionService
+            var banSuggestions = await SuggestionService.Instance.GetBanSuggestionsAsync(intendedPickId, role);
+            var biggestThreat = banSuggestions.FirstOrDefault();
+            int threatChampId = biggestThreat?.ChampionId ?? enemyId;
+            string threatChampName = biggestThreat?.ChampionName ?? enemyInfo.Name;
 
-            // Step B: Find the biggest counter to that counter
-            var secondOrderCounters = await BuildDatabaseService.Instance.GetBiggestCountersToMyChampAsync(threatChampId, role);
-            var validBans = secondOrderCounters
-                .Where(c => !unavailableChampIds.Contains(c.OpponentChampionId) &&
-                            (!Settings.ProtectTeammateHover || !teammateHoveredIds.Contains(c.OpponentChampionId)) &&
-                            c.OpponentChampionId != intendedPickId)
+            // Step B: Find the biggest counter to that counter using SuggestionService!
+            var secondOrderSuggestions = await SuggestionService.Instance.GetCounterPickSuggestionsAsync(threatChampId, role, personalized: false);
+            var validBans = secondOrderSuggestions
+                .Where(c => !unavailableChampIds.Contains(c.ChampionId) &&
+                            (!Settings.ProtectTeammateHover || !teammateHoveredIds.Contains(c.ChampionId)) &&
+                            c.ChampionId != intendedPickId)
                 .ToList();
 
-            var topBan = validBans.FirstOrDefault() ?? secondOrderCounters.FirstOrDefault();
-            var secondBan = validBans.Skip(1).FirstOrDefault() ?? secondOrderCounters.Skip(1).FirstOrDefault();
+            var topBan = validBans.FirstOrDefault() ?? secondOrderSuggestions.FirstOrDefault();
+            var secondBan = validBans.Skip(1).FirstOrDefault() ?? secondOrderSuggestions.Skip(1).FirstOrDefault();
 
             if (topBan != null)
             {
-                preview.BanChampionId = topBan.OpponentChampionId;
-                preview.BanChampionName = topBan.OpponentName;
-                preview.BanChampionIconUrl = topBan.OpponentIconUrl;
-                preview.BanEnemyWinRate = topBan.OpponentWinRateAgainstMe;
+                preview.BanChampionId = topBan.ChampionId;
+                preview.BanChampionName = topBan.ChampionName;
+                preview.BanChampionIconUrl = topBan.IconUrl;
+                preview.BanEnemyWinRate = 1.0 - topBan.WinRate;
                 preview.BanReasonLabel = $"Counter to {threatChampName} (Protects {intendedName})";
             }
             if (secondBan != null)
             {
-                preview.SecondaryBanChampionId = secondBan.OpponentChampionId;
-                preview.SecondaryBanChampionName = secondBan.OpponentName;
-                preview.SecondaryBanChampionIconUrl = secondBan.OpponentIconUrl;
+                preview.SecondaryBanChampionId = secondBan.ChampionId;
+                preview.SecondaryBanChampionName = secondBan.ChampionName;
+                preview.SecondaryBanChampionIconUrl = secondBan.IconUrl;
             }
         }
 
