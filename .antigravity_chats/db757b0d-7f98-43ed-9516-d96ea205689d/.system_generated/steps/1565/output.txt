@@ -1,6 +1,0 @@
-Command exited with code 0.
-
-Command output:
-champion_builds_tags count: 2
-  games=442, wins=264, adj_wr=0.511445302102742, name_tags=Bruiser, meta_tags=
-  games=80, wins=45, adj_wr=0.479298142786526, name_tags=Lethality, meta_tags="nerfed"

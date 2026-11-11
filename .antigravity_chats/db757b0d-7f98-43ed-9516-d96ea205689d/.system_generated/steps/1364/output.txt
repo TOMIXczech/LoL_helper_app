@@ -1,6 +1,0 @@
-Command exited with code 0.
-
-Command output:
-https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/emerald.png -> 500x500
-https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-shared-components/global/default/images/emerald.png -> 500x500
-https://raw.communitydragon.org/latest/plugins/rcp-fe-lol-static-assets/global/default/images/ranked-emblem/emblem-emerald.png -> 2560x1440

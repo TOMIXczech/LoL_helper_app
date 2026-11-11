@@ -1,5 +1,0 @@
-Command exited with code 0.
-
-Command output:
-camStrong: 
-camWeak: 

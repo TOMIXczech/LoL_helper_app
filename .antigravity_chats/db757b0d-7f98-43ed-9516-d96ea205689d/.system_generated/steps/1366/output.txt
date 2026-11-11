@@ -1,4 +1,0 @@
-Command exited with code 0.
-
-Command output:
-Bounding box: (20, 60) to (484, 404) out of 500x500

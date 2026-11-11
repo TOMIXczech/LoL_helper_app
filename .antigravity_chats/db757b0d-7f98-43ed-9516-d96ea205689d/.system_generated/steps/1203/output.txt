@@ -1,1 +1,0 @@
-Made 1 replacement in c:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.Core\Services\RuneService.cs starting at line 174 (+0/-41 lines).

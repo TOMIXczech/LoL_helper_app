@@ -482,3 +482,11 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Antigravity chat logs, step traces, and session sync
+.antigravity_chats/
+.agy_sync_meta/
+git_sync/
+*.log
+verify_result.txt
+app_settings.json

@@ -1,1 +1,0 @@
-Made 1 replacement in c:\Users\ufo\Downloads\TP\LoL_Helper_app\LoLHelper.PCClient\Views\ChampSelectView.xaml starting at line 353 (+2/-17 lines).

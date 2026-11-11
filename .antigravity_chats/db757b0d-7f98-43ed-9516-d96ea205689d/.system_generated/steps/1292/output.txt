@@ -1,9 +1,0 @@
-Command exited with code 0.
-
-Command output:
-MethodInvocationException: 
-Line |
-  34 |          $g.CopyFromScreen($rect.Left, $rect.Top, 0, 0, (New-Object Sy .
-     |          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | Exception calling "CopyFromScreen" with "5" argument(s): "The handle is invalid."
-Saved screenshot to C:\Users\ufo\.gemini\antigravity\brain\db757b0d-7f98-43ed-9516-d96ea205689d\scratch\ui_verify.png (50 x 50)

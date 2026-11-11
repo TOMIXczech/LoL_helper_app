@@ -1,4 +1,0 @@
-Command exited with code 0.
-
-Command output:
-import{n as e}from"../chunks/Dd_uD5pT.js";import"../chunks/gd_96mUw.js";import"../chunks/xihTtKlq2.js";import{r as t,t as n}from"../chunks/BzRh9Fm6.js";var r=e({load:()=>t});function i(e,t){n(e,{get data(){return t.data}})}export{i as component,r as universal};

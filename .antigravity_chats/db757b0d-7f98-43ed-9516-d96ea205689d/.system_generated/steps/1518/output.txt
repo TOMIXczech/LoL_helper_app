@@ -1,4 +1,0 @@
-Command exited with code 0.
-
-Command output:
-build_tier=Standard -> count=4 (Bruiser games=26362)

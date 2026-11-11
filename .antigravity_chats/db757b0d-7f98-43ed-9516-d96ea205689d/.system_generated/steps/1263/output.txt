@@ -1,4 +1,0 @@
-Command exited with code 0.
-
-Command output:
-len without role: 0 []

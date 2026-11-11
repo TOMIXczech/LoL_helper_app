@@ -1,5 +1,0 @@
-Command exited with code 0.
-
-Command output:
-KR DIAMOND+ stats len: 6
-DIAMOND+ builds len: 0

@@ -1,7 +1,0 @@
-Command exited with code 0.
-
-Command output:
-0 ['AD'] 48 ["('katakurich', '2696', 'EUW1', 5, 5, 0.224)", "('Mister popo', 'dbsh', 'LA2', 3, 3, 0.306)", "('B\\u1ed1 b\\u1ed5 ch\\u1ebft cmm', '1701', 'VN2', 2, 2, 0.416)", "('petkoshamara', 'EUNE', 'EUN1', 2, 1, 0.379)", "('CyRaX', 'WRLD', 'LA1', 2, 2, 0.379)"]
-1 ['Bruiser', 'Lethality'] 44 ["('no more', '01213', 'TR1', 3, 3, 0.192)", "('codelco', '007', 'LA2', 2, 1, 0.461)", "('Shuya Goenji', 'sup11', 'BR1', 2, 0, 0.43)", "('nik0la811', 'EUNE', 'EUN1', 2, 1, 0.422)", "('usqeppcqr', 'NA1', 'NA1', 2, 2, 0.39)"]
-2 ['Lethality'] 100 ["('\\uc544 \\ucd08 \\ub85d \\uc2a4', 'KR2', 'KR', 8, 4, 0.339)", "('Devoidspears', 'NA1', 'NA1', 7, 2, 0.391)", "('\\ub208\\uc880\\ub728\\uace0\\ud574\\ub77c', 'KR 1', 'KR', 7, 4, 0.33)", "('OZEDOPICAADO', 'AAt', 'BR1', 6, 4, 0.48)", "('diego2224', 'LAN', 'LA1', 6, 3, 0.298)"]
-3 ['Bruiser'] 175 ["('whyisthattho', 'UGHHH', 'EUW1', 12, 6, 0.343)", "('kapson', '999', 'TR1', 11, 7, 0.243)", "('Thoxdenbel', 'EUW', 'EUW1', 10, 4, 0.447)", "('\\u6216\\u8bb8\\u547d\\u8fd0\\u7684\\u7b7e', '4218', 'SG2', 10, 7, 0.414)", "('PETER', 'farts', 'NA1', 9, 4, 0.449)"]

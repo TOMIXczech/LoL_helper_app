@@ -1,6 +1,0 @@
-Command exited with code 0.
-
-Command output:
-EMERALD%2B
-EMERALD+
-PLATINUM

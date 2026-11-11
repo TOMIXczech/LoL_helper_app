@@ -1,5 +1,0 @@
-
-The command exited with code 1.
-Output:
-Get-Content: A parameter cannot be found that matches parameter name 'Context'.
-
