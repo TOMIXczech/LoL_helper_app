@@ -1101,39 +1101,6 @@ public partial class DashboardView : UserControl
                 };
                 rankSp.Children.Add(rankText);
 
-                if (isCrossed)
-                {
-                    rankSp.Children.Add(new TextBlock
-                    {
-                        Text = " • CROSSED",
-                        Foreground = BrushFromHex("#F0B232"),
-                        FontSize = 8.5,
-                        FontWeight = FontWeights.Black,
-                        VerticalAlignment = VerticalAlignment.Center,
-                        Margin = new Thickness(2, 0, 0, 0)
-                    });
-                }
-                else if (posRole == "ABOVE")
-                {
-                    rankSp.Children.Add(new TextBlock
-                    {
-                        Text = " ▲",
-                        Foreground = BrushFromHex("#7E849B"),
-                        FontSize = 8.5,
-                        VerticalAlignment = VerticalAlignment.Center
-                    });
-                }
-                else if (posRole == "BELOW")
-                {
-                    rankSp.Children.Add(new TextBlock
-                    {
-                        Text = " ▼",
-                        Foreground = BrushFromHex("#7E849B"),
-                        FontSize = 8.5,
-                        VerticalAlignment = VerticalAlignment.Center
-                    });
-                }
-
                 Canvas.SetLeft(rankSp, padLeft + 2);
                 double textY = yPos - 15;
                 if (textY < 2) textY = yPos + 2;
@@ -1155,7 +1122,7 @@ public partial class DashboardView : UserControl
             string curRankStr = RankLpHelper.FormatRankName(curT, curD);
 
             GraphSubheaderText.Text = $"Rank: {curRankStr} {curLpVal} LP • {totalWins}W {totalLosses}L ({wrPct:F0}% WR)";
-            GraphQuickStatsText.Text = $"Crossed: {crossedCount} {(crossedCount == 1 ? "Rank" : "Ranks")} • Peak: {peakWinStreak}W";
+            GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
 
             primaryColor = Color.FromRgb(44, 229, 181); // Emerald Cyan
         }
