@@ -78,6 +78,89 @@ public class RankedQueueSummary
     }
 }
 
+public static class RankLpHelper
+{
+    private static readonly string[] Tiers = new[]
+    {
+        "IRON", "BRONZE", "SILVER", "GOLD", "PLATINUM", "EMERALD", "DIAMOND", "MASTER"
+    };
+
+    private static readonly string[] Divisions = new[]
+    {
+        "IV", "III", "II", "I"
+    };
+
+    public static int GetTierBaseLp(string tier)
+    {
+        string t = (tier ?? "UNRANKED").Trim().ToUpperInvariant();
+        int tierIdx = Array.IndexOf(Tiers, t);
+        if (tierIdx < 0) tierIdx = 5; // Default Emerald
+        return tierIdx * 400;
+    }
+
+    public static int GetDivisionLp(string div)
+    {
+        string d = (div ?? "IV").Trim().ToUpperInvariant();
+        return d switch
+        {
+            "I" => 300,
+            "II" => 200,
+            "III" => 100,
+            _ => 0
+        };
+    }
+
+    public static int ToTotalLp(string tier, string div, int lp)
+    {
+        string t = (tier ?? "EMERALD").Trim().ToUpperInvariant();
+        if (t is "MASTER" or "GRANDMASTER" or "CHALLENGER")
+        {
+            return 2800 + Math.Max(0, lp);
+        }
+        return GetTierBaseLp(t) + GetDivisionLp(div) + Math.Clamp(lp, 0, 100);
+    }
+
+    public static (string Tier, string Division, int Lp) FromTotalLp(int totalLp)
+    {
+        if (totalLp >= 2800)
+        {
+            return ("MASTER", "", totalLp - 2800);
+        }
+        totalLp = Math.Max(0, totalLp);
+        int tierIdx = Math.Min(6, totalLp / 400);
+        string tier = Tiers[tierIdx];
+        int remainder = totalLp - (tierIdx * 400);
+        int divIdx = Math.Min(3, remainder / 100);
+        string div = Divisions[divIdx];
+        int lp = remainder - (divIdx * 100);
+        return (tier, div, lp);
+    }
+
+    public static string FormatRankName(string tier, string div)
+    {
+        if (string.IsNullOrEmpty(div) || div == "NA") return tier;
+        return $"{tier} {div}";
+    }
+
+    public static string GetTierColorHex(string tier)
+    {
+        return (tier ?? "").ToUpperInvariant() switch
+        {
+            "IRON" => "#9E9793",
+            "BRONZE" => "#C47B52",
+            "SILVER" => "#9DA8B6",
+            "GOLD" => "#F0B232",
+            "PLATINUM" => "#37C8B7",
+            "EMERALD" => "#2CE5B5",
+            "DIAMOND" => "#5383E8",
+            "MASTER" => "#A05CF6",
+            "GRANDMASTER" => "#E84057",
+            "CHALLENGER" => "#F7CE46",
+            _ => "#2CE5B5"
+        };
+    }
+}
+
 public partial class DashboardView : UserControl
 {
     public event Action<int, string>? OnOpenChampionBuildRequested;
@@ -110,7 +193,7 @@ public partial class DashboardView : UserControl
 
     private List<MatchHistoryEntry> _allMatches = new();
     private int _selectedGraphGameCount = 20;
-    private string _selectedGraphMetric = "WL";
+    private string _selectedGraphMetric = "RANK";
 
     private static readonly Dictionary<int, string> SummonerSpellIcons = new()
     {
@@ -804,8 +887,8 @@ public partial class DashboardView : UserControl
 
         _selectedGraphMetric = tag;
 
-        MetricBtnWl.Background = tag == "WL" ? BrushFromHex("#1F332E") : Brushes.Transparent;
-        MetricBtnWl.Foreground = tag == "WL" ? BrushFromHex("#2CE5B5") : BrushFromHex("#8E92A4");
+        MetricBtnRank.Background = tag == "RANK" ? BrushFromHex("#1F332E") : Brushes.Transparent;
+        MetricBtnRank.Foreground = tag == "RANK" ? BrushFromHex("#2CE5B5") : BrushFromHex("#8E92A4");
 
         MetricBtnKda.Background = tag == "KDA" ? BrushFromHex("#19243C") : Brushes.Transparent;
         MetricBtnKda.Foreground = tag == "KDA" ? BrushFromHex("#5383E8") : BrushFromHex("#8E92A4");
@@ -817,7 +900,7 @@ public partial class DashboardView : UserControl
         {
             "KDA" => "KDA RATIO",
             "CS" => "CS / MIN",
-            _ => "W/L TREND"
+            _ => "RANK & LP"
         };
         GraphMetricBadge.BorderBrush = tag switch
         {
@@ -852,7 +935,7 @@ public partial class DashboardView : UserControl
         if (_allMatches.Count == 0) return;
 
         double width = GraphContainer.ActualWidth > 0 ? GraphContainer.ActualWidth : 332;
-        double height = GraphContainer.ActualHeight > 0 ? GraphContainer.ActualHeight : 150;
+        double height = GraphContainer.ActualHeight > 0 ? GraphContainer.ActualHeight : 165;
 
         var rawMatches = _allMatches.Take(_selectedGraphGameCount).ToList();
         if (rawMatches.Count == 0) return;
@@ -883,63 +966,12 @@ public partial class DashboardView : UserControl
             else break;
         }
 
-        int netWins = totalWins - totalLosses;
-        string netSign = netWins >= 0 ? $"+{netWins}" : $"{netWins}";
-
-        GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L ({wrPct:F0}% WR) • Net: {netSign} Momentum";
-        GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
-
         WinBarCol.Width = new GridLength(Math.Max(1, totalWins), GridUnitType.Star);
         LossBarCol.Width = new GridLength(Math.Max(1, totalLosses), GridUnitType.Star);
 
         // Games chronologically from oldest (left) to newest (right)
         var matches = rawMatches.AsEnumerable().Reverse().ToList();
         int n = matches.Count;
-
-        var values = new List<double>();
-        double minVal, maxVal, baselineVal;
-        string baselineLabel;
-
-        if (_selectedGraphMetric == "KDA")
-        {
-            foreach (var m in matches)
-                values.Add(m.KdaRatio);
-
-            baselineVal = 3.0;
-            baselineLabel = "3.0 Avg";
-            minVal = 0.0;
-            maxVal = Math.Max(6.0, values.Max() * 1.15);
-        }
-        else if (_selectedGraphMetric == "CS")
-        {
-            foreach (var m in matches)
-                values.Add(m.CsPerMin);
-
-            baselineVal = 7.0;
-            baselineLabel = "7.0 CS/m";
-            minVal = Math.Max(0.0, Math.Min(4.0, values.Min() - 1.0));
-            maxVal = Math.Max(10.0, values.Max() * 1.15);
-        }
-        else // "WL" Momentum (Net wins accumulated)
-        {
-            int running = 0;
-            foreach (var m in matches)
-            {
-                running += m.Win ? 1 : -1;
-                values.Add(running);
-            }
-
-            baselineVal = 0.0;
-            baselineLabel = "0 Baseline";
-            minVal = Math.Min(0.0, values.Min()) - 1.5;
-            maxVal = Math.Max(0.0, values.Max()) + 1.5;
-        }
-
-        if (Math.Abs(maxVal - minVal) < 0.001)
-        {
-            maxVal += 1.0;
-            minVal -= 1.0;
-        }
 
         double padLeft = 14;
         double padRight = 14;
@@ -948,9 +980,208 @@ public partial class DashboardView : UserControl
         double chartWidth = Math.Max(10, width - padLeft - padRight);
         double chartHeight = Math.Max(10, height - padTop - padBottom);
 
-        // 1. Draw Baseline Guideline
-        if (baselineVal >= minVal && baselineVal <= maxVal)
+        var pts = new List<Point>();
+        var values = new List<double>();
+        Color primaryColor;
+
+        if (_selectedGraphMetric == "RANK")
         {
+            int currentTotalLp = RankLpHelper.ToTotalLp(_soloRank.Tier, _soloRank.Division, _soloRank.LeaguePoints);
+            if (currentTotalLp <= 0) currentTotalLp = 2274;
+
+            var lpPoints = new int[n];
+            int curLp = currentTotalLp;
+            lpPoints[n - 1] = curLp;
+
+            for (int i = n - 1; i >= 1; i--)
+            {
+                var g = matches[i];
+                if (g.Win)
+                    curLp -= 22;
+                else
+                    curLp += 20;
+                lpPoints[i - 1] = curLp;
+            }
+
+            foreach (var lp in lpPoints)
+                values.Add(lp);
+
+            int minLp = lpPoints.Min();
+            int maxLp = lpPoints.Max();
+
+            // 1 line of rank below the graph stats:
+            int kBelow = (int)Math.Floor(minLp / 100.0);
+            int boundaryBelow = kBelow * 100;
+            if (minLp <= boundaryBelow)
+                boundaryBelow -= 100;
+
+            // 1 line of rank above graph stats:
+            int kAbove = (int)Math.Ceiling(maxLp / 100.0);
+            int boundaryAbove = kAbove * 100;
+            if (maxLp >= boundaryAbove)
+                boundaryAbove += 100;
+
+            // Any line of rank it crossed: all 100-multiples between boundaryBelow and boundaryAbove
+            var rankBoundaries = new List<(int Lp, bool IsCrossed, string Role)>();
+
+            // 1 line below
+            rankBoundaries.Add((boundaryBelow, false, "BELOW"));
+
+            // Any line it crossed
+            for (int b = boundaryBelow + 100; b < boundaryAbove; b += 100)
+            {
+                rankBoundaries.Add((b, true, "CROSSED"));
+            }
+
+            // 1 line above
+            rankBoundaries.Add((boundaryAbove, false, "ABOVE"));
+
+            double yMinRange = boundaryBelow - 14;
+            double yMaxRange = boundaryAbove + 14;
+            if (Math.Abs(yMaxRange - yMinRange) < 1.0)
+            {
+                yMaxRange += 10;
+                yMinRange -= 10;
+            }
+
+            // Draw Rank Lines (Below, Crossed, Above)
+            foreach (var rb in rankBoundaries)
+            {
+                int bLp = rb.Lp;
+                bool isCrossed = rb.IsCrossed;
+                string posRole = rb.Role;
+
+                var (tier, div, _) = RankLpHelper.FromTotalLp(bLp);
+                string rankTitle = RankLpHelper.FormatRankName(tier, div);
+                string tierCol = RankLpHelper.GetTierColorHex(tier);
+
+                double normY = Math.Clamp((bLp - yMinRange) / (yMaxRange - yMinRange), 0.0, 1.0);
+                double yPos = padTop + chartHeight * (1.0 - normY);
+
+                // Horizontal Guide Line
+                var rLine = new System.Windows.Shapes.Line
+                {
+                    X1 = padLeft,
+                    Y1 = yPos,
+                    X2 = padLeft + chartWidth,
+                    Y2 = yPos,
+                    Stroke = BrushFromHex(tierCol),
+                    StrokeThickness = isCrossed ? 1.5 : 1.0,
+                    Opacity = isCrossed ? 0.85 : 0.45,
+                    StrokeDashArray = isCrossed ? new DoubleCollection { 6, 3 } : new DoubleCollection { 4, 4 }
+                };
+                GraphGuideCanvas.Children.Add(rLine);
+
+                // Rank Pill Badge
+                var badgeBd = new Border
+                {
+                    Background = BrushFromHex(isCrossed ? "#161D2B" : "#12141F"),
+                    BorderBrush = BrushFromHex(tierCol),
+                    BorderThickness = new Thickness(isCrossed ? 1.2 : 0.8),
+                    CornerRadius = new CornerRadius(4),
+                    Padding = new Thickness(6, 1.5, 6, 1.5),
+                    Opacity = isCrossed ? 1.0 : 0.85
+                };
+
+                var badgeSp = new StackPanel { Orientation = Orientation.Horizontal };
+                badgeSp.Children.Add(new TextBlock
+                {
+                    Text = "🛡️",
+                    FontSize = 8,
+                    VerticalAlignment = VerticalAlignment.Center,
+                    Margin = new Thickness(0, 0, 3, 0)
+                });
+                badgeSp.Children.Add(new TextBlock
+                {
+                    Text = rankTitle,
+                    Foreground = BrushFromHex(tierCol),
+                    FontSize = 9,
+                    FontWeight = isCrossed ? FontWeights.Black : FontWeights.Bold,
+                    VerticalAlignment = VerticalAlignment.Center
+                });
+
+                if (isCrossed)
+                {
+                    var crossedTag = new Border
+                    {
+                        Background = BrushFromHex("#2C1D14"),
+                        BorderBrush = BrushFromHex("#F0B232"),
+                        BorderThickness = new Thickness(0.8),
+                        CornerRadius = new CornerRadius(3),
+                        Padding = new Thickness(3, 0.5, 3, 0.5),
+                        Margin = new Thickness(4, 0, 0, 0),
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    crossedTag.Child = new TextBlock
+                    {
+                        Text = "CROSSED",
+                        Foreground = BrushFromHex("#F0B232"),
+                        FontSize = 7.5,
+                        FontWeight = FontWeights.Black
+                    };
+                    badgeSp.Children.Add(crossedTag);
+                }
+                else if (posRole == "ABOVE")
+                {
+                    badgeSp.Children.Add(new TextBlock
+                    {
+                        Text = " ▲",
+                        Foreground = BrushFromHex("#7E849B"),
+                        FontSize = 8,
+                        VerticalAlignment = VerticalAlignment.Center
+                    });
+                }
+                else if (posRole == "BELOW")
+                {
+                    badgeSp.Children.Add(new TextBlock
+                    {
+                        Text = " ▼",
+                        Foreground = BrushFromHex("#7E849B"),
+                        FontSize = 8,
+                        VerticalAlignment = VerticalAlignment.Center
+                    });
+                }
+
+                badgeBd.Child = badgeSp;
+                Canvas.SetLeft(badgeBd, padLeft + 4);
+                Canvas.SetTop(badgeBd, Math.Max(2, yPos - 9));
+                GraphGuideCanvas.Children.Add(badgeBd);
+            }
+
+            // Calculate (x, y) for data points
+            for (int i = 0; i < n; i++)
+            {
+                double x = padLeft + (n > 1 ? i * (chartWidth / (n - 1)) : chartWidth / 2.0);
+                double normLp = Math.Clamp((lpPoints[i] - yMinRange) / (yMaxRange - yMinRange), 0.0, 1.0);
+                double y = padTop + chartHeight * (1.0 - normLp);
+                pts.Add(new Point(x, y));
+            }
+
+            int crossedCount = rankBoundaries.Count(r => r.IsCrossed);
+            var (curT, curD, curLpVal) = RankLpHelper.FromTotalLp(currentTotalLp);
+            string curRankStr = RankLpHelper.FormatRankName(curT, curD);
+
+            GraphSubheaderText.Text = $"Rank: {curRankStr} {curLpVal} LP • {totalWins}W {totalLosses}L ({wrPct:F0}% WR)";
+            GraphQuickStatsText.Text = $"Crossed: {crossedCount} {(crossedCount == 1 ? "Rank" : "Ranks")} • Peak: {peakWinStreak}W";
+
+            primaryColor = Color.FromRgb(44, 229, 181); // Emerald Cyan
+        }
+        else if (_selectedGraphMetric == "KDA")
+        {
+            foreach (var m in matches)
+                values.Add(m.KdaRatio);
+
+            double baselineVal = 3.0;
+            string baselineLabel = "3.0 Avg";
+            double minVal = 0.0;
+            double maxVal = Math.Max(6.0, values.Max() * 1.15);
+
+            if (Math.Abs(maxVal - minVal) < 0.001)
+            {
+                maxVal += 1.0;
+                minVal -= 1.0;
+            }
+
             double baseNormalized = (baselineVal - minVal) / (maxVal - minVal);
             double baseY = padTop + chartHeight * (1.0 - baseNormalized);
 
@@ -976,26 +1207,77 @@ public partial class DashboardView : UserControl
             Canvas.SetLeft(baseLabel, padLeft + 2);
             Canvas.SetTop(baseLabel, Math.Max(2, baseY - 12));
             GraphGuideCanvas.Children.Add(baseLabel);
-        }
 
-        // Compute (x, y) coordinates for all points
-        var pts = new List<Point>();
-        for (int i = 0; i < n; i++)
+            for (int i = 0; i < n; i++)
+            {
+                double x = padLeft + (n > 1 ? i * (chartWidth / (n - 1)) : chartWidth / 2.0);
+                double normalized = Math.Clamp((values[i] - minVal) / (maxVal - minVal), 0.0, 1.0);
+                double y = padTop + chartHeight * (1.0 - normalized);
+                pts.Add(new Point(x, y));
+            }
+
+            GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L ({wrPct:F0}% WR) • Avg KDA: {matches.Average(m => m.KdaRatio):F2}";
+            GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
+
+            primaryColor = Color.FromRgb(83, 131, 232); // Electric Blue
+        }
+        else // "CS"
         {
-            double x = padLeft + (n > 1 ? i * (chartWidth / (n - 1)) : chartWidth / 2.0);
-            double normalized = Math.Clamp((values[i] - minVal) / (maxVal - minVal), 0.0, 1.0);
-            double y = padTop + chartHeight * (1.0 - normalized);
-            pts.Add(new Point(x, y));
+            foreach (var m in matches)
+                values.Add(m.CsPerMin);
+
+            double baselineVal = 7.0;
+            string baselineLabel = "7.0 CS/m";
+            double minVal = Math.Max(0.0, Math.Min(4.0, values.Min() - 1.0));
+            double maxVal = Math.Max(10.0, values.Max() * 1.15);
+
+            if (Math.Abs(maxVal - minVal) < 0.001)
+            {
+                maxVal += 1.0;
+                minVal -= 1.0;
+            }
+
+            double baseNormalized = (baselineVal - minVal) / (maxVal - minVal);
+            double baseY = padTop + chartHeight * (1.0 - baseNormalized);
+
+            var baseLine = new System.Windows.Shapes.Line
+            {
+                X1 = padLeft,
+                Y1 = baseY,
+                X2 = padLeft + chartWidth,
+                Y2 = baseY,
+                Stroke = BrushFromHex("#2B3147"),
+                StrokeThickness = 1,
+                StrokeDashArray = new DoubleCollection { 4, 3 }
+            };
+            GraphGuideCanvas.Children.Add(baseLine);
+
+            var baseLabel = new TextBlock
+            {
+                Text = baselineLabel,
+                Foreground = BrushFromHex("#525970"),
+                FontSize = 8.5,
+                FontWeight = FontWeights.SemiBold
+            };
+            Canvas.SetLeft(baseLabel, padLeft + 2);
+            Canvas.SetTop(baseLabel, Math.Max(2, baseY - 12));
+            GraphGuideCanvas.Children.Add(baseLabel);
+
+            for (int i = 0; i < n; i++)
+            {
+                double x = padLeft + (n > 1 ? i * (chartWidth / (n - 1)) : chartWidth / 2.0);
+                double normalized = Math.Clamp((values[i] - minVal) / (maxVal - minVal), 0.0, 1.0);
+                double y = padTop + chartHeight * (1.0 - normalized);
+                pts.Add(new Point(x, y));
+            }
+
+            GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L ({wrPct:F0}% WR) • Avg CS: {matches.Average(m => m.CsPerMin):F1}/m";
+            GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
+
+            primaryColor = Color.FromRgb(240, 178, 50); // Gold
         }
 
         if (pts.Count == 0) return;
-
-        Color primaryColor = _selectedGraphMetric switch
-        {
-            "KDA" => Color.FromRgb(83, 131, 232),   // #5383E8 (Electric Blue)
-            "CS"  => Color.FromRgb(240, 178, 50),   // #F0B232 (Hextech Gold)
-            _     => netWins >= 0 ? Color.FromRgb(44, 229, 181) : Color.FromRgb(232, 64, 87) // #2CE5B5 or #E84057
-        };
 
         // 2. Draw Smooth Area Gradient
         double bottomY = padTop + chartHeight;
@@ -1138,11 +1420,12 @@ public partial class DashboardView : UserControl
 
         HoverKdaText.Text = $"{game.Kills} / {game.Deaths} / {game.Assists}";
 
-        if (_selectedGraphMetric == "WL")
+        if (_selectedGraphMetric == "RANK")
         {
-            string sign = val > 0 ? "+" : "";
-            HoverMetricValueText.Text = $"({sign}{val:F0} Net)";
-            HoverMetricValueText.Foreground = BrushFromHex(val >= 0 ? "#2CE5B5" : "#E84057");
+            var (t, d, pLp) = RankLpHelper.FromTotalLp((int)val);
+            string rTitle = RankLpHelper.FormatRankName(t, d);
+            HoverMetricValueText.Text = $"{rTitle} ({pLp} LP)";
+            HoverMetricValueText.Foreground = BrushFromHex(RankLpHelper.GetTierColorHex(t));
         }
         else if (_selectedGraphMetric == "KDA")
         {
@@ -1158,7 +1441,7 @@ public partial class DashboardView : UserControl
         HoverMetaText.Text = $"{game.QueueType} • {game.DurationFormatted} • {game.TimeAgoFormatted}";
 
         double containerWidth = GraphContainer.ActualWidth > 0 ? GraphContainer.ActualWidth : 332;
-        double containerHeight = GraphContainer.ActualHeight > 0 ? GraphContainer.ActualHeight : 150;
+        double containerHeight = GraphContainer.ActualHeight > 0 ? GraphContainer.ActualHeight : 165;
 
         double cardWidth = 215;
         double cardHeight = 62;

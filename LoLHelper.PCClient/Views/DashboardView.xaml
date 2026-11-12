@@ -482,10 +482,10 @@
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                         <TextBlock Text="PERFORMANCE GRAPH" Foreground="#8E92A4" FontSize="11" FontWeight="Bold"/>
                                         <Border x:Name="GraphMetricBadge" Background="#162D29" BorderBrush="#2CE5B5" BorderThickness="1" CornerRadius="4" Padding="5,1" Margin="6,0,0,0">
-                                            <TextBlock x:Name="GraphMetricBadgeText" Text="W/L TREND" Foreground="#2CE5B5" FontSize="9" FontWeight="Black"/>
+                                            <TextBlock x:Name="GraphMetricBadgeText" Text="RANK &amp; LP" Foreground="#2CE5B5" FontSize="9" FontWeight="Black"/>
                                         </Border>
                                     </StackPanel>
-                                    <TextBlock x:Name="GraphSubheaderText" Text="13W 7L (65% WR) • +6 Net Momentum" Foreground="#656B82" FontSize="10" Margin="0,2,0,0"/>
+                                    <TextBlock x:Name="GraphSubheaderText" Text="Rank: EMERALD II 74 LP • +6 Net Momentum" Foreground="#656B82" FontSize="10" Margin="0,2,0,0"/>
                                 </StackPanel>
 
                                 <!-- Game count toggle pills: 20G / 30G / 50G -->
@@ -508,10 +508,10 @@
                                 <Border Grid.Column="1" Background="#E84057" CornerRadius="0,3,3,0" Margin="1,0,0,0"/>
                             </Grid>
 
-                            <!-- Metric Switcher Pills: Trend (W/L), KDA, CS/m -->
+                            <!-- Metric Switcher Pills: Rank & LP, KDA, CS/m -->
                             <Grid Margin="0,0,0,6">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                                    <Button x:Name="MetricBtnWl" Content="📈 W/L Trend" Tag="WL" Click="GraphMetric_Click" Style="{StaticResource MetricTabBtnStyle}" Background="#1F332E" Foreground="#2CE5B5"/>
+                                    <Button x:Name="MetricBtnRank" Content="🏆 Rank &amp; LP" Tag="RANK" Click="GraphMetric_Click" Style="{StaticResource MetricTabBtnStyle}" Background="#1F332E" Foreground="#2CE5B5"/>
                                     <Button x:Name="MetricBtnKda" Content="⚔️ KDA Ratio" Tag="KDA" Click="GraphMetric_Click" Style="{StaticResource MetricTabBtnStyle}" Background="Transparent" Foreground="#8E92A4"/>
                                     <Button x:Name="MetricBtnCs" Content="🌾 CS/min" Tag="CS" Click="GraphMetric_Click" Style="{StaticResource MetricTabBtnStyle}" Background="Transparent" Foreground="#8E92A4"/>
                                 </StackPanel>
@@ -520,7 +520,7 @@
                             </Grid>
 
                             <!-- The Graph Canvas Area -->
-                            <Grid x:Name="GraphContainer" Height="150" Background="#10121A" ClipToBounds="True" SizeChanged="GraphContainer_SizeChanged">
+                            <Grid x:Name="GraphContainer" Height="165" Background="#10121A" ClipToBounds="True" SizeChanged="GraphContainer_SizeChanged">
                                 <!-- Guide lines & Y-axis labels -->
                                 <Canvas x:Name="GraphGuideCanvas" IsHitTestVisible="False"/>
 
