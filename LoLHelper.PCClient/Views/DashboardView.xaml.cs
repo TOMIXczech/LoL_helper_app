@@ -23,6 +23,7 @@ public class MatchHistoryEntry
     public string QueueType { get; set; } = "Ranked Solo"; // Ranked Solo, Ranked Flex, ARAM, Normal Draft
     public string QueueCategory { get; set; } = "SOLO"; // SOLO, FLEX, OTHER
     public bool Win { get; set; }
+    public bool IsRemake { get; set; } = false;
     public int Kills { get; set; }
     public int Deaths { get; set; }
     public int Assists { get; set; }
@@ -501,6 +502,7 @@ public partial class DashboardView : UserControl
 
                 long gameId = g.TryGetProperty("gameId", out var gid) ? gid.GetInt64() : 0;
                 int duration = g.TryGetProperty("gameDuration", out var dur) ? dur.GetInt32() : 1650;
+                if (duration > 10000) duration /= 1000;
                 int queueId = g.TryGetProperty("queueId", out var qid) ? qid.GetInt32() : 420;
                 long creationMs = g.TryGetProperty("gameCreation", out var gc) ? gc.GetInt64() : 0;
                 DateTime timestamp = creationMs > 0
@@ -528,6 +530,7 @@ public partial class DashboardView : UserControl
                 }
 
                 bool win = false;
+                bool isEarlySurrender = false;
                 int kills = 0, deaths = 0, assists = 0, cs = 0, gold = 0, dmg = 0, vision = 0, level = 18;
                 int perk0 = 8010, subStyle = 8100;
                 int[] items = new int[7];
@@ -536,6 +539,11 @@ public partial class DashboardView : UserControl
                 if (p.TryGetProperty("stats", out var st))
                 {
                     win = st.TryGetProperty("win", out var w) && w.ValueKind == JsonValueKind.True;
+                    if (st.TryGetProperty("gameEndedInEarlySurrender", out var gees))
+                        isEarlySurrender = gees.ValueKind == JsonValueKind.True;
+                    else if (st.TryGetProperty("subteamEarlySurrendered", out var ses))
+                        isEarlySurrender = ses.ValueKind == JsonValueKind.True;
+
                     kills = st.TryGetProperty("kills", out var k) ? k.GetInt32() : 0;
                     deaths = st.TryGetProperty("deaths", out var d) ? d.GetInt32() : 0;
                     assists = st.TryGetProperty("assists", out var a) ? a.GetInt32() : 0;
@@ -567,6 +575,11 @@ public partial class DashboardView : UserControl
                     else if ((kills + assists) / (double)Math.Max(1, deaths) >= 6.0) multiKill = "MVP CARRY";
                 }
 
+                if (g.TryGetProperty("gameEndedInEarlySurrender", out var gEes))
+                    isEarlySurrender = isEarlySurrender || (gEes.ValueKind == JsonValueKind.True);
+
+                bool isRemake = (duration < 300) || (isEarlySurrender && duration < 420);
+
                 var (qName, qCat) = MapQueueId(queueId);
 
                 list.Add(new MatchHistoryEntry
@@ -580,6 +593,7 @@ public partial class DashboardView : UserControl
                     QueueType = qName,
                     QueueCategory = qCat,
                     Win = win,
+                    IsRemake = isRemake,
                     Kills = kills,
                     Deaths = deaths,
                     Assists = assists,
@@ -659,44 +673,44 @@ public partial class DashboardView : UserControl
             Losses = 24
         };
 
-        var seeds = new (int ChampId, string Role, string Queue, string QCat, bool Win, int K, int D, int A, int Cs, int Gold, int Dmg, int Vis, int Dur, int S1, int S2, int Ks, int Sub, int[] Items, string Badge)[]
+        var seeds = new (int ChampId, string Role, string Queue, string QCat, bool Win, int K, int D, int A, int Cs, int Gold, int Dmg, int Vis, int Dur, int S1, int S2, int Ks, int Sub, int[] Items, string Badge, bool Remake)[]
         {
-            (266, "TOP", "Ranked Solo", "SOLO", true,  12, 2, 9,  248, 15840, 38420, 34, 1785, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3053, 6333, 3071, 3026, 3363 }, "MVP CARRY"),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  9,  3, 11, 224, 14120, 31900, 29, 1690, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 3053, 1038, 3340 }, "TRIPLE KILL"),
-            (777, "MIDDLE", "Ranked Solo", "SOLO", true, 15, 4, 7, 265, 16950, 42150, 31, 1890, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 3031, 6333, 3026, 3363 }, "QUADRA KILL"),
-            (104, "JUNGLE", "Ranked Solo", "SOLO", true, 10, 3, 12, 212, 14780, 29400, 41, 1640, 4, 11, 8021, 8100, new[]{ 6676, 3111, 3071, 3036, 3156, 1036, 3364 }, "DOUBLE KILL"),
-            (222, "BOTTOM", "Ranked Solo", "SOLO", false, 8,  6, 5,  238, 13400, 28100, 22, 1810, 4, 7,  8008, 8200, new[]{ 3031, 3006, 3085, 3036, 1038, 1055, 3363 }, "ACE"),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  11, 1, 8,  256, 15600, 36800, 36, 1720, 4, 12, 8010, 8400, new[]{ 6610, 3047, 6333, 3071, 3065, 1037, 3340 }, "UNSTOPPABLE"),
-            (157, "MIDDLE", "Ranked Flex", "FLEX", true, 14, 5, 9,  244, 15920, 35600, 27, 1765, 4, 14, 8008, 8400, new[]{ 3153, 3006, 3031, 6673, 3026, 1038, 3363 }, "TRIPLE KILL"),
-            (64,  "JUNGLE", "Ranked Solo", "SOLO", false, 5,  6, 10, 176, 11850, 19800, 44, 1680, 4, 11, 8010, 8300, new[]{ 6630, 3111, 3071, 3053, 1036, 0,    3364 }, "VISION KING"),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  8,  2, 12, 231, 14300, 30200, 33, 1710, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 0,    3340 }, "DOUBLE KILL"),
-            (30,  "BOTTOM", "Ranked Solo", "SOLO", true,  16, 5, 14, 249, 17200, 48900, 28, 1940, 4, 3,  8128, 8000, new[]{ 6655, 3020, 4645, 3089, 3135, 3157, 3363 }, "PENTA KILL"),
-            (412, "UTILITY", "Ranked Flex", "FLEX", true, 2,  3, 24, 42,  10900, 11400, 78, 1750, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3109, 3050, 2055, 3364 }, "VISION KING"),
-            (777, "MIDDLE", "Ranked Solo", "SOLO", false, 6,  7, 4,  215, 12100, 22400, 21, 1620, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 1038, 1055, 0,    3340 }, ""),
-            (122, "TOP", "Ranked Solo", "SOLO", true,  13, 3, 6,  241, 15400, 34700, 26, 1695, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3742, 3065, 1054, 3340 }, "TRIPLE KILL"),
-            (103, "MIDDLE", "Ranked Solo", "SOLO", true,  10, 2, 13, 234, 14800, 33100, 35, 1730, 4, 14, 8112, 8200, new[]{ 6655, 3020, 4645, 3089, 3157, 1056, 3364 }, "MVP CARRY"),
-            (145, "BOTTOM", "Ranked Solo", "SOLO", false, 7,  5, 6,  229, 13100, 25900, 24, 1770, 4, 7,  8008, 8300, new[]{ 6672, 3006, 3124, 3157, 1043, 0,    3363 }, ""),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  9,  4, 8,  219, 13900, 29700, 30, 1660, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 1037, 0,    3340 }, "DOUBLE KILL"),
-            (238, "MIDDLE", "Normal SR", "OTHER", true,  17, 4, 6,  242, 16800, 41200, 29, 1810, 4, 14, 8112, 8200, new[]{ 6692, 3158, 6691, 6694, 3814, 3036, 3364 }, "QUADRA KILL"),
-            (81,  "BOTTOM", "ARAM", "OTHER", false, 11, 8, 19, 84,  14900, 37500, 0,  1340, 4, 32, 8010, 8300, new[]{ 3078, 3158, 3042, 6694, 3153, 3072, 2052 }, "HIGH DAMAGE"),
-            (64,  "JUNGLE", "Ranked Solo", "SOLO", false, 4,  6, 9,  168, 11200, 17400, 39, 1590, 4, 11, 8010, 8300, new[]{ 6630, 3047, 3071, 3156, 0,    0,    3364 }, ""),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  10, 2, 10, 237, 14950, 33600, 32, 1740, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 1028, 3340 }, "MVP CARRY"),
-            (11,  "JUNGLE", "Ranked Solo", "SOLO", true,  14, 2, 8,  205, 16100, 34200, 27, 1650, 4, 11, 8008, 8100, new[]{ 3153, 3006, 3124, 6673, 3026, 0,    3364 }, "MVP CARRY"),
-            (51,  "BOTTOM", "Ranked Solo", "SOLO", false, 6,  5, 7,  242, 13200, 26800, 23, 1780, 4, 7,  8008, 8200, new[]{ 3031, 3006, 3094, 3036, 1038, 0,    3363 }, ""),
-            (84,  "MIDDLE", "Ranked Solo", "SOLO", true,  11, 3, 9,  228, 14900, 35100, 31, 1715, 4, 14, 8010, 8400, new[]{ 3152, 3020, 3157, 4645, 3089, 0,    3364 }, "DOUBLE KILL"),
-            (164, "TOP", "Ranked Flex", "FLEX", true,  9,  1, 7,  235, 15100, 29800, 33, 1690, 4, 12, 8010, 8300, new[]{ 3078, 3111, 3053, 3071, 3742, 0,    3340 }, "UNSTOPPABLE"),
-            (875, "TOP", "Ranked Solo", "SOLO", false, 5,  6, 4,  210, 11900, 22100, 20, 1620, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3748, 1054, 0,    3340 }, ""),
-            (236, "BOTTOM", "Ranked Solo", "SOLO", true,  13, 4, 10, 252, 16250, 38900, 26, 1820, 4, 7,  8005, 8300, new[]{ 6676, 3006, 3031, 3036, 3072, 0,    3363 }, "TRIPLE KILL"),
-            (517, "MIDDLE", "Ranked Solo", "SOLO", true,  12, 3, 8,  218, 14800, 32900, 29, 1680, 4, 14, 8010, 8400, new[]{ 3152, 3158, 4645, 3089, 3157, 0,    3364 }, "MVP CARRY"),
-            (111, "UTILITY", "Ranked Solo", "SOLO", true,  3,  4, 22, 38,  11200, 12800, 72, 1730, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING"),
-            (202, "BOTTOM", "Ranked Solo", "SOLO", false, 7,  7, 8,  231, 12900, 27400, 21, 1760, 4, 7,  8021, 8200, new[]{ 6676, 3006, 3094, 3036, 1038, 0,    3363 }, ""),
-            (234, "JUNGLE", "Ranked Flex", "FLEX", true,  10, 2, 11, 198, 14600, 28700, 38, 1640, 4, 11, 8010, 8300, new[]{ 3153, 3047, 3078, 3053, 3156, 0,    3364 }, "DOUBLE KILL"),
-            (58,  "TOP", "Ranked Solo", "SOLO", true,  8,  3, 6,  222, 13800, 26400, 25, 1660, 4, 12, 8010, 8400, new[]{ 3078, 3047, 3053, 3071, 3065, 0,    3340 }, ""),
-            (99,  "UTILITY", "Normal SR", "OTHER", false, 4,  5, 12, 54,  10400, 19600, 58, 1710, 4, 14, 8229, 8300, new[]{ 3869, 3020, 6655, 4645, 0,    0,    3364 }, ""),
-            (24,  "TOP", "Ranked Solo", "SOLO", true,  11, 2, 5,  239, 15300, 31200, 28, 1675, 4, 6,  8008, 8400, new[]{ 3078, 3047, 3153, 3053, 3071, 0,    3340 }, "TRIPLE KILL"),
-            (92,  "TOP", "Ranked Solo", "SOLO", true,  15, 3, 6,  254, 16700, 39400, 30, 1790, 4, 6,  8010, 8400, new[]{ 6692, 3158, 6691, 6694, 3814, 0,    3340 }, "QUADRA KILL"),
-            (245, "JUNGLE", "Ranked Solo", "SOLO", false, 6,  6, 5,  182, 11700, 21800, 35, 1610, 4, 11, 8112, 8200, new[]{ 3152, 3020, 3100, 3157, 0,    0,    3364 }, ""),
-            (89,  "UTILITY", "Ranked Solo", "SOLO", true,  1,  2, 19, 41,  10800, 11900, 75, 1740, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING")
+            (266, "TOP", "Ranked Solo", "SOLO", true,  12, 2, 9,  248, 15840, 38420, 34, 1785, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3053, 6333, 3071, 3026, 3363 }, "MVP CARRY", false),
+            (266, "TOP", "Ranked Solo", "SOLO", true,  9,  3, 11, 224, 14120, 31900, 29, 1690, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 3053, 1038, 3340 }, "TRIPLE KILL", false),
+            (777, "MIDDLE", "Ranked Solo", "SOLO", true, 15, 4, 7, 265, 16950, 42150, 31, 1890, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 3031, 6333, 3026, 3363 }, "QUADRA KILL", false),
+            (104, "JUNGLE", "Ranked Solo", "SOLO", true, 10, 3, 12, 212, 14780, 29400, 41, 1640, 4, 11, 8021, 8100, new[]{ 6676, 3111, 3071, 3036, 3156, 1036, 3364 }, "DOUBLE KILL", false),
+            (222, "BOTTOM", "Ranked Solo", "SOLO", false, 0,  0, 0,  18,  1220, 480,   2,  215,  4, 7,  8008, 8200, new[]{ 1055, 2003, 3340, 0, 0, 0, 0 }, "", true),
+            (266, "TOP", "Ranked Solo", "SOLO", true,  11, 1, 8,  256, 15600, 36800, 36, 1720, 4, 12, 8010, 8400, new[]{ 6610, 3047, 6333, 3071, 3065, 1037, 3340 }, "UNSTOPPABLE", false),
+            (157, "MIDDLE", "Ranked Flex", "FLEX", true, 14, 5, 9,  244, 15920, 35600, 27, 1765, 4, 14, 8008, 8400, new[]{ 3153, 3006, 3031, 6673, 3026, 1038, 3363 }, "TRIPLE KILL", false),
+            (64,  "JUNGLE", "Ranked Solo", "SOLO", false, 5,  6, 10, 176, 11850, 19800, 44, 1680, 4, 11, 8010, 8300, new[]{ 6630, 3111, 3071, 3053, 1036, 0,    3364 }, "VISION KING", false),
+            (266, "TOP", "Ranked Solo", "SOLO", true,  8,  2, 12, 231, 14300, 30200, 33, 1710, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 0,    3340 }, "DOUBLE KILL", false),
+            (30,  "BOTTOM", "Ranked Solo", "SOLO", true,  16, 5, 14, 249, 17200, 48900, 28, 1940, 4, 3,  8128, 8000, new[]{ 6655, 3020, 4645, 3089, 3135, 3157, 3363 }, "PENTA KILL", false),
+            (412, "UTILITY", "Ranked Flex", "FLEX", true, 2,  3, 24, 42,  10900, 11400, 78, 1750, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3109, 3050, 2055, 3364 }, "VISION KING", false),
+            (777, "MIDDLE", "Ranked Solo", "SOLO", false, 6,  7, 4,  215, 12100, 22400, 21, 1620, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 1038, 1055, 0,    3340 }, "", false),
+            (122, "TOP", "Ranked Solo", "SOLO", true,  13, 3, 6,  241, 15400, 34700, 26, 1695, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3742, 3065, 1054, 3340 }, "TRIPLE KILL", false),
+            (103, "MIDDLE", "Ranked Solo", "SOLO", true,  10, 2, 13, 234, 14800, 33100, 35, 1730, 4, 14, 8112, 8200, new[]{ 6655, 3020, 4645, 3089, 3157, 1056, 3364 }, "MVP CARRY", false),
+            (145, "BOTTOM", "Ranked Solo", "SOLO", false, 0,  1, 0,  15,  1150, 520,   2,  198,  4, 7,  8008, 8300, new[]{ 1055, 2003, 3340, 0, 0, 0, 0 }, "", true),
+            (266, "TOP", "Ranked Solo", "SOLO", true,  9,  4, 8,  219, 13900, 29700, 30, 1660, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 1037, 0,    3340 }, "DOUBLE KILL", false),
+            (238, "MIDDLE", "Normal SR", "OTHER", true,  17, 4, 6,  242, 16800, 41200, 29, 1810, 4, 14, 8112, 8200, new[]{ 6692, 3158, 6691, 6694, 3814, 3036, 3364 }, "QUADRA KILL", false),
+            (81,  "BOTTOM", "ARAM", "OTHER", false, 11, 8, 19, 84,  14900, 37500, 0,  1340, 4, 32, 8010, 8300, new[]{ 3078, 3158, 3042, 6694, 3153, 3072, 2052 }, "HIGH DAMAGE", false),
+            (64,  "JUNGLE", "Ranked Solo", "SOLO", false, 4,  6, 9,  168, 11200, 17400, 39, 1590, 4, 11, 8010, 8300, new[]{ 6630, 3047, 3071, 3156, 0,    0,    3364 }, "", false),
+            (266, "TOP", "Ranked Solo", "SOLO", true,  10, 2, 10, 237, 14950, 33600, 32, 1740, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 1028, 3340 }, "MVP CARRY", false),
+            (11,  "JUNGLE", "Ranked Solo", "SOLO", true,  14, 2, 8,  205, 16100, 34200, 27, 1650, 4, 11, 8008, 8100, new[]{ 3153, 3006, 3124, 6673, 3026, 0,    3364 }, "MVP CARRY", false),
+            (51,  "BOTTOM", "Ranked Solo", "SOLO", false, 6,  5, 7,  242, 13200, 26800, 23, 1780, 4, 7,  8008, 8200, new[]{ 3031, 3006, 3094, 3036, 1038, 0,    3363 }, "", false),
+            (84,  "MIDDLE", "Ranked Solo", "SOLO", true,  11, 3, 9,  228, 14900, 35100, 31, 1715, 4, 14, 8010, 8400, new[]{ 3152, 3020, 3157, 4645, 3089, 0,    3364 }, "DOUBLE KILL", false),
+            (164, "TOP", "Ranked Flex", "FLEX", true,  9,  1, 7,  235, 15100, 29800, 33, 1690, 4, 12, 8010, 8300, new[]{ 3078, 3111, 3053, 3071, 3742, 0,    3340 }, "UNSTOPPABLE", false),
+            (875, "TOP", "Ranked Solo", "SOLO", false, 5,  6, 4,  210, 11900, 22100, 20, 1620, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3748, 1054, 0,    3340 }, "", false),
+            (236, "BOTTOM", "Ranked Solo", "SOLO", true,  13, 4, 10, 252, 16250, 38900, 26, 1820, 4, 7,  8005, 8300, new[]{ 6676, 3006, 3031, 3036, 3072, 0,    3363 }, "TRIPLE KILL", false),
+            (517, "MIDDLE", "Ranked Solo", "SOLO", true,  12, 3, 8,  218, 14800, 32900, 29, 1680, 4, 14, 8010, 8400, new[]{ 3152, 3158, 4645, 3089, 3157, 0,    3364 }, "MVP CARRY", false),
+            (111, "UTILITY", "Ranked Solo", "SOLO", true,  3,  4, 22, 38,  11200, 12800, 72, 1730, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING", false),
+            (202, "BOTTOM", "Ranked Solo", "SOLO", false, 7,  7, 8,  231, 12900, 27400, 21, 1760, 4, 7,  8021, 8200, new[]{ 6676, 3006, 3094, 3036, 1038, 0,    3363 }, "", false),
+            (234, "JUNGLE", "Ranked Flex", "FLEX", true,  10, 2, 11, 198, 14600, 28700, 38, 1640, 4, 11, 8010, 8300, new[]{ 3153, 3047, 3078, 3053, 3156, 0,    3364 }, "DOUBLE KILL", false),
+            (58,  "TOP", "Ranked Solo", "SOLO", true,  8,  3, 6,  222, 13800, 26400, 25, 1660, 4, 12, 8010, 8400, new[]{ 3078, 3047, 3053, 3071, 3065, 0,    3340 }, "", false),
+            (99,  "UTILITY", "Normal SR", "OTHER", false, 4,  5, 12, 54,  10400, 19600, 58, 1710, 4, 14, 8229, 8300, new[]{ 3869, 3020, 6655, 4645, 0,    0,    3364 }, "", false),
+            (24,  "TOP", "Ranked Solo", "SOLO", true,  11, 2, 5,  239, 15300, 31200, 28, 1675, 4, 6,  8008, 8400, new[]{ 3078, 3047, 3153, 3053, 3071, 0,    3340 }, "TRIPLE KILL", false),
+            (92,  "TOP", "Ranked Solo", "SOLO", true,  15, 3, 6,  254, 16700, 39400, 30, 1790, 4, 6,  8010, 8400, new[]{ 6692, 3158, 6691, 6694, 3814, 0,    3340 }, "QUADRA KILL", false),
+            (245, "JUNGLE", "Ranked Solo", "SOLO", false, 6,  6, 5,  182, 11700, 21800, 35, 1610, 4, 11, 8112, 8200, new[]{ 3152, 3020, 3100, 3157, 0,    0,    3364 }, "", false),
+            (89,  "UTILITY", "Ranked Solo", "SOLO", true,  1,  2, 19, 41,  10800, 11900, 75, 1740, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING", false)
         };
 
         _allMatches.Clear();
@@ -713,11 +727,12 @@ public partial class DashboardView : UserControl
                 ChampionId = s.ChampId,
                 ChampionName = cName,
                 ChampionIconUrl = cIcon,
-                ChampLevel = s.Win ? 18 : 16,
+                ChampLevel = s.Remake ? 3 : (s.Win ? 18 : 16),
                 Role = s.Role,
                 QueueType = s.Queue,
                 QueueCategory = s.QCat,
                 Win = s.Win,
+                IsRemake = s.Remake,
                 Kills = s.K,
                 Deaths = s.D,
                 Assists = s.A,
@@ -796,9 +811,11 @@ public partial class DashboardView : UserControl
 
         var last20 = _allMatches.Take(20).ToList();
         int total = last20.Count;
-        int wins = last20.Count(g => g.Win);
-        int losses = total - wins;
-        double wrPct = (wins * 100.0) / total;
+        int remakes = last20.Count(g => g.IsRemake);
+        int validGames = total - remakes;
+        int wins = last20.Count(g => g.Win && !g.IsRemake);
+        int losses = validGames - wins;
+        double wrPct = validGames > 0 ? (wins * 100.0) / validGames : 0.0;
 
         double avgK = last20.Average(g => g.Kills);
         double avgD = last20.Average(g => g.Deaths);
@@ -813,20 +830,24 @@ public partial class DashboardView : UserControl
         Last20KdaRatioText.Text = $"{overallKda:F2} : 1 KDA";
         Last20KdaRatioText.Foreground = BrushFromHex(GetKdaColorHex(overallKda));
         Last20AvgKdaText.Text = $"{avgK:F1} / {avgD:F1} / {avgA:F1}";
-        Last20WlText.Text = $"{wins}W - {losses}L ({wrPct:F0}%)";
+        Last20WlText.Text = remakes > 0 ? $"{wins}W - {losses}L ({remakes} Remake) ({wrPct:F0}%)" : $"{wins}W - {losses}L ({wrPct:F0}%)";
 
         AvgCsText.Text = $"{avgCsM:F1} CS/m";
         AvgDmgText.Text = $"{avgDmg / 1000.0:F1}k DMG";
         AvgGoldText.Text = $"{avgGold / 1000.0:F1}k Gold";
         AvgVisionText.Text = $"{avgVis:F1} Vis";
 
-        // Calculate current streak from newest game
-        bool firstWin = last20[0].Win;
+        // Calculate current streak from newest non-remake game
+        var nonRemakes = last20.Where(g => !g.IsRemake).ToList();
+        bool firstWin = nonRemakes.Count > 0 && nonRemakes[0].Win;
         int streak = 0;
-        foreach (var g in last20)
+        if (nonRemakes.Count > 0)
         {
-            if (g.Win == firstWin) streak++;
-            else break;
+            foreach (var g in nonRemakes)
+            {
+                if (g.Win == firstWin) streak++;
+                else break;
+            }
         }
 
         if (firstWin && streak >= 2)
@@ -940,15 +961,18 @@ public partial class DashboardView : UserControl
         var rawMatches = _allMatches.Take(_selectedGraphGameCount).ToList();
         if (rawMatches.Count == 0) return;
 
-        int totalWins = rawMatches.Count(m => m.Win);
-        int totalLosses = rawMatches.Count - totalWins;
-        double wrPct = (totalWins * 100.0) / rawMatches.Count;
+        int remakesCount = rawMatches.Count(m => m.IsRemake);
+        int validGamesCount = rawMatches.Count - remakesCount;
+        int totalWins = rawMatches.Count(m => m.Win && !m.IsRemake);
+        int totalLosses = validGamesCount - totalWins;
+        double wrPct = validGamesCount > 0 ? (totalWins * 100.0) / validGamesCount : 0.0;
 
-        // Peak win streak calculation in selected range
+        // Peak win streak calculation in selected range (ignoring remakes)
         int peakWinStreak = 0;
         int curWinStreak = 0;
         foreach (var m in rawMatches.AsEnumerable().Reverse())
         {
+            if (m.IsRemake) continue;
             if (m.Win)
             {
                 curWinStreak++;
@@ -957,13 +981,17 @@ public partial class DashboardView : UserControl
             else curWinStreak = 0;
         }
 
-        // Current streak from newest game
-        bool firstWin = rawMatches[0].Win;
+        // Current streak from newest non-remake game
+        var nonRemakes = rawMatches.Where(m => !m.IsRemake).ToList();
+        bool firstWin = nonRemakes.Count > 0 && nonRemakes[0].Win;
         int activeStreak = 0;
-        foreach (var m in rawMatches)
+        if (nonRemakes.Count > 0)
         {
-            if (m.Win == firstWin) activeStreak++;
-            else break;
+            foreach (var m in nonRemakes)
+            {
+                if (m.Win == firstWin) activeStreak++;
+                else break;
+            }
         }
 
         WinBarCol.Width = new GridLength(Math.Max(1, totalWins), GridUnitType.Star);
@@ -996,7 +1024,11 @@ public partial class DashboardView : UserControl
             for (int i = n - 1; i >= 1; i--)
             {
                 var g = matches[i];
-                if (g.Win)
+                if (g.IsRemake)
+                {
+                    // Remake: 0 LP change (net = 0)
+                }
+                else if (g.Win)
                     curLp -= 22;
                 else
                     curLp += 20;
@@ -1121,7 +1153,8 @@ public partial class DashboardView : UserControl
             var (curT, curD, curLpVal) = RankLpHelper.FromTotalLp(currentTotalLp);
             string curRankStr = RankLpHelper.FormatRankName(curT, curD);
 
-            GraphSubheaderText.Text = $"Rank: {curRankStr} {curLpVal} LP • {totalWins}W {totalLosses}L ({wrPct:F0}% WR)";
+            string remakeStr = remakesCount > 0 ? $" ({remakesCount} Remake)" : "";
+            GraphSubheaderText.Text = $"Rank: {curRankStr} {curLpVal} LP • {totalWins}W {totalLosses}L{remakeStr} ({wrPct:F0}% WR)";
             GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
 
             primaryColor = Color.FromRgb(44, 229, 181); // Emerald Cyan
@@ -1176,7 +1209,8 @@ public partial class DashboardView : UserControl
                 pts.Add(new Point(x, y));
             }
 
-            GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L ({wrPct:F0}% WR) • Avg KDA: {matches.Average(m => m.KdaRatio):F2}";
+            string remakeStr = remakesCount > 0 ? $" ({remakesCount} Remake)" : "";
+            GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L{remakeStr} ({wrPct:F0}% WR) • Avg KDA: {matches.Average(m => m.KdaRatio):F2}";
             GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
 
             primaryColor = Color.FromRgb(83, 131, 232); // Electric Blue
@@ -1231,7 +1265,8 @@ public partial class DashboardView : UserControl
                 pts.Add(new Point(x, y));
             }
 
-            GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L ({wrPct:F0}% WR) • Avg CS: {matches.Average(m => m.CsPerMin):F1}/m";
+            string remakeStr = remakesCount > 0 ? $" ({remakesCount} Remake)" : "";
+            GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L{remakeStr} ({wrPct:F0}% WR) • Avg CS: {matches.Average(m => m.CsPerMin):F1}/m";
             GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
 
             primaryColor = Color.FromRgb(240, 178, 50); // Gold
@@ -1315,8 +1350,8 @@ public partial class DashboardView : UserControl
             var game = matches[i];
             double val = values[i];
 
-            string nodeBorderCol = game.Win ? "#2CE5B5" : "#E84057";
-            string nodeBgCol = game.Win ? "#102824" : "#2E151C";
+            string nodeBorderCol = game.IsRemake ? "#7E849B" : (game.Win ? "#2CE5B5" : "#E84057");
+            string nodeBgCol = game.IsRemake ? "#1E212E" : (game.Win ? "#102824" : "#2E151C");
 
             var node = new Border
             {
@@ -1369,14 +1404,18 @@ public partial class DashboardView : UserControl
 
     private void ShowHoverCard(MatchHistoryEntry game, double val, Point pt)
     {
+        string resultBorderHex = game.IsRemake ? "#7E849B" : (game.Win ? "#2CE5B5" : "#E84057");
+        string resultBadgeBg = game.IsRemake ? "#1E212E" : (game.Win ? "#152F2C" : "#2E151C");
+        string resultBadgeText = game.IsRemake ? "REMAKE" : (game.Win ? "VICTORY" : "DEFEAT");
+
         SetImageSourceSafe(HoverChampImg, game.ChampionIconUrl);
-        HoverChampBorder.BorderBrush = BrushFromHex(game.Win ? "#2CE5B5" : "#E84057");
+        HoverChampBorder.BorderBrush = BrushFromHex(resultBorderHex);
         HoverChampNameText.Text = game.ChampionName;
         HoverRoleText.Text = game.Role;
 
-        HoverResultBadge.Background = BrushFromHex(game.Win ? "#152F2C" : "#2E151C");
-        HoverResultText.Text = game.Win ? "VICTORY" : "DEFEAT";
-        HoverResultText.Foreground = BrushFromHex(game.Win ? "#2CE5B5" : "#E84057");
+        HoverResultBadge.Background = BrushFromHex(resultBadgeBg);
+        HoverResultText.Text = resultBadgeText;
+        HoverResultText.Foreground = BrushFromHex(resultBorderHex);
 
         HoverKdaText.Text = $"{game.Kills} / {game.Deaths} / {game.Assists}";
 
@@ -1434,8 +1473,10 @@ public partial class DashboardView : UserControl
             {
                 var first = grp.First();
                 int count = grp.Count();
-                int wins = grp.Count(x => x.Win);
-                double wr = (wins * 100.0) / count;
+                int remakes = grp.Count(x => x.IsRemake);
+                int validGames = count - remakes;
+                int wins = grp.Count(x => x.Win && !x.IsRemake);
+                double wr = validGames > 0 ? (wins * 100.0) / validGames : 0.0;
                 double k = grp.Average(x => x.Kills);
                 double d = grp.Average(x => x.Deaths);
                 double a = grp.Average(x => x.Assists);
@@ -1448,7 +1489,7 @@ public partial class DashboardView : UserControl
                     first.Role,
                     Games = count,
                     Wins = wins,
-                    Losses = count - wins,
+                    Losses = validGames - wins,
                     WinRate = wr,
                     AvgK = k,
                     AvgD = d,
@@ -1570,8 +1611,10 @@ public partial class DashboardView : UserControl
         {
             var matches = activeMatches.Where(g => g.Role.Equals(r.Key, StringComparison.OrdinalIgnoreCase)).ToList();
             int count = matches.Count;
-            int wins = matches.Count(g => g.Win);
-            double wr = count > 0 ? (wins * 100.0) / count : 0.0;
+            int remakes = matches.Count(g => g.IsRemake);
+            int validGames = count - remakes;
+            int wins = matches.Count(g => g.Win && !g.IsRemake);
+            double wr = validGames > 0 ? (wins * 100.0) / validGames : 0.0;
 
             var rowGrid = new Grid { Margin = new Thickness(0, 0, 0, 7) };
             rowGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
@@ -1707,10 +1750,10 @@ public partial class DashboardView : UserControl
 
     private UIElement CreateMatchHistoryCard(MatchHistoryEntry game, int maxDamage)
     {
-        string accentHex = game.Win ? "#2CE5B5" : "#E84057";
-        string cardBgHex = game.Win ? "#141D24" : "#21161E";
-        string cardHoverHex = game.Win ? "#18252E" : "#291B25";
-        string borderHex = game.Win ? "#1F363B" : "#3A222C";
+        string accentHex = game.IsRemake ? "#7E849B" : (game.Win ? "#2CE5B5" : "#E84057");
+        string cardBgHex = game.IsRemake ? "#161822" : (game.Win ? "#141D24" : "#21161E");
+        string cardHoverHex = game.IsRemake ? "#1D202C" : (game.Win ? "#18252E" : "#291B25");
+        string borderHex = game.IsRemake ? "#282C3D" : (game.Win ? "#1F363B" : "#3A222C");
 
         var cardBorder = new Border
         {
@@ -1743,7 +1786,7 @@ public partial class DashboardView : UserControl
         var col1 = new StackPanel { VerticalAlignment = VerticalAlignment.Center, Margin = new Thickness(10, 8, 6, 8) };
         col1.Children.Add(new TextBlock
         {
-            Text = game.Win ? "VICTORY" : "DEFEAT",
+            Text = game.IsRemake ? "REMAKE" : (game.Win ? "VICTORY" : "DEFEAT"),
             Foreground = BrushFromHex(accentHex),
             FontSize = 12,
             FontWeight = FontWeights.Black
