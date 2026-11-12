@@ -56,6 +56,45 @@
             </Setter>
         </Style>
 
+        <!-- Graph Pill Button Style -->
+        <Style x:Key="GraphPillBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Padding" Value="7,1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="PillBd" Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Metric Tab Button Style -->
+        <Style x:Key="MetricTabBtnStyle" TargetType="Button">
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="FontSize" Value="10"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,0,4,0"/>
+            <Setter Property="Padding" Value="7,2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="TabBd" Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!-- Modern Glowing Pill Switch Style -->
         <Style x:Key="HomeSwitchStyle" TargetType="ToggleButton">
             <Setter Property="Width" Value="44"/>
@@ -422,23 +461,45 @@
         <!-- ==================== ROW 2: MAIN DASHBOARD BODY ==================== -->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="335"/>
+                <ColumnDefinition Width="360"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- LEFT SIDEBAR: 20-Game Form Timeline, Top Champions & Role Breakdown -->
+            <!-- LEFT SIDEBAR: Performance Graph, Top Champions & Role Breakdown -->
             <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" Margin="0,0,12,0">
                 <StackPanel>
-                    <!-- 1. 20-Game Visual Form Strip -->
+                    <!-- 1. Match Form Performance Graph (Replaces 20-Game Form) -->
                     <Border Background="#14161F" BorderBrush="#232736" BorderThickness="1" CornerRadius="10" Padding="14,12" Margin="0,0,0,12">
                         <StackPanel>
+                            <!-- Header: Title, Metric Badge, and Game Range (20G / 30G / 50G) -->
                             <Grid Margin="0,0,0,8">
-                                <TextBlock Text="RECENT 20-GAME FORM" Foreground="#8E92A4" FontSize="11" FontWeight="Bold"/>
-                                <TextBlock x:Name="FormStripSummaryText" Text="Newest → Oldest" Foreground="#61667A" FontSize="10" HorizontalAlignment="Right"/>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="PERFORMANCE GRAPH" Foreground="#8E92A4" FontSize="11" FontWeight="Bold"/>
+                                        <Border x:Name="GraphMetricBadge" Background="#162D29" BorderBrush="#2CE5B5" BorderThickness="1" CornerRadius="4" Padding="5,1" Margin="6,0,0,0">
+                                            <TextBlock x:Name="GraphMetricBadgeText" Text="W/L TREND" Foreground="#2CE5B5" FontSize="9" FontWeight="Black"/>
+                                        </Border>
+                                    </StackPanel>
+                                    <TextBlock x:Name="GraphSubheaderText" Text="13W 7L (65% WR) • +6 Net Momentum" Foreground="#656B82" FontSize="10" Margin="0,2,0,0"/>
+                                </StackPanel>
+
+                                <!-- Game count toggle pills: 20G / 30G / 50G -->
+                                <Border Grid.Column="1" Background="#1A1D29" BorderBrush="#282D3E" BorderThickness="1" CornerRadius="6" Padding="2" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="GraphBtn20" Content="20G" Tag="20" Click="GraphGameCount_Click" Style="{StaticResource GraphPillBtnStyle}" Background="#25293A" Foreground="White"/>
+                                        <Button x:Name="GraphBtn30" Content="30G" Tag="30" Click="GraphGameCount_Click" Style="{StaticResource GraphPillBtnStyle}" Background="Transparent" Foreground="#8E92A4"/>
+                                        <Button x:Name="GraphBtn50" Content="50G" Tag="50" Click="GraphGameCount_Click" Style="{StaticResource GraphPillBtnStyle}" Background="Transparent" Foreground="#8E92A4"/>
+                                    </StackPanel>
+                                </Border>
                             </Grid>
 
                             <!-- Dual Win/Loss Ratio Bar -->
-                            <Grid Height="7" Margin="0,0,0,10" ClipToBounds="True">
+                            <Grid Height="6" Margin="0,0,0,8" ClipToBounds="True">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition x:Name="WinBarCol" Width="65*"/>
                                     <ColumnDefinition x:Name="LossBarCol" Width="35*"/>
@@ -447,7 +508,76 @@
                                 <Border Grid.Column="1" Background="#E84057" CornerRadius="0,3,3,0" Margin="1,0,0,0"/>
                             </Grid>
 
-                            <WrapPanel x:Name="RecentFormWrapPanel" HorizontalAlignment="Center"/>
+                            <!-- Metric Switcher Pills: Trend (W/L), KDA, CS/m -->
+                            <Grid Margin="0,0,0,6">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                    <Button x:Name="MetricBtnWl" Content="📈 W/L Trend" Tag="WL" Click="GraphMetric_Click" Style="{StaticResource MetricTabBtnStyle}" Background="#1F332E" Foreground="#2CE5B5"/>
+                                    <Button x:Name="MetricBtnKda" Content="⚔️ KDA Ratio" Tag="KDA" Click="GraphMetric_Click" Style="{StaticResource MetricTabBtnStyle}" Background="Transparent" Foreground="#8E92A4"/>
+                                    <Button x:Name="MetricBtnCs" Content="🌾 CS/min" Tag="CS" Click="GraphMetric_Click" Style="{StaticResource MetricTabBtnStyle}" Background="Transparent" Foreground="#8E92A4"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Oldest → Newest" Foreground="#555B6E" FontSize="9.5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                            </Grid>
+
+                            <!-- The Graph Canvas Area -->
+                            <Grid x:Name="GraphContainer" Height="150" Background="#10121A" ClipToBounds="True" SizeChanged="GraphContainer_SizeChanged">
+                                <!-- Guide lines & Y-axis labels -->
+                                <Canvas x:Name="GraphGuideCanvas" IsHitTestVisible="False"/>
+
+                                <!-- Smooth Area & Line Curves -->
+                                <Canvas x:Name="GraphDrawCanvas" IsHitTestVisible="False"/>
+
+                                <!-- Interactive Data Nodes -->
+                                <Canvas x:Name="GraphNodeCanvas" Background="Transparent" MouseLeave="GraphCanvas_MouseLeave"/>
+
+                                <!-- Floating Hover Tooltip Card -->
+                                <Border x:Name="GraphHoverCard" Visibility="Collapsed" HorizontalAlignment="Left" VerticalAlignment="Top"
+                                        Background="#191C28" BorderBrush="#2CE5B5" BorderThickness="1.5" CornerRadius="8" Padding="10,8"
+                                        IsHitTestVisible="False" Panel.ZIndex="100">
+                                    <Border.Effect>
+                                        <DropShadowEffect BlurRadius="12" ShadowDepth="2" Opacity="0.5" Color="#000000"/>
+                                    </Border.Effect>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border x:Name="HoverChampBorder" Width="36" Height="36" CornerRadius="8" BorderBrush="#2CE5B5" BorderThickness="1.5" ClipToBounds="True" Margin="0,0,9,0">
+                                            <Image x:Name="HoverChampImg" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                        </Border>
+
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock x:Name="HoverChampNameText" Text="Aatrox" Foreground="White" FontSize="11.5" FontWeight="Black"/>
+                                                <TextBlock x:Name="HoverRoleText" Text="TOP" Foreground="#7E849B" FontSize="10" FontWeight="Bold" Margin="6,1,0,0"/>
+                                                <Border x:Name="HoverResultBadge" Background="#152F2C" CornerRadius="3" Padding="5,1" Margin="8,0,0,0">
+                                                    <TextBlock x:Name="HoverResultText" Text="VICTORY" Foreground="#2CE5B5" FontSize="9" FontWeight="Black"/>
+                                                </Border>
+                                            </StackPanel>
+
+                                            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                                <TextBlock x:Name="HoverKdaText" Text="12 / 2 / 9" Foreground="#D8DEE9" FontSize="10.5" FontWeight="Bold"/>
+                                                <TextBlock x:Name="HoverMetricValueText" Text="(10.5 KDA)" Foreground="#2CE5B5" FontSize="10.5" FontWeight="Bold" Margin="6,0,0,0"/>
+                                            </StackPanel>
+
+                                            <TextBlock x:Name="HoverMetaText" Text="Ranked Solo • 29m • 2h ago" Foreground="#7E849B" FontSize="9.5" Margin="0,1,0,0"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <!-- Bottom Micro Legend / Win-Loss Mini Ticks -->
+                            <Grid Margin="0,7,0,0">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Ellipse Width="7" Height="7" Fill="#2CE5B5" Margin="0,0,4,0"/>
+                                    <TextBlock Text="Victory" Foreground="#2CE5B5" FontSize="10" FontWeight="SemiBold" Margin="0,0,10,0"/>
+                                    <Ellipse Width="7" Height="7" Fill="#E84057" Margin="0,0,4,0"/>
+                                    <TextBlock Text="Defeat" Foreground="#E84057" FontSize="10" FontWeight="SemiBold"/>
+                                </StackPanel>
+
+                                <TextBlock x:Name="GraphQuickStatsText" Text="Peak Streak: 4W • Avg KDA: 3.92" Foreground="#8E92A4" FontSize="10" FontWeight="SemiBold" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            </Grid>
                         </StackPanel>
                     </Border>
 

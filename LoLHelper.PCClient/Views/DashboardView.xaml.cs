@@ -108,7 +108,9 @@ public partial class DashboardView : UserControl
         Losses = 24
     };
 
-    private List<MatchHistoryEntry> _last20Games = new();
+    private List<MatchHistoryEntry> _allMatches = new();
+    private int _selectedGraphGameCount = 20;
+    private string _selectedGraphMetric = "WL";
 
     private static readonly Dictionary<int, string> SummonerSpellIcons = new()
     {
@@ -274,7 +276,7 @@ public partial class DashboardView : UserControl
 
         if (!LcuApiClient.Instance.IsConnected)
         {
-            if (_last20Games.Count == 0)
+            if (_allMatches.Count == 0)
                 LoadDemoProfileData();
 
             ProfileSourceBadge.Background = BrushFromHex("#352915");
@@ -314,19 +316,19 @@ public partial class DashboardView : UserControl
                 ParseRankedStats(rankedJson);
             }
 
-            // 3. Last 20 Games Match History
-            string historyJson = await LcuApiClient.Instance.GetMatchHistoryAsync(_puuid, 0, 19);
+            // 3. Last Matches History (Fetch up to 50 matches for performance graph & analytics)
+            string historyJson = await LcuApiClient.Instance.GetMatchHistoryAsync(_puuid, 0, 49);
             var parsedGames = ParseLcuMatchHistory(historyJson);
             if (parsedGames.Count > 0)
             {
-                _last20Games = parsedGames;
+                _allMatches = parsedGames;
                 ProfileSourceBadge.Background = BrushFromHex("#123532");
                 ConnectionStatusText.Text = "● Live LCU Account Synced";
                 ConnectionStatusText.Foreground = BrushFromHex("#2CE5B5");
             }
             else
             {
-                if (_last20Games.Count == 0)
+                if (_allMatches.Count == 0)
                     LoadDemoProfileData();
 
                 ProfileSourceBadge.Background = BrushFromHex("#123532");
@@ -336,7 +338,7 @@ public partial class DashboardView : UserControl
         }
         catch
         {
-            if (_last20Games.Count == 0)
+            if (_allMatches.Count == 0)
                 LoadDemoProfileData();
         }
 
@@ -412,7 +414,7 @@ public partial class DashboardView : UserControl
 
             foreach (var g in gamesArr.EnumerateArray())
             {
-                if (list.Count >= 20) break;
+                if (list.Count >= 50) break;
 
                 long gameId = g.TryGetProperty("gameId", out var gid) ? gid.GetInt64() : 0;
                 int duration = g.TryGetProperty("gameDuration", out var dur) ? dur.GetInt32() : 1650;
@@ -595,10 +597,26 @@ public partial class DashboardView : UserControl
             (238, "MIDDLE", "Normal SR", "OTHER", true,  17, 4, 6,  242, 16800, 41200, 29, 1810, 4, 14, 8112, 8200, new[]{ 6692, 3158, 6691, 6694, 3814, 3036, 3364 }, "QUADRA KILL"),
             (81,  "BOTTOM", "ARAM", "OTHER", false, 11, 8, 19, 84,  14900, 37500, 0,  1340, 4, 32, 8010, 8300, new[]{ 3078, 3158, 3042, 6694, 3153, 3072, 2052 }, "HIGH DAMAGE"),
             (64,  "JUNGLE", "Ranked Solo", "SOLO", false, 4,  6, 9,  168, 11200, 17400, 39, 1590, 4, 11, 8010, 8300, new[]{ 6630, 3047, 3071, 3156, 0,    0,    3364 }, ""),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  10, 2, 10, 237, 14950, 33600, 32, 1740, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 1028, 3340 }, "MVP CARRY")
+            (266, "TOP", "Ranked Solo", "SOLO", true,  10, 2, 10, 237, 14950, 33600, 32, 1740, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 1028, 3340 }, "MVP CARRY"),
+            (11,  "JUNGLE", "Ranked Solo", "SOLO", true,  14, 2, 8,  205, 16100, 34200, 27, 1650, 4, 11, 8008, 8100, new[]{ 3153, 3006, 3124, 6673, 3026, 0,    3364 }, "MVP CARRY"),
+            (51,  "BOTTOM", "Ranked Solo", "SOLO", false, 6,  5, 7,  242, 13200, 26800, 23, 1780, 4, 7,  8008, 8200, new[]{ 3031, 3006, 3094, 3036, 1038, 0,    3363 }, ""),
+            (84,  "MIDDLE", "Ranked Solo", "SOLO", true,  11, 3, 9,  228, 14900, 35100, 31, 1715, 4, 14, 8010, 8400, new[]{ 3152, 3020, 3157, 4645, 3089, 0,    3364 }, "DOUBLE KILL"),
+            (164, "TOP", "Ranked Flex", "FLEX", true,  9,  1, 7,  235, 15100, 29800, 33, 1690, 4, 12, 8010, 8300, new[]{ 3078, 3111, 3053, 3071, 3742, 0,    3340 }, "UNSTOPPABLE"),
+            (875, "TOP", "Ranked Solo", "SOLO", false, 5,  6, 4,  210, 11900, 22100, 20, 1620, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3748, 1054, 0,    3340 }, ""),
+            (236, "BOTTOM", "Ranked Solo", "SOLO", true,  13, 4, 10, 252, 16250, 38900, 26, 1820, 4, 7,  8005, 8300, new[]{ 6676, 3006, 3031, 3036, 3072, 0,    3363 }, "TRIPLE KILL"),
+            (517, "MIDDLE", "Ranked Solo", "SOLO", true,  12, 3, 8,  218, 14800, 32900, 29, 1680, 4, 14, 8010, 8400, new[]{ 3152, 3158, 4645, 3089, 3157, 0,    3364 }, "MVP CARRY"),
+            (111, "UTILITY", "Ranked Solo", "SOLO", true,  3,  4, 22, 38,  11200, 12800, 72, 1730, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING"),
+            (202, "BOTTOM", "Ranked Solo", "SOLO", false, 7,  7, 8,  231, 12900, 27400, 21, 1760, 4, 7,  8021, 8200, new[]{ 6676, 3006, 3094, 3036, 1038, 0,    3363 }, ""),
+            (234, "JUNGLE", "Ranked Flex", "FLEX", true,  10, 2, 11, 198, 14600, 28700, 38, 1640, 4, 11, 8010, 8300, new[]{ 3153, 3047, 3078, 3053, 3156, 0,    3364 }, "DOUBLE KILL"),
+            (58,  "TOP", "Ranked Solo", "SOLO", true,  8,  3, 6,  222, 13800, 26400, 25, 1660, 4, 12, 8010, 8400, new[]{ 3078, 3047, 3053, 3071, 3065, 0,    3340 }, ""),
+            (99,  "UTILITY", "Normal SR", "OTHER", false, 4,  5, 12, 54,  10400, 19600, 58, 1710, 4, 14, 8229, 8300, new[]{ 3869, 3020, 6655, 4645, 0,    0,    3364 }, ""),
+            (24,  "TOP", "Ranked Solo", "SOLO", true,  11, 2, 5,  239, 15300, 31200, 28, 1675, 4, 6,  8008, 8400, new[]{ 3078, 3047, 3153, 3053, 3071, 0,    3340 }, "TRIPLE KILL"),
+            (92,  "TOP", "Ranked Solo", "SOLO", true,  15, 3, 6,  254, 16700, 39400, 30, 1790, 4, 6,  8010, 8400, new[]{ 6692, 3158, 6691, 6694, 3814, 0,    3340 }, "QUADRA KILL"),
+            (245, "JUNGLE", "Ranked Solo", "SOLO", false, 6,  6, 5,  182, 11700, 21800, 35, 1610, 4, 11, 8112, 8200, new[]{ 3152, 3020, 3100, 3157, 0,    0,    3364 }, ""),
+            (89,  "UTILITY", "Ranked Solo", "SOLO", true,  1,  2, 19, 41,  10800, 11900, 75, 1740, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING")
         };
 
-        _last20Games.Clear();
+        _allMatches.Clear();
         int idx = 0;
         foreach (var s in seeds)
         {
@@ -606,7 +624,7 @@ public partial class DashboardView : UserControl
             string cName = cInfo?.Name ?? $"Champion {s.ChampId}";
             string cIcon = cInfo?.IconUrl ?? "https://ddragon.leagueoflegends.com/cdn/14.1.1/img/champion/Aatrox.png";
 
-            _last20Games.Add(new MatchHistoryEntry
+            _allMatches.Add(new MatchHistoryEntry
             {
                 GameId = 7000000000L + idx,
                 ChampionId = s.ChampId,
@@ -691,22 +709,23 @@ public partial class DashboardView : UserControl
 
     private void RenderLast20SummaryAndForm()
     {
-        if (_last20Games.Count == 0) return;
+        if (_allMatches.Count == 0) return;
 
-        int total = _last20Games.Count;
-        int wins = _last20Games.Count(g => g.Win);
+        var last20 = _allMatches.Take(20).ToList();
+        int total = last20.Count;
+        int wins = last20.Count(g => g.Win);
         int losses = total - wins;
         double wrPct = (wins * 100.0) / total;
 
-        double avgK = _last20Games.Average(g => g.Kills);
-        double avgD = _last20Games.Average(g => g.Deaths);
-        double avgA = _last20Games.Average(g => g.Assists);
+        double avgK = last20.Average(g => g.Kills);
+        double avgD = last20.Average(g => g.Deaths);
+        double avgA = last20.Average(g => g.Assists);
         double overallKda = (avgK + avgA) / Math.Max(0.5, avgD);
 
-        double avgCsM = _last20Games.Average(g => g.CsPerMin);
-        double avgDmg = _last20Games.Average(g => g.DamageToChampions);
-        double avgGold = _last20Games.Average(g => g.GoldEarned);
-        double avgVis = _last20Games.Average(g => g.VisionScore);
+        double avgCsM = last20.Average(g => g.CsPerMin);
+        double avgDmg = last20.Average(g => g.DamageToChampions);
+        double avgGold = last20.Average(g => g.GoldEarned);
+        double avgVis = last20.Average(g => g.VisionScore);
 
         Last20KdaRatioText.Text = $"{overallKda:F2} : 1 KDA";
         Last20KdaRatioText.Foreground = BrushFromHex(GetKdaColorHex(overallKda));
@@ -719,9 +738,9 @@ public partial class DashboardView : UserControl
         AvgVisionText.Text = $"{avgVis:F1} Vis";
 
         // Calculate current streak from newest game
-        bool firstWin = _last20Games[0].Win;
+        bool firstWin = last20[0].Win;
         int streak = 0;
-        foreach (var g in _last20Games)
+        foreach (var g in last20)
         {
             if (g.Win == firstWin) streak++;
             else break;
@@ -749,50 +768,424 @@ public partial class DashboardView : UserControl
             StreakBadgeText.Foreground = BrushFromHex("#2CE5B5");
         }
 
-        // Update Win/Loss split bar
-        WinBarCol.Width = new GridLength(Math.Max(1, wins), GridUnitType.Star);
-        LossBarCol.Width = new GridLength(Math.Max(1, losses), GridUnitType.Star);
+        // Render the interactive multi-game performance graph
+        RenderPerformanceGraph();
+    }
 
-        // Populate 20-Game Mini Portrait Form Strip
-        RecentFormWrapPanel.Children.Clear();
-        foreach (var game in _last20Games)
+    private void GraphContainer_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        RenderPerformanceGraph();
+    }
+
+    private void GraphGameCount_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not Button btn || btn.Tag is not string tagStr) return;
+        if (!int.TryParse(tagStr, out int count)) return;
+
+        _selectedGraphGameCount = count;
+
+        GraphBtn20.Background = _selectedGraphGameCount == 20 ? BrushFromHex("#25293A") : Brushes.Transparent;
+        GraphBtn20.Foreground = _selectedGraphGameCount == 20 ? Brushes.White : BrushFromHex("#8E92A4");
+
+        GraphBtn30.Background = _selectedGraphGameCount == 30 ? BrushFromHex("#25293A") : Brushes.Transparent;
+        GraphBtn30.Foreground = _selectedGraphGameCount == 30 ? Brushes.White : BrushFromHex("#8E92A4");
+
+        GraphBtn50.Background = _selectedGraphGameCount == 50 ? BrushFromHex("#25293A") : Brushes.Transparent;
+        GraphBtn50.Foreground = _selectedGraphGameCount == 50 ? Brushes.White : BrushFromHex("#8E92A4");
+
+        RenderPerformanceGraph();
+        RenderTopChampionsSidebar();
+        RenderRoleBreakdownSidebar();
+    }
+
+    private void GraphMetric_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is not Button btn || btn.Tag is not string tag) return;
+
+        _selectedGraphMetric = tag;
+
+        MetricBtnWl.Background = tag == "WL" ? BrushFromHex("#1F332E") : Brushes.Transparent;
+        MetricBtnWl.Foreground = tag == "WL" ? BrushFromHex("#2CE5B5") : BrushFromHex("#8E92A4");
+
+        MetricBtnKda.Background = tag == "KDA" ? BrushFromHex("#19243C") : Brushes.Transparent;
+        MetricBtnKda.Foreground = tag == "KDA" ? BrushFromHex("#5383E8") : BrushFromHex("#8E92A4");
+
+        MetricBtnCs.Background = tag == "CS" ? BrushFromHex("#332815") : Brushes.Transparent;
+        MetricBtnCs.Foreground = tag == "CS" ? BrushFromHex("#F0B232") : BrushFromHex("#8E92A4");
+
+        GraphMetricBadgeText.Text = tag switch
         {
-            string borderCol = game.Win ? "#2CE5B5" : "#E84057";
-            string bgCol = game.Win ? "#132A27" : "#2C161D";
+            "KDA" => "KDA RATIO",
+            "CS" => "CS / MIN",
+            _ => "W/L TREND"
+        };
+        GraphMetricBadge.BorderBrush = tag switch
+        {
+            "KDA" => BrushFromHex("#5383E8"),
+            "CS" => BrushFromHex("#F0B232"),
+            _ => BrushFromHex("#2CE5B5")
+        };
+        GraphMetricBadge.Background = tag switch
+        {
+            "KDA" => BrushFromHex("#162035"),
+            "CS" => BrushFromHex("#2C2214"),
+            _ => BrushFromHex("#162D29")
+        };
+        GraphMetricBadgeText.Foreground = GraphMetricBadge.BorderBrush;
 
-            var tile = new Border
+        RenderPerformanceGraph();
+    }
+
+    private void GraphCanvas_MouseLeave(object sender, MouseEventArgs e)
+    {
+        GraphHoverCard.Visibility = Visibility.Collapsed;
+    }
+
+    private void RenderPerformanceGraph()
+    {
+        if (GraphGuideCanvas == null || GraphDrawCanvas == null || GraphNodeCanvas == null) return;
+        GraphGuideCanvas.Children.Clear();
+        GraphDrawCanvas.Children.Clear();
+        GraphNodeCanvas.Children.Clear();
+        GraphHoverCard.Visibility = Visibility.Collapsed;
+
+        if (_allMatches.Count == 0) return;
+
+        double width = GraphContainer.ActualWidth > 0 ? GraphContainer.ActualWidth : 332;
+        double height = GraphContainer.ActualHeight > 0 ? GraphContainer.ActualHeight : 150;
+
+        var rawMatches = _allMatches.Take(_selectedGraphGameCount).ToList();
+        if (rawMatches.Count == 0) return;
+
+        int totalWins = rawMatches.Count(m => m.Win);
+        int totalLosses = rawMatches.Count - totalWins;
+        double wrPct = (totalWins * 100.0) / rawMatches.Count;
+
+        // Peak win streak calculation in selected range
+        int peakWinStreak = 0;
+        int curWinStreak = 0;
+        foreach (var m in rawMatches.AsEnumerable().Reverse())
+        {
+            if (m.Win)
             {
-                Width = 27,
-                Height = 27,
-                CornerRadius = new CornerRadius(5),
-                BorderBrush = BrushFromHex(borderCol),
-                BorderThickness = new Thickness(1.5),
-                Background = BrushFromHex(bgCol),
-                Margin = new Thickness(2),
+                curWinStreak++;
+                if (curWinStreak > peakWinStreak) peakWinStreak = curWinStreak;
+            }
+            else curWinStreak = 0;
+        }
+
+        // Current streak from newest game
+        bool firstWin = rawMatches[0].Win;
+        int activeStreak = 0;
+        foreach (var m in rawMatches)
+        {
+            if (m.Win == firstWin) activeStreak++;
+            else break;
+        }
+
+        int netWins = totalWins - totalLosses;
+        string netSign = netWins >= 0 ? $"+{netWins}" : $"{netWins}";
+
+        GraphSubheaderText.Text = $"{totalWins}W {totalLosses}L ({wrPct:F0}% WR) • Net: {netSign} Momentum";
+        GraphQuickStatsText.Text = $"Peak: {peakWinStreak}W • Live: {(firstWin ? $"🔥 {activeStreak}W" : $"❄️ {activeStreak}L")}";
+
+        WinBarCol.Width = new GridLength(Math.Max(1, totalWins), GridUnitType.Star);
+        LossBarCol.Width = new GridLength(Math.Max(1, totalLosses), GridUnitType.Star);
+
+        // Games chronologically from oldest (left) to newest (right)
+        var matches = rawMatches.AsEnumerable().Reverse().ToList();
+        int n = matches.Count;
+
+        var values = new List<double>();
+        double minVal, maxVal, baselineVal;
+        string baselineLabel;
+
+        if (_selectedGraphMetric == "KDA")
+        {
+            foreach (var m in matches)
+                values.Add(m.KdaRatio);
+
+            baselineVal = 3.0;
+            baselineLabel = "3.0 Avg";
+            minVal = 0.0;
+            maxVal = Math.Max(6.0, values.Max() * 1.15);
+        }
+        else if (_selectedGraphMetric == "CS")
+        {
+            foreach (var m in matches)
+                values.Add(m.CsPerMin);
+
+            baselineVal = 7.0;
+            baselineLabel = "7.0 CS/m";
+            minVal = Math.Max(0.0, Math.Min(4.0, values.Min() - 1.0));
+            maxVal = Math.Max(10.0, values.Max() * 1.15);
+        }
+        else // "WL" Momentum (Net wins accumulated)
+        {
+            int running = 0;
+            foreach (var m in matches)
+            {
+                running += m.Win ? 1 : -1;
+                values.Add(running);
+            }
+
+            baselineVal = 0.0;
+            baselineLabel = "0 Baseline";
+            minVal = Math.Min(0.0, values.Min()) - 1.5;
+            maxVal = Math.Max(0.0, values.Max()) + 1.5;
+        }
+
+        if (Math.Abs(maxVal - minVal) < 0.001)
+        {
+            maxVal += 1.0;
+            minVal -= 1.0;
+        }
+
+        double padLeft = 14;
+        double padRight = 14;
+        double padTop = 16;
+        double padBottom = 16;
+        double chartWidth = Math.Max(10, width - padLeft - padRight);
+        double chartHeight = Math.Max(10, height - padTop - padBottom);
+
+        // 1. Draw Baseline Guideline
+        if (baselineVal >= minVal && baselineVal <= maxVal)
+        {
+            double baseNormalized = (baselineVal - minVal) / (maxVal - minVal);
+            double baseY = padTop + chartHeight * (1.0 - baseNormalized);
+
+            var baseLine = new System.Windows.Shapes.Line
+            {
+                X1 = padLeft,
+                Y1 = baseY,
+                X2 = padLeft + chartWidth,
+                Y2 = baseY,
+                Stroke = BrushFromHex("#2B3147"),
+                StrokeThickness = 1,
+                StrokeDashArray = new DoubleCollection { 4, 3 }
+            };
+            GraphGuideCanvas.Children.Add(baseLine);
+
+            var baseLabel = new TextBlock
+            {
+                Text = baselineLabel,
+                Foreground = BrushFromHex("#525970"),
+                FontSize = 8.5,
+                FontWeight = FontWeights.SemiBold
+            };
+            Canvas.SetLeft(baseLabel, padLeft + 2);
+            Canvas.SetTop(baseLabel, Math.Max(2, baseY - 12));
+            GraphGuideCanvas.Children.Add(baseLabel);
+        }
+
+        // Compute (x, y) coordinates for all points
+        var pts = new List<Point>();
+        for (int i = 0; i < n; i++)
+        {
+            double x = padLeft + (n > 1 ? i * (chartWidth / (n - 1)) : chartWidth / 2.0);
+            double normalized = Math.Clamp((values[i] - minVal) / (maxVal - minVal), 0.0, 1.0);
+            double y = padTop + chartHeight * (1.0 - normalized);
+            pts.Add(new Point(x, y));
+        }
+
+        if (pts.Count == 0) return;
+
+        Color primaryColor = _selectedGraphMetric switch
+        {
+            "KDA" => Color.FromRgb(83, 131, 232),   // #5383E8 (Electric Blue)
+            "CS"  => Color.FromRgb(240, 178, 50),   // #F0B232 (Hextech Gold)
+            _     => netWins >= 0 ? Color.FromRgb(44, 229, 181) : Color.FromRgb(232, 64, 87) // #2CE5B5 or #E84057
+        };
+
+        // 2. Draw Smooth Area Gradient
+        double bottomY = padTop + chartHeight;
+        var areaGeom = new PathGeometry();
+        var areaFig = new PathFigure
+        {
+            StartPoint = new Point(pts[0].X, bottomY),
+            IsClosed = true,
+            IsFilled = true
+        };
+        areaFig.Segments.Add(new LineSegment(pts[0], false));
+
+        for (int i = 0; i < pts.Count - 1; i++)
+        {
+            var p0 = pts[i];
+            var p1 = pts[i + 1];
+            double dx = (p1.X - p0.X) * 0.5;
+            var c1 = new Point(p0.X + dx, p0.Y);
+            var c2 = new Point(p0.X + dx, p1.Y);
+            areaFig.Segments.Add(new BezierSegment(c1, c2, p1, true));
+        }
+
+        areaFig.Segments.Add(new LineSegment(new Point(pts[^1].X, bottomY), false));
+        areaGeom.Figures.Add(areaFig);
+
+        var areaBrush = new LinearGradientBrush
+        {
+            StartPoint = new Point(0, 0),
+            EndPoint = new Point(0, 1)
+        };
+        areaBrush.GradientStops.Add(new GradientStop(Color.FromArgb(85, primaryColor.R, primaryColor.G, primaryColor.B), 0.0));
+        areaBrush.GradientStops.Add(new GradientStop(Color.FromArgb(4, primaryColor.R, primaryColor.G, primaryColor.B), 1.0));
+
+        var areaPath = new System.Windows.Shapes.Path
+        {
+            Fill = areaBrush,
+            Data = areaGeom
+        };
+        GraphDrawCanvas.Children.Add(areaPath);
+
+        // 3. Draw Smooth Stroke Line
+        var lineGeom = new PathGeometry();
+        var lineFig = new PathFigure
+        {
+            StartPoint = pts[0],
+            IsClosed = false
+        };
+        for (int i = 0; i < pts.Count - 1; i++)
+        {
+            var p0 = pts[i];
+            var p1 = pts[i + 1];
+            double dx = (p1.X - p0.X) * 0.5;
+            var c1 = new Point(p0.X + dx, p0.Y);
+            var c2 = new Point(p0.X + dx, p1.Y);
+            lineFig.Segments.Add(new BezierSegment(c1, c2, p1, true));
+        }
+        lineGeom.Figures.Add(lineFig);
+
+        var strokeLine = new System.Windows.Shapes.Path
+        {
+            Stroke = new SolidColorBrush(primaryColor),
+            StrokeThickness = 2.2,
+            StrokeStartLineCap = PenLineCap.Round,
+            StrokeEndLineCap = PenLineCap.Round,
+            StrokeLineJoin = PenLineJoin.Round,
+            Data = lineGeom
+        };
+        GraphDrawCanvas.Children.Add(strokeLine);
+
+        // 4. Draw Interactive Data Point Nodes
+        double nodeSize = n <= 20 ? 10.5 : (n <= 30 ? 8.5 : 7.0);
+        for (int i = 0; i < pts.Count; i++)
+        {
+            var pt = pts[i];
+            var game = matches[i];
+            double val = values[i];
+
+            string nodeBorderCol = game.Win ? "#2CE5B5" : "#E84057";
+            string nodeBgCol = game.Win ? "#102824" : "#2E151C";
+
+            var node = new Border
+            {
+                Width = nodeSize,
+                Height = nodeSize,
+                CornerRadius = new CornerRadius(nodeSize / 2),
+                BorderBrush = BrushFromHex(nodeBorderCol),
+                BorderThickness = new Thickness(n <= 30 ? 2 : 1.5),
+                Background = BrushFromHex(nodeBgCol),
                 Cursor = Cursors.Hand,
-                ClipToBounds = true,
-                ToolTip = $"{game.ChampionName} ({(game.Win ? "VICTORY" : "DEFEAT")})\nKDA: {game.Kills}/{game.Deaths}/{game.Assists} ({game.KdaRatio:F2}:1)\nClick to open {game.ChampionName} build"
+                ClipToBounds = true
             };
 
-            var img = new Image { Stretch = Stretch.UniformToFill };
-            RenderOptions.SetBitmapScalingMode(img, BitmapScalingMode.HighQuality);
-            SetImageSourceSafe(img, game.ChampionIconUrl);
-            tile.Child = img;
+            Canvas.SetLeft(node, pt.X - nodeSize / 2);
+            Canvas.SetTop(node, pt.Y - nodeSize / 2);
 
-            int cId = game.ChampionId;
-            string cRole = game.Role;
-            tile.MouseLeftButtonDown += (s, e) => OnOpenChampionBuildRequested?.Invoke(cId, cRole);
+            var capturedPt = pt;
+            var capturedGame = game;
+            double capturedVal = val;
+            double currentSize = nodeSize;
 
-            RecentFormWrapPanel.Children.Add(tile);
+            node.MouseEnter += (s, e) =>
+            {
+                node.Width = currentSize + 4;
+                node.Height = currentSize + 4;
+                Canvas.SetLeft(node, capturedPt.X - (currentSize + 4) / 2);
+                Canvas.SetTop(node, capturedPt.Y - (currentSize + 4) / 2);
+                Panel.SetZIndex(node, 50);
+
+                ShowHoverCard(capturedGame, capturedVal, capturedPt);
+            };
+
+            node.MouseLeave += (s, e) =>
+            {
+                node.Width = currentSize;
+                node.Height = currentSize;
+                Canvas.SetLeft(node, capturedPt.X - currentSize / 2);
+                Canvas.SetTop(node, capturedPt.Y - currentSize / 2);
+                Panel.SetZIndex(node, 0);
+            };
+
+            node.MouseLeftButtonDown += (s, e) =>
+            {
+                OnOpenChampionBuildRequested?.Invoke(capturedGame.ChampionId, capturedGame.Role);
+            };
+
+            GraphNodeCanvas.Children.Add(node);
         }
+    }
+
+    private void ShowHoverCard(MatchHistoryEntry game, double val, Point pt)
+    {
+        SetImageSourceSafe(HoverChampImg, game.ChampionIconUrl);
+        HoverChampBorder.BorderBrush = BrushFromHex(game.Win ? "#2CE5B5" : "#E84057");
+        HoverChampNameText.Text = game.ChampionName;
+        HoverRoleText.Text = game.Role;
+
+        HoverResultBadge.Background = BrushFromHex(game.Win ? "#152F2C" : "#2E151C");
+        HoverResultText.Text = game.Win ? "VICTORY" : "DEFEAT";
+        HoverResultText.Foreground = BrushFromHex(game.Win ? "#2CE5B5" : "#E84057");
+
+        HoverKdaText.Text = $"{game.Kills} / {game.Deaths} / {game.Assists}";
+
+        if (_selectedGraphMetric == "WL")
+        {
+            string sign = val > 0 ? "+" : "";
+            HoverMetricValueText.Text = $"({sign}{val:F0} Net)";
+            HoverMetricValueText.Foreground = BrushFromHex(val >= 0 ? "#2CE5B5" : "#E84057");
+        }
+        else if (_selectedGraphMetric == "KDA")
+        {
+            HoverMetricValueText.Text = $"({game.KdaRatio:F2} : 1 KDA)";
+            HoverMetricValueText.Foreground = BrushFromHex(GetKdaColorHex(game.KdaRatio));
+        }
+        else // CS
+        {
+            HoverMetricValueText.Text = $"({game.CsPerMin:F1} CS/m)";
+            HoverMetricValueText.Foreground = BrushFromHex("#F0B232");
+        }
+
+        HoverMetaText.Text = $"{game.QueueType} • {game.DurationFormatted} • {game.TimeAgoFormatted}";
+
+        double containerWidth = GraphContainer.ActualWidth > 0 ? GraphContainer.ActualWidth : 332;
+        double containerHeight = GraphContainer.ActualHeight > 0 ? GraphContainer.ActualHeight : 150;
+
+        double cardWidth = 215;
+        double cardHeight = 62;
+
+        double x = pt.X + 10;
+        if (x + cardWidth > containerWidth - 4)
+            x = pt.X - cardWidth - 10;
+        if (x < 4) x = 4;
+
+        double y = pt.Y - cardHeight - 8;
+        if (y < 4)
+            y = pt.Y + 12;
+        if (y + cardHeight > containerHeight - 4)
+            y = containerHeight - cardHeight - 4;
+
+        Canvas.SetLeft(GraphHoverCard, x);
+        Canvas.SetTop(GraphHoverCard, y);
+        GraphHoverCard.Visibility = Visibility.Visible;
     }
 
     private void RenderTopChampionsSidebar()
     {
         TopChampionsStack.Children.Clear();
-        if (_last20Games.Count == 0) return;
+        if (_allMatches.Count == 0) return;
 
-        var grouped = _last20Games
+        var activeMatches = _allMatches.Take(_selectedGraphGameCount).ToList();
+        var grouped = activeMatches
             .GroupBy(g => g.ChampionId)
             .Select(grp =>
             {
@@ -916,7 +1309,7 @@ public partial class DashboardView : UserControl
     private void RenderRoleBreakdownSidebar()
     {
         RoleBreakdownStack.Children.Clear();
-        if (_last20Games.Count == 0) return;
+        if (_allMatches.Count == 0) return;
 
         var roles = new (string Key, string Label)[]
         {
@@ -927,11 +1320,12 @@ public partial class DashboardView : UserControl
             ("UTILITY", "Support")
         };
 
-        int maxRoleGames = Math.Max(1, _last20Games.GroupBy(g => g.Role).Select(g => g.Count()).DefaultIfEmpty(1).Max());
+        var activeMatches = _allMatches.Take(_selectedGraphGameCount).ToList();
+        int maxRoleGames = Math.Max(1, activeMatches.GroupBy(g => g.Role).Select(g => g.Count()).DefaultIfEmpty(1).Max());
 
         foreach (var r in roles)
         {
-            var matches = _last20Games.Where(g => g.Role.Equals(r.Key, StringComparison.OrdinalIgnoreCase)).ToList();
+            var matches = activeMatches.Where(g => g.Role.Equals(r.Key, StringComparison.OrdinalIgnoreCase)).ToList();
             int count = matches.Count;
             int wins = matches.Count(g => g.Win);
             double wr = count > 0 ? (wins * 100.0) / count : 0.0;
@@ -1036,9 +1430,9 @@ public partial class DashboardView : UserControl
     private void RenderMatchHistoryFeed()
     {
         MatchHistoryListStack.Children.Clear();
-        FilterAllBtn.Content = $"All Games ({_last20Games.Count})";
+        FilterAllBtn.Content = $"All Games ({_allMatches.Count})";
 
-        var filtered = _last20Games.Where(g =>
+        var filtered = _allMatches.Where(g =>
         {
             if (_currentQueueFilter != "ALL" && !g.QueueCategory.Equals(_currentQueueFilter, StringComparison.OrdinalIgnoreCase))
                 return false;
@@ -1060,7 +1454,7 @@ public partial class DashboardView : UserControl
             return;
         }
 
-        int maxDamage = Math.Max(10000, _last20Games.Select(g => g.DamageToChampions).DefaultIfEmpty(25000).Max());
+        int maxDamage = Math.Max(10000, _allMatches.Select(g => g.DamageToChampions).DefaultIfEmpty(25000).Max());
 
         foreach (var game in filtered)
         {

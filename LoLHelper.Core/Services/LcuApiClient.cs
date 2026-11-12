@@ -55,7 +55,7 @@ namespace LoLHelper.Core.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<string> GetMatchHistoryAsync(string? puuid = null, int begIndex = 0, int endIndex = 19)
+        public async Task<string> GetMatchHistoryAsync(string? puuid = null, int begIndex = 0, int endIndex = 49)
         {
             if (_credentials == null) return string.Empty;
             var response = await _httpClient!.GetAsync($"/lol-match-history/v1/products/lol/current-summoner/matches?begIndex={begIndex}&endIndex={endIndex}");
