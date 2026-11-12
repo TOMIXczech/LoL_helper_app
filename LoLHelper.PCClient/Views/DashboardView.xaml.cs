@@ -1072,80 +1072,73 @@ public partial class DashboardView : UserControl
                 };
                 GraphGuideCanvas.Children.Add(rLine);
 
-                // Rank Pill Badge
-                var badgeBd = new Border
+                // Rank Label (No box container, clean text with Riot Rank Crest Icon)
+                var rankSp = new StackPanel
                 {
-                    Background = BrushFromHex(isCrossed ? "#161D2B" : "#12141F"),
-                    BorderBrush = BrushFromHex(tierCol),
-                    BorderThickness = new Thickness(isCrossed ? 1.2 : 0.8),
-                    CornerRadius = new CornerRadius(4),
-                    Padding = new Thickness(6, 1.5, 6, 1.5),
-                    Opacity = isCrossed ? 1.0 : 0.85
+                    Orientation = Orientation.Horizontal,
+                    VerticalAlignment = VerticalAlignment.Center
                 };
 
-                var badgeSp = new StackPanel { Orientation = Orientation.Horizontal };
-                badgeSp.Children.Add(new TextBlock
+                var rankImg = new Image
                 {
-                    Text = "🛡️",
-                    FontSize = 8,
+                    Width = 15,
+                    Height = 15,
+                    Stretch = Stretch.Uniform,
                     VerticalAlignment = VerticalAlignment.Center,
-                    Margin = new Thickness(0, 0, 3, 0)
-                });
-                badgeSp.Children.Add(new TextBlock
+                    Margin = new Thickness(0, 0, 4, 0)
+                };
+                RenderOptions.SetBitmapScalingMode(rankImg, BitmapScalingMode.HighQuality);
+                SetImageSourceSafe(rankImg, GetRankIconUrl(tier));
+                rankSp.Children.Add(rankImg);
+
+                var rankText = new TextBlock
                 {
                     Text = rankTitle,
                     Foreground = BrushFromHex(tierCol),
-                    FontSize = 9,
+                    FontSize = 9.5,
                     FontWeight = isCrossed ? FontWeights.Black : FontWeights.Bold,
                     VerticalAlignment = VerticalAlignment.Center
-                });
+                };
+                rankSp.Children.Add(rankText);
 
                 if (isCrossed)
                 {
-                    var crossedTag = new Border
+                    rankSp.Children.Add(new TextBlock
                     {
-                        Background = BrushFromHex("#2C1D14"),
-                        BorderBrush = BrushFromHex("#F0B232"),
-                        BorderThickness = new Thickness(0.8),
-                        CornerRadius = new CornerRadius(3),
-                        Padding = new Thickness(3, 0.5, 3, 0.5),
-                        Margin = new Thickness(4, 0, 0, 0),
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-                    crossedTag.Child = new TextBlock
-                    {
-                        Text = "CROSSED",
+                        Text = " • CROSSED",
                         Foreground = BrushFromHex("#F0B232"),
-                        FontSize = 7.5,
-                        FontWeight = FontWeights.Black
-                    };
-                    badgeSp.Children.Add(crossedTag);
+                        FontSize = 8.5,
+                        FontWeight = FontWeights.Black,
+                        VerticalAlignment = VerticalAlignment.Center,
+                        Margin = new Thickness(2, 0, 0, 0)
+                    });
                 }
                 else if (posRole == "ABOVE")
                 {
-                    badgeSp.Children.Add(new TextBlock
+                    rankSp.Children.Add(new TextBlock
                     {
                         Text = " ▲",
                         Foreground = BrushFromHex("#7E849B"),
-                        FontSize = 8,
+                        FontSize = 8.5,
                         VerticalAlignment = VerticalAlignment.Center
                     });
                 }
                 else if (posRole == "BELOW")
                 {
-                    badgeSp.Children.Add(new TextBlock
+                    rankSp.Children.Add(new TextBlock
                     {
                         Text = " ▼",
                         Foreground = BrushFromHex("#7E849B"),
-                        FontSize = 8,
+                        FontSize = 8.5,
                         VerticalAlignment = VerticalAlignment.Center
                     });
                 }
 
-                badgeBd.Child = badgeSp;
-                Canvas.SetLeft(badgeBd, padLeft + 4);
-                Canvas.SetTop(badgeBd, Math.Max(2, yPos - 9));
-                GraphGuideCanvas.Children.Add(badgeBd);
+                Canvas.SetLeft(rankSp, padLeft + 2);
+                double textY = yPos - 15;
+                if (textY < 2) textY = yPos + 2;
+                Canvas.SetTop(rankSp, textY);
+                GraphGuideCanvas.Children.Add(rankSp);
             }
 
             // Calculate (x, y) for data points
