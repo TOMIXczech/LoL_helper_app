@@ -547,9 +547,9 @@
 
                             <!-- Queue Checkboxes -->
                             <CheckBox x:Name="QueueSoloCheck" Style="{StaticResource SharpCheckBoxStyle}" Content="AUTO ACCEPT RANKED SOLO / DUO" Click="AnyToggle_Click"/>
-                            <CheckBox x:Name="QueueFlexCheck" Style="{StaticResource SharpCheckBoxStyle}" Content="AUTO ACCEPT RANKED FLEX 5V5" Click="AnyToggle_Click"/>
-                            <CheckBox x:Name="QueueNormalCheck" Style="{StaticResource SharpCheckBoxStyle}" Content="AUTO ACCEPT NORMAL DRAFT &amp; QUICKPLAY" Click="AnyToggle_Click"/>
-                            <CheckBox x:Name="QueueAramCheck" Style="{StaticResource SharpCheckBoxStyle}" Content="AUTO ACCEPT ARAM &amp; ROTATING MODES" Click="AnyToggle_Click" Margin="0"/>
+                            <CheckBox x:Name="QueueFlexCheck" Style="{StaticResource SharpCheckBoxStyle}" Content="AUTO ACCEPT RANKED FLEX &amp; RANKED 5S" Click="AnyToggle_Click"/>
+                            <CheckBox x:Name="QueueNormalCheck" Style="{StaticResource SharpCheckBoxStyle}" Content="AUTO ACCEPT DRAFT PICK, SWIFTPLAY &amp; CLASSIC 5V5" Click="AnyToggle_Click"/>
+                            <CheckBox x:Name="QueueAramCheck" Style="{StaticResource SharpCheckBoxStyle}" Content="AUTO ACCEPT ARAM, ARAM: MAYHEM &amp; ARENA 3X6" Click="AnyToggle_Click" Margin="0"/>
                         </StackPanel>
                     </StackPanel>
 

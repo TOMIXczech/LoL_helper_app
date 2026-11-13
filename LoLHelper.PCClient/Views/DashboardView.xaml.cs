@@ -504,6 +504,9 @@ public partial class DashboardView : UserControl
                 int duration = g.TryGetProperty("gameDuration", out var dur) ? dur.GetInt32() : 1650;
                 if (duration > 10000) duration /= 1000;
                 int queueId = g.TryGetProperty("queueId", out var qid) ? qid.GetInt32() : 420;
+                string gameMode = g.TryGetProperty("gameMode", out var gm) ? gm.GetString() ?? "" : "";
+                string gameType = g.TryGetProperty("gameType", out var gt) ? gt.GetString() ?? "" : "";
+                string subType = g.TryGetProperty("subType", out var stp) ? stp.GetString() ?? "" : "";
                 long creationMs = g.TryGetProperty("gameCreation", out var gc) ? gc.GetInt64() : 0;
                 DateTime timestamp = creationMs > 0
                     ? DateTimeOffset.FromUnixTimeMilliseconds(creationMs).LocalDateTime
@@ -580,7 +583,7 @@ public partial class DashboardView : UserControl
 
                 bool isRemake = (duration < 300) || (isEarlySurrender && duration < 420);
 
-                var (qName, qCat) = MapQueueId(queueId);
+                var (qName, qCat) = MapQueue(queueId, gameMode, subType, gameType);
 
                 list.Add(new MatchHistoryEntry
                 {
@@ -617,18 +620,118 @@ public partial class DashboardView : UserControl
         return list;
     }
 
-    private static (string Name, string Category) MapQueueId(int queueId)
+    public static string GetQueueColorHex(string queueType) => queueType switch
     {
-        return queueId switch
+        "Ranked Solo/Duo" => "#2CE5B5", // Emerald Cyan
+        "Ranked Flex"     => "#A78BFA", // Violet / Flex Purple
+        "Ranked 5s"       => "#F0B232", // Gold / Tournament
+        "Draft Pick"      => "#60A5FA", // Sky Blue
+        "Swiftplay"       => "#FB7185", // Coral Rose
+        "Classic 5v5"     => "#94A3B8", // Slate Silver
+        "ARAM: Mayhem"    => "#E879F9", // Neon Fuchsia
+        "ARAM"            => "#38BDF8", // Cyan Ice
+        "Arena 3x6"       => "#FB923C", // Arena Amber / Gladiator Orange
+        _                 => "#CBD5E1"
+    };
+
+    private static (string Name, string Category) MapQueue(int queueId, string gameMode = "", string subType = "", string gameType = "")
+    {
+        // 1. ARAM: Mayhem (Augments on ARAM)
+        if (queueId is 2400 or 2410 ||
+            gameMode.Contains("MAYHEM", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("MAYHEM", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("KIWI", StringComparison.OrdinalIgnoreCase))
         {
-            420 => ("Ranked Solo", "SOLO"),
-            440 => ("Ranked Flex", "FLEX"),
-            450 => ("ARAM", "OTHER"),
-            400 or 430 or 490 => ("Normal SR", "OTHER"),
-            1700 => ("Arena", "OTHER"),
-            _ => ("Ranked Solo", "SOLO")
-        };
+            return ("ARAM: Mayhem", "ARAM_MAYHEM");
+        }
+
+        // 2. Arena 3x6 / Arena
+        if (queueId is 1700 or 1710 or 1720 or 1730 or 1740 or 1750 ||
+            gameMode.Equals("CHERRY", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("CHERRY", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("ARENA", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("Arena 3x6", "ARENA");
+        }
+
+        // 3. Swiftplay (Quickplay / Swiftplay casual)
+        if (queueId is 480 or 490 ||
+            gameMode.Equals("SWIFTPLAY", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("SWIFT", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("QUICKPLAY", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("Swiftplay", "SWIFTPLAY");
+        }
+
+        // 4. Draft Pick
+        if (queueId is 400 or 14 ||
+            subType.Contains("DRAFT", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("Draft Pick", "DRAFT");
+        }
+
+        // 5. Ranked Solo/Duo
+        if (queueId == 420 ||
+            subType.Equals("RANKED_SOLO_5x5", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("Ranked Solo/Duo", "SOLO");
+        }
+
+        // 6. Ranked Flex
+        if (queueId == 440 ||
+            subType.Equals("RANKED_FLEX_SR", StringComparison.OrdinalIgnoreCase) ||
+            subType.Equals("RANKED_FLEX_TT", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("Ranked Flex", "FLEX");
+        }
+
+        // 7. Ranked 5s (Premade Team 5v5 / Clash Tournaments)
+        if (queueId is 42 or 44 or 700 or 701 or 720 or 760 ||
+            subType.Contains("TOURNAMENT", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("CLASH", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("RANKED_PREMADE", StringComparison.OrdinalIgnoreCase) ||
+            subType.Contains("RANKED_TEAM", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("Ranked 5s", "RANKED_5S");
+        }
+
+        // 8. Classic 5v5 (Blind Pick / Normal 5v5 Classic)
+        if (queueId is 430 or 2 or 460 ||
+            subType.Contains("BLIND", StringComparison.OrdinalIgnoreCase) ||
+            subType.Equals("NORMAL", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("Classic 5v5", "CLASSIC");
+        }
+
+        // 9. Standard ARAM
+        if (queueId is 450 or 100 or 65 ||
+            gameMode.Equals("ARAM", StringComparison.OrdinalIgnoreCase) ||
+            subType.Equals("ARAM", StringComparison.OrdinalIgnoreCase))
+        {
+            return ("ARAM", "ARAM");
+        }
+
+        // 10. Rotating Game Modes & Specials
+        if (queueId is 900 or 1900 || gameMode.Contains("URF", StringComparison.OrdinalIgnoreCase))
+            return ("Pick URF", "OTHER");
+        if (queueId == 1020 || gameMode.Contains("ONEFORALL", StringComparison.OrdinalIgnoreCase))
+            return ("One for All", "OTHER");
+        if (queueId == 1300 || gameMode.Contains("NEXUSBLITZ", StringComparison.OrdinalIgnoreCase))
+            return ("Nexus Blitz", "OTHER");
+        if (queueId == 1400 || gameMode.Contains("ULTBOOK", StringComparison.OrdinalIgnoreCase))
+            return ("Ultimate Spellbook", "OTHER");
+        if (queueId is 830 or 840 or 850 || subType.Contains("BOT", StringComparison.OrdinalIgnoreCase))
+            return ("Co-op vs AI", "OTHER");
+        if (gameType.Equals("CUSTOM_GAME", StringComparison.OrdinalIgnoreCase) || queueId == 0)
+            return ("Custom Game", "OTHER");
+
+        if (gameMode.Equals("CLASSIC", StringComparison.OrdinalIgnoreCase))
+            return ("Classic 5v5", "CLASSIC");
+
+        return (!string.IsNullOrEmpty(gameMode) ? gameMode : "Ranked Solo/Duo", "SOLO");
     }
+
+    private static (string Name, string Category) MapQueueId(int queueId) => MapQueue(queueId);
 
     private static string NormalizeRole(string lane, string role, int spell1, int spell2)
     {
@@ -675,42 +778,42 @@ public partial class DashboardView : UserControl
 
         var seeds = new (int ChampId, string Role, string Queue, string QCat, bool Win, int K, int D, int A, int Cs, int Gold, int Dmg, int Vis, int Dur, int S1, int S2, int Ks, int Sub, int[] Items, string Badge, bool Remake)[]
         {
-            (266, "TOP", "Ranked Solo", "SOLO", true,  12, 2, 9,  248, 15840, 38420, 34, 1785, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3053, 6333, 3071, 3026, 3363 }, "MVP CARRY", false),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  9,  3, 11, 224, 14120, 31900, 29, 1690, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 3053, 1038, 3340 }, "TRIPLE KILL", false),
-            (777, "MIDDLE", "Ranked Solo", "SOLO", true, 15, 4, 7, 265, 16950, 42150, 31, 1890, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 3031, 6333, 3026, 3363 }, "QUADRA KILL", false),
-            (104, "JUNGLE", "Ranked Solo", "SOLO", true, 10, 3, 12, 212, 14780, 29400, 41, 1640, 4, 11, 8021, 8100, new[]{ 6676, 3111, 3071, 3036, 3156, 1036, 3364 }, "DOUBLE KILL", false),
-            (222, "BOTTOM", "Ranked Solo", "SOLO", false, 0,  0, 0,  18,  1220, 480,   2,  215,  4, 7,  8008, 8200, new[]{ 1055, 2003, 3340, 0, 0, 0, 0 }, "", true),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  11, 1, 8,  256, 15600, 36800, 36, 1720, 4, 12, 8010, 8400, new[]{ 6610, 3047, 6333, 3071, 3065, 1037, 3340 }, "UNSTOPPABLE", false),
+            (266, "TOP", "Ranked Solo/Duo", "SOLO", true,  12, 2, 9,  248, 15840, 38420, 34, 1785, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3053, 6333, 3071, 3026, 3363 }, "MVP CARRY", false),
+            (266, "TOP", "Ranked Solo/Duo", "SOLO", true,  9,  3, 11, 224, 14120, 31900, 29, 1690, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 3053, 1038, 3340 }, "TRIPLE KILL", false),
+            (777, "MIDDLE", "Draft Pick", "DRAFT", true, 15, 4, 7,  265, 16950, 42150, 31, 1890, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 3031, 6333, 3026, 3363 }, "QUADRA KILL", false),
+            (104, "JUNGLE", "Swiftplay", "SWIFTPLAY", true, 10, 3, 12, 192, 13800, 27400, 35, 1240, 4, 11, 8021, 8100, new[]{ 6676, 3111, 3071, 3036, 3156, 1036, 3364 }, "DOUBLE KILL", false),
+            (222, "BOTTOM", "Ranked Solo/Duo", "SOLO", false, 0,  0, 0,  18,  1220, 480,   2,  215,  4, 7,  8008, 8200, new[]{ 1055, 2003, 3340, 0, 0, 0, 0 }, "", true),
+            (266, "TOP", "Ranked Solo/Duo", "SOLO", true,  11, 1, 8,  256, 15600, 36800, 36, 1720, 4, 12, 8010, 8400, new[]{ 6610, 3047, 6333, 3071, 3065, 1037, 3340 }, "UNSTOPPABLE", false),
             (157, "MIDDLE", "Ranked Flex", "FLEX", true, 14, 5, 9,  244, 15920, 35600, 27, 1765, 4, 14, 8008, 8400, new[]{ 3153, 3006, 3031, 6673, 3026, 1038, 3363 }, "TRIPLE KILL", false),
-            (64,  "JUNGLE", "Ranked Solo", "SOLO", false, 5,  6, 10, 176, 11850, 19800, 44, 1680, 4, 11, 8010, 8300, new[]{ 6630, 3111, 3071, 3053, 1036, 0,    3364 }, "VISION KING", false),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  8,  2, 12, 231, 14300, 30200, 33, 1710, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 0,    3340 }, "DOUBLE KILL", false),
-            (30,  "BOTTOM", "Ranked Solo", "SOLO", true,  16, 5, 14, 249, 17200, 48900, 28, 1940, 4, 3,  8128, 8000, new[]{ 6655, 3020, 4645, 3089, 3135, 3157, 3363 }, "PENTA KILL", false),
+            (64,  "JUNGLE", "Ranked 5s", "RANKED_5S", false, 5,  6, 10, 176, 11850, 19800, 44, 1680, 4, 11, 8010, 8300, new[]{ 6630, 3111, 3071, 3053, 1036, 0,    3364 }, "VISION KING", false),
+            (266, "TOP", "Ranked Solo/Duo", "SOLO", true,  8,  2, 12, 231, 14300, 30200, 33, 1710, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 0,    3340 }, "DOUBLE KILL", false),
+            (30,  "BOTTOM", "Ranked Solo/Duo", "SOLO", true,  16, 5, 14, 249, 17200, 48900, 28, 1940, 4, 3,  8128, 8000, new[]{ 6655, 3020, 4645, 3089, 3135, 3157, 3363 }, "PENTA KILL", false),
             (412, "UTILITY", "Ranked Flex", "FLEX", true, 2,  3, 24, 42,  10900, 11400, 78, 1750, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3109, 3050, 2055, 3364 }, "VISION KING", false),
-            (777, "MIDDLE", "Ranked Solo", "SOLO", false, 6,  7, 4,  215, 12100, 22400, 21, 1620, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 1038, 1055, 0,    3340 }, "", false),
-            (122, "TOP", "Ranked Solo", "SOLO", true,  13, 3, 6,  241, 15400, 34700, 26, 1695, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3742, 3065, 1054, 3340 }, "TRIPLE KILL", false),
-            (103, "MIDDLE", "Ranked Solo", "SOLO", true,  10, 2, 13, 234, 14800, 33100, 35, 1730, 4, 14, 8112, 8200, new[]{ 6655, 3020, 4645, 3089, 3157, 1056, 3364 }, "MVP CARRY", false),
-            (145, "BOTTOM", "Ranked Solo", "SOLO", false, 0,  1, 0,  15,  1150, 520,   2,  198,  4, 7,  8008, 8300, new[]{ 1055, 2003, 3340, 0, 0, 0, 0 }, "", true),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  9,  4, 8,  219, 13900, 29700, 30, 1660, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 1037, 0,    3340 }, "DOUBLE KILL", false),
-            (238, "MIDDLE", "Normal SR", "OTHER", true,  17, 4, 6,  242, 16800, 41200, 29, 1810, 4, 14, 8112, 8200, new[]{ 6692, 3158, 6691, 6694, 3814, 3036, 3364 }, "QUADRA KILL", false),
-            (81,  "BOTTOM", "ARAM", "OTHER", false, 11, 8, 19, 84,  14900, 37500, 0,  1340, 4, 32, 8010, 8300, new[]{ 3078, 3158, 3042, 6694, 3153, 3072, 2052 }, "HIGH DAMAGE", false),
-            (64,  "JUNGLE", "Ranked Solo", "SOLO", false, 4,  6, 9,  168, 11200, 17400, 39, 1590, 4, 11, 8010, 8300, new[]{ 6630, 3047, 3071, 3156, 0,    0,    3364 }, "", false),
-            (266, "TOP", "Ranked Solo", "SOLO", true,  10, 2, 10, 237, 14950, 33600, 32, 1740, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 1028, 3340 }, "MVP CARRY", false),
-            (11,  "JUNGLE", "Ranked Solo", "SOLO", true,  14, 2, 8,  205, 16100, 34200, 27, 1650, 4, 11, 8008, 8100, new[]{ 3153, 3006, 3124, 6673, 3026, 0,    3364 }, "MVP CARRY", false),
-            (51,  "BOTTOM", "Ranked Solo", "SOLO", false, 6,  5, 7,  242, 13200, 26800, 23, 1780, 4, 7,  8008, 8200, new[]{ 3031, 3006, 3094, 3036, 1038, 0,    3363 }, "", false),
-            (84,  "MIDDLE", "Ranked Solo", "SOLO", true,  11, 3, 9,  228, 14900, 35100, 31, 1715, 4, 14, 8010, 8400, new[]{ 3152, 3020, 3157, 4645, 3089, 0,    3364 }, "DOUBLE KILL", false),
+            (777, "MIDDLE", "Classic 5v5", "CLASSIC", false, 6,  7, 4,  215, 12100, 22400, 21, 1620, 4, 14, 8008, 8400, new[]{ 3153, 3006, 6673, 1038, 1055, 0,    3340 }, "", false),
+            (122, "TOP", "Ranked Solo/Duo", "SOLO", true,  13, 3, 6,  241, 15400, 34700, 26, 1695, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3742, 3065, 1054, 3340 }, "TRIPLE KILL", false),
+            (103, "MIDDLE", "Ranked Solo/Duo", "SOLO", true,  10, 2, 13, 234, 14800, 33100, 35, 1730, 4, 14, 8112, 8200, new[]{ 6655, 3020, 4645, 3089, 3157, 1056, 3364 }, "MVP CARRY", false),
+            (145, "BOTTOM", "Swiftplay", "SWIFTPLAY", false, 0,  1, 0,  15,  1150, 520,   2,  198,  4, 7,  8008, 8300, new[]{ 1055, 2003, 3340, 0, 0, 0, 0 }, "", true),
+            (266, "TOP", "Draft Pick", "DRAFT", true,  9,  4, 8,  219, 13900, 29700, 30, 1660, 4, 12, 8010, 8400, new[]{ 6610, 3047, 3071, 6333, 1037, 0,    3340 }, "DOUBLE KILL", false),
+            (238, "MIDDLE", "Classic 5v5", "CLASSIC", true,  17, 4, 6,  242, 16800, 41200, 29, 1810, 4, 14, 8112, 8200, new[]{ 6692, 3158, 6691, 6694, 3814, 3036, 3364 }, "QUADRA KILL", false),
+            (81,  "BOTTOM", "ARAM", "ARAM", false, 11, 8, 19, 84,  14900, 37500, 0,  1340, 4, 32, 8010, 8300, new[]{ 3078, 3158, 3042, 6694, 3153, 3072, 2052 }, "HIGH DAMAGE", false),
+            (64,  "JUNGLE", "Ranked Solo/Duo", "SOLO", false, 4,  6, 9,  168, 11200, 17400, 39, 1590, 4, 11, 8010, 8300, new[]{ 6630, 3047, 3071, 3156, 0,    0,    3364 }, "", false),
+            (266, "TOP", "Ranked Solo/Duo", "SOLO", true,  10, 2, 10, 237, 14950, 33600, 32, 1740, 4, 12, 8010, 8400, new[]{ 6610, 3111, 3071, 6333, 3053, 1028, 3340 }, "MVP CARRY", false),
+            (11,  "JUNGLE", "Arena 3x6", "ARENA", true,  14, 2, 8,  72,  16100, 38200, 10, 1150, 4, 32, 8008, 8100, new[]{ 3153, 3006, 3124, 6673, 3026, 0,    3364 }, "MVP CARRY", false),
+            (51,  "BOTTOM", "Ranked Solo/Duo", "SOLO", false, 6,  5, 7,  242, 13200, 26800, 23, 1780, 4, 7,  8008, 8200, new[]{ 3031, 3006, 3094, 3036, 1038, 0,    3363 }, "", false),
+            (84,  "MIDDLE", "ARAM: Mayhem", "ARAM_MAYHEM", true, 11, 3, 9,  95, 15900, 41200, 0, 1220, 4, 32, 8010, 8400, new[]{ 3152, 3020, 3157, 4645, 3089, 0,    3364 }, "DOUBLE KILL", false),
             (164, "TOP", "Ranked Flex", "FLEX", true,  9,  1, 7,  235, 15100, 29800, 33, 1690, 4, 12, 8010, 8300, new[]{ 3078, 3111, 3053, 3071, 3742, 0,    3340 }, "UNSTOPPABLE", false),
-            (875, "TOP", "Ranked Solo", "SOLO", false, 5,  6, 4,  210, 11900, 22100, 20, 1620, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3748, 1054, 0,    3340 }, "", false),
-            (236, "BOTTOM", "Ranked Solo", "SOLO", true,  13, 4, 10, 252, 16250, 38900, 26, 1820, 4, 7,  8005, 8300, new[]{ 6676, 3006, 3031, 3036, 3072, 0,    3363 }, "TRIPLE KILL", false),
-            (517, "MIDDLE", "Ranked Solo", "SOLO", true,  12, 3, 8,  218, 14800, 32900, 29, 1680, 4, 14, 8010, 8400, new[]{ 3152, 3158, 4645, 3089, 3157, 0,    3364 }, "MVP CARRY", false),
-            (111, "UTILITY", "Ranked Solo", "SOLO", true,  3,  4, 22, 38,  11200, 12800, 72, 1730, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING", false),
-            (202, "BOTTOM", "Ranked Solo", "SOLO", false, 7,  7, 8,  231, 12900, 27400, 21, 1760, 4, 7,  8021, 8200, new[]{ 6676, 3006, 3094, 3036, 1038, 0,    3363 }, "", false),
-            (234, "JUNGLE", "Ranked Flex", "FLEX", true,  10, 2, 11, 198, 14600, 28700, 38, 1640, 4, 11, 8010, 8300, new[]{ 3153, 3047, 3078, 3053, 3156, 0,    3364 }, "DOUBLE KILL", false),
-            (58,  "TOP", "Ranked Solo", "SOLO", true,  8,  3, 6,  222, 13800, 26400, 25, 1660, 4, 12, 8010, 8400, new[]{ 3078, 3047, 3053, 3071, 3065, 0,    3340 }, "", false),
-            (99,  "UTILITY", "Normal SR", "OTHER", false, 4,  5, 12, 54,  10400, 19600, 58, 1710, 4, 14, 8229, 8300, new[]{ 3869, 3020, 6655, 4645, 0,    0,    3364 }, "", false),
-            (24,  "TOP", "Ranked Solo", "SOLO", true,  11, 2, 5,  239, 15300, 31200, 28, 1675, 4, 6,  8008, 8400, new[]{ 3078, 3047, 3153, 3053, 3071, 0,    3340 }, "TRIPLE KILL", false),
-            (92,  "TOP", "Ranked Solo", "SOLO", true,  15, 3, 6,  254, 16700, 39400, 30, 1790, 4, 6,  8010, 8400, new[]{ 6692, 3158, 6691, 6694, 3814, 0,    3340 }, "QUADRA KILL", false),
-            (245, "JUNGLE", "Ranked Solo", "SOLO", false, 6,  6, 5,  182, 11700, 21800, 35, 1610, 4, 11, 8112, 8200, new[]{ 3152, 3020, 3100, 3157, 0,    0,    3364 }, "", false),
-            (89,  "UTILITY", "Ranked Solo", "SOLO", true,  1,  2, 19, 41,  10800, 11900, 75, 1740, 4, 14, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING", false)
+            (875, "TOP", "Swiftplay", "SWIFTPLAY", false, 5,  6, 4,  154, 10800, 21200, 16, 1120, 4, 6,  8010, 8400, new[]{ 3078, 3047, 3053, 3748, 1054, 0,    3340 }, "", false),
+            (236, "BOTTOM", "Ranked Solo/Duo", "SOLO", true,  13, 4, 10, 252, 16250, 38900, 26, 1820, 4, 7,  8005, 8300, new[]{ 6676, 3006, 3031, 3036, 3072, 0,    3363 }, "TRIPLE KILL", false),
+            (517, "MIDDLE", "Draft Pick", "DRAFT", true,  12, 3, 8,  218, 14800, 32900, 29, 1680, 4, 14, 8010, 8400, new[]{ 3152, 3158, 4645, 3089, 3157, 0,    3364 }, "MVP CARRY", false),
+            (111, "UTILITY", "ARAM: Mayhem", "ARAM_MAYHEM", true, 3,  4, 22, 38, 11200, 16800, 0, 1190, 4, 32, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING", false),
+            (202, "BOTTOM", "Ranked Solo/Duo", "SOLO", false, 7,  7, 8,  231, 12900, 27400, 21, 1760, 4, 7,  8021, 8200, new[]{ 6676, 3006, 3094, 3036, 1038, 0,    3363 }, "", false),
+            (234, "JUNGLE", "Ranked 5s", "RANKED_5S", true,  10, 2, 11, 198, 14600, 28700, 38, 1640, 4, 11, 8010, 8300, new[]{ 3153, 3047, 3078, 3053, 3156, 0,    3364 }, "DOUBLE KILL", false),
+            (58,  "TOP", "Classic 5v5", "CLASSIC", true,  8,  3, 6,  222, 13800, 26400, 25, 1660, 4, 12, 8010, 8400, new[]{ 3078, 3047, 3053, 3071, 3065, 0,    3340 }, "", false),
+            (99,  "UTILITY", "Ranked Flex", "FLEX", false, 4,  5, 12, 54,  10400, 19600, 58, 1710, 4, 14, 8229, 8300, new[]{ 3869, 3020, 6655, 4645, 0,    0,    3364 }, "", false),
+            (24,  "TOP", "Ranked Solo/Duo", "SOLO", true,  11, 2, 5,  239, 15300, 31200, 28, 1675, 4, 6,  8008, 8400, new[]{ 3078, 3047, 3153, 3053, 3071, 0,    3340 }, "TRIPLE KILL", false),
+            (92,  "TOP", "Ranked Solo/Duo", "SOLO", true,  15, 3, 6,  254, 16700, 39400, 30, 1790, 4, 6,  8010, 8400, new[]{ 6692, 3158, 6691, 6694, 3814, 0,    3340 }, "QUADRA KILL", false),
+            (245, "JUNGLE", "Arena 3x6", "ARENA", false, 6,  6, 5,  62,  11700, 24800, 8,  1060, 4, 32, 8112, 8200, new[]{ 3152, 3020, 3100, 3157, 0,    0,    3364 }, "", false),
+            (89,  "UTILITY", "ARAM", "ARAM", true,  1,  2, 19, 41,  10800, 11900, 0,  1210, 4, 32, 8439, 8300, new[]{ 3869, 3117, 3190, 3050, 3109, 0,    3364 }, "VISION KING", false)
         };
 
         _allMatches.Clear();
@@ -1693,9 +1796,10 @@ public partial class DashboardView : UserControl
         if (sender is not Button clicked || clicked.Tag is not string filterTag) return;
         _currentQueueFilter = filterTag;
 
-        var buttons = new[] { FilterAllBtn, FilterSoloBtn, FilterFlexBtn, FilterOtherBtn };
+        var buttons = new[] { FilterAllBtn, FilterSoloBtn, FilterFlexBtn };
         foreach (var b in buttons)
         {
+            if (b == null) continue;
             b.Background = Brushes.Transparent;
             b.Foreground = BrushFromHex("#8E92A4");
         }
@@ -1703,7 +1807,48 @@ public partial class DashboardView : UserControl
         clicked.Background = BrushFromHex("#25293A");
         clicked.Foreground = Brushes.White;
 
+        // Sync dropdown with tab selection
+        if (MatchQueueFilterCombo != null)
+        {
+            MatchQueueFilterCombo.SelectionChanged -= MatchQueueFilterCombo_SelectionChanged;
+            if (filterTag == "ALL")
+                MatchQueueFilterCombo.SelectedIndex = 0;
+            else if (filterTag == "Ranked Solo/Duo")
+                MatchQueueFilterCombo.SelectedIndex = 1;
+            else if (filterTag == "Ranked Flex")
+                MatchQueueFilterCombo.SelectedIndex = 2;
+            else
+                MatchQueueFilterCombo.SelectedIndex = -1;
+            MatchQueueFilterCombo.SelectionChanged += MatchQueueFilterCombo_SelectionChanged;
+        }
+
         RenderMatchHistoryFeed();
+    }
+
+    private void MatchQueueFilterCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (MatchQueueFilterCombo?.SelectedItem is ComboBoxItem item && item.Tag is string filterTag)
+        {
+            _currentQueueFilter = filterTag;
+
+            var buttons = new[] { FilterAllBtn, FilterSoloBtn, FilterFlexBtn };
+            foreach (var b in buttons)
+            {
+                if (b == null) continue;
+                if ((string)b.Tag == filterTag)
+                {
+                    b.Background = BrushFromHex("#25293A");
+                    b.Foreground = Brushes.White;
+                }
+                else
+                {
+                    b.Background = Brushes.Transparent;
+                    b.Foreground = BrushFromHex("#8E92A4");
+                }
+            }
+
+            RenderMatchHistoryFeed();
+        }
     }
 
     private void MatchSearchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -1720,7 +1865,9 @@ public partial class DashboardView : UserControl
 
         var filtered = _allMatches.Where(g =>
         {
-            if (_currentQueueFilter != "ALL" && !g.QueueCategory.Equals(_currentQueueFilter, StringComparison.OrdinalIgnoreCase))
+            if (_currentQueueFilter != "ALL" &&
+                !g.QueueType.Equals(_currentQueueFilter, StringComparison.OrdinalIgnoreCase) &&
+                !g.QueueCategory.Equals(_currentQueueFilter, StringComparison.OrdinalIgnoreCase))
                 return false;
             if (!string.IsNullOrEmpty(_currentSearchFilter) && !g.ChampionName.Contains(_currentSearchFilter, StringComparison.OrdinalIgnoreCase))
                 return false;
@@ -1770,7 +1917,7 @@ public partial class DashboardView : UserControl
 
         var outerGrid = new Grid();
         outerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(5) }); // Colored Victory/Defeat bar
-        outerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(104) }); // Outcome + Queue + Duration
+        outerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(125) }); // Outcome + Queue + Duration
         outerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(175) }); // Champ + Spells + Runes + Role
         outerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(145) }); // KDA + Multi-kill badge
         outerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(155) }); // CS + Gold + Damage bar
@@ -1794,9 +1941,9 @@ public partial class DashboardView : UserControl
         col1.Children.Add(new TextBlock
         {
             Text = game.QueueType,
-            Foreground = Brushes.White,
+            Foreground = BrushFromHex(GetQueueColorHex(game.QueueType)),
             FontSize = 11,
-            FontWeight = FontWeights.SemiBold,
+            FontWeight = FontWeights.Bold,
             Margin = new Thickness(0, 1, 0, 2)
         });
         col1.Children.Add(new TextBlock

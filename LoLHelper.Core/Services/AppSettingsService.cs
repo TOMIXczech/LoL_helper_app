@@ -565,9 +565,9 @@ public class AppSettingsService
                 {
                     int qId = qip.GetInt32();
                     if (qId == 420 && !Settings.AutoAcceptRankedSolo) return;
-                    if (qId == 440 && !Settings.AutoAcceptRankedFlex) return;
-                    if ((qId is 400 or 430 or 490) && !Settings.AutoAcceptNormalDraft) return;
-                    if ((qId is 450 or 1700 or 1900) && !Settings.AutoAcceptAramAndModes) return;
+                    if ((qId is 440 or 42 or 44 or 700 or 701 or 720 or 760) && !Settings.AutoAcceptRankedFlex) return;
+                    if ((qId is 400 or 430 or 480 or 490 or 2 or 14 or 460) && !Settings.AutoAcceptNormalDraft) return;
+                    if ((qId is 450 or 100 or 65 or 1700 or 1710 or 1720 or 1730 or 1740 or 1750 or 2400 or 2410 or 1900 or 900) && !Settings.AutoAcceptAramAndModes) return;
                 }
             }
             catch { }
