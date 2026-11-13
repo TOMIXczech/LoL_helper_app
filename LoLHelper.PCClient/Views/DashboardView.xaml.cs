@@ -1847,19 +1847,23 @@ public partial class DashboardView : UserControl
                 }
             }
 
+            if (!_isInitialized || MatchHistoryListStack == null) return;
             RenderMatchHistoryFeed();
         }
     }
 
     private void MatchSearchBox_TextChanged(object sender, TextChangedEventArgs e)
     {
+        if (MatchSearchBox == null || MatchSearchPlaceholder == null) return;
         _currentSearchFilter = MatchSearchBox.Text.Trim();
         MatchSearchPlaceholder.Visibility = string.IsNullOrEmpty(MatchSearchBox.Text) ? Visibility.Visible : Visibility.Collapsed;
+        if (!_isInitialized || MatchHistoryListStack == null) return;
         RenderMatchHistoryFeed();
     }
 
     private void RenderMatchHistoryFeed()
     {
+        if (MatchHistoryListStack == null || FilterAllBtn == null) return;
         MatchHistoryListStack.Children.Clear();
         FilterAllBtn.Content = $"All Games ({_allMatches.Count})";
 

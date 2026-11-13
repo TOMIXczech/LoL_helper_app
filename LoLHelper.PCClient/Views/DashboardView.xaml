@@ -723,9 +723,10 @@
                             <ComboBox x:Name="MatchQueueFilterCombo"
                                       Width="165" Height="28"
                                       Style="{StaticResource HistoryComboBoxStyle}"
+                                      SelectedIndex="0"
                                       SelectionChanged="MatchQueueFilterCombo_SelectionChanged"
                                       Margin="4,0,0,0">
-                                <ComboBoxItem Content="All Game Types" Tag="ALL" IsSelected="True"/>
+                                <ComboBoxItem Content="All Game Types" Tag="ALL"/>
                                 <ComboBoxItem Content="Ranked Solo/Duo" Tag="Ranked Solo/Duo"/>
                                 <ComboBoxItem Content="Ranked Flex" Tag="Ranked Flex"/>
                                 <ComboBoxItem Content="Ranked 5s" Tag="Ranked 5s"/>
